@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+// --- SETTINGS -------------------
+$visual-grid: false;
+$visual-grid-color: #333333;
+$visual-grid-opacity: 0.1;
+$border-box-sizing: false;
+
+$column: 58px;
+$gutter: 12px;
+$max-width: 960px;
+
+// @import "bourbon";
+@import "../../.meteor/local/build/programs/server/assets/packages/bstocks_bourbon/bourbon";
+
+// @import "neat";
+@import "../../.meteor/local/build/programs/server/assets/packages/bstocks_neat/neat";
+
+// --- VARIABLES ------------------
+$gray: #333333;
+$gray-dark: #222222;
+$white: #ffffff;
+$light-gray: #ECF0F1;
+$silver: #8E8E93;
+$blue: #38CBF8;
+$yellow: #F8C731;
+$green: #3CD86D;
+$red: #F53034;
+$logo-lg: url('/images/logo-lg.svg');
+$logo-sm: url('/images/logo-sm.svg');
+$menu: url('/images/menu.svg');
+$abril: 'Abril Fatface', 'Helvetica', 'Arial';
+$vollkorn: 'Vollkorn', serif;
+$break-phone: 480px;
+$break-tablet: 800px;
+$break-desktop: 960px;
+
+// --- MIXINS ---------------------
+@mixin music-icons($icon-url) {
+    background-image: url($icon-url);
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@import "reset";
+@import "structure";
+@import "nav";
+@import "typography";
+@import "grid";
+@import "forms";
+@import "misc";
+@import "settings";
+@import "onboarding";
+@import "practice";
+@import "pages";

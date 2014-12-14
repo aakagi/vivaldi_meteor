@@ -1,0 +1,205 @@
+/*
+------------------------
+|                      |
+|        INDEX         |
+|                      |
+------------------------
+*/
+
+#navIndex {
+    width: 100%;
+    a {
+        position: fixed;
+        right: 2em;
+    }
+}
+
+/*
+------------------------
+|                      |
+|       SIGN IN        |
+|                      |
+------------------------
+*/
+
+#signin {
+    .logo {
+        margin-top: 2em;
+        width: 12em;
+    }
+}
+
+/*
+------------------------
+|                      |
+|        ADMIN         |
+|                      |
+------------------------
+*/
+
+#adminHome {
+    .classes {
+        > .col-sm-6 {
+            background-color: $white;
+            height: 9em;
+            margin-bottom: 0.5em;
+            border-radius: 4px;
+            box-sizing: border-box;
+            padding: 1em;
+            @include transition(all 0.25s ease);
+            &:hover {
+                color: $gray;
+                background-color: $yellow;
+                cursor: pointer;
+                @include transition(all 0.25s ease);
+            }
+            &.other {
+                text-align: center;
+                padding-top: 3.5em;
+            }
+        }
+    }
+}
+
+#adminClass {
+    .row {
+        .col-md-4, .col-md-8 {
+            .block {
+                background-color: $white;
+                margin-bottom: 0.5em;
+                border-radius: 4px;
+                box-sizing: border-box;
+                padding: 1em;
+                @include transition(all 0.25s ease);
+                p.sect {
+                    margin-top: 0.5em;
+                }
+                p.sect i {
+                    position: relative;
+                    top: -0.1em;
+                    opacity: 1;
+                    @include transition(all 0.25s ease);
+                }
+                p.sect:hover {
+                    cursor: pointer;
+                    i {
+                        opacity: 1;
+                        @include transition(all 0.25s ease);
+                    }
+                }
+                p.student {
+                    margin-left: 1em;
+                    font-style: italic;
+                }
+                
+                ul {
+                    list-style: none;
+                    li {
+                        h6 {
+                            i {
+                                opacity: 0.2;
+                            }
+                            &:hover {
+                                color: $blue;
+                                cursor: pointer;
+                                i {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &#expandStudents {
+                    h6:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            .yellowHover {
+                &:hover {
+                    background-color: $yellow;
+                    cursor: pointer;
+                    @include transition(all 0.25s ease);
+                }
+            }
+        }
+    }
+}
+
+#adminSettingsNote {
+    margin-top: 0.5em;
+    color: $light-gray;
+    font-style: italic;
+    line-height: 1em;
+}
+
+.width100 {
+    width: 100%;
+}
+
+
+
+/*
+------------------------
+|                      |
+|       STUDENT        |
+|                      |
+------------------------
+*/
+
+.headerDark {
+    position: relative;
+    width: 100%;
+    background-color: $silver;
+    color: $white;
+    border-radius: 4px 4px 0 0 !important;
+    padding-top: 0.25em;
+    padding-left: 1em;
+    box-sizing: border-box;
+
+    .listentag {
+        position: absolute;
+        width: 5em;
+        padding-top: 0.25em;
+        box-sizing: border-box;
+        background-color: $gray;
+        right: 0;
+        top: 0;
+        left: auto;
+        text-align: center;
+        border-radius: 0 4px 0 0;
+        color: $white;
+    }
+    .practicetag {
+        position: absolute;
+        width: 5em;
+        padding-top: 0.25em;
+        box-sizing: border-box;
+        background-color: $gray;
+        right: 0;
+        top: 0;
+        left: auto;
+        text-align: center;
+        border-radius: 0 4px 0 0;
+        color: $white;
+    }
+    & + .block {
+        border-radius: 0 0 4px 4px !important;
+    }
+}
+.block {
+    .row {
+        iframe {
+            width: 100%;
+        }
+    }
+}
+
+
+
+
+
+
+
+

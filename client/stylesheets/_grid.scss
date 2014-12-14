@@ -1,0 +1,139 @@
+// --- GRID -----------------------
+@mixin nthchilds($i) {
+    @if $i == 1 {
+        &:nth-child(12n) {
+            margin-right: 0;
+        }
+    }
+    @if $i == 2 {
+        &:nth-child(6n) {
+            margin-right: 0;
+        }
+    }
+    @if $i == 3 {
+        &:nth-child(4n) {
+            margin-right: 0;
+        }
+    }
+    @if $i == 4 {
+        &:nth-child(3n) {
+            margin-right: 0;
+        }
+    }
+    @if $i == 6 {
+        &:nth-child(2n) {
+            margin-right: 0;
+        }
+    }
+    @if $i == 12 {
+        &:nth-child(1n) {
+            margin-right: 0;
+        }
+    }
+}
+@media only screen {
+    .row {
+        @include row;
+    }
+
+    @for $i from 1 through 12 {
+        .col-sm-#{$i} {
+            @include span-columns($i);
+            @include nthchilds($i);
+            &.end {
+                margin-right: 0;
+            }
+        }
+    }
+}
+@media only screen and (min-width: $break-phone) and (max-width: $break-tablet) {
+    @for $i from 1 through 12 {
+        .col-md-#{$i} {
+            @include span-columns($i);
+            @include nthchilds($i);
+            &.end {
+                margin-right: 0;
+            }
+        }
+    }
+}
+@media only screen and (min-width: $break-tablet + 1) {
+    @for $i from 1 through 12 {
+        .col-lg-#{$i} {
+            @include span-columns($i);
+            @include nthchilds($i);
+            &.end {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+
+.grid {
+    .row {
+        .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+            .block {
+                position: relative;
+                background-color: $white;
+                margin-bottom: 0.5em;
+                border-radius: 4px;
+                box-sizing: border-box;
+                padding: 1em;
+                overflow: visible;
+                @include transition(all 0.25s ease);
+                p.sect {
+                    margin-top: 0.5em;
+                }
+                p.sect i {
+                    position: relative;
+                    top: -0.1em;
+                    opacity: 1;
+                    @include transition(all 0.25s ease);
+                }
+                p.sect:hover {
+                    cursor: pointer;
+                    i {
+                        opacity: 1;
+                        @include transition(all 0.25s ease);
+                    }
+                }
+                p.student {
+                    margin-left: 1em;
+                    font-style: italic;
+                }
+                
+                ul {
+                    list-style: none;
+                    li {
+                        h6 {
+                            i {
+                                opacity: 0.2;
+                            }
+                            &:hover {
+                                color: $blue;
+                                cursor: pointer;
+                                i {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &#expandStudents {
+                    h6:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            .yellowHover {
+                &:hover {
+                    background-color: $yellow;
+                    cursor: pointer;
+                    @include transition(all 0.25s ease);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.tuner {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+    z-index: 10;
+    background-color: $white;
+    .container {
+        position: relative;
+        overflow: scroll;
+        width: auto;
+        height: auto;
+        max-width: 480px;
+        margin: 0 auto;
+        h4 {
+            right: 52.5%;
+            position: fixed;
+            top: 120px;
+        }
+        ul {
+            margin-top: 120px;
+            list-style: none;
+            margin-left: 52.5%;
+            .unread {
+                opacity: 1;
+                width: auto;
+                &:before:hover, &:hover {
+                    &:before {
+                        content: '\00A0\00A0\2A2F';
+                        position: absolute;
+                        left: 100%;
+                    }
+                }
+            }
+            .read {
+                opacity: 0.5;
+            }
+        }
+    }
+}

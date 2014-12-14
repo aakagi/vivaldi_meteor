@@ -1,0 +1,154 @@
+// --- MISCELLANEOUS --------------
+.break-sm {
+    width: 100%;
+    height: 0;
+}
+.break-sm {
+    width: 100%;
+    height: 10px;
+}
+.break-md {
+    width: 100%;
+    height: 20px;
+}
+.break-lg {
+    width: 100%;
+    height: 40px;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.clear {
+    @include clearfix;
+}
+.center {
+    text-align: center;
+    > div {
+        display: inline-block;
+    }
+}
+.width60 {
+    width: 60%;
+    min-width: 240px;
+    margin: 0 auto;
+}
+.fancyp {
+    width: 65%;
+    margin: 0 auto;
+}
+.divider {
+    width: 50%;
+    margin: 0 auto;
+    &::after {
+        content: '\2022\00A0\00A0\00A0\00A0\2022\00A0\00A0\00A0\00A0\2022';
+        width: 100%;
+        display: block;
+        text-align: center;
+        margin: 12px auto;
+    }
+}
+.fancydivider {
+    width: 50%;
+    margin: 12px auto 12px auto;
+    border-top: 2px dotted $gray;
+    &::before {
+        content: '\2767';
+        width: 30px;
+        text-align: center;
+        font-size: 2em;
+        display: block;
+        background-color: $white;
+        padding: 0 6px;
+        margin: -20px auto;
+    }
+}
+.width80 {
+    width: 80%;
+    min-width: 240px;
+    margin: 0 auto;
+}
+.inline {
+    display: inline-block !important;
+}
+.d-block {
+    display: block !important;
+}
+.hide {
+    display: none !important;
+}
+.round {
+    border-radius: 4px !important;
+    -webkit-border-radius: 4px !important;
+}
+.doublebar {
+    background-image: url('/images/doublebar24x160.png');
+    background-repeat: repeat-y;
+    background-size: 12px;
+}
+.exit {
+    position: fixed;
+    top: 0;
+    right: 30px;
+    &:after {
+        @include transition(all 0.25s);
+        content: '\2A2F';
+        font-size: 4em;
+        vertical-align: top;
+    }
+    &:hover {
+        &:after {
+            color: $red;
+            cursor: pointer;
+        }
+    }
+}
+.middle {
+    position: relative;
+    @include box-sizing(border-box);
+    height: 100%;
+    .break {
+        height: 25%;
+        width: 100%; 
+    }
+    img {
+        vertical-align: middle;
+        display: inline-block;
+    }
+}
+
+.logo-100 {
+    background-image: $logo-lg;
+    background-size: 100%;
+    background-position: left;
+    margin-bottom: 2em;
+    width: 100%;
+    height: 67.2px;
+}
+
+
+
+
+
+.customAlert {
+    width: 100%;
+    height: 3em;
+    &#error {
+        background-color: $red;
+    }
+    &#info {
+        background-color: $blue;
+    }
+    .container-full .message {
+        font-size: 1.25em;
+        font-style: italic;
+        color: $white;
+        padding-top: 0.5em;
+        i {
+            margin-right: 0.5em;
+            color: $white;
+        }
+    }
+}

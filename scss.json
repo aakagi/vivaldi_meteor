@@ -1,0 +1,6 @@
+{
+    "includePaths": [
+        ".meteor/local/build/programs/server/assets/packages/bstocks_bourbon/bourbon",
+        ".meteor/local/build/programs/server/assets/packages/bstocks_neat/neat"
+    ]
+}

@@ -1,0 +1,475 @@
+// --- FORMS ----------------------
+.btn {
+    -webkit-appearance: none;
+    font-family: inherit;
+    color: $white;
+    padding-top: 4px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 0;
+    margin: 0;
+    @include box-sizing(border-box);
+    border: none;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    @include transition(all 0.2s);
+    cursor: pointer;
+    outline: none;
+    &.expand {
+        &:hover {
+            letter-spacing: 1px;
+        }
+    }
+    &.left {
+        float: left;
+        width: auto;
+        margin-right: 6px;
+    }
+    &.btn1 {
+        background-color: $gray;
+        &:hover {
+            background-color: lighten($gray, 35%);
+        }
+    }
+    &.btn2 {
+        background-color: lighten($gray, 20%);
+        &:hover {
+            background-color: lighten($gray, 35%);
+        }
+    }
+    $colornames: white blue green yellow red gray;
+    $colors: $white $blue $green $yellow $red $gray;
+    @each $colorname in $colornames {
+        $i: index($colornames, $colorname);
+        &.btn-#{$colorname} {
+            background-color: nth($colors, $i);
+            @if $colorname == white {
+                color: $gray;
+            } @else {
+                color: $white;
+            }
+            border: 1px solid nth($colors, $i);
+            &:hover {
+                background: none;
+                color: nth($colors, $i);
+            }
+            &.disabled {
+                opacity: 0.25;
+                cursor: default !important;
+                &:hover {
+                    cursor: default !important;
+                    background: nth($colors, $i);
+                    @if $colorname == white {
+                        color: $gray;
+                    } @else {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+
+    // &.btn-white {
+    //     background-color: $white;
+    //     color: $gray;
+    //     border: 1px solid $white;
+    //     &:hover {
+    //         background: none;
+    //         color: $white;
+    //     }
+    //     &-gray {
+    //         background-color: $white;
+    //         color: $gray;
+    //         border: 1px solid $gray;
+    //         &:hover {
+    //             background-color: $gray;
+    //             color: $white;
+    //             border: 1px solid $gray;
+    //         }
+    //     }
+    //     &-blue {
+    //         background-color: $white;
+    //         color: $gray;
+    //         border: 1px solid $gray;
+    //         &:hover {
+    //             background-color: $blue;
+    //             color: $white;
+    //             border: 1px solid $blue;
+    //         }
+    //     }
+    //     &-yellow {
+    //         background-color: $white;
+    //         color: $gray;
+    //         border: 1px solid $gray;
+    //         &:hover {
+    //             background-color: $yellow;
+    //             color: $gray;
+    //             border: 1px solid $yellow;
+    //         }
+    //     }
+    //     &-red {
+    //         background-color: $white;
+    //         color: $gray;
+    //         border: 1px solid $gray;
+    //         &:hover {
+    //             background-color: $red;
+    //             color: $white;
+    //             border: 1px solid $red;
+    //         }
+    //     }
+    //     &-green {
+    //         background-color: $white;
+    //         color: $gray;
+    //         border: 1px solid $gray;
+    //         &:hover {
+    //             background-color: $green;
+    //             color: $white;
+    //             border: 1px solid $green;
+    //         }
+    //     }
+    //     &-inv {
+    //         background: $gray;
+    //         color: $white;
+    //         border: 1px solid $gray;
+    //         &:hover {
+    //             background: $white;
+    //             border: 1px solid $gray;
+    //             color: $gray;
+    //         }
+    //     }
+    // }
+    &.btn-lg {
+        font-size: 1.875em;
+        height: 48px;
+        @media only screen and (max-width: $break-tablet) {
+            font-size: 1.5em;
+            height: 40px;
+        }
+    }
+    &.btn-md {
+        font-size: 1.5em;
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 40px;
+        @media only screen and (max-width: $break-tablet) {
+            font-size: 1.25em;
+            height: 32px;
+        }
+    }
+    &.btn-sm {
+        font-size: 1em;
+        padding-left: 6px;
+        padding-right: 6px;
+        height: 30px;
+    }
+    &.music-icon {
+        @each $icon in accent, fermata, flat, forte, fortissimo, marcato, mezzoforte, mezzopiano, natural, note16, note2, note32, note4, note8, notes16, notes32, notes8, pianissimo, piano, rest16, rest32, rest4, rest8, sharp, staccato, tenuto {
+            &-#{$icon} {
+                @include music-icons('/images/icons/#{$icon}.svg');
+            }
+        }
+    }
+    &.btn-popup {
+        @include box-sizing(border-box);
+        position: absolute;
+        width: 100%;
+        max-width: 480px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 6px;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        background-color: rgba(255,255,255,0);
+        cursor: auto;
+        h6 {
+            color: $gray;
+        }
+        a {
+            color: $gray;
+        }
+        input {
+            margin-bottom: 6px;
+        }
+        .btn {
+            margin-bottom: 6px;
+        }
+    }
+}
+.status-bar {
+    position: relative;
+    height: 30px;
+    width: 100%;
+    border: 1px solid $yellow;
+    background-color: $white;
+    border-radius: 4px;
+    @include transition(all 0.5s);    
+    .status {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 30px;
+        width: 60%;
+        background-color: $yellow;
+        p {
+            position: absolute;
+            left: 6px;
+            top: 4px;
+        }
+    }
+}
+.btn-row {
+    @include clearfix;
+    .btn {
+        margin-right: 6px;
+    }
+}
+.input-btn {
+    position: relative;
+    border-radius: 4px;
+    &:hover .input, & .input:focus {
+        box-shadow: 0 0 12px rgba(255,255,255,0.9);
+    }
+    .input {
+        @include transition(box-shadow 0.2s);
+        @include box-sizing(border-box);
+        width: 100%;
+        &.input-lg {
+            padding-right: 62px;
+            @media only screen and (max-width: $break-tablet) {
+                padding-right: 54px;
+            }
+        }
+        &.input-md {
+            padding-right: 62px;
+            @media only screen and (max-width: $break-tablet) {
+                padding-right: 54px;
+            }
+        }
+    }
+    .btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        &.btn-lg {
+            width: 48px;
+            @media only screen and (max-width: $break-tablet) {
+                width: 40px;
+            }
+        }
+        &.btn-md {
+            width: 40px;
+            @media only screen and (max-width: $break-tablet) {
+                width: 32px;
+            }
+        }
+        &.btn-sm {
+            width: 26px;
+        }
+    }
+}
+
+.borderbox {
+    box-sizing: border-box !important;
+}
+
+.input {
+    font-family: inherit;
+    padding-top: 4px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 0;
+    margin: 0;
+    border: 2px solid $white;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background-color: $white;
+    outline: none;
+    &.border {
+        border: 1px solid $gray;
+    }
+    &.input-lg {
+        font-size: 1.875em;
+        height: 48px;
+        @media only screen and (max-width: $break-tablet) {
+            font-size: 1.5em !important;
+            height: 40px;
+        }
+        &.doublebar {
+            padding-left: 26px;
+        }
+    }
+    &.input-md {
+        font-size: 1.5em;
+        height: 40px;
+        @media only screen and (max-width: $break-tablet) {
+            font-size: 1.25em !important;
+            height: 32px;
+        }
+        &.doublebar {
+            padding-left: 26px;
+        }
+    }
+    &.input-sm {
+        font-size: 1em;
+        padding-left: 6px;
+        padding-right: 6px;
+        height: 26px;
+        &.doublebar {
+            background-image: none;
+        }
+    }
+    &.em1.width100 {
+        width: 100%;
+        font-size: 1em !important; 
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+}
+
+.form {
+    .input-group {
+        margin-bottom: 12px;
+        .group-label {
+            @include box-sizing(border-box);
+            width: 100%;
+            float: left;
+            padding: 4px 0 0 0;
+            label {
+                font-size: 1em;
+            }
+        }
+        .group-input {
+            .input {
+                @include box-sizing(border-box);
+                position: relative;
+                height: auto;
+                width: 100%;
+            }
+        }
+        .btn {
+            width: 100%;
+        }
+    }
+    &.shadedInputs {
+        input, select {
+            background-color: $light-gray;
+        }
+    }
+    .section-tags {
+        width: 100%;
+        .tag {
+            background-color: $white;
+            display: inline-block;
+            padding: 3px 6px 0 6px;
+            border-radius: 4px;
+            margin-right: 6px;
+            margin-bottom: 6px;
+            @include transition(all 0.5s);
+            &.clickable {
+                &.selected {
+                    background-color: $green;
+                    color: $white;
+                    &:hover {
+                        background-color: $green;
+                    }
+                }
+                &:hover {
+                    background-color: $gray;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+            .remove {
+                @include transition(all 0.5s);
+                &:hover {
+                    cursor: pointer;
+                    color: $red;
+                }
+            }
+        }
+    }
+}
+
+.section {
+    background-color: $light-gray;
+    padding: 20px;
+    border-radius: 20px;
+    @include box-sizing(border-box);
+    h6 {
+        position: relative;
+        &:after {
+            content: "";
+            position: absolute;
+            border-bottom: 1px solid $white;
+            bottom: -10px;
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+        }
+    }
+    .new-form {
+        .input-group {
+            margin-bottom: 12px;
+            .group-label {
+                @include box-sizing(border-box);
+                width: 100%;
+                float: left;
+                padding: 4px 0 0 0;
+                label {
+                    font-size: 1em;
+                }
+            }
+            .group-input {
+                .input {
+                    @include box-sizing(border-box);
+                    position: relative;
+                    height: auto;
+                    width: 100%;
+                }
+            }
+            .btn {
+            }
+        }
+        .section-tags {
+            width: 100%;
+            .tag {
+                background-color: $white;
+                display: inline-block;
+                padding: 3px 6px 0 6px;
+                border-radius: 4px;
+                margin-right: 6px;
+                margin-bottom: 6px;
+                @include transition(all 0.5s);
+                &.clickable {
+                    &.selected {
+                        background-color: $green;
+                        color: $white;
+                        &:hover {
+                            background-color: $green;
+                        }
+                    }
+                    &:hover {
+                        background-color: $gray;
+                        color: white;
+                        cursor: pointer;
+                    }
+                }
+                .remove {
+                    @include transition(all 0.5s);
+                    &:hover {
+                        cursor: pointer;
+                        color: $red;
+                    }
+                }
+            }
+        }
+    }
+}

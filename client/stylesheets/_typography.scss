@@ -1,0 +1,200 @@
+// --- TYPOGRAPHY -----------------
+.icon {
+    &-sm {
+        width: 16px;
+        height: 16px;
+    }
+    &-md {
+        width: 30px;
+        height: 30px;
+    }
+    &-lg {
+        width: 60px;
+        height: 60px;
+    }
+    &.music-icon {
+        @each $icon in accent, fermata, flat, forte, fortissimo, marcato, mezzoforte, mezzopiano, natural, note16, note2, note32, note4, note8, notes16, notes32, notes8, pianissimo, piano, rest16, rest32, rest4, rest8, sharp, staccato, tenuto {
+            &-#{$icon} {
+                @include music-icons('/images/icons/#{$icon}.svg');
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $break-tablet) {
+    html {
+        font-size: 14px;
+    }
+}
+
+h1, h2, h3, h4, h5, h6, p, a, span {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+}
+h2, h3, h4, h5, h6, p, a {
+    font-family: $vollkorn;
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1em;
+    .index & {
+        line-height: 1.4em;
+    }
+}
+
+
+h1 {
+    font-family: $abril;
+    font-size: 3.25em;
+    font-weight: normal;
+    @media only screen and (max-width: $break-desktop) {
+        font-size: 2.875em !important;
+    }
+    @media only screen and (max-width: $break-tablet) {
+        font-size: 2.5em !important;
+    }
+}
+
+h2 {
+    font-size: 2.75em;
+    @media only screen and (max-width: $break-desktop) {
+        font-size: 2.5em !important;
+    }
+    @media only screen and (max-width: $break-tablet) {
+        font-size: 2.25em !important;
+    }
+}
+
+h3 {
+    font-size: 2.25em;
+    font-style: italic;
+    @media only screen and (max-width: $break-desktop) {
+        font-size: 2.125em !important;
+    }
+    @media only screen and (max-width: $break-tablet) {
+        font-size: 2em !important;
+    }
+}
+
+h4 {
+    font-size: 1.875em;
+    @media only screen and (max-width: $break-desktop) {
+        font-size: 1.5em !important;
+    }
+    @media only screen and (max-width: $break-tablet) {
+        font-size: 1.25em !important;
+    }
+}
+
+h5 {
+    font-size: 1.5em;
+    font-style: italic;
+    @media only screen and (max-width: $break-desktop) {
+        font-size: 1.125em !important;
+    }
+    @media only screen and (max-width: $break-tablet) {
+        font-size: 1.125em !important;
+    }
+}
+
+h6 {
+    font-size: 1.25em;
+    @media only screen and (max-width: $break-desktop) {
+        font-size: 1.125em !important;
+    }
+    @media only screen and (max-width: $break-tablet) {
+        font-size: 1.125em !important;
+    }
+    & .italic {
+        font-style: italic;
+    }
+    & .bold {
+        font-weight: bold;
+    }
+}
+
+p {
+    font-size: 1em;
+    & .italic, &.italic {
+        font-style: italic;
+    }
+    & .bold, &.bold {
+        font-weight: bold;
+    }
+}
+
+a {
+    position: relative;
+    font-size: 1em;
+    text-decoration: none;
+    color: $gray;
+    cursor: pointer;
+    @include transition(all 0.2s);
+    & .italic {
+        font-style: italic;
+    }
+    & .bold {
+        font-weight: bold;
+    }
+    &.line:after {
+        content: '';
+        width: 100%;
+        position: absolute;
+        left: 0;
+        opacity: 0;
+        bottom: 4px;
+        border-width: 0 0 1px;
+        border-style: solid;
+    }
+    &:hover{
+        color: $blue;
+        &:after {
+            opacity: 1;
+        }
+    }
+    &.blue {
+        color: $blue;
+        &:after {
+            opacity: 1;
+        }
+    }
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+.t-left {
+    text-align: left;
+}
+
+.t-center {
+    text-align: center;
+}
+
+.t-right {
+    text-align: right;
+}
+.t-yellow {
+    color: $yellow !important;
+}
+.t-green {
+    color: $green !important;
+}
+.t-blue {
+    color: $blue !important;
+}
+.t-red {
+    color: $red !important;
+}
+.t-silver {
+    color: $silver !important;
+}
