@@ -27,7 +27,8 @@ html, body {
     height: 100%;
 }
 body {
-    min-height: 105%;
+    padding-bottom: 100px;
+    overflow-y: scroll;
     &#dark {
         background-image: url('/images/music.png');
         background-attachment: fixed;

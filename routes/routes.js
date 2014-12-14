@@ -37,8 +37,7 @@ Router.route('/admin_controls', function () {
 // Sample Student
 Router.route('/sample_student', function () {
     this.layout('student_layout');
-    this.render('sample_student_side', {to: 'side_content'});
-    this.render('sample_student')
+    this.render('sample_student');
 });
 
 // Router.route('/class_student', function () {
@@ -50,6 +49,10 @@ Router.route('/sample_student', function () {
 //     this.render('my_profile_student');
 // });
 // Router.route('/student_profile_student', function () {
+//     this.render('student_body');
+//     this.render('student_profile_student');
+// });
+// Router.route('/teacher_profile_student', function () {
 //     this.render('student_body');
 //     this.render('student_profile_student');
 // });

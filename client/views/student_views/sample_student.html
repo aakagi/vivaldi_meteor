@@ -1,81 +1,14 @@
-<template name="sample_student">
-                
-    <div class="headerDark">
-        <p>Violin 1, Violin 2, Viola, Cello, and Bass
-        </p>
-        <div class="practicetag">
-            <p>Practice
-            </p>
-        </div>
+<template name="sample_student">            
+    <div class="col-md-4 col-lg-4">
+        {{> class_name_side}}
+        {{> my_stats_side}}
+        {{> practice_button_side}}
+        {{> student_list_side}}
     </div>
-    <div class="block">
-        <h6>First Practice Task 
-        </h6>
-        <div class="break-sm">
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <a href="../practice?id=5456fa47a1235009310001e7">
-                    <button class="btn btn1 btn-green btn-sm width100">Practice
-                    </button>
-                </a>
-            </div>
-            <div class="col-sm-4">
-                <button id="submit" class="btn btn1 btn-blue btn-sm width100 disabled">Submit
-                </button>
-            </div>
-        </div>
+    <div class="col-md-8 col-lg-8">
+        {{> task_list_header}}
+        {{> practice_task}}
+        {{> listen_task}}
+        <!-- {{> post_task}} -->
     </div>
-    <div class="headerDark">
-        <p>Violin 1, Violin 2, Viola, Cello, and Bass
-        </p>
-        <div class="listentag">
-            <p>Listen
-            </p>
-        </div>
-    </div>
-    <div class="block">
-        <h6>First Youtube Task 
-        </h6>
-        <div class="break-sm">
-        </div>
-        <div class="row">
-            <iframe id="video545710d1a123500931000263" src="//www.youtube.com/embed/yctfXIqugXc" frameborder="0" allowfullscreen="allowfullscreen" style="display:none;">
-            </iframe>
-            <div class="col-sm-4">
-                <button onclick="slideOpenVideo(this, &quot;#video545710d1a123500931000263&quot;)" class="btn btn1 btn-blue btn-sm width100">Show Video
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="headerDark">
-        <p>Violin 1, Violin 2, Viola, Cello, and Bass
-        </p>
-        <div class="practicetag">
-            <p>Practice
-            </p>
-        </div>
-    </div>
-    <div class="block">
-        <h6>Listen to this 
-        </h6>
-        <div class="break-sm"></div>
-        <div class="row">
-            <div class="col-sm-4">
-                <a href="../practice?id=547f3c2a9f51c40b0000004a">
-                    <button class="btn btn1 btn-green btn-sm width100">Practice
-                    </button>
-                </a>
-            </div>
-            <div class="col-sm-4">
-                <button id="submit" class="btn btn1 btn-blue btn-sm width100 disabled">Submit
-                </button>
-            </div>
-        </div>
-    </div>
-            
-
-
-
-
 </template>

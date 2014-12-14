@@ -1,31 +1,25 @@
-<template name="sample_student_side">
+<template name="student_list_side">
     <div class="block">
-        <h3>
-            Symphony Orchestra
-        </h3>
-    </div>
-
-
-    <div class="block">
-        <h4>
-            Alex Akagi
-        </h4>
-        <p>
-            &nbsp; Level <span class="t-red">5</span> 
-            &nbsp; &nbsp; &nbsp; &nbsp; <span class="t-silver">Viola</span>
-        </p>
-        <div class="break-sm"></div>
-        <h6 class="center">
-            9999/10000
+        <h6>
+            <span class="t-red">+ </span> Ensemble
         </h6>
-        <p class="right">
-            to Level <span class="t-blue">6</span>
+
+        <p onclick="slideOpen(this, &quot;#student4&quot;)" class="sect">
+            <span class="t-red">2</span> Teacher
+            <i class="right fa fa-sort-desc fa-1x"></i>
         </p>
-        <br>
-    </div>
-
-
-    <div class="block">
+        <div id="student4">
+            <a href="/teacher_profile_student">
+                <p class="student">
+                    Prof. King
+                </p>
+            </a>
+            <a href="/teacher_profile_student">
+                <p class="student">
+                    Mr. StuTeacher
+                </p>
+            </a>
+        </div>
 
         <p onclick="slideOpen(this, &quot;#student4&quot;)" class="sect">
             <span class="t-red">14</span> Violin 1
@@ -38,6 +32,7 @@
                 </p>
             </a>
         </div>
+
 
         <p onclick="slideOpen(this, &quot;#student4&quot;)" class="sect">
             <span class="t-red">12</span> Violin 2

@@ -54,7 +54,7 @@
                 color: nth($colors, $i);
             }
             &.disabled {
-                opacity: 0.25;
+                opacity: 0.30;
                 cursor: default !important;
                 &:hover {
                     cursor: default !important;
