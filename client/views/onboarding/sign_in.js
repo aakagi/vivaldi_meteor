@@ -1,4 +1,4 @@
-Template.signIn.events({
+Template.sign_in.events({
     'submit #signInForm': function(e, t) {
         e.preventDefault();
 

@@ -60,12 +60,16 @@ Template.sign_up.events({
                         Session.set('alert', 'We\'re sorry but this email is already used.');
                         Session.set('alertType', 'error');
                     } else {
-                        Session.set('alert', 'We\'re sorry but something went wrong.');
-                        Session.set('alertType', 'error');
+                        // TODO: Fix this hack - it currently relys on the error because the email has not been validated
+                        Session.set('alert', 'Please verify your email.');
+                        Session.set('alertType', 'info');
+                        window.location.href = '/confirm_email';
                     }
                 } else {
+                    // This one will not happen until the above TODO is fixed
                     Session.set('alert', 'Congrats, your account has been created!');
                     Session.set('alertType', 'info');
+                    window.location.href = '/confirm_email';
                 }
             });
         }

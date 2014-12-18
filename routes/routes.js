@@ -4,15 +4,19 @@ Router.route('/', function () {
 });
 // Onboarding
 Router.route('/sign_in', function () {
+  this.layout('onboarding_layout');
   this.render('sign_in');
 });
 Router.route('/sign_up', function () {
+  this.layout('onboarding_layout');
   this.render('sign_up');
 });
 Router.route('/confirm_email', function () {
+  this.layout('onboarding_layout');
   this.render('confirm_email');
 });
 Router.route('/onboard_form', function () {
+  this.layout('onboarding_layout');
   this.render('onboard_form');
 });
 
