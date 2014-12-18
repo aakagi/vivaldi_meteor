@@ -10,4 +10,6 @@ iron:router
 bstocks:bourbon
 fourseven:scss
 bstocks:neat
+accounts-password
+email
 

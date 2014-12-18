@@ -15,6 +15,18 @@
     width: 100%;
     height: 40px;
 }
+.break-lg-scaling {
+    width: 100%;
+    height: 40px;
+    @media (min-width: 1400px) {
+        height: 70px;
+    }
+    
+}
+
+.break-scaling {
+
+}
 .left {
     float: left;
 }
@@ -24,6 +36,11 @@
 .clear {
     @include clearfix;
 }
+
+.display-none {
+    display: none;
+}
+
 .center {
     text-align: center;
     > div {

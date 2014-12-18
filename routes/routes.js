@@ -2,8 +2,6 @@
 Router.route('/', function () {
   this.render('index');
 });
-
-
 // Onboarding
 Router.route('/sign_in', function () {
   this.render('sign_in');
@@ -11,11 +9,11 @@ Router.route('/sign_in', function () {
 Router.route('/sign_up', function () {
   this.render('sign_up');
 });
-Router.route('/onboard_student', function () {
-  this.render('onboard_student');
+Router.route('/confirm_email', function () {
+  this.render('confirm_email');
 });
-Router.route('/onboard_teacher', function () {
-  this.render('onboard_teacher');
+Router.route('/onboard_form', function () {
+  this.render('onboard_form');
 });
 
 
@@ -39,41 +37,40 @@ Router.route('/sample_student', function () {
     this.layout('student_layout');
     this.render('sample_student');
 });
-
-// Router.route('/class_student', function () {
-//     this.render('student_body');
-//     this.render('class_student');
-// });
-// Router.route('/my_profile_student', function () {
-//     this.render('student_body');
-//     this.render('my_profile_student');
-// });
-// Router.route('/student_profile_student', function () {
-//     this.render('student_body');
-//     this.render('student_profile_student');
-// });
+Router.route('/class_student', function () {
+    this.render('student_body');
+    this.render('class_student');
+});
+Router.route('/my_profile_student', function () {
+    this.layout('student_layout');
+    this.render('my_profile_student');
+});
+Router.route('/student_profile_student', function () {
+    this.layout('student_layout');
+    this.render('student_profile_student');
+});
 // Router.route('/teacher_profile_student', function () {
-//     this.render('student_body');
+    // this.layout('student_layout');
 //     this.render('student_profile_student');
 // });
 // Router.route('/task_student', function () {
-//     this.render('student_body');
+    // this.layout('student_layout');
 //     this.render('task_student');
 // });
 // Router.route('/settings_student', function () {
-//     this.render('student_body');
+    // this.layout('student_layout');
 //     this.render('settings_student');
 // });
 // Router.route('/my_section_student', function () {
-//     this.render('student_body');
+    // this.layout('student_layout');
 //     this.render('my_section_student');
 // });
 // Router.route('/view_section_student', function () {
-//     this.render('student_body');
+    // this.layout('student_layout');
 //     this.render('view_section_student');
 // });
 // Router.route('/settings_student', function () {
-//     this.render('student_body');
+    // this.layout('student_layout');
 //     this.render('settings_student');
 // });
 

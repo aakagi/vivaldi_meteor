@@ -1,42 +1,55 @@
 <!-- /sign_in -->
 
-<template name="sign_in">
 
+<template name="sign_in">
     <div id="signin" class="container-full">
         <a href="/">
             <img src="images/logo-lg.svg" alt="VIVALDI" class="logo">
         </a>
-        <div class="break-lg"></div>
+        <div class="break-lg-scaling"></div>
         <div class="form">
-            <div class="input-group">
-                <div class="group-label">
-                    <label for="email">
-                        Email
-                    </label>
+            <form action="/sign_in" class="sign-in-form" id="signInForm" method="post">
+                <div class="input-group">
+                    <div class="group-label">
+                        <label for="email">
+                            Email
+                        </label>
+                    </div>
+                    <div class="group-input">
+                        <input class="email input border input-md" id="signInEmail" type="text" name="email" placeholder="Email Address">
+                    </div>
                 </div>
-                <div class="group-input">
-                    <input id="email" type="email" class="input border input-md">
+                <div class="break-md"></div>
+                <div class="input-group">
+                    <div class="group-label">
+                        <label for="password">
+                            Password
+                        </label>
+                    </div>
+                    <div class="group-input">
+                        <input class="password input border input-md" id="signInPassword" type="password" name="password" placeholder="Password">
+                    </div>
                 </div>
-            </div>
-            <div class="input-group">
-                <div class="group-label">
-                    <label for="password">
-                        Password
-                    </label>
+                <div class="break-md"></div>
+                <div class="break-md"></div>
+                <div class="input-group">
+                    <input class="btn-submit btn btn1 btn-md width100" type="submit" value="Sign In">
                 </div>
-                <div class="group-input">
-                    <input id="password" type="password" class="input border input-md">
-                </div>
-            </div>
+            </form>
         </div>
+
+        <div class="break-lg"></div>
+        <a class="show-forgot-password" href="javascript:void(0);" id="showForgotPassword">
+            <h5>
+                Forget your password? Click here to recover it.
+            </h5>
+        </a>
         <div class="break-md"></div>
-        <div class="input-group">
-            <a href="/sample_student">
-                <button id="signinSubmit" class="btn btn1 btn-md width100">
-                    Sign In
-                </button>
-            </a>
-        </div>
+        <a href="/sign_up">
+            <h5>
+                Don't have an account? Click here to get started.
+            </h5>
+        </a>
     </div>
 
 </template>
