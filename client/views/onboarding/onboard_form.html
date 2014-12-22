@@ -1,0 +1,80 @@
+<template name='instruments'>
+    {{name}}<br>
+</template>
+
+<template name="onboard_form">
+    <div id="signin" class="container-full">
+        <a href="/">
+            <img src="/images/logo-lg.svg" alt="VIVALDI" class="logo">
+        </a>
+        <div class="break-lg-scaling">
+        </div>
+        <div class="form">
+            <form action="/onboard_form" class="sign-up-form" id="onboardForm" method="post">
+
+            {{> instruments}}
+            <br>
+            <br>
+            <br>
+
+            <!-- {{instrumentList}} -->
+                <div class="input-group">
+                    <div class="group-label">
+                        <label for="instrument">
+                            Select Your Instrument
+                        </label>
+                    </div>
+                    <div class="group-input">
+                        <select class="input border input-md" id="selectInstrument">
+                           {{#each instrumentList}}
+                                <option>{{> instruments}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="break-md"></div>
+
+                <div class="input-group">
+                    <div class="group-label">
+                        <label for="password">
+                            Password
+                        </label>
+                    </div>
+                    <div class="group-input">
+                        <input class="input border input-md" id="createPassword" name="password" placeholder="Password" type="password">
+                    </div>
+                </div>
+                <div class="break-md"></div>
+                <div class="input-group">
+                    <div class="group-label">
+                        <label for="password-confirm">
+                            Confirm Password
+                        </label>
+                    </div>
+                    <div class="group-input">
+                        <input class="input border input-md" id="confirmPassword" name="password-confirm" placeholder="Confirm" type="password">
+                    </div>
+                </div>
+                <div class="break-md"></div>
+                <div class="input-group">
+                    <input class="btn btn1 btn-md width100" type="submit" value="Sign In">
+                </div>
+            </form>
+        </div>
+        <div class="break-lg"></div>
+        <h6>
+            If you are a teacher and would like to join Vivaldi, 
+            <br>email Alex at 
+            <a href="mailto:vivaldimailer@gmail.com">vivaldimailer@gmail.com</a>
+        </h6>
+        <div class="break-md"></div>
+        <a href="/sign_in">
+            <h5>
+                Already have an account? Click here to sign in.
+            </h5>
+        </a>
+    </div>
+
+
+</template>

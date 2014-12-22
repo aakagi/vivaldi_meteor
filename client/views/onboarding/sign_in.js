@@ -14,6 +14,7 @@ Template.sign_in.events({
                 } else {
                     Sesson.set('alert', 'Welcome!');
                     Session.set('alertType', 'info');
+                    console.log("successful login!");
                 }
             });
         }
