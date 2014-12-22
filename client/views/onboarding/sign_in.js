@@ -12,7 +12,7 @@ Template.sign_in.events({
                     Session.set('alert', 'We\'re sorry but these credentials are not valid.');
                     Session.set('alertType', 'error');
                 } else {
-                    Sesson.set('alert', 'Welcome!');
+                    Session.set('alert', 'Welcome!');
                     Session.set('alertType', 'info');
                     console.log("successful login!");
                 }
