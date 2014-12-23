@@ -62,6 +62,8 @@ Template.onboard_form.events({
                 } else {
                     console.log("success!");
                     console.log(instrument);
+                    //swap out depending on user status
+                    studentRedirect();
                 }
             }); 
         }
