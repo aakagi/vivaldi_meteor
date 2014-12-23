@@ -29,6 +29,8 @@ Template.onboard_form.events({
             password = onboardForm.find('#createPassword').val(),
             passwordConfirm = onboardForm.find('#confirmPassword').val();
         // If user is signing up as a teacher
+        var userData;
+        //TODO: use a user schema with the collection2 package
         if (teacherSignUp) {
                 var school = onboardForm.find('#school').val(),
                     honorific = onboardForm.find('#honorific').val(),
@@ -37,6 +39,7 @@ Template.onboard_form.events({
                 console.log(school);
                 console.log(honorific);
                 console.log(lastName);
+                userData = {school: school, firstName: honorific, lastName: lastName};
         } else {
             var instrument = onboardForm.find('#selectInstrument').val(),
                 firstName = onboardForm.find('#lastName').val(),
@@ -45,7 +48,10 @@ Template.onboard_form.events({
                 console.log(instrument);
                 console.log(firstName);
                 console.log(lastName);
+                userData = {instrument: instrument, firstName: firstName, lastName: lastName};
         }
+
+
 
         console.log(tokenVar);
         console.log(password);
@@ -55,15 +61,22 @@ Template.onboard_form.events({
             Accounts.resetPassword(tokenVar, password, function(err, success) {
                 if (err) {
                     if (err.message === 'Email already exists. [403]') {
-                        Meteor.call('setAlert', 'error', 'We\'re sorry but this email token has been used.');
+                       setAlert('error', 'We\'re sorry but this email token has been used.');
                     } else {
-                        Meteor.call('setAlert', 'error', 'An error has occurred.');
+                        setAlert('error', 'An error has occurred.');
                     }
                 } else {
                     console.log("success!");
                     console.log(instrument);
-                    //swap out depending on user status
-                    studentRedirect();
+                    users.update({_id: userid}, {$set: data}, function(err, numDocs){
+                        if (err){
+                            setAlert('error', 'Error writing to database.');
+                        }
+                        else{
+                             //swap out depending on user status
+                            studentRedirect();
+                        }
+                    });
                 }
             }); 
         }
