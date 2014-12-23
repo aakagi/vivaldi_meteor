@@ -12,6 +12,7 @@ Template.onboard_form.helpers({
     instrumentList: function () {
         return Instrument.find();
     }
+
 });
 
 Template.onboard_form.events({
@@ -33,11 +34,9 @@ Template.onboard_form.events({
             Accounts.resetPassword(tokenVar, password, function(err, success) {
                 if (err) {
                     if (err.message === 'Email already exists. [403]') {
-                        Session.set('alert', 'We\'re sorry but this email token has been used.');
-                        Session.set('alertType', 'error');
+                        Meteor.call('setAlert', 'error', 'We\'re sorry but this email token has been used.');
                     } else {
-                        Session.set('alert', 'An error has occurred.');
-                        Session.set('alertType', 'error');
+                        Meteor.call('setAlert', 'error', 'An error has occurred.');
                     }
                 } else {
                     console.log("success!");
