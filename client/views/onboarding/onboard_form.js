@@ -24,6 +24,8 @@ Template.onboard_form.events({
     'submit #onboardForm': function(e, t) {
         e.preventDefault();
 
+        var teacherSignUp = Session.get('teacherSignUp');
+
         var onboardForm = $(e.currentTarget),
             tokenVar = Session.get('tokenVar'),
             password = onboardForm.find('#createPassword').val(),
@@ -42,7 +44,7 @@ Template.onboard_form.events({
                 userData = {school: school, firstName: honorific, lastName: lastName};
         } else {
             var instrument = onboardForm.find('#selectInstrument').val(),
-                firstName = onboardForm.find('#lastName').val(),
+                firstName = onboardForm.find('#firstName').val(),
                 lastName = onboardForm.find('#lastName').val();
 
                 console.log(instrument);
