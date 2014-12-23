@@ -1,0 +1,196 @@
+
+<template name="settings">
+    
+    <div id="adminClass" class="container-full">
+        <div class="break-lg"></div>
+            <div class="row">
+
+                <div class="col-md-4 col-lg-4">
+                    <!-- {{> change_email}} -->
+                    <!-- {{> change_name}} -->
+                    <!-- {{> change_password}} -->
+                    <!-- {{#if user.isTeacher}} -->
+                        <!-- {{> change_school}} -->
+                        <!-- {{> create_class}} -->
+                        <!-- {{#each class that the teacher is in}} -->
+                        <!-- {{> manage_class}} -->
+                        <!-- {{/each}} -->
+                    <!-- {{else}} -->
+                        <!-- {{> change_instrument}} -->
+                        <!-- {{> add_class}} -->
+                    <div id="changeName" class="block">
+                        <div class="form shadedInputs">
+                            <div class="input-group clear">
+                                <div class="group-label clear">
+                                    <label for="firstChange">
+                                        First Name
+                                    </label>
+                                </div>
+                                <div class="group-input">
+                                    <input id="firstChange" type="text" name="firstChange" placeholder="Alex" value="Alex" class="input input-sm">
+                                </div>
+                            </div>
+                            <div class="input-group clear">
+                                <div class="group-label clear">
+                                    <label for="lastChange">
+                                        Last Name
+                                    </label>
+                                </div>
+                                <div class="group-input">
+                                    <input id="lastChange" type="text" name="lastChange" placeholder="Akagi" value="Akagi" class="input input-sm">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <button id="saveName" onclick="changeName()" class="btn btn1 btn-gray btn-sm">
+                                            Save Name
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div onclick="slideOpen(this, &quot;#changePassword&quot;)" class="block yellowHover">
+                        <p>
+                            Password
+                        </p>
+                        <h6>
+                            •••••••••••• 
+                            <i class="fa fa-pencil fa-1x"></i>
+                        </h6>
+                    </div>
+                    <div id="changePassword" class="block">
+                        <div class="form shadedInputs">
+                            <div class="input-group clear">
+                                <div class="group-label clear">
+                                    <label for="currentPwd">
+                                        Current Password
+                                    </label>
+                                </div>
+                                <div class="group-input">
+                                    <input id="currentPwd" type="password" name="currentPwd" class="input input-sm">
+                                </div>
+                            </div>
+                            <div class="input-group clear">
+                                <div class="group-label clear">
+                                    <label for="newPwd">
+                                        Current Password
+                                    </label>
+                                </div>
+                                <div class="group-input">
+                                    <input id="newPwd" type="password" name="newPwd" class="input input-sm">
+                                </div>
+                            </div>
+                            <div class="input-group clear">
+                                <div class="group-label clear">
+                                    <label for="confirmPwd">
+                                        Current Password
+                                    </label>
+                                </div>
+                                <div class="group-input">
+                                    <input id="confirmPwd" type="password" name="confirmPwd" class="input input-sm">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <button id="savePassword" onclick="changeEmail()" class="btn btn1 btn-gray btn-sm">
+                                            Save Password
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-lg-8">
+                    <div onclick="slideOpen(this, &quot;#changeEmail&quot;)" class="block yellowHover">
+                        <p>
+                            Email
+                        </p>
+                        <h6>
+                            yohsuke@att.net 
+                            <i class="fa fa-pencil fa-1x"></i>
+                        </h6>
+                    </div>
+                    <div id="changeEmail" class="block">
+                        <div class="form shadedInputs">
+                            <div class="input-group clear">
+                                <div class="group-label clear">
+                                    <label for="emailChange">
+                                        Email
+                                    </label>
+                                </div>
+                                <div class="group-input">
+                                    <input id="emailChange" type="text" name="emailChange" placeholder="yohsuke@att.net" value="yohsuke@att.net" class="input input-sm">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <button id="saveEmail" onclick="changeEmail()" class="btn btn1 btn-gray btn-sm">
+                                            Save Email
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div onclick="slideOpen(this, &quot;#newClass&quot;)" class="block yellowHover">
+                        <p>
+                            Add a New Class
+                        </p>
+                        <h6>
+                            + Create
+                        </h6>
+                    </div>
+                    <div id="newClass" class="block">
+                    <h6>
+                        New Class
+                    </h6>
+                    <div class="break-md"></div>
+                    <div class="new-class">
+                        <div class="input-group clear">
+                            <div class="group-label clear"> 
+                                <label for="className">
+                                    Name:
+                                </label>
+                            </div>
+                            <div class="group-input">
+                                <input id="className" type="text" name="className" placeholder="Symphony Orchestra" class="input input-sm">
+                            </div>
+                        </div>
+                        <div class="input-group clear">
+                            <div class="group-label clear"> 
+                                <label for="classCode">
+                                    Sections:
+                                </label>
+                            </div>
+                            <div class="group-input">
+                                <input id="addSections" type="text" name="classCode" placeholder="Press 'Enter' after each section" class="input input-sm">
+                            </div>
+                        </div>
+                        <div id="sections" class="section-tags"></div>
+                        <div class="break-sm"></div>
+                        <div class="input-group clear">
+                            <div class="group-label clear"> 
+                                <label for="classCode">
+                                    Code: 
+                                </label>
+                            </div>
+                            <div class="group-input">
+                                <input id="classCode" type="text" name="classCode" placeholder="andyrocks" class="input input-sm">
+                            </div>
+                        </div>
+                        <div class="input-group clear">
+                            <input id="addClass" type="submit" onclick="addClass(this)" value="Submit" class="btn btn1 btn-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
