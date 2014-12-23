@@ -7,7 +7,6 @@
 
                 <div class="col-md-4 col-lg-4">
                 <!-- Do these three for now -->
-                    {{> change_email}}
                     {{> change_name}}
                     {{> change_password}}
                     <!-- {{#if user.isTeacher}} -->
@@ -19,94 +18,8 @@
                     <!-- {{else}} -->
                         <!-- {{> change_instrument}} -->
                         <!-- {{> add_class}} -->
-                    <div id="changeName" class="block">
-                        <div class="form shadedInputs">
-                            <div class="input-group clear">
-                                <div class="group-label clear">
-                                    <label for="firstChange">
-                                        First Name
-                                    </label>
-                                </div>
-                                <div class="group-input">
-                                    <input id="firstChange" type="text" name="firstChange" placeholder="Alex" value="Alex" class="input input-sm">
-                                </div>
-                            </div>
-                            <div class="input-group clear">
-                                <div class="group-label clear">
-                                    <label for="lastChange">
-                                        Last Name
-                                    </label>
-                                </div>
-                                <div class="group-input">
-                                    <input id="lastChange" type="text" name="lastChange" placeholder="Akagi" value="Akagi" class="input input-sm">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="input-group">
-                                        <button id="saveName" onclick="changeName()" class="btn btn1 btn-gray btn-sm">
-                                            Save Name
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div onclick="slideOpen(this, &quot;#changePassword&quot;)" class="block yellowHover">
-                        <p>
-                            Password
-                        </p>
-                        <h6>
-                            •••••••••••• 
-                            <i class="fa fa-pencil fa-1x"></i>
-                        </h6>
-                    </div>
-                    <div id="changePassword" class="block">
-                        <div class="form shadedInputs">
-                            <div class="input-group clear">
-                                <div class="group-label clear">
-                                    <label for="currentPwd">
-                                        Current Password
-                                    </label>
-                                </div>
-                                <div class="group-input">
-                                    <input id="currentPwd" type="password" name="currentPwd" class="input input-sm">
-                                </div>
-                            </div>
-                            <div class="input-group clear">
-                                <div class="group-label clear">
-                                    <label for="newPwd">
-                                        Current Password
-                                    </label>
-                                </div>
-                                <div class="group-input">
-                                    <input id="newPwd" type="password" name="newPwd" class="input input-sm">
-                                </div>
-                            </div>
-                            <div class="input-group clear">
-                                <div class="group-label clear">
-                                    <label for="confirmPwd">
-                                        Current Password
-                                    </label>
-                                </div>
-                                <div class="group-input">
-                                    <input id="confirmPwd" type="password" name="confirmPwd" class="input input-sm">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="input-group">
-                                        <button id="savePassword" onclick="changeEmail()" class="btn btn1 btn-gray btn-sm">
-                                            Save Password
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="col-md-8 col-lg-8">
+                <div class="col-md-4 col-lg-4">
                     <div onclick="slideOpen(this, &quot;#changeEmail&quot;)" class="block yellowHover">
                         <p>
                             Email

@@ -1,5 +1,35 @@
 <template name="change_name">
-    <!-- {{firstName}} -->
-    <!-- {{lastName}} -->
-    <!-- And a submit button that saves #firstName and #lastName to variables in the events -->
+    <div id="changeName" class="block">
+        <div class="form shadedInputs">
+            <div class="input-group clear">
+                <div class="group-label clear">
+                    <label for="firstName">
+                        First Name
+                    </label>
+                </div>
+                <div class="group-input">
+                    <input id="firstName" type="text" name="firstName" placeholder="First Name" value="{{firstName}}" class="input input-sm">
+                </div>
+            </div>
+            <div class="input-group clear">
+                <div class="group-label clear">
+                    <label for="lastName">
+                        Last Name
+                    </label>
+                </div>
+                <div class="group-input">
+                    <input id="lastName" type="text" name="lastName" placeholder="Last Name" value="{{lastName}}" class="input input-sm">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="input-group">
+                        <button id="saveName" class="btn btn1 btn-gray btn-sm">
+                            Save Name
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
