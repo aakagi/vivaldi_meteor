@@ -74,10 +74,11 @@ Template.onboard_form.events({
                     console.log(instrument);
                     //create document in the userData database
                     userid = Meteor.userId();
-                    data.userid = userid
-                    userData.insert(data, function(err, numDocs){
+                    Meteor.users.update({"_id": userid}, {$set: {profile: data}}, function(err, numDocs){
                         if (err){
                             setAlert('error', 'Error writing to database.');
+                            console.log("database error");
+                            console.log(err);
                         }
                         else{
                              //swap out depending on user status
