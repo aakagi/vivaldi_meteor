@@ -10,15 +10,15 @@ Template.sign_up.events({
 
                 if (err) {
                     if (err.message === 'Email already exists. [403]') {
-                        Meteor.call('setAlert', 'error', 'We\'re sorry but this email is already used.');
+                        setAlert('error', 'We\'re sorry but this email is already used.');
                         
                     } else {
-                        Meteor.call('setAlert', 'error', 'Sorry, something went wrong. Please email vivaldimailer@gmail.com to report your problem.');
+                        setAlert('error', 'Sorry, something went wrong. Please email vivaldimailer@gmail.com to report your problem.');
                     }
                 } else {
-                        Session.set('buttonName', 'Resend Email');
-                        Session.set('newUserId', newID);
-                    Meteor.call('setAlert', 'info', 'Awesome! You\'ll receieve an email shortly to finish making your account.');
+                    Session.set('buttonName', 'Resend Email');
+                    Session.set('newUserId', newID);
+                    setAlert('info', 'Awesome! You\'ll receieve an email shortly to finish making your account.');
                 }
             });
         }

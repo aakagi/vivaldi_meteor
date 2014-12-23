@@ -1,3 +1,9 @@
+studentRedirect = function(){
+    Router.go('sample_student');
+}
+teacherRedirect = function(){
+    Router.go('class_teacher');
+}
 Template.sign_in.events({
     'submit #signInForm': function(e, t) {
         e.preventDefault();
@@ -6,19 +12,23 @@ Template.sign_in.events({
             email = trimInput(signInForm.find('.email').val().toLowerCase()),
             password = signInForm.find('.password').val();
 
+
         if (isNotEmpty(email) && isEmail(email) && isNotEmpty(password) && isValidPassword(password)) {
+
             Meteor.loginWithPassword(email, password, function(err) {
                 if (err) {
-                    Session.set('alert', 'We\'re sorry but these credentials are not valid.');
-                    Session.set('alertType', 'error');
+                    setAlert('error', 'We\'re sorry but these credentials are not valid.');
                 } else {
-                    Session.set('alert', 'Welcome!');
-                    Session.set('alertType', 'info');
+                    setAlert('info', 'Welcome!');
                     console.log("successful login!");
+                    //eventually swap functions out depending on user status
+                    studentRedirect();
                 }
             });
         }
         return false;
     },
 });
+
+
 
