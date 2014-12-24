@@ -1,5 +1,5 @@
 studentRedirect = function(){
-    Router.go('sample_student');
+    Router.go('settings');
 }
 teacherRedirect = function(){
     Router.go('class_teacher');

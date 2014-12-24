@@ -1,42 +1,45 @@
 Template.change_name.helpers({
     firstName: function() {
         userid = Meteor.userId();
-        profile = Meteor.users.findOne({
+        user = Meteor.users.findOne({
             "_id": userid
         }, {
             fields: {
                 profile: 1
             }
         });
-        return profile.firstName;
+        return user.profile.firstName;
     },
     lastName: function() {
         userid = Meteor.userId();
-        profile = Meteor.users.findOne({
+        user = Meteor.users.findOne({
             "_id": userid
         }, {
             fields: {
                 profile: 1
             }
         });
-        return profile.lastName;
+        return user.profile.lastName;
     }
 });
 
 //#firstName
 //#lastName
-Template.alert.events({
+Template.change_name.events({
     'click #saveName': function() {
+    	setAlert('error', 'button clicked!');
+    	console.log("clicked");
         userid = Meteor.userId();
         newFirst = document.getElementById('firstName').value
         newLast = document.getElementById('lastName').value
-        prof = Meteor.users.findOne({
+        user = Meteor.users.findOne({
             "_id": userid
         }, {
             fields: {
                 profile: 1
             }
         });
+        prof = user.profile
         prof.firstName = newFirst;
         prof.lastName = newLast;
         Meteor.users.update({
@@ -45,15 +48,16 @@ Template.alert.events({
             $set: {
                 profile: prof
             }
-        }),
+        },
         function(err, numDocs) {
             if (err) {
                 setAlert('error', 'Error writing to database.');
                 console.log("database error");
                 console.log(err);
             } else {
-                //swap out depending on user status
-                setAlert('alert', 'name change successful!');
+                console.log("works!");
+                setAlert('info', 'name change successful!');
             }
         });
+    }
 });
