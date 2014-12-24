@@ -6,8 +6,7 @@ Template.sign_up.events({
             email = trimInput(signUpForm.find('#signUpEmail').val().toLowerCase());
 
         if (isNotEmpty(email) && isEmail(email)) {
-            Meteor.call('createUserFromEmail', email, function(err, newID) {
-
+            Meteor.call('createUserFromEmail', email, function(err, newId) {
                 if (err) {
                     if (err.message === 'Email already exists. [403]') {
                         setAlert('error', 'We\'re sorry but this email is already used.');
@@ -17,7 +16,7 @@ Template.sign_up.events({
                     }
                 } else {
                     Session.set('buttonName', 'Resend Email');
-                    Session.set('newUserId', newID);
+                    Session.set('newUserId', newId);
                     setAlert('info', 'Awesome! You\'ll receieve an email shortly to finish making your account.');
                 }
             });
