@@ -9,15 +9,16 @@
                 <!-- Do these three for now -->
                     {{> change_name}}
                     {{> change_password}}
-                    <!-- {{#if isTeacher}} -->
+                    {{#if isTeacher}}
                         {{> change_school}}
-                        <!-- {{> create_class}} -->
+                        {{> create_class}}
                         <!-- {{#each class that the teacher is in}} -->
                         <!-- {{> manage_class}} -->
                         <!-- {{/each}} -->
-                    <!-- {{else}} -->
+                    {{else}}
                         <!-- {{> change_instrument}} -->
                         <!-- {{> add_class}} -->
+                    {{/if}}
                 </div>
                 <div class="col-md-4 col-lg-4">
                     <div onclick="slideOpen(this, &quot;#newClass&quot;)" class="block yellowHover">
