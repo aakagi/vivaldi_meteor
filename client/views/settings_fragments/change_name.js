@@ -32,14 +32,8 @@ Template.change_name.events({
         userid = Meteor.userId();
         newFirst = document.getElementById('firstName').value
         newLast = document.getElementById('lastName').value
-        user = Meteor.users.findOne({
-            "_id": userid
-        }, {
-            fields: {
-                profile: 1
-            }
-        });
-        prof = user.profile
+        user = Meteor.user();
+        prof = user.profile;
         prof.firstName = newFirst;
         prof.lastName = newLast;
         Meteor.users.update({
