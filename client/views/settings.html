@@ -9,7 +9,7 @@
                 <!-- Do these three for now -->
                     {{> change_name}}
                     {{> change_password}}
-                    <!-- {{#if user.isTeacher}} -->
+                    <!-- {{#if isTeacher}} -->
                         {{> change_school}}
                         <!-- {{> create_class}} -->
                         <!-- {{#each class that the teacher is in}} -->
@@ -20,38 +20,6 @@
                         <!-- {{> add_class}} -->
                 </div>
                 <div class="col-md-4 col-lg-4">
-                    <div onclick="slideOpen(this, &quot;#changeEmail&quot;)" class="block yellowHover">
-                        <p>
-                            Email
-                        </p>
-                        <h6>
-                            yohsuke@att.net 
-                            <i class="fa fa-pencil fa-1x"></i>
-                        </h6>
-                    </div>
-                    <div id="changeEmail" class="block">
-                        <div class="form shadedInputs">
-                            <div class="input-group clear">
-                                <div class="group-label clear">
-                                    <label for="emailChange">
-                                        Email
-                                    </label>
-                                </div>
-                                <div class="group-input">
-                                    <input id="emailChange" type="text" name="emailChange" placeholder="yohsuke@att.net" value="yohsuke@att.net" class="input input-sm">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="input-group">
-                                        <button id="saveEmail" onclick="changeEmail()" class="btn btn1 btn-gray btn-sm">
-                                            Save Email
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div onclick="slideOpen(this, &quot;#newClass&quot;)" class="block yellowHover">
                         <p>
                             Add a New Class
