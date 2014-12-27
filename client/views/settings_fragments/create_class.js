@@ -6,6 +6,7 @@ Template.create_class.events({
         schoolName = currentSchool();
         //split string using handy-dandy split function
         sectionNames = sectionNames.split(", ");
+        userId = Meteor.userId();
         sectionIDs = []
         //defines a document, inserts it, then inserts the section ID into an array
         //array will be saved to the class document
@@ -20,7 +21,7 @@ Template.create_class.events({
         classDoc = {
             name: className,
             school: schoolName,
-            teachers: [String(Meteor.userId)],
+            teachers: [userId],
             students: [],
             sections: sectionIDs
         };
