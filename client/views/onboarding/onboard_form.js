@@ -60,9 +60,9 @@ Template.onboard_form.events({
 
         if ( 
             (teacherSignUp || isNotEmpty(selectInstrument) ) 
-            && (isNotEmpty(firstName) || teacherSignUp) 
-            && (isNotEmpty(honorific) || !teacherSignUp)
-            && (isNotEmpty(school) || !teacherSignUp)
+            && (teacherSignUp || isNotEmpty(firstName)) 
+            && (!teacherSignUp || isNotEmpty(honorific))
+            && (!teacherSignUp || isNotEmpty(school))
             && isNotEmpty(lastName)
             && isNotEmpty(password) 
             && areValidPasswords(password, passwordConfirm)  ) {
