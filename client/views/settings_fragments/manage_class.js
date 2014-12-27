@@ -2,7 +2,7 @@ Template.manage_class.events({
     'click #saveClass': function() {
         classData = Template.currentData();
         classID = classData._id;
-        newName = newSchool = document.getElementById('className').value
+        newName = document.getElementById('className').value
         Classes.update({
             _id: classID
         }, {
