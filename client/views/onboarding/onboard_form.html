@@ -2,6 +2,10 @@
 {{name}}
 </template>
 
+<template name="schools">
+{{name}}
+</template>
+
 <template name="onboard_form">
     <div id="signin" class="container-full">
         <a href="/">
@@ -101,6 +105,16 @@
                                 {{/each}}
                             </select>
                         </div>
+                    </div>
+
+                    <div class="break-md"></div>
+
+                    <div class="group-input">
+                        <select class="input border input-md" id="selectSchool">
+                           {{#each schoolList}}
+                                <option>{{> schools}}</option>
+                            {{/each}}
+                        </select>
                     </div>
 
                     <div class="break-md"></div>
