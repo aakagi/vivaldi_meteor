@@ -1,20 +1,31 @@
+<template name="classes">
+    <!-- For the list of classes for students to join -->
+    {{name}}<br>
+</template>
+
 <template name="add_class">
     <div class="block">
         <div class="form shadedInputs">
             <h6>
                 Join a Class (Students)
             </h6>
+
             <div class="break-sm"></div>
             <div class="input-group clear">
                 <div class="group-label clear">
-                    <label for="firstName">
-                        Class Code
+                    <label for="classList">
+                        Select Class to Join
                     </label>
                 </div>
                 <div class="group-input">
-                    <input id="firstName" type="text" name="firstName" placeholder="ClassCode" class="input input-sm">
+                    <select class="input border input-md" id="selectClass">
+                       {{#each classList}}
+                            <option>{{> classes}}</option>
+                        {{/each}}
+                    </select>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-sm-12">
                     <div class="input-group">
