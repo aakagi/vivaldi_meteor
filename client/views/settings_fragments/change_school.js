@@ -1,3 +1,7 @@
+Template.change_school.helpers({
+    schoolName: currentSchool;
+});
+
 Template.change_school.events({
     'click #saveSchool': function() {
     	//setAlert('error', 'button clicked!');
