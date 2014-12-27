@@ -12,6 +12,8 @@ Template.sign_up.events({
                         setAlert('error', 'We\'re sorry but this email is already used.');
                         
                     } else {
+                        console.log("some other error went wrong.")
+                        console.log(err);
                         setAlert('error', 'Sorry, something went wrong. Please email vivaldimailer@gmail.com to report your problem.');
                     }
                 } else {
