@@ -58,7 +58,15 @@ Template.onboard_form.events({
         console.log(passwordConfirm);
         console.log(data);
 
-        if (isNotEmpty(password) && (isNotEmpty(instrument) || teacherSignUp) && areValidPasswords(password, passwordConfirm)) {
+        if ( 
+            (isNotEmpty(selectInstrument) || teacherSignUp) 
+            && (isNotEmpty(firstName) || teacherSignUp) 
+            && (isNotEmpty(honorific) || !teacherSignUp)
+            && (isNotEmpty(school) || !teacherSignUp)
+            && isNotEmpty(lastName)
+            && isNotEmpty(password) 
+            && areValidPasswords(password, passwordConfirm)  ) {
+
             Accounts.resetPassword(tokenVar, password, function(err, success) {
                 if (err) {
                     if (err.message === 'Email already exists. [403]') {
