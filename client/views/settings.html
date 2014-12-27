@@ -3,76 +3,28 @@
     
     <div id="adminClass" class="container-full">
         <div class="break-lg"></div>
-            <div class="row">
+        <div class="row">
 
-                <div class="col-md-4 col-lg-4">
-                <!-- Do these three for now -->
-                    {{> change_name}}
-                    {{> change_password}}
-                    {{#if isTeacher}}
-                        {{> change_school}}
-                        {{> create_class}}
-                        <!-- {{#each class that the teacher is in}} -->
-                        <!-- {{> manage_class}} -->
-                        <!-- {{/each}} -->
-                    {{else}}
-                        <!-- {{> change_instrument}} -->
-                        <!-- {{> add_class}} -->
-                    {{/if}}
-                </div>
-                <div class="col-md-4 col-lg-4">
-                    <div onclick="slideOpen(this, &quot;#newClass&quot;)" class="block yellowHover">
-                        <p>
-                            Add a New Class
-                        </p>
-                        <h6>
-                            + Create
-                        </h6>
-                    </div>
-                    <div id="newClass" class="block">
-                    <h6>
-                        New Class
-                    </h6>
-                    <div class="break-md"></div>
-                    <div class="new-class">
-                        <div class="input-group clear">
-                            <div class="group-label clear"> 
-                                <label for="className">
-                                    Name:
-                                </label>
-                            </div>
-                            <div class="group-input">
-                                <input id="className" type="text" name="className" placeholder="Symphony Orchestra" class="input input-sm">
-                            </div>
-                        </div>
-                        <div class="input-group clear">
-                            <div class="group-label clear"> 
-                                <label for="classCode">
-                                    Sections:
-                                </label>
-                            </div>
-                            <div class="group-input">
-                                <input id="addSections" type="text" name="classCode" placeholder="Press 'Enter' after each section" class="input input-sm">
-                            </div>
-                        </div>
-                        <div id="sections" class="section-tags"></div>
-                        <div class="break-sm"></div>
-                        <div class="input-group clear">
-                            <div class="group-label clear"> 
-                                <label for="classCode">
-                                    Code: 
-                                </label>
-                            </div>
-                            <div class="group-input">
-                                <input id="classCode" type="text" name="classCode" placeholder="andyrocks" class="input input-sm">
-                            </div>
-                        </div>
-                        <div class="input-group clear">
-                            <input id="addClass" type="submit" onclick="addClass(this)" value="Submit" class="btn btn1 btn-sm">
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-4 col-lg-4">
+            <!-- Do these three for now -->
+                {{> change_name}}
+                {{> change_password}}
+                    <!-- {{#each class that the teacher is in}} -->
+                    <!-- {{> manage_class}} -->
+                    <!-- {{/each}} -->
             </div>
+            {{#if isTeacher}}
+                <div class="col-md-4 col-lg-4">
+                    {{> change_school}}
+                    {{> create_class}}
+                </div>
+            {{else}}
+                <div class="col-md-4 col-lg-4">
+                    <!-- {{> change_instrument}} -->
+                    <!-- {{> add_class}} -->
+                </div>
+            {{/if}}
+
         </div>
     </div>
 
