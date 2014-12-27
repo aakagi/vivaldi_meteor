@@ -1,5 +1,5 @@
 Template.change_school.helpers({
-    schoolName: currentSchool;
+    schoolName: currentSchool
 });
 
 Template.change_school.events({
