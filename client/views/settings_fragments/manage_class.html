@@ -1,0 +1,29 @@
+<template name="manage_class">
+    <div class="block">
+        <div class="form shadedInputs">
+            <div class="input-group clear">
+                <h6>
+                    Manage {{className}} (Teachers)
+                </h6>
+                <div class="break-sm"></div>
+                <div class="group-label clear">
+                    <label for="className">
+                        Change Class Name
+                    </label>
+                </div>
+                <div class="group-input">
+                    <input id="className" type="text" name="className" placeholder="{{className}}" class="input input-sm">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="input-group">
+                        <button id="saveClass" class="btn btn1 btn-gray btn-sm">
+                            Save Class Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
