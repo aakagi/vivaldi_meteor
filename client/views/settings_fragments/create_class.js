@@ -20,7 +20,7 @@ Template.create_class.events({
         classDoc = {
             name: className,
             school: schoolName,
-            teachers: [Meteor.userId],
+            teachers: [String(Meteor.userId)],
             students: [],
             sections: sectionIDs
         };
