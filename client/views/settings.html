@@ -9,14 +9,15 @@
             <!-- Do these three for now -->
                 {{> change_name}}
                 {{> change_password}}
-                    <!-- {{#each class that the teacher is in}} -->
-                    <!-- {{> manage_class}} -->
-                    <!-- {{/each}} -->
             </div>
             {{#if isTeacher}}
                 <div class="col-md-8 col-lg-8">
                     {{> change_school}}
                     {{> create_class}}
+                    {{#each teacherClasses}}
+                        {{> manage_class}}
+                        asdf
+                    {{/each}}
                 </div>
             {{else}}
                 <div class="col-md-8 col-lg-8">

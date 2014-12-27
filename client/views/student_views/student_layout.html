@@ -1,14 +1,12 @@
 <template name="student_layout">
+    {{> alert}}
     <body id="dark">
         {{> nav_bar}}
         <div id="adminClass" class="container-full">
             <div class="row">
                 <div class="break-lg"></div>
                 <div class="break-lg"></div>
-                <div class="break-lg"></div>
-                
                 {{> yield}}
-            
             </div>
         </div>
     </body>

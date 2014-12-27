@@ -1,3 +1,4 @@
 Template.settings.helpers({
-    isTeacher: isTeacher
+    isTeacher: isTeacher,
+    teacherClasses: teacherClasses
 });
