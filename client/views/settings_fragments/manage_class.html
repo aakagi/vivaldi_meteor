@@ -1,3 +1,12 @@
+<template name="students">
+    <p class="col-sm-8">
+        {{name}}
+    </p>
+    <a id="deleteStudent">
+        Delete
+    </a>
+</template>
+
 <template name="manage_class">
     <div class="block">
         <div class="form shadedInputs">
@@ -15,6 +24,19 @@
                     <input id="className" type="text" name="className" placeholder="{{name}}" class="input input-sm">
                 </div>
             </div>
+            
+            <div class="input-group clear">
+                <h6>
+                    List of Students
+                </h6>
+                <div class="break-sm"></div>
+                {{#each studentList}}
+                    {{> students}}
+                {{/each}}
+                <p>Alex Akagi</p>
+                <p>Roy Fu</p>
+            </div>
+
             <div class="row">
                 <div class="col-sm-12">
                     <div class="input-group">
