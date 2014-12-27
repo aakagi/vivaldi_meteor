@@ -59,7 +59,7 @@ Template.onboard_form.events({
         console.log(data);
 
         if ( 
-            (isNotEmpty(selectInstrument) || teacherSignUp) 
+            (teacherSignUp || isNotEmpty(selectInstrument) ) 
             && (isNotEmpty(firstName) || teacherSignUp) 
             && (isNotEmpty(honorific) || !teacherSignUp)
             && (isNotEmpty(school) || !teacherSignUp)
