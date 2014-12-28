@@ -1,8 +1,8 @@
 <template name="classes">
-{{school}} {{name}} 
+<option value="{{_id}}">{{school}} {{name}}</option>
 </template>
 
-<template name="add_class">
+<template name="join_class">
     <div class="block">
         <div class="form shadedInputs">
             <h6>
@@ -20,7 +20,7 @@
                 <div class="group-input">
                     <select class="input border input-md" id="selectClass">
                        {{#each classList}}
-                            <option>{{> classes}}</option>
+                            {{> classes}}
                         {{/each}}
                     </select>
                 </div>
