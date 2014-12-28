@@ -8,9 +8,8 @@ Template.join_class.helpers({
 
 Template.join_class.events({
     'click #joinClass': function() {
-        var selectedClass = document.getElementById('#classList').value; //whether or not this works depends on if the value is the template or the text
-        var classData = selectedClass.data();
-        var classId = classData._id;
+        var classId = document.getElementById('#selectClass').value;
+
         Classes.update({
             _id: classId
         }, {
