@@ -6,15 +6,11 @@
         <a href="/">
             <div class="logo"></div>
         </a>
-        <h6>
-        <!-- TODO: Make Dynamic -->
-            Symphony Orchestra
-        </h6>
+        <h6>TODO: Implement page title</h6>
     </div>
     <div class="navadmin">
         <div class="navclose">
-            <i class="fa fa-times fa-2x">
-            </i>
+            <i class="fa fa-times fa-2x"></i>
         </div>
         <div class="logo">
             <a href="/" class="cf">
@@ -23,38 +19,25 @@
         </div>
         <ul class="navsections">
             <li>
-                <p>Welcome
-                </p>
-                <h5>
-                    {{firstName}} {{lastName}}
-                </h5>
+                <p>Welcome</p>
+                <h5>{{firstName}} {{lastName}}</h5>
             </li>
             <li>
-                <p>
-                    Classes
-                </p>
+                <p>Classes</p>
                 <ul>
                     {{#each teacherClasses}}
                     <li>
                         <a href="../classes/manage?id=542a2ee20bbcdc0b00000026">
-                            <h6>
-                                {{name}}
-                            </h6>
+                            <h6>{{name}}</h6>
                         </a>
                     </li>
                     {{/each}}
                 </ul>
             </li>
             <li>
-                <a href="/reportanerror">
-                    Report an Error
-                </a>
-                <a href="../settings/">
-                    Settings
-                </a>
-                <a>
-                    Log Out
-                </a>
+                <a href="/reportanerror">Report an Error</a>
+                <a href="../settings/">Settings</a>
+                <a>Log Out</a>
             </li>
         </ul>
     </div>
