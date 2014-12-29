@@ -2,7 +2,7 @@ studentRedirect = function(){
     Router.go('home');
 }
 teacherRedirect = function(){
-    Router.go('class_teacher');
+    Router.go('home');
 }
 Template.sign_in.events({
     'submit #signInForm': function(e, t) {

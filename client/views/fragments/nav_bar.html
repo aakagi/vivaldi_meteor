@@ -1,4 +1,6 @@
 <template name="nav_bar">
+
+    <!-- Top bar -->
     <div class="navopen">
         <i class="fa fa-bars fa-2x"></i>
         <div class="i-background">
@@ -8,7 +10,11 @@
         </a>
         <h6>TODO: Implement page title</h6>
     </div>
+
+    <!-- Side bar (Hidden) -->
     <div class="navadmin">
+
+        <!-- Side bar header -->
         <div class="navclose">
             <i class="fa fa-times fa-2x"></i>
         </div>
@@ -17,36 +23,46 @@
                 <img src="../images/logo-lg.svg" alt="VIVALDI">
             </a>
         </div>
+
+        <!-- Side bar body -->
         <ul class="navsections">
+
+            <!-- User name -->
             <li>
                 <p>Welcome</p>
                 <h5>{{firstName}} {{lastName}}</h5>
             </li>
+
+            <!-- User Classes -->
             <li>
-                <p>Classes</p>
+                <p>Your Classes</p>
                 <ul>
                     {{#each userClasses}}
                     <li>
-                        <a>
-                            <h6>{{name}}</h6>
+                        <a href="#">
+                            <h6>{{name}} (TODO)</h6>
                         </a>
                     </li>
                     {{/each}}
                 </ul>
             </li>
+
+            <!-- User sections (if student) -->
+            {{#unless isTeacher}}
             <li>
-                <a href="/reportanerror">
-                    Report an Error
-                </a>
-                <a href="../settings/">
-                    Settings
-                </a>
-                <a href="/logout">
-                    Log Out
-                </a>
+                <p>Your Sections</p>
+                <ul>
+                </ul>
+            </li>
+            {{/unless}}
+
+            <!-- Useful links -->
+            <li>
                 <a href="/reportanerror">Report an Error</a>
                 <a href="/settings/">Settings</a>
+                <a href="/logout/">Log Out</a>
             </li>
+
         </ul>
     </div>
 </template>
