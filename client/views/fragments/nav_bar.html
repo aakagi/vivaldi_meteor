@@ -52,6 +52,13 @@
             <li>
                 <p>Your Sections</p>
                 <ul>
+                    {{#each studentSections}}
+                    <li>
+                        <a href="#">
+                            <h6>{{name}}</h6>
+                        </a>
+                    </li>
+                    {{/each}}
                 </ul>
             </li>
             {{/unless}}

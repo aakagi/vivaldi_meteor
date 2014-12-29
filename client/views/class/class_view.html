@@ -8,11 +8,27 @@
 
             {{#if isTeacher}}
 
+                {{#if viewTasks}}
+                    {{> new_task_button_side}}
+                    {{> manage_button_side}}
+                {{else}}
+                    {{#if newTask}}
+                        {{> view_tasks_button_side}}
+                        {{> manage_class_button_side}}
+                    {{else}}
+                        <!-- If manageClass -->
+                        {{> new_task_button_side}}
+                        {{> view_tasks_button_side}}
+                    {{/if}}
+                {{/if}}
+
 
             {{else}}
 
 
             {{/if}}
+
+            {{> class_student_list}}
 
 
         {{/unless}}
@@ -25,6 +41,19 @@
             {{> task_title_main}}
 
             {{#if isTeacher}}
+                
+                {{#if viewTasks}}
+                    {{> task_list_main}}
+                {{else}}
+                    {{#if newTask}}
+                        {{> new_task_main}}
+                    {{else}}
+                        <!-- If manageClass -->
+                        {{> manage_class_main}}
+                    {{/if}}
+                {{/if}}
+
+
                 {{> create_task}}
             {{else}}
                 {{> student_post}}
