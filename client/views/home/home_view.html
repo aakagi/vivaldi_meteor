@@ -1,65 +1,64 @@
 <template name="home_class_list">
-    <a href="../classes/manage?id=53f7758d9f76250b0000000a" class="col-sm-6">
-    <p>Name</p>
-    <h5>Sample Orchestra</h5>
+    <a href="" class="col-sm-6">
+    <p>
+        Name
+    </p>
+    <h5>
+        {{name}}
+    </h5>
     <div class="break-md"></div>
     <div class="row">
-    <div class="col-sm-6">
-    <p>Students</p>
-    <h5>3</h5></div>
-    <div class="col-sm-6">
-    <p>Tasks</p>
-    <h5>0</h5>
-    </div>
-    </div>
+        <div class="col-sm-6">
+            <p>
+                Students
+            </p>
+            <h5>
+                {{numberStudents}}
+            </h5>
+            </div>
+        </div>
     </a>
 </template>
 
 <template name="home_view">
 
-{{#if isTeacher}}
-    <div id="adminHome" class="container-full">
-        {{#each teacherClassesList}}
-            {{> home_class_list}}
-        {{/each}}
-    </div>
-{{else}}
-    <div class="col-md-4 col-lg-4">
-
-<!-- 
-        {{> class_title_side}}
-        {{> class_stats_side}}
-
-
-
-
-            {{else}}
-
-
-            {{/if}}
- -->
-
-    </div>
-    <div class="col-md-8 col-lg-8">
-        <!-- 
-        {{#unless notInThisClass}}
-
-            {{> task_title_main}}
-
-            {{#if isTeacher}}
-                {{> create_task}}
-            {{else}}
-                {{> student_post}}
-            {{/if}}
-
-            {{#each allTasksList}}
-                {{> task}}
+    {{#if isTeacher}}
+        <div id="adminHome" class="container-full">
+            {{#each teacherClassesList}}
+                {{> home_class_list}}
             {{/each}}
+        </div>
+    {{else}}
+        <div class="col-md-4 col-lg-4">
 
-        {{else}}
-            {{> welcomeYouAreNotInThisClass}}
-        {{/unless}}
-         -->
-    </div>
-{{/if}}
+
+            {{> class_title_side}}
+            {{> class_stats_side}}
+
+
+
+
+        </div>
+        <div class="col-md-8 col-lg-8">
+            <!-- 
+            {{#unless notInThisClass}}
+
+                {{> task_title_main}}
+
+                {{#if isTeacher}}
+                    {{> create_task}}
+                {{else}}
+                    {{> student_post}}
+                {{/if}}
+
+                {{#each allTasksList}}
+                    {{> task}}
+                {{/each}}
+
+            {{else}}
+                {{> welcomeYouAreNotInThisClass}}
+            {{/unless}}
+             -->
+        </div>
+    {{/if}}
 </template>

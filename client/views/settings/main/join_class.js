@@ -25,4 +25,4 @@ Template.join_class.events({
             }
         });
     }
-})
+});
