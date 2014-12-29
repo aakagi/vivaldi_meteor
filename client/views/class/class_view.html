@@ -3,36 +3,18 @@
         
         <!-- Class info -->
         <div class="block">
-            <p>Name</p>
-            <h4>{{name}}</h4>
+            <p>School</p>
+            <h5>{{school}}</h5>
+            <div class="break-sm"></div>
+            <p>Teachers</p>
+            {{#each teachersArray}}
+                <h5>{{firstName}} {{lastName}}</h5>
+            {{/each}}
         </div>
 
         {{#unless notInThisClass}}
 
-
-            {{#if isTeacher}}
-
-                {{#if viewTasks}}
-                    {{> new_task_button_side}}
-                    {{> manage_button_side}}
-                {{else}}
-                    {{#if newTask}}
-                        {{> view_tasks_button_side}}
-                        {{> manage_class_button_side}}
-                    {{else}}
-                        <!-- If manageClass -->
-                        {{> new_task_button_side}}
-                        {{> view_tasks_button_side}}
-                    {{/if}}
-                {{/if}}
-
-
-            {{else}}
-
-
-            {{/if}}
-
-            {{> class_student_list}}
+            
 
 
         {{/unless}}
@@ -42,33 +24,7 @@
         
         {{#unless notInThisClass}}
 
-            {{> task_title_main}}
 
-            {{#if isTeacher}}
-                
-                {{#if viewTasks}}
-                    {{> task_list_main}}
-                {{else}}
-                    {{#if newTask}}
-                        {{> new_task_main}}
-                    {{else}}
-                        <!-- If manageClass -->
-                        {{> manage_class_main}}
-                    {{/if}}
-                {{/if}}
-
-
-                {{> create_task}}
-            {{else}}
-                {{> student_post}}
-            {{/if}}
-
-            {{#each allTasksList}}
-                {{> task}}
-            {{/each}}
-
-        {{else}}
-            {{> welcomeYouAreNotInThisClass}}
         {{/unless}}
     </div>
 </template>
