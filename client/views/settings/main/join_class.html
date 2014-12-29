@@ -1,4 +1,4 @@
-<template name="classes">
+<template name="join_classes">
 <option value="{{_id}}">{{school}} {{name}}</option>
 </template>
 
@@ -20,7 +20,7 @@
                 <div class="group-input">
                     <select class="input border input-md" id="selectClass">
                        {{#each classList}}
-                            {{> classes}}
+                            {{> join_classes}}
                         {{/each}}
                     </select>
                 </div>
