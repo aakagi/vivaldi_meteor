@@ -35,7 +35,7 @@ Template.nav_bar.helpers({
 		return user.profile.lastName;
 	},
 	// Returns the array of class objects for the teacher
-	teacherClasses: teacherClasses,
+	userClasses: userClasses,
 	studentSections: studentSections,
 	isTeacher: isTeacher,
 });
