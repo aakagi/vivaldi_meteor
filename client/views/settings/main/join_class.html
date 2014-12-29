@@ -3,6 +3,7 @@
 </template>
 
 <template name="join_class">
+{{#if classList}}
     <div class="block">
         <div class="form shadedInputs">
             <h6>
@@ -19,7 +20,7 @@
 
                 <div class="group-input">
                     <select class="input border input-md" id="selectClass">
-                       {{#each classList}}
+                        {{#each classList}}
                             {{> join_classes}}
                         {{/each}}
                     </select>
@@ -38,4 +39,5 @@
             </div>
         </div>
     </div>
+{{/if}}
 </template>
