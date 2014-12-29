@@ -1,0 +1,26 @@
+<template name="confirm_email">
+    
+    <div class="jumbo">
+
+    <div class="break-lg"></div>
+    <div class="break-lg"></div>
+    <div class="break-lg"></div>
+    <div class="break-lg"></div>
+    <h2 class="t-center">
+        Congratulations!
+    </h2>
+    <br>
+    <p class="t-center">
+        Please check your inbox to verify your address.
+    </p>
+    <p class="t-center">
+        If you didn't recieve an email click 
+        <a class="blue">here</a> 
+        to resend it.
+    </p>
+    </div>
+    {{#if buttonName}}
+        <input type="button" id="button" value="{{buttonName}}" />
+    {{/if}}
+
+</template>

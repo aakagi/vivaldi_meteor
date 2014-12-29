@@ -13,17 +13,26 @@ Template.create_class.events({
         for (section in sectionNames) {
             sectionDoc = {
                 name: section,
-                students: []
+                users: []
             };
             sectionID = Sections.insert(sectionDoc);
             sectionIDs.push(sectionID);
         }
+        //add teacher section
+        teacherSectionDoc = {
+            name: "Teachers",
+            users: [userId]
+        }
+        teacherSectionID = Sections.insert(teacherSectionDoc);
+        sectionIDs.push(teacherSectionID);
+
         classDoc = {
             name: className,
             school: schoolName,
             teachers: [userId],
             students: [],
-            sections: sectionIDs
+            sections: sectionIDs,
+            locked: false
         };
         Classes.insert(classDoc, function(err, id){
         	if (err){

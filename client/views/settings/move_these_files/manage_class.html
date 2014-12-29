@@ -1,6 +1,6 @@
 <template name="students">
     <p class="col-sm-8">
-        {{name}}
+        {{profile.firstName}} {{profile.lastName}}
     </p>
     <a id="deleteStudent">
         Delete
@@ -24,7 +24,15 @@
                     <input id="className" type="text" name="className" placeholder="{{name}}" class="input input-sm">
                 </div>
             </div>
-            
+
+            <div class="input-group clear">
+                <label class="is-locked">
+                    <input type="checkbox" checked="{{isLocked}}" />
+                        Click here to lock your class from<br> letting new students join.
+                    <div class="break-md"></div>
+                </label>
+            </div>
+
             <div class="input-group clear">
                 <h6>
                     List of Students
@@ -33,8 +41,6 @@
                 {{#each studentList}}
                     {{> students}}
                 {{/each}}
-                <p>Alex Akagi</p>
-                <p>Roy Fu</p>
             </div>
 
             <div class="row">

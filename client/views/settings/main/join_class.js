@@ -1,14 +1,24 @@
 Template.join_class.helpers({
     'classList': function() {
-        //gets a list of all classes
-        pointer = Classes.find();
+        //gets a list of all classes that the student is not a member of
+
+        selector = {
+            students: {
+                $not: {
+                    $elemMatch: {
+                        $in: [Meteor.userId()]
+                    }
+                }
+            }
+        };
+        pointer = Classes.find(selector);
         return pointer.fetch()
     }
 });
 
 Template.join_class.events({
     'click #joinClass': function() {
-        var classId = document.getElementById('#selectClass').value;
+        var classId = document.getElementById('selectClass').value;
 
         Classes.update({
             _id: classId
@@ -25,4 +35,4 @@ Template.join_class.events({
             }
         });
     }
-})
+});
