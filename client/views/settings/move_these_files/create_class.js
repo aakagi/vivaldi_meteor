@@ -31,7 +31,8 @@ Template.create_class.events({
             school: schoolName,
             teachers: [userId],
             students: [],
-            sections: sectionIDs
+            sections: sectionIDs,
+            locked: false
         };
         Classes.insert(classDoc, function(err, id){
         	if (err){
