@@ -36,4 +36,6 @@ Template.nav_bar.helpers({
 	},
 	// Returns the array of class objects for the teacher
 	teacherClasses: teacherClasses,
+	studentSections: studentSections,
+	isTeacher: isTeacher,
 });
