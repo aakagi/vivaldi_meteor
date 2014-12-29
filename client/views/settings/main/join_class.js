@@ -8,7 +8,7 @@ Template.join_class.helpers({
 
 Template.join_class.events({
     'click #joinClass': function() {
-        var classId = document.getElementById('#selectClass').value;
+        var classId = document.getElementById('selectClass').value;
 
         Classes.update({
             _id: classId
