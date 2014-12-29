@@ -1,4 +1,5 @@
 <template name="nav_bar">
+
     <!-- Top bar -->
     <div class="navopen">
         <i class="fa fa-bars fa-2x"></i>
@@ -9,8 +10,11 @@
         </a>
         <h6>TODO: Implement page title</h6>
     </div>
+
     <!-- Side bar (Hidden) -->
     <div class="navadmin">
+
+        <!-- Side bar header -->
         <div class="navclose">
             <i class="fa fa-times fa-2x"></i>
         </div>
@@ -19,17 +23,21 @@
                 <img src="../images/logo-lg.svg" alt="VIVALDI">
             </a>
         </div>
+
+        <!-- Side bar body -->
         <ul class="navsections">
+
             <!-- User name -->
             <li>
                 <p>Welcome</p>
                 <h5>{{firstName}} {{lastName}}</h5>
             </li>
+
             <!-- User Classes -->
             <li>
                 <p>Your Classes</p>
                 <ul>
-                    {{#each teacherClasses}}
+                    {{#each userClasses}}
                     <li>
                         <a href="#">
                             <h6>{{name}} (TODO)</h6>
@@ -38,20 +46,23 @@
                     {{/each}}
                 </ul>
             </li>
+
             <!-- User sections (if student) -->
             {{#unless isTeacher}}
             <li>
                 <p>Your Sections</p>
                 <ul>
-                    {{#each}}
                 </ul>
             </li>
             {{/unless}}
+
+            <!-- Useful links -->
             <li>
-                <a href="/reportanerror">Report an Error (TODO)</a>
+                <a href="/reportanerror">Report an Error</a>
                 <a href="/settings/">Settings</a>
-                <a>Log Out</a>
+                <a href="/logout/">Log Out</a>
             </li>
+
         </ul>
     </div>
 </template>
