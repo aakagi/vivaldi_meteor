@@ -31,6 +31,7 @@ Template.create_class.events({
             school: schoolName,
             teachers: [userId],
             students: [],
+            waitlist: [],
             sections: sectionIDs,
             locked: false
         };
