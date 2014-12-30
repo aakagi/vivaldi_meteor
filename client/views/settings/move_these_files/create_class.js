@@ -12,7 +12,7 @@ Template.create_class.events({
         //array will be saved to the class document
         for (section in sectionNames) {
             sectionDoc = {
-                name: section,
+                name: sectionNames[section],
                 users: []
             };
             sectionID = Sections.insert(sectionDoc);
