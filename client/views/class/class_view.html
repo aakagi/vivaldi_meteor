@@ -14,12 +14,12 @@
                             {{/each}}
                         </div>
 
-                        {{#if viewTasks}}
+                        {{#unless viewTasks}}
                             <button id="viewTasks" class="btn btn1 btn-blue btn-md width100">
                                 View Tasks
                             </button>
                             <div class="break-sm"></div>
-                        {{/if}}
+                        {{/unless}}
                         {{#unless newTask}}
                             <button id="newTask" class="btn btn1 btn-green btn-md width100">
                                 + New Task
