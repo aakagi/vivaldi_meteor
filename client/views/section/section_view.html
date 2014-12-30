@@ -1,0 +1,102 @@
+<template name="section_view">
+
+	<div class="row">
+
+		<div class="col-md-4 col-lg-4">
+
+			<div class="block">
+				<p>Name</p>
+				<h5>{{name}}</h5>
+				<div class="break-sm"></div>
+				<p>Class</p>
+				<a href="#"><h5>{{ class.name }}</h5></a>
+			</div>
+
+			<div class="block">
+				<p>Students</p>
+				{{ #each studentData }}
+					<h6>{{ firstName }} {{ lastName }}</h6>
+				{{ /each }}
+			</div>
+
+		</div>
+
+		<div class="col-md-8 col-lg-8">
+			
+			<div class="block overview">
+				
+				<div class="title">
+					<h6>Weekly Overview</h6>
+					<a href="#"><i class="fa fa-ellipsis-h fa-3x"></i></a>
+				</div>
+
+				<div class="body">
+					
+					<div class="graph graph-1 bar-graph">
+						<h6>Daily Minutes</h6>
+					</div>
+
+					<div class="graph graph-2 pie-graph">
+						<h6>Class Comparison</h6>
+					</div>	
+
+				</div>
+
+			</div>
+
+			<div class="block chat">
+				
+				<div class="title">
+					<h6>Chat</h6>
+				</div>
+
+				<div class="body">
+
+					<div class="messages">
+
+						<div class="message">
+							<p>Benji Jr. Alderfer</p>
+						</div>
+
+						<div class="message">
+							<p>Bean Alderfer</p>
+						</div>
+
+						<div class="message">
+							<p>Benji Jr. Alderfer</p>
+						</div>
+
+						<div class="message">
+							<div class="message-head">
+								<img src="images/demo/adminclass.png">
+							</div>
+							<p>Bean Alderfer</p>
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="chat-input">
+
+					<div class="camera">
+						<i class="fa fa-camera fa-2x"></i>
+					</div>
+
+					<div class="chat-input">
+						<input id="new-message" type="text"/>
+					</div>
+
+					<div class="send">
+						<input id="new-message-submit" type="submit" value="Send"/>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</template>
