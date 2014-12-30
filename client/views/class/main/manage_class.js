@@ -32,7 +32,7 @@ Template.manage_class.events({
 Template.manage_class.helpers({
     'studentList': function() {
         var studentIDs = Template.currentData().students;
-        console.log(studentIDs);
+        // console.log(studentIDs);
         var results = Meteor.users.find({
             _id: {
                 $in: studentIDs
@@ -42,7 +42,7 @@ Template.manage_class.helpers({
     },
     'waitList': function() {
         var studentIDs = Template.currentData().waitlist;
-        console.log(studentIDs);
+        // console.log(studentIDs);
         var results = Meteor.users.find({
             _id: {
                 $in: studentIDs

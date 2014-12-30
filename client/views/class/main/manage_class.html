@@ -1,15 +1,19 @@
 <template name="students">
-    <p class="col-sm-8">
-        {{profile.firstName}} {{profile.lastName}}
-    </p>
+    <a href="/user?id={{profile.id}}">
+        <p class="col-sm-8">
+            {{profile.firstName}} {{profile.lastName}} TODO: Get ID Param
+        </p>
+    </a>
     <a id="deleteStudent">
         Delete
     </a>
 </template>
 <template name="waitlist_students">
-    <p class="col-sm-8">
-        {{profile.firstName}} {{profile.lastName}}
-    </p>
+    <a href="/user?id={{profile.id}}">
+        <p class="col-sm-8">
+            {{profile.firstName}} {{profile.lastName}} TODO: Get ID Param
+        </p>
+    </a>
     <a id="confirmStudent">
         Confirm
     </a>
