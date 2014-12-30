@@ -1,0 +1,105 @@
+<template name="task">
+<!-- rendered from taskData -->
+    <div class="row headerDark">
+        <p class="col-sm-9 center">
+            {{getTask.duration}} Minutes - Due {{getTask.dueDate}} - {{getTask.points}} Points
+        </p>
+        <div class="col-sm-3 practicetag">
+            <p>
+                {{getTask.taskType}}
+            </p>
+        </div>
+    </div>
+    <div class="block">
+        <a href="/task_view_student">
+            <h6>
+                {{getTask.taskName}}
+            </h6>
+        </a>
+
+        <div class="break-sm"></div>
+
+        <p class="italic">
+            {{getTask.taskDuration}}
+        </p>
+
+        <div class="break-sm"></div>
+
+        {{#if isPracticeTask}}
+
+        <div class="status-bar">
+            <div class="status" style="width: {{completionFraction}}%;">
+                <p>
+                    {{completionFraction}}% - 06:30
+                </p>
+            </div>
+        </div>
+        <div class="break-sm"></div>
+         <div class="row">
+            <div class="col-sm-4">
+                <a href="../practice">
+                    <button class="btn btn1 btn-green btn-sm width100">
+                        Play
+                    </button>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <button id="submit" class="btn btn1 btn-blue btn-sm width100 disabled">
+                    Save Progress
+                </button>
+            </div>
+            <div class="col-sm-4">
+                <button id="submit" class="btn btn1 btn-red btn-sm width100 disabled">
+                    Dismiss
+                </button>
+            </div>
+
+        </div>
+
+        {{else}}
+            {{#if isAudioTask}}
+
+            <div class="block">
+        <h6>
+            Spring by Vivaldi 
+        </h6>
+        <div class="break-sm"></div>
+        <div class="row">
+            <iframe id="video548a21c19966740b00000026" src="{{getTask.youtubeURL}}" frameborder="0" allowfullscreen="allowfullscreen" style="display: inline-block; height: 212.671875px;" width="100%">
+            </iframe>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <button class="btn btn1 btn-sm width100 btn-blue">
+                    Comment
+                </button>
+            </div>
+            <div class="col-sm-4">
+                <button onclick="slideCloseVideo(this, &quot;#video548a21c19966740b00000026&quot;)" class="btn btn1 btn-sm width100 btn-yellow">
+                    Hide Video
+                </button>
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn1 btn-sm width100 btn-red disabled">
+                    Dismiss
+                </button>
+            </div>
+        </div>
+    </div>
+
+            {{else}}
+
+            {{/if}}
+        {{/if}}
+
+    
+
+
+<!--         <h6 id="practiceTime">
+            Practice Time: 00:39
+        </h6> -->
+
+
+
+    </div>
+</template>
