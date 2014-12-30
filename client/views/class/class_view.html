@@ -1,40 +1,80 @@
 <template name="class_view">
-    <div class="col-md-4 col-lg-4">
-        
-        <!-- Class info -->
-        <div class="block">
-            <p>School</p>
-            <h5>{{school}}</h5>
-            <div class="break-sm"></div>
-            <p>Teachers</p>
-            {{#each teachersArray}}
-                <h5>{{firstName}} {{lastName}}</h5>
-            {{/each}}
+
+        <div class="row">
+            <div class="col-md-4 col-lg-4">
+                {{#unless notInThisClass}}
+                    {{#if isTeacher}}
+                        <div class="block">
+                            <p>School</p>
+                            <h5>{{school}}</h5>
+                            <div class="break-sm"></div>
+                            <p>Teachers</p>
+                            {{#each teachersArray}}
+                                <h5>{{firstName}} {{lastName}}</h5>
+                            {{/each}}
+                        </div>
+
+                        {{#if viewTasks}}
+                            <button id="viewTasks" class="btn btn1 btn-blue btn-md width100">
+                                View Tasks
+                            </button>
+                            <div class="break-sm"></div>
+                        {{/if}}
+                        {{#unless newTask}}
+                            <button id="newTask" class="btn btn1 btn-green btn-md width100">
+                                + New Task
+                            </button>
+                            <div class="break-sm"></div>
+                        {{/unless}}
+                        {{#unless manageClass}}
+                            <button id="manageClass" class="btn btn1 btn-yellow btn-md width100">
+                                Manage Class
+                            </button>
+                            <div class="break-sm"></div>
+                        {{/unless}}
+
+                    {{else}}
+                        <!-- if student -->
+                        {{#unless showClassTasks}}
+                            <button id="showClassTasks" class="btn btn1 btn-blue btn-md width100">
+                                Show Tasks
+                            </button>
+                            <div class="break-sm"></div>
+                        {{/unless}}
+                        {{#unless classStats}}
+                            <button id="classStats" class="btn btn1 btn-yellow btn-md width100">
+                                Class Stats
+                            </button>
+                            <div class="break-sm"></div>
+                        {{/unless}}
+
+                    {{/if}}
+                {{/unless}}
+            </div>
+            <div class="col-md-8 col-lg-8">
+                {{#if isTeacher}}
+
+                    {{#if viewTasks}}
+                        {{> class_task_list_main}}
+                    {{/if}}
+                    {{#if newTask}}
+                        {{> new_task_main}}
+                    {{/if}}
+                    {{#if manageClass}}
+                        <!-- TODO: Move manage_class in settings to manage_class_main -->
+                        {{> manage_class}} 
+                    {{/if}}
+
+                {{else}}
+                    <!-- if student -->
+                    {{#if showClassTasks}}
+                        {{> class_task_list_main}}
+                    {{/if}}
+                    {{# if classStats}}
+                        {{> class_stats_main}}
+                    {{/if}}
+                {{/if}}
+            </div>
         </div>
 
-        <div class="block">
-            <p class="left">Students</p>
-            <p class="right">Edit</p>
-            {{#each studentsArray}}
-                <a href="#">
-                    <h6>TODO: {{firstName}} {{lastName}}</h6>
-                </a>
-            {{/each}}
-        </div>
-
-        {{#unless notInThisClass}}
-
-            
-
-
-        {{/unless}}
-
-    </div>
-    <div class="col-md-8 col-lg-8">
-        
-        {{#unless notInThisClass}}
-
-
-        {{/unless}}
-    </div>
 </template>
