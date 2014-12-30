@@ -1,5 +1,3 @@
-
-
 Accounts.onEnrollmentLink(function(token, success) {
     var tokenVar = token;
     Session.set('tokenVar', token);
