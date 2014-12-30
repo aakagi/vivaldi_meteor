@@ -1,3 +1,8 @@
+<template name="instrument">
+<option value="{{name}}">{{name}}</option>
+</template>
+
+
 <template name="change_instrument">
     <div class="block">
         <div class="form shadedInputs">
@@ -18,7 +23,7 @@
                     <div class="input-group">
                         <select class="input border input-md width100" id="instrumentName">
                            {{#each instrumentList}}
-                                <option>{{> instruments}}</option>
+                                <option>{{> instrument}}</option>
                             {{/each}}
                         </select>
                     </div>
