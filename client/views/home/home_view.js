@@ -56,6 +56,6 @@ Template.home_view.events({
 
 Template.home_class_list.helpers({
     numStudents: function () {
-        
+        return Template.currentData().students.length
     }
 });
