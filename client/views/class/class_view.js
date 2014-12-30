@@ -7,4 +7,5 @@ Template.class_view.helpers({
 		var ids = Template.currentData().students;
 		return getUsersByIds(ids);
 	},
+    isTeacher: isTeacher
 });

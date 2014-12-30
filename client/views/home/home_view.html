@@ -1,5 +1,3 @@
-
-
 <template name="home_view">
 
         <div class="row">
@@ -8,16 +6,16 @@
 
                     {{#if showClasses}}
                         <button id="showClasses" class="btn btn1 btn-blue btn-md width100">
-                            Show Classes
+                            Classes
                         </button>
                         <div class="break-sm"></div>
                     {{/if}}
-                    {{#unless newClass}}
+                    <!-- {{#unless newClass}}
                         <button id="newClass" class="btn btn1 btn-green btn-md width100">
                             + New Class
                         </button>
                         <div class="break-sm"></div>
-                    {{/unless}}
+                    {{/unless}} -->
                     {{#unless allOtherClasses}}
                         <button id="allOtherClass" class="btn btn1 btn-red btn-md width100">
                             Challenge Another Class
@@ -27,12 +25,12 @@
 
                 {{else}}
                     <!-- if student -->
-                    {{#unless showTasks}}
+                    {{#if showTasks}}
                         <button id="showTasks" class="btn btn1 btn-blue btn-md width100">
                             Show Tasks
                         </button>
                         <div class="break-sm"></div>
-                    {{/unless}}
+                    {{/if}}
                     {{#unless completedTasks}}
                         <button id="completedTasks" class="btn btn1 btn-yellow btn-md width100">
                             See Completed
@@ -51,27 +49,26 @@
             <div class="col-md-8 col-lg-8">
                 {{#if isTeacher}}
                     {{#unless showClasses}}
+                        {{> create_class_main}}
                         {{> home_class_list_main}}
-                    {{else}}
-                        {{#if newClass}}
-                            {{> new_class_main}}
-                        {{else}}
-                            <!-- if allOtherClasses -->
-                            {{> other_classes_main}}
-                        {{/if}}
                     {{/unless}}
+                    <!-- {{#if newClass}}
+                        
+                    {{/if}} -->
+
+                    {{#if allOtherClasses}}
+
+                    {{/if}}
                 {{else}}
                     <!-- if student -->
-                    {{#if showTasks}}
-                        {{> home_incomplete_tasks_main}}
-                    {{else}}
-                        {{#if completedTasks}}
-                            {{> home_completed_tasks_main}}
-                        {{else}}
-                            <!-- if practice -->
-                            <!-- In fragments folder -->
-                            <!-- {{> practice_interface}} -->
-                        {{/if}}
+                    {{#unless showTasks}}
+                        <!-- {{> home_incomplete_tasks_main}} -->
+                    {{/unless}}
+                    {{#if completedTasks}}
+                        <!-- {{> home_completed_tasks_main}} -->
+                    {{/if}}
+                    {{#if practice}}
+                        <!-- {{> practice_interface}} -->
                     {{/if}}
                 {{/if}}
             </div>
