@@ -10,12 +10,6 @@
                         </button>
                         <div class="break-sm"></div>
                     {{/if}}
-                    <!-- {{#unless newClass}}
-                        <button id="newClass" class="btn btn1 btn-green btn-md width100">
-                            + New Class
-                        </button>
-                        <div class="break-sm"></div>
-                    {{/unless}} -->
                     {{#unless allOtherClasses}}
                         <button id="allOtherClass" class="btn btn1 btn-red btn-md width100">
                             Challenge Another Class
@@ -52,12 +46,8 @@
                         {{> create_class_main}}
                         {{> home_class_list_main}}
                     {{/unless}}
-                    <!-- {{#if newClass}}
-                        
-                    {{/if}} -->
-
                     {{#if allOtherClasses}}
-
+                        {{> other_classes_main.html}}
                     {{/if}}
                 {{else}}
                     <!-- if student -->
