@@ -5,16 +5,64 @@
         <div class="row">
             <div class="col-md-4 col-lg-4">
                 {{#if isTeacher}}
+
+                    {{#if showClasses}}
+                        <button id="newClass" class="btn btn1 btn-green btn-md width100">
+                            + New Class
+                        </button>
+                        <div class="break-sm"></div>
+                        
+                        <button id="allOtherClass" class="btn btn1 btn-red btn-md width100">
+                            Challenge Another Class
+                        </button>
+                        <div class="break-sm"></div>
+
+                        {{#if newClass}}
+                            <button id="showClasses" class="btn btn1 btn-blue btn-md width100">
+                                Show Classes
+                            </button>
+                            <div class="break-sm"></div>
+                            
+                            <button id="allOtherClass" class="btn btn1 btn-red btn-md width100">
+                                Challenge Another Class
+                            </button>
+                            <div class="break-sm"></div>
+                        {{else}}
+                            <!-- if allOtherClasses -->
+                            <button id="showClasses" class="btn btn1 btn-blue btn-md width100">
+                                Show Classes
+                            </button>
+                            <div class="break-sm"></div>
+
+                            <button id="newClass" class="btn btn1 btn-green btn-md width100">
+                                + New Class
+                            </button>
+                            <div class="break-sm"></div>
+                        {{/if}}
+                    {{/if}}
+                {{else}}
+                    <!-- if student -->
+                    {{#if showTasks}}
+                        {{> home_incomplete_tasks_main}}
+                    {{else}}
+                        {{#if completedTasks}}
+                            {{> home_completed_tasks_main}}
+                        {{else}}
+                            <!-- if practice -->
+                            <!-- In fragments folder -->
+                            <!-- {{> practice_interface}} -->
+                        {{/if}}
+                    {{/if}}
+
                     <button id="newClass" class="btn btn1 btn-red btn-md width100">
                         + New Class
                     </button>
                     <div class="break-sm"></div>
-
                     <button id="allOtherClass" class="btn btn1 btn-blue btn-md width100">
                         Challenge Another Class
                     </button>
-
                     <div class="break-sm"></div>
+
                 {{else}}
                     <!-- My Name -->
                     <!-- My Stats -->

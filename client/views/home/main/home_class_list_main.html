@@ -1,8 +1,9 @@
 <template name="home_class_list_main">
     {{#each teacherClassesList}}
-        {{> home_class_list_main}}
+        {{> home_class_list}}
     {{/each}}
 </template>
+
 <template name="home_class_list">
     <a href="/class?id={{_id}}">
         <div class="block yellowHover">
