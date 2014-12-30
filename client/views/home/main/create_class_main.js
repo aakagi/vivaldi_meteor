@@ -1,4 +1,4 @@
-Template.create_class.events({
+Template.create_class_main.events({
     'click #createClass': function() {
         //get class data from fields
         className = document.getElementById('className').value;
