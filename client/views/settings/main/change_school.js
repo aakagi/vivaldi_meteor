@@ -7,7 +7,7 @@ Template.change_school.events({
     	//setAlert('error', 'button clicked!');
     	//console.log("clicked");
         userid = Meteor.userId();
-        newSchool = document.getElementById('schoolName').value
+        newSchool = document.getElementById('schoolName').value;
         user = Meteor.users.findOne({
             "_id": userid
         }, {
@@ -15,7 +15,7 @@ Template.change_school.events({
                 profile: 1
             }
         });
-        prof = user.profile
+        prof = user.profile;
         prof.school = newSchool;
         Meteor.users.update({
             "_id": userid

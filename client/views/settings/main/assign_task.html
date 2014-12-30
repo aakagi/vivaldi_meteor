@@ -1,0 +1,100 @@
+<template name="select_section">
+	<option value="{{_id}}">{{name}}</option>
+</template>
+
+<template name="assign_task">
+	<div class="block">
+		<div class="form shadedInputs">
+			<div class= "input-group clear">
+				<h6>
+                    New Task!
+                </h6>
+                <div class="group-label clear">
+                    <label for="classList">
+                        Select Section:
+                    </label>
+                </div>
+
+                <div class="group-input">
+                    <select class="input border input-sm" id="selectSection">
+                        {{#each sectionList}}
+                            {{> select_section}}
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="break-sm"></div>
+                <div class="group-label clear">
+                    <label for="taskType">
+                        Task Type
+                    </label>
+                </div>
+                <div class="group-input">
+                    <input id="taskType" type="text" name="taskType" placeholder="Practice, Audio, or Post" class="input input-sm">
+                </div>
+                <div class="break-sm"></div>
+                <div class="group-label clear">
+                    <label for="taskName">
+                        Name
+                    </label>
+                </div>
+                <div class="group-input">
+                    <input id="taskName" type="text" name="taskName" placeholder="Task Name" class="input input-sm">
+                </div>
+                <div class="break-sm"></div>
+
+                <div class="group-label clear">
+                    <label for="taskDescription">
+                        Description
+                    </label>
+                </div>
+                <div class="group-input">
+                    <input id="taskDescription" type="text" name="taskDescription" placeholder="Description" class="input input-sm">
+                </div>
+                <div class="break-sm"></div>
+                <div class="group-label clear">
+                    <label for="taskName">
+                        Duration
+                    </label>
+                </div>
+                <div class="group-input">
+                    <input id="taskDuration" type="text" name="taskDuration" placeholder="Duration" class="input input-sm">
+                </div>
+                <div class="break-sm"></div>
+                <div class="group-label clear">
+                    <label for="taskName">
+                        YouTube Link (Optional)
+                    </label>
+                </div>
+                <div class="group-input">
+                    <input id="youTube" type="text" name="youTube" placeholder="URL" class="input input-sm">
+                </div>
+                <div class="break-sm"></div>
+                <div class="group-label clear">
+                    <label for="taskName">
+                        Point Value
+                    </label>
+                </div>
+                <div class="group-input">
+                    <input id="points" type="text" name="points" placeholder="Point Value" class="input input-sm">
+                </div>
+                <div class="break-sm"></div>
+                <div class="group-label clear">
+                    <label for="taskName">
+                        Due Date
+                    </label>
+                </div>
+                <div class="group-input">
+                    <input id="dueDate" type="date" name="dueDate">
+                </div>
+                <div class="break-md"></div>
+                <div class="input-group">
+                    <button id="assignTask" class="btn btn1 btn-gray btn-sm">
+                        Assign Task
+                    </button>
+                </div>
+
+			</div>
+		</div>
+
+	</div>
+</template>

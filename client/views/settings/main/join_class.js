@@ -1,27 +1,26 @@
 Template.join_class.helpers({
-        'classList': function() {
-            //gets a list of all classes that the student is not a member of
-            selector = {
-                $and: [{
-                        students: {
-                            $not: {
-                                $elemMatch: {
-                                    $in: [Meteor.userId()]
-                                }
-                            }
-                        }
-                    },
-                    {waitlist: {
-                        $not: {
-                            $elemMatch: {
-                                $in: [Meteor.userId()]
-                            }
+    'classList': function() {
+        //gets a list of all classes that the student is not a member of
+        selector = {
+            $and: [{
+                students: {
+                    $not: {
+                        $elemMatch: {
+                            $in: [Meteor.userId()]
                         }
                     }
-                },
-                {
-                    locked: false
-                }]
+                }
+            }, {
+                waitlist: {
+                    $not: {
+                        $elemMatch: {
+                            $in: [Meteor.userId()]
+                        }
+                    }
+                }
+            }, {
+                locked: false
+            }]
         };
         pointer = Classes.find(selector);
         return pointer.fetch()
