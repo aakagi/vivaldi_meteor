@@ -1,0 +1,38 @@
+<template name="home_class_list_main">
+    {{#each teacherClassesList}}
+        {{> home_class_list_main}}
+    {{/each}}
+</template>
+<template name="home_class_list">
+    <a href="/class?id={{_id}}">
+        <div class="block yellowHover">
+            <p>
+                Name
+            </p>
+            <h5>
+                {{name}}
+            </h5>
+            <div class="break-md"></div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>
+                        students
+                    </p>
+                    <h5>
+                        <!-- {{numberStudents}} -->
+                        60
+                    </h5>
+                </div>
+                <div class="col-sm-6">
+                    <p>
+                        Level
+                    </p>
+                    <h5>
+                        <!-- {{classLevel}} -->
+                        7
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </a>
+</template>
