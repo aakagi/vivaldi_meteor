@@ -1,20 +1,22 @@
 <template name="home_class_list">
-    <a href="" class="col-sm-6">
-    <p>
-        Name
-    </p>
-    <h5>
-        {{name}}
-    </h5>
-    <div class="break-md"></div>
-    <div class="row">
-        <div class="col-sm-6">
+    <a href="">
+        <div class="block yellowHover">
             <p>
-                Students
+                Name
             </p>
             <h5>
-                {{numberStudents}}
+                {{name}}
             </h5>
+            <div class="break-md"></div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>
+                        students
+                    </p>
+                    <h5>
+                        <!-- {{numberStudents}} -->
+                    </h5>
+                </div>
             </div>
         </div>
     </a>
@@ -22,43 +24,24 @@
 
 <template name="home_view">
 
-    {{#if isTeacher}}
-        <div id="adminHome" class="container-full">
-            {{#each teacherClassesList}}
-                {{> home_class_list}}
-            {{/each}}
-        </div>
-    {{else}}
-        <div class="col-md-4 col-lg-4">
-
-<!-- 
-            {{> class_title_side}}
-            {{> class_stats_side}}
-
-
-
- -->
-        </div>
-        <div class="col-md-8 col-lg-8">
-            <!-- 
-            {{#unless notInThisClass}}
-
-                {{> task_title_main}}
-
+        <div class="row">
+            <div class="col-md-4 col-lg-4">
                 {{#if isTeacher}}
-                    {{> create_task}}
-                {{else}}
-                    {{> student_post}}
+                    <a href="">
+                        <button class="btn btn1 btn-red btn-md width100">
+                            + New Class
+                        </button>
+                    </a>
+                    <div class="break-sm"></div>
                 {{/if}}
-
-                {{#each allTasksList}}
-                    {{> task}}
-                {{/each}}
-
-            {{else}}
-                {{> welcomeYouAreNotInThisClass}}
-            {{/unless}}
-             -->
+            </div>
+            <div class="col-md-8 col-lg-8">
+                {{#if isTeacher}}
+                    {{#each teacherClassesList}}
+                        {{> home_class_list}}
+                    {{/each}}
+                {{/if}}
+            </div>
         </div>
-    {{/if}}
+
 </template>
