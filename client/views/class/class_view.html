@@ -12,6 +12,16 @@
             {{/each}}
         </div>
 
+        <div class="block">
+            <p class="left">Students</p>
+            <p class="right">Edit</p>
+            {{#each studentsArray}}
+                <a href="#">
+                    <h6>TODO: {{firstName}} {{lastName}}</h6>
+                </a>
+            {{/each}}
+        </div>
+
         {{#unless notInThisClass}}
 
             
