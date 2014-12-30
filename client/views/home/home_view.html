@@ -50,15 +50,20 @@
                         {{> other_classes_main.html}}
                     {{/if}}
                 {{else}}
-                    <!-- if student -->
-                    {{#unless showTasks}}
-                        <!-- {{> home_incomplete_tasks_main}} -->
-                    {{/unless}}
-                    {{#if completedTasks}}
-                        <!-- {{> home_completed_tasks_main}} -->
-                    {{/if}}
-                    {{#if practice}}
-                        <!-- {{> practice_interface}} -->
+                    <!-- Makes sure the user is in a class -->
+                    {{#if userClasses}}
+                        <!-- if student -->
+                        {{#unless showTasks}}
+                            <!-- {{> home_incomplete_tasks_main}} -->
+                        {{/unless}}
+                        {{#if completedTasks}}
+                            <!-- {{> home_completed_tasks_main}} -->
+                        {{/if}}
+                        {{#if practice}}
+                            <!-- {{> practice_interface}} -->
+                        {{/if}}
+                    {{else}}
+                        {{> join_class}}
                     {{/if}}
                 {{/if}}
             </div>

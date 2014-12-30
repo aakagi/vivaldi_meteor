@@ -1,5 +1,5 @@
 Template.home_view.helpers({
-    teacherClassesList: userClasses,
+    userClasses: userClasses,
     isTeacher: isTeacher,
     showClasses: function(){
     	return Session.get('showClasses');
@@ -43,9 +43,3 @@ Template.home_view.events({
 		Session.set('practice', true);
 	},
 })
-
-Template.home_class_list.helpers({
-    numStudents: function () {
-        return Template.currentData().students.length
-    }
-});

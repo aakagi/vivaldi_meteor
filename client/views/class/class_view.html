@@ -14,18 +14,12 @@
                             {{/each}}
                         </div>
 
-                        {{#unless viewTasks}}
+                        {{#if viewTasks}}
                             <button id="viewTasks" class="btn btn1 btn-blue btn-md width100">
                                 View Tasks
                             </button>
                             <div class="break-sm"></div>
-                        {{/unless}}
-                        {{#unless newTask}}
-                            <button id="newTask" class="btn btn1 btn-green btn-md width100">
-                                + New Task
-                            </button>
-                            <div class="break-sm"></div>
-                        {{/unless}}
+                        {{/if}}
                         {{#unless manageClass}}
                             <button id="manageClass" class="btn btn1 btn-yellow btn-md width100">
                                 Manage Class
@@ -35,12 +29,12 @@
 
                     {{else}}
                         <!-- if student -->
-                        {{#unless showClassTasks}}
+                        {{#if showClassTasks}}
                             <button id="showClassTasks" class="btn btn1 btn-blue btn-md width100">
                                 Show Tasks
                             </button>
                             <div class="break-sm"></div>
-                        {{/unless}}
+                        {{/if}}
                         {{#unless classStats}}
                             <button id="classStats" class="btn btn1 btn-yellow btn-md width100">
                                 Class Stats
@@ -54,15 +48,13 @@
             <div class="col-md-8 col-lg-8">
                 {{#if isTeacher}}
 
-                    {{#if viewTasks}}
+                    {{#unless viewTasks}}
+                        {{> assign_task}}
                         {{> class_task_list_main}}
-                    {{/if}}
-                    {{#if newTask}}
-                        {{> new_task_main}}
-                    {{/if}}
+                    {{/unless}}
                     {{#if manageClass}}
                         <!-- TODO: Move manage_class in settings to manage_class_main -->
-                        {{> manage_class}} 
+                        {{> manage_class}}
                     {{/if}}
 
                 {{else}}
