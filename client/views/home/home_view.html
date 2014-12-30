@@ -6,12 +6,12 @@
             <div class="col-md-4 col-lg-4">
                 {{#if isTeacher}}
 
-                    {{#unless showClasses}}
+                    {{#if showClasses}}
                         <button id="showClasses" class="btn btn1 btn-blue btn-md width100">
                             Show Classes
                         </button>
                         <div class="break-sm"></div>
-                    {{/unless}}
+                    {{/if}}
                     {{#unless newClass}}
                         <button id="newClass" class="btn btn1 btn-green btn-md width100">
                             + New Class
@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-8 col-lg-8">
                 {{#if isTeacher}}
-                    {{#if showClasses}}
+                    {{#unless showClasses}}
                         {{> home_class_list_main}}
                     {{else}}
                         {{#if newClass}}
@@ -59,7 +59,7 @@
                             <!-- if allOtherClasses -->
                             {{> other_classes_main}}
                         {{/if}}
-                    {{/if}}
+                    {{/unless}}
                 {{else}}
                     <!-- if student -->
                     {{#if showTasks}}
