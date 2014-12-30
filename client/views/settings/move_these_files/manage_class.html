@@ -6,6 +6,14 @@
         Delete
     </a>
 </template>
+<template name="waitlist_students">
+    <p class="col-sm-8">
+        {{profile.firstName}} {{profile.lastName}}
+    </p>
+    <a id="confirmStudent">
+        Confirm
+    </a>
+</template>
 
 <template name="manage_class">
     <div class="block">
@@ -21,13 +29,13 @@
                     </label>
                 </div>
                 <div class="group-input">
-                    <input id="className" type="text" name="className" placeholder="{{name}}" class="input input-sm">
+                    <input id="newName" type="text" name="newName" placeholder="{{name}}" class="input input-sm">
                 </div>
             </div>
 
             <div class="input-group clear">
                 <label class="is-locked">
-                    <input type="checkbox" checked="{{isLocked}}" />
+                    <input id="lockedBox" type="checkbox" checked="{{isLocked}}" />
                         Click here to lock your class from<br> letting new students join.
                     <div class="break-md"></div>
                 </label>
@@ -40,6 +48,9 @@
                 <div class="break-sm"></div>
                 {{#each studentList}}
                     {{> students}}
+                {{/each}}
+                {{#each waitList}}
+                    {{> waitlist_students}}
                 {{/each}}
             </div>
 

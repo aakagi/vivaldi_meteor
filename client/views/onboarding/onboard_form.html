@@ -1,7 +1,3 @@
-<template name='instruments'>
-{{name}}
-</template>
-
 <template name="onboard_form">
     <div id="signin" class="container-full">
         <a href="/">
@@ -97,7 +93,7 @@
                         <div class="group-input">
                             <select class="input border input-md" id="selectInstrument">
                                {{#each instrumentList}}
-                                    <option>{{> instruments}}</option>
+                                    {{> instrument}}
                                 {{/each}}
                             </select>
                         </div>

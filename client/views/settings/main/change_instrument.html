@@ -1,3 +1,8 @@
+<template name="instrument">
+<option value="{{name}}">{{name}}</option>
+</template>
+
+
 <template name="change_instrument">
     <div class="block">
         <div class="form shadedInputs">
@@ -6,17 +11,22 @@
                     Change your instrument (Students)
                 </h6>
                 <div class="break-sm"></div>
+                <h6>current instrument: {{instrumentName}}</h6>
                 <div class="group-label clear">
                     <label for="instrumentName">
                         Change Instrument
                     </label>
                 </div>
-                <div class="group-input">
-                    <input id="instrumentName" type="text" name="instrumentName" placeholder="{{instrumentName}}" class="input input-sm">
-                </div>
             </div>
             <div class="row">
                 <div class="col-sm-12">
+                    <div class="input-group">
+                        <select class="input border input-md width100" id="instrumentName">
+                           {{#each instrumentList}}
+                                <option>{{> instrument}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
                     <div class="input-group">
                         <button id="saveInstrument" class="btn btn1 btn-gray btn-sm">
                             Save Instrument
