@@ -51,14 +51,14 @@ Template.assign_task.events({
         //get all students in the section so a taskData object can be created for each of them.
 
         var section = Sections.findOne({_id: sectionId});
-        var studentIds = section.students
+        var studentIds = section.users
 
         for (indx in studentIds) {
             var newTaskData = {
                 taskId: taskID,
                 userId: studentIds[indx],
                 progress: 0, //seconds
-                notes: "",
+                notes: " ",
                 complete: false
             };
             TasksData.insert(newTaskData);

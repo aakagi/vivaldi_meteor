@@ -1,3 +1,10 @@
 <template name="home_incomplete_tasks_main">
-
+	
+{{#if incompleteTasks}}
+	{{#each incompleteTasks}}
+		{{> task}}
+	{{/each}}
+{{else}}
+	NO TASKS OH NO
+{{/if}}
 </template>
