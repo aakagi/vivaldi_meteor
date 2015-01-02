@@ -50,9 +50,6 @@ Template.join_section.events({
                 var tasksAfterDate = sectionTasks(sectionID).filter(function(task) {
                     return task.dueDate > new Date();
                 });
-                console.log(sectionTasks);
-                console.log(tasksAfterDate);
-                console.log(tasksAfterDate);
                 for (task in tasksAfterDate) {
                     var newTaskData = {
                         taskId: tasksAfterDate[task]._id,

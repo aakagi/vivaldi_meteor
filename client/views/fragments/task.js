@@ -56,3 +56,25 @@ Template.task.helpers({
         }).fetch();
     }
 });
+
+Template.task.events({
+    'click #dismiss': function() {
+        //for now, this completes a task
+        var taskDataId = Template.currentData()._id;
+        TasksData.update({
+            _id: taskDataId
+        }, {
+            $set: {
+                complete: true,
+                completionDate: new Date()
+            }
+        }, function(err){
+            if (err){
+                console.log(err);
+            }
+            else{
+                console.log("task completed!");
+            }
+        });
+    }
+})

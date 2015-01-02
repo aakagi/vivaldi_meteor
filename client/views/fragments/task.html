@@ -27,12 +27,12 @@
         <div class="break-sm"></div>
 
         <div class="break-sm"></div>
-
         {{#if isPracticeTask}}
 
         <div class="status-bar">
             <div class="status" style="width: {{completionFraction}}%;">
                 <p>
+
                     {{#unless completed}}
                         {{completionFraction}}% 
                     {{else}}
@@ -51,12 +51,12 @@
                 </a>
             </div>
             <div class="col-sm-4">
-                <button id="submit" class="btn btn1 btn-blue btn-sm width100 disabled">
+                <button id="save" class="btn btn1 btn-blue btn-sm width100 disabled">
                     Save Progress
                 </button>
             </div>
             <div class="col-sm-4">
-                <button id="submit" class="btn btn1 btn-red btn-sm width100 disabled">
+                <button id="dismiss" class="btn btn1 btn-red btn-sm width100">
                     Dismiss
                 </button>
             </div>
