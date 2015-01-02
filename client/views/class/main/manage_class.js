@@ -52,6 +52,19 @@ Template.manage_class.helpers({
     },
     'isLocked': function() {
         return Template.currentData().locked
+    },
+    'sectionList': function() {
+        var sectionIds = Template.currentData().sections;
+        console.log(sectionIds);
+        var returnSections = Sections.find({
+            _id: {
+                $in: sectionIds
+            },
+            name: {
+                $ne: 'Teachers'
+            }
+        }).fetch();
+        return returnSections;
     }
 });
 
@@ -85,7 +98,7 @@ Template.waitlist_students.events({
     }
 });
 
-Template.students.events({
+Template.class_students.events({
     'click #deleteStudent': function() {
         var studentID = Template.currentData()._id;
         var classData = Template.parentData(1);

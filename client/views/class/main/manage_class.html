@@ -1,4 +1,4 @@
-<template name="students">
+<template name="class_students">
     <div class="row">
         <p class="col-sm-8">
             <a href="/user?id={{_id}}">
@@ -27,6 +27,20 @@
             </a>
         </p>
 
+    </div>
+</template>
+<template name="class_sections">
+    <div class="row">
+        <p class="col-sm-8">
+            <a href="/section?id={{_id}}">
+                {{name}}
+            </a>
+        </p>
+        <p>
+            <a href="">
+                TODO: Delete/modify
+            </a>
+        </p>
     </div>
 </template>
 
@@ -62,7 +76,7 @@
                 </h6>
                 <div class="break-sm"></div>
                 {{#each studentList}}
-                    {{> students}}
+                    {{> class_students}}
                 {{/each}}
                 <br>
                 {{#if waitList}}
@@ -78,9 +92,9 @@
                     TODO: List of Sections
                 </h6>
                 <div class="break-sm"></div>
-                <h6>
-                    TODO: Delete/modify sections
-                </h6>
+                {{#each sectionList}}
+                    {{> class_sections}}
+                {{/each}}
             </div>
 
             <div class="row">
