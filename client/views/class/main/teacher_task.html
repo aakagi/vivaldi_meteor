@@ -15,14 +15,19 @@
         </div>
     </div>
     <div class="block">
-        <h6>
-            {{name}}
-        </h6>
-        <br>{{description}}
-        <br>Sections: 
-        {{#each sectionNames}}
-            {{> section_name}}
-        {{/each}}
+        <p>
+            <h6>
+                {{name}}
+            </h6>
+            <br>{{description}}
+            <br>Sections: 
+            {{#each sectionNames}}
+                {{> section_name}}
+            {{/each}}
+        </p>
+        <button class="btn btn-sm btn-red" id="delete{{_id}}">
+            Delete
+        </button>
     </div>
 
 {{/if}}
