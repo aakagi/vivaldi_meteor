@@ -1,5 +1,5 @@
 <template name="class_task_list_main">
-    <div class="block">
-        <h1>TODO: TASK LIST</h1>
-    </div>
+        {{#each getTasks}}
+        	{{> teacher_task}}
+        {{/each}}
 </template>
