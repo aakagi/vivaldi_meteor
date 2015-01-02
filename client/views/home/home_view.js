@@ -1,4 +1,5 @@
 Template.home_view.helpers({
+    userClasses: userClasses,
     studentSections: studentSections,
     isTeacher: isTeacher,
     showClasses: function(){

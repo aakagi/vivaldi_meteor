@@ -19,8 +19,8 @@
 
                 {{else}}
                     <!-- if student -->
-                    <!-- Hide buttons if student isn't in a class yet -->
-                    {{#if userClasses}}
+                    <!-- Hide buttons if student isn't in a section yet -->
+                    {{#if studentSections}}
                         {{#if showTasks}}
                             <button id="showTasks" class="btn btn1 btn-blue btn-md width100">
                                 Show Tasks
@@ -39,6 +39,8 @@
                             </button>
                             <div class="break-sm"></div>
                         {{/unless}}
+                    {{else}}
+                        <div style="display: transparent">a</div>
                     {{/if}}
                 {{/if}}
             </div>
