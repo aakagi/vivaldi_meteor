@@ -33,7 +33,11 @@
         <div class="status-bar">
             <div class="status" style="width: {{completionFraction}}%;">
                 <p>
-                    {{completionFraction}}% 
+                    {{#unless completed}}
+                        {{completionFraction}}% 
+                    {{else}}
+                        COMPLETED
+                    {{/unless}}
                 </p>
             </div>
         </div>
