@@ -1,6 +1,10 @@
 Template.user_view.helpers({
     userClasses: userClasses,
     isTeacher: isTeacher,
+    studentProfile: function() {
+        // does the profile belong to a student
+    },
+    
     // showClasses: function(){
     //     return Session.get('showClasses');
     // }, 
