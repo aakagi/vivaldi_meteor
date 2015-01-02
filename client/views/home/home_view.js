@@ -1,5 +1,5 @@
 Template.home_view.helpers({
-    userClasses: userClasses,
+    studentSections: studentSections,
     isTeacher: isTeacher,
     showClasses: function(){
     	return Session.get('showClasses');

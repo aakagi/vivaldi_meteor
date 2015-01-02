@@ -2,43 +2,64 @@
 <option value="{{_id}}">{{school}} {{name}}</option>
 </template>
 
+<template name="pending_classes">
+    <p class="col-sm-8">
+        <a href="/class?id={{_id}}">
+            {{school}} {{name}}
+        </a>
+    </p>
+    <p>
+        <a href="" class="red" id="cancelJoinClass">
+            TODO: Cancel
+        </a>  
+    </p>
+</template>
+
 <template name="join_class">
-<!-- TODO: Please wait for confirmation -->
-{{#if classList}}
+
     <div class="block">
-        <div class="form shadedInputs">
-            <h6>
-                Join a Class (Students)
-            </h6>
+        {{#if classList}}
+            <div class="form shadedInputs">
+                <h6>
+                    Join a Class (Students)
+                </h6>
 
-            <div class="break-sm"></div>
-            <div class="input-group clear">
-                <div class="group-label clear">
-                    <label for="classList">
-                        Select Class to Join
-                    </label>
+                <div class="break-sm"></div>
+                <div class="input-group clear">
+                    <div class="group-label clear">
+                        <label for="classList">
+                            Select Class to Join
+                        </label>
+                    </div>
+
+                    <div class="group-input">
+                        <select class="input border input-md" id="selectClass">
+                            {{#each classList}}
+                                {{> join_classes}}
+                            {{/each}}
+                        </select>
+                    </div>
+
                 </div>
 
-                <div class="group-input">
-                    <select class="input border input-md" id="selectClass">
-                        {{#each classList}}
-                            {{> join_classes}}
-                        {{/each}}
-                    </select>
-                </div>
-
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="input-group">
-                        <button id="joinClass" class="btn btn1 btn-gray btn-sm">
-                            Join Class
-                        </button>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                            <button id="joinClass" class="btn btn1 btn-gray btn-sm">
+                                Join Class
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+        {{/if}}
+        <div>
+            <h6>
+                Pending Classes
+            </h6>
+            {{#each pendingClassesList}}
+                {{> pending_classes}}
+            {{/each}}
         </div>
     </div>
-{{/if}}
 </template>
