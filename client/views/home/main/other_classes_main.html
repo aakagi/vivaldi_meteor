@@ -1,3 +1,21 @@
+<template name="all_existing_classes">
+    <p class="col-sm-8">
+        <a href="/class?id={{_id}}">
+            {{school}} {{name}}
+        </a>
+    </p>
+    <p>
+        <a href="">
+            TODO: Challenge With 
+        </a>
+    </p>
+</template>
+
 <template name="other_classes_main">
-    
+    <div class="block">
+        <h1>TODO: Other Classes</h1>
+        {{#each allClassList}}
+            {{> all_existing_classes}}
+        {{/each}}
+    </div>
 </template>
