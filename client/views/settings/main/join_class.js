@@ -54,7 +54,7 @@ Template.join_class.events({
             }
         });
     }
-    'click #cancelJoinClass': function() {
+    // 'click #cancelJoinClass': function() {
         
-    }
+    // }
 });
