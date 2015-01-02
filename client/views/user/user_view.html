@@ -65,7 +65,7 @@
                     {{#if isTeacher}}
                         <!-- Teachers see messages or view stats -->
                         {{#unless userStats}}
-                            {{> user_messenger_main}}
+                            {{> messenger}}
                         {{/unless}}
                         {{#if userStats}}
                             {{> user_stats_main}}
@@ -86,7 +86,7 @@
                         {{#unless userIsMe}}
                             <!-- If another student in your class -->
                             {{#unless userMessage}}
-                                {{> user_messenger_main}}
+                                {{> messenger}}
                             {{/unless}}
                             {{#if challengeUser}}
                                 {{> challenge_user}}
@@ -103,7 +103,7 @@
             </div>
             <div class="col-md-8 col-lg-8">
                 {{#unless unrelatedStudent}}
-                    {{> user_messenger_main}}
+                    {{> messenger}}
                 {{/unless}}
             </div>
         {{/if}}
