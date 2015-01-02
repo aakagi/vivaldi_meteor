@@ -42,7 +42,22 @@ Template.join_section.events({
                 console.log(err);
                 setAlert('error', 'error writing to database');
             } else {
-                setAlert('info', 'added to sections!');
+                //add all tasks associated with that section to the student
+                //i.e. create taskData for every task whose due date is later than the present
+                var tasksAfterDate = sectionTasks().filter(function(task) {
+                    return task.dueDate() > new Date();
+                });
+                for (task in tasksAfterDate) {
+                    var newTaskData = {
+                        taskId: tasksAfterDate[task]._id,
+                        userId: Meteor.userId(),
+                        progress: 0, //seconds
+                        notes: "",
+                        complete: false
+                    };
+                    TasksData.insert(newTaskData);
+                }
+                setAlert('info', 'joined section!');
             }
         });
     }
