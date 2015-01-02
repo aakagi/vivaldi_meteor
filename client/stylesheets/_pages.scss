@@ -118,9 +118,8 @@
             }
             .yellowHover {
                 &:hover {
-                    background-color: $yellow;
-                    cursor: pointer;
-                    @include transition(all 0.25s ease);
+                    box-shadow:  0 0 1em $blue, 1px 1px 0 $blue, -1px -1px 0 $blue, -1px 1px 0 $blue, 1px -1px 0 $blue;
+                    box-sizing: content-box;
                 }
             }
         }
@@ -196,6 +195,48 @@
     }
 }
 
+
+/*
+------------------------
+|                      |
+|     CREATE CLASS     |
+|                      |
+------------------------
+*/
+
+.block {
+    .preview:hover {
+        h6, i {
+            color: $blue;
+            cursor: pointer;
+        }
+    }
+}
+
+/*
+------------------------
+|                      |
+|     CREATE TASK      |
+|                      |
+------------------------
+*/
+
+.formTypes {
+    .type {
+        background-color: $light-gray;
+        padding: 0.25em 1em;
+        text-align: center;
+        border-radius: 4px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: shade($light-gray, 10%);
+        }
+        &.selected {
+            background-color: $yellow;
+        }
+    }
+}
 
 
 /*
@@ -288,7 +329,8 @@
         position: relative;
         height: 340px;
         background-color: #333;
-        border: 4px solid white;
+        border-top: 4px solid white;
+        border-bottom: 4px solid white;
         padding: 0 16px;
         box-sizing: border-box;
 
@@ -311,18 +353,36 @@
             box-sizing: border-box;
 
             .message {
-                min-height: 80px;
+                position: relative;
+                min-height: 60px;
                 background-color: white;
-                margin-top: 2px;
+                border-top: 2px solid #999;
                 padding: 10px;
                 box-sizing: border-box;
 
                 .message-head {
-                    height: 40px;
+                    height: 100%;
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
 
                     img {
-                        height: 100%;
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 1000px;
                     }
+                }
+
+                .message-body {
+                    display: inline-block;
+                    vertical-align: top;
+                    margin-left: 60px;
+
+                    .message-info {
+                        font-size: 14px;
+                        color: #999;
+                    }
+
                 }
             }
         }

@@ -18,5 +18,12 @@ Template.teacher_task.helpers({
 		var taskData = Template.currentData();
 		return Sections.find({_id: {$in: taskData.sections}}).fetch();
 	}
+});
 
-})
+Template.teacher_task.events({
+	'click #delete': function(){
+		//must delete the task and all instances of taskData
+		var taskID = Template.currentData()._id;
+		Meteor.call('removeTask', taskID);
+	}
+});

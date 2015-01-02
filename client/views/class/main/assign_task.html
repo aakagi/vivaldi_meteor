@@ -3,99 +3,129 @@
 </template>
 
 <template name="assign_task">
-    <div class="block yellowHover">
-        <h1>
-            TODO: + New Task (Expand)
-        </h1>
-    </div>
-	<div class="block">
+    <div class="block">
+        <div class="preview">
+            <h6><i class="fa fa-chevron-down"></i> Share something with your class</h6>
+        </div>
 		<div class="form shadedInputs">
-			<div class= "input-group clear">
-				<h6>
-                    New Task! TODO: Hide this
-                </h6>
-                <div class="group-label clear">
-                    <label for="classList">
-                        Select Section:
-                    </label>
+			<h6>
+                What are you sharing?
+            </h6>
+
+            <div class="break-sm"></div>
+
+            <div class="row formTypes">
+                <div class="col-sm-4">
+                    <div class="type" id="practice">Practice Task</div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="type" id="audio">Audio Task</div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="type" id="post">Post</div>
+                </div>
+            </div>
+
+            <div class= "input-group clear">
+
+                <div class="name field">
+                    <div class="break-sm"></div>
+                    <div class="group-label clear">
+                        <label id="taskNameLabel" for="taskName">Task Name</label>
+                    </div>
+                    <div class="group-input">
+                        <input id="taskName" type="text" name="taskName" placeholder="Practice Four Seasons" class="input input-sm">
+                    </div>
                 </div>
 
-                <div class="group-input">
-                    <select class="input border input-sm" id="selectSection">
+                <div class="description field">
+                    <div class="break-sm"></div>
+                    <div class="group-label clear">
+                        <label id="taskDescriptionLabel" for="taskDescription">Task Description</label>
+                    </div>
+                    <div class="group-input">
+                        <input id="taskDescription" type="text" name="taskDescription" placeholder="Practice measures 32-64" class="input input-sm">
+                    </div>
+                </div>
+
+                <div class="duration field">
+                    <div class="break-sm"></div>
+                    <div class="group-label clear">
+                        <label for="taskDuration">Practice Length</label>
+                    </div>
+                    <div class="group-input">
+                        <select id="taskDuration" name="taskDuration" class="input input-sm">
+                            <option value="">Select a time...</option>
+                            <option value="5">5 min.</option>
+                            <option value="10">10 min.</option>
+                            <option value="15">15 min.</option>
+                            <option value="30">30 min.</option>
+                            <option value="60">60 min.</option>
+                            <option value="120">120 min.</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="link field">
+                    <div class="break-sm"></div>
+                    <div class="group-label clear">
+                        <label for="youTube">YouTube Link</label>
+                    </div>
+                    <div class="group-input">
+                        <input id="youTube" type="text" name="youTube" placeholder="http://www.youtube.com/watch?v=GRxofEmo3HA" class="input input-sm">
+                    </div>
+                </div>
+
+                <div class="video-preview field">
+                    <div class="break-sm"></div>
+                    <p>Preview</p>
+                    <iframe class="video" src="//www.youtube.com/embed/GRxofEmo3HA" frameborder="0" allowfullscreen></iframe>
+                </div>
+
+                <div class="due field">
+                    <div class="break-sm"></div>
+                    <div class="group-label clear">
+                        <label for="dueDate">Due Date</label>
+                    </div>
+                    <div class="group-input">
+                        <input id="dueDate" type="date" name="dueDate" class="input input-sm">
+                    </div>
+                </div>
+
+                <div class="sections field">
+                    <div class="break-sm"></div>
+                    <div class="group-label clear">
+                        <label for="dueDate">Select sections:</label>
+                    </div>
+                    <div class="section-tags">
+                        <div class="tag clickable selectAll">Select All</div>
                         {{#each sectionList}}
-                            {{> select_section}}
+                            <div class="tag clickable" id="{{_id}}">{{name}}</div>
                         {{/each}}
-                    </select>
+                    </div>
                 </div>
-                <div class="break-sm"></div>
-                <div class="group-label clear">
-                    <label for="taskType">
-                        Task Type
-                    </label>
-                </div>
-                <div class="group-input">
-                    <input id="taskType" type="text" name="taskType" placeholder="Practice, Audio, or Post" class="input input-sm">
-                </div>
-                <div class="break-sm"></div>
-                <div class="group-label clear">
-                    <label for="taskName">
-                        Name
-                    </label>
-                </div>
-                <div class="group-input">
-                    <input id="taskName" type="text" name="taskName" placeholder="Task Name" class="input input-sm">
-                </div>
-                <div class="break-sm"></div>
 
-                <div class="group-label clear">
-                    <label for="taskDescription">
-                        Description
-                    </label>
+                <div class="points field">
+                    <div class="break-sm"></div>
+                    <p>This is worth <span class="t-red" id="pointValue">0</span> points</p>
                 </div>
-                <div class="group-input">
-                    <input id="taskDescription" type="text" name="taskDescription" placeholder="Description" class="input input-sm">
-                </div>
-                <div class="break-sm"></div>
-                <div class="group-label clear">
-                    <label for="taskName">
-                        Duration
-                    </label>
-                </div>
-                <div class="group-input">
-                    <input id="taskDuration" type="text" name="taskDuration" placeholder="Duration" class="input input-sm">
-                </div>
-                <div class="break-sm"></div>
-                <div class="group-label clear">
-                    <label for="taskName">
-                        YouTube Link (Optional)
-                    </label>
-                </div>
-                <div class="group-input">
-                    <input id="youTube" type="text" name="youTube" placeholder="URL" class="input input-sm">
-                </div>
-                <div class="break-sm"></div>
-                <div class="group-label clear">
-                    <label for="taskName">
-                        Point Value
-                    </label>
-                </div>
-                <div class="group-input">
-                    <input id="points" type="text" name="points" placeholder="Point Value" class="input input-sm">
-                </div>
-                <div class="break-sm"></div>
-                <div class="group-label clear">
-                    <label for="taskName">
-                        Due Date
-                    </label>
-                </div>
-                <div class="group-input">
-                    <input id="dueDate" type="date" name="dueDate">
-                </div>
-                <div class="break-md"></div>
-                <div class="input-group">
-                    <button id="assignTask" class="btn btn1 btn-gray btn-sm">
-                        Assign Task
-                    </button>
+
+                <div class="formButtons field row">
+                    <div class="break-sm"></div>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <button id="assignTask" class="btn btn1 btn-green btn-sm">
+                                Assign Task
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <button id="cancelClass" class="btn btn1 btn-gray btn-sm">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
 			</div>

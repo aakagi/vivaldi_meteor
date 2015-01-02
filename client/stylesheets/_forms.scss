@@ -334,7 +334,6 @@
 
 .form {
     .input-group {
-        margin-bottom: 12px;
         .group-label {
             @include box-sizing(border-box);
             width: 100%;
@@ -364,24 +363,21 @@
     .section-tags {
         width: 100%;
         .tag {
-            background-color: $white;
+            background-color: $light-gray;
             display: inline-block;
             padding: 3px 6px 0 6px;
             border-radius: 4px;
             margin-right: 6px;
             margin-bottom: 6px;
-            @include transition(all 0.5s);
             &.clickable {
                 &.selected {
-                    background-color: $green;
-                    color: $white;
+                    background-color: $yellow;
                     &:hover {
-                        background-color: $green;
+                        background-color: $yellow;
                     }
                 }
                 &:hover {
-                    background-color: $gray;
-                    color: white;
+                    background-color: shade($light-gray, 10%);
                     cursor: pointer;
                 }
             }

@@ -1,3 +1,17 @@
+Template.create_class_main.rendered = function() {
+    $('.form').css('display', 'none');
+
+    $('.preview').click(function(event) {
+        $('.preview').slideUp(250);
+        $('.form').slideDown(250);
+    });
+
+    $('#cancelClass').click(function(event) {
+        $('.form').slideUp(250);
+        $('.preview').slideDown(250);
+    });
+}
+
 Template.create_class_main.events({
     'click #createClass': function() {
         //get class data from fields
