@@ -30,7 +30,7 @@ Template.join_class.helpers({
             waitlist: {
                 $in: [Meteor.userId()]
             }
-        });
+        }).fetch();
         return pendingClasses;
     }
 });
@@ -54,7 +54,20 @@ Template.join_class.events({
             }
         });
     }
-    // 'click #cancelJoinClass': function() {
-        
-    // }
+});
+
+Template.pending_classes.events({
+     'click #cancelJoinClass': function() {
+        //removes student from waitlist
+        var classID = Template.currentData()._id;
+        var modifier = {$pull: {waitlist: Meteor.userId()}};
+        Classes.update({_id: classID}, modifier, function(err){
+             if (err) {
+                console.log(err);
+                setAlert('error', 'error writing to database');
+            } else {
+                setAlert('info', 'request cancelled.');
+            }
+        });  
+    }
 });

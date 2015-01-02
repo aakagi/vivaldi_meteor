@@ -10,15 +10,16 @@
     </p>
     <p>
         <a href="" class="red" id="cancelJoinClass">
-            TODO: Cancel
+            Cancel
         </a>  
     </p>
 </template>
 
 <template name="join_class">
 
-    <div class="block">
+    
         {{#if classList}}
+        <div class="block">
             <div class="form shadedInputs">
                 <h6>
                     Join a Class (Students)
@@ -52,14 +53,18 @@
                     </div>
                 </div>
             </div>
-        {{/if}}
-        <div>
-            <h6>
-                Pending Classes
-            </h6>
-            {{#each pendingClassesList}}
-                {{> pending_classes}}
-            {{/each}}
         </div>
-    </div>
+        {{/if}}
+        {{#if pendingClassesList}}
+            <div class="block">
+                <div>
+                    <h6>
+                        Pending Classes
+                    </h6>
+                    {{#each pendingClassesList}}
+                        {{> pending_classes}}
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
 </template>
