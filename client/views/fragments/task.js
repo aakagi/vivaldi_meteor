@@ -4,7 +4,7 @@ Template.task.helpers({
         var taskID = Template.currentData().taskId;
         return Tasks.findOne({
             _id: taskID
-        })
+        });
     },
     isPracticeTask: function() {
         var taskID = Template.currentData().taskId;
@@ -54,6 +54,19 @@ Template.task.helpers({
                 $in: task.sections
             }
         }).fetch();
+    },
+    schoolName: function(){
+
+    },
+    className: function(){
+        //get the task, then the class from the task
+        var taskID = Template.currentData().taskId;
+        var task = Tasks.findOne({
+            _id: taskID
+        });
+        var Class = Classes.findOne({_id: task.classId});
+        console.log(Class);
+        return Class.name;
     }
 });
 
