@@ -24,6 +24,14 @@ Template.join_class.helpers({
         };
         pointer = Classes.find(selector);
         return pointer.fetch()
+    },
+    'pendingClassesList': function() {
+        pendingClasses = Classes.find({
+            waitlist: {
+                $in: [Meteor.userId()]
+            }
+        });
+        return pendingClasses;
     }
 });
 
@@ -45,5 +53,8 @@ Template.join_class.events({
                 setAlert('info', 'added to class!');
             }
         });
+    }
+    'click #cancelJoinClass': function() {
+        
     }
 });

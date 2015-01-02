@@ -53,19 +53,22 @@
                     {{/if}}
                 {{else}}
                     <!-- Makes sure the user is in a class -->
-                    {{#if userClasses}}
+                    {{#if studentSections}}
                         <!-- if student -->
                         {{#unless showTasks}}
-                            <!-- {{> home_incomplete_tasks_main}} -->
+                            {{> home_incomplete_tasks_main}}
                         {{/unless}}
                         {{#if completedTasks}}
-                            <!-- {{> home_completed_tasks_main}} -->
+                            {{> home_completed_tasks_main}}
                         {{/if}}
                         {{#if practice}}
                             <!-- {{> practice_interface}} -->
                         {{/if}}
                     {{else}}
                         {{> join_class}}
+                        {{#each userClasses}}
+                            {{> join_section}}
+                        {{/each}}
                     {{/if}}
                 {{/if}}
             </div>
