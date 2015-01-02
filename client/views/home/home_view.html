@@ -27,12 +27,6 @@
                             </button>
                             <div class="break-sm"></div>
                         {{/if}}
-                        {{#unless completedTasks}}
-                            <button id="completedTasks" class="btn btn1 btn-yellow btn-md width100">
-                                See Completed
-                            </button>
-                            <div class="break-sm"></div>
-                        {{/unless}}
                         {{#unless practice}}
                             <button id="practice" class="btn btn1 btn-green btn-md width100">
                                 Practice
@@ -40,6 +34,7 @@
                             <div class="break-sm"></div>
                         {{/unless}}
                     {{else}}
+                        <!-- #Hack -->
                         <div style="display: transparent">a</div>
                     {{/if}}
                 {{/if}}
@@ -60,9 +55,9 @@
                         {{#unless showTasks}}
                             {{> home_incomplete_tasks_main}}
                         {{/unless}}
-                        {{#if completedTasks}}
+                        <!-- {{#if completedTasks}}
                             {{> home_completed_tasks_main}}
-                        {{/if}}
+                        {{/if}} -->
                         {{#if practice}}
                             <!-- {{> practice_interface}} -->
                         {{/if}}
