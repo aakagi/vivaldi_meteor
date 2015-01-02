@@ -160,6 +160,14 @@ a {
             opacity: 1;
         }
     }
+    &.red {
+        &:hover {
+            color: $red;
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .ellipsis {

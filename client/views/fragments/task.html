@@ -2,35 +2,43 @@
 <!-- rendered from taskData -->
     <div class="row headerDark">
         <p class="col-sm-9 center">
-            {{getTask.duration}} Minutes - Due {{getTask.dueDate}} - {{getTask.points}} Points
+            {{getTask.duration}} Minutes - Due {{formatDate}} - {{getTask.points}} Points
         </p>
         <div class="col-sm-3 practicetag">
             <p>
-                {{getTask.taskType}}
+                {{getTask.type}}
             </p>
         </div>
     </div>
     <div class="block">
-        <a href="/task_view_student">
+        <a href="/task?id={{_id}}">
             <h6>
-                {{getTask.taskName}}
+                {{getTask.name}}
             </h6>
         </a>
-
-        <div class="break-sm"></div>
-
-        <p class="italic">
-            {{getTask.taskDuration}}
+        <p>
+            {{getTask.description}}
         </p>
+        {{className}}
+        <br>
+        {{#each sectionNames}}
+            {{> section_name}}
+        {{/each}}
 
         <div class="break-sm"></div>
 
+        <div class="break-sm"></div>
         {{#if isPracticeTask}}
 
         <div class="status-bar">
             <div class="status" style="width: {{completionFraction}}%;">
                 <p>
-                    {{completionFraction}}% - 06:30
+
+                    {{#unless completed}}
+                        {{completionFraction}}% 
+                    {{else}}
+                        COMPLETED
+                    {{/unless}}
                 </p>
             </div>
         </div>
@@ -44,12 +52,12 @@
                 </a>
             </div>
             <div class="col-sm-4">
-                <button id="submit" class="btn btn1 btn-blue btn-sm width100 disabled">
+                <button id="save" class="btn btn1 btn-blue btn-sm width100 disabled">
                     Save Progress
                 </button>
             </div>
             <div class="col-sm-4">
-                <button id="submit" class="btn btn1 btn-red btn-sm width100 disabled">
+                <button id="dismiss" class="btn btn1 btn-red btn-sm width100">
                     Dismiss
                 </button>
             </div>

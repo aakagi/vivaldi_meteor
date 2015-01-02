@@ -1,6 +1,21 @@
 Template.user_view.helpers({
     userClasses: userClasses,
     isTeacher: isTeacher,
+    studentProfile: function() {
+        return !isTeacher();
+    },
+    notInSameClass: function(){
+        var myID = Meteor.userId();
+        var thisID = Template.currentData._id;
+        return !studentsInSameClass(myID, thisID);
+    },
+    userIsMe: function() {
+        return Template.currentData()._id == Meteor.userId();
+    },
+    unrelatedStudent: function() {
+        return !isTeacher  && !studentsInSameClass(myID, thisID);
+    }
+
     // showClasses: function(){
     //     return Session.get('showClasses');
     // }, 

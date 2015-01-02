@@ -1,5 +1,6 @@
 Template.home_view.helpers({
     userClasses: userClasses,
+    studentSections: studentSections,
     isTeacher: isTeacher,
     showClasses: function(){
     	return Session.get('showClasses');
@@ -28,18 +29,18 @@ Template.home_view.events({
 		Session.set('allOtherClasses', true);
 	},
 	'click #showTasks': function(){
-		Session.set('showTasks', true);
-		Session.set('completedTasks', false);
-		Session.set('practice', false);
-	},
-	'click #completedTasks': function(){
 		Session.set('showTasks', false);
-		Session.set('completedTasks', true);
+		// Session.set('completedTasks', false);
 		Session.set('practice', false);
 	},
+	// 'click #completedTasks': function(){
+	// 	Session.set('showTasks', false);
+	// 	Session.set('completedTasks', true);
+	// 	Session.set('practice', false);
+	// },
 	'click #practice': function(){
-		Session.set('showTasks', false);
-		Session.set('completedTasks', false);
+		Session.set('showTasks', true);
+		// Session.set('completedTasks', false);
 		Session.set('practice', true);
 	},
 })

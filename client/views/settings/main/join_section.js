@@ -29,7 +29,10 @@ Template.join_section.helpers({
 
 Template.join_section.events({
     'click #joinSection': function() {
-        var sectionID = document.getElementById('selectSection').value;
+        //slightly hacky solution to problem of multiple fields in the document with the same value
+        var classData = Template.currentData();
+        var classId = classData._id;
+        var sectionID = document.getElementById(classId).value;
         console.log(sectionID);
         Sections.update({
             _id: sectionID
@@ -42,7 +45,22 @@ Template.join_section.events({
                 console.log(err);
                 setAlert('error', 'error writing to database');
             } else {
-                setAlert('info', 'added to sections!');
+                //add all tasks associated with that section to the student
+                //i.e. create taskData for every task whose due date is later than the present
+                var tasksAfterDate = sectionTasks(sectionID).filter(function(task) {
+                    return task.dueDate > new Date();
+                });
+                for (task in tasksAfterDate) {
+                    var newTaskData = {
+                        taskId: tasksAfterDate[task]._id,
+                        userId: Meteor.userId(),
+                        progress: 0, //seconds
+                        notes: "",
+                        complete: false
+                    };
+                    TasksData.insert(newTaskData);
+                }
+                setAlert('info', 'joined section!');
             }
         });
     }

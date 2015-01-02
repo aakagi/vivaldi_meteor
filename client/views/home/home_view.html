@@ -19,26 +19,23 @@
 
                 {{else}}
                     <!-- if student -->
-                    <!-- Hide buttons if student isn't in a class yet -->
-                    {{#if userClasses}}
+                    <!-- Hide buttons if student isn't in a section yet -->
+                    {{#if studentSections}}
                         {{#if showTasks}}
                             <button id="showTasks" class="btn btn1 btn-blue btn-md width100">
                                 Show Tasks
                             </button>
                             <div class="break-sm"></div>
                         {{/if}}
-                        {{#unless completedTasks}}
-                            <button id="completedTasks" class="btn btn1 btn-yellow btn-md width100">
-                                See Completed
-                            </button>
-                            <div class="break-sm"></div>
-                        {{/unless}}
                         {{#unless practice}}
                             <button id="practice" class="btn btn1 btn-green btn-md width100">
                                 Practice
                             </button>
                             <div class="break-sm"></div>
                         {{/unless}}
+                    {{else}}
+                        <!-- #Hack -->
+                        <div style="display: transparent">a</div>
                     {{/if}}
                 {{/if}}
             </div>
@@ -53,19 +50,22 @@
                     {{/if}}
                 {{else}}
                     <!-- Makes sure the user is in a class -->
-                    {{#if userClasses}}
+                    {{#if studentSections}}
                         <!-- if student -->
                         {{#unless showTasks}}
-                            <!-- {{> home_incomplete_tasks_main}} -->
+                            {{> home_incomplete_tasks_main}}
                         {{/unless}}
-                        {{#if completedTasks}}
-                            <!-- {{> home_completed_tasks_main}} -->
-                        {{/if}}
+                        <!-- {{#if completedTasks}}
+                            {{> home_completed_tasks_main}}
+                        {{/if}} -->
                         {{#if practice}}
                             <!-- {{> practice_interface}} -->
                         {{/if}}
                     {{else}}
                         {{> join_class}}
+                        {{#each userClasses}}
+                            {{> join_section}}
+                        {{/each}}
                     {{/if}}
                 {{/if}}
             </div>

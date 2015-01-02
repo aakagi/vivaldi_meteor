@@ -13,10 +13,6 @@
             {{#if isTeacher}}
                 <div class="col-md-8 col-lg-8">
                     {{> change_school}}
-                    {{#each userClasses}}
-                        {{> manage_class}}
-                        {{> assign_task}}
-                    {{/each}}
                 </div>
             {{else}}
                 <div class="col-md-8 col-lg-8">
