@@ -1,22 +1,33 @@
 <template name="students">
-    <a href="/user?id={{profile.id}}">
+    <div class="row">
         <p class="col-sm-8">
-            {{profile.firstName}} {{profile.lastName}} TODO: Get ID Param
+            <a href="/user?id={{_id}}">
+                {{profile.firstName}} {{profile.lastName}}
+            </a>
         </p>
-    </a>
-    <a id="deleteStudent">
-        Delete
-    </a>
+        <a id="deleteStudent" style="padding-left: 6em;">
+            Delete
+        </a>
+    </div>
 </template>
+
 <template name="waitlist_students">
-    <a href="/user?id={{profile.id}}">
+    <div class="row">
         <p class="col-sm-8">
-            {{profile.firstName}} {{profile.lastName}} TODO: Get ID Param
+            <a href="/user?id={{_id}}">
+                {{profile.firstName}} {{profile.lastName}}
+            </a>
         </p>
-    </a>
-    <a id="confirmStudent">
-        Confirm
-    </a>
+        <p>
+            <a id="confirmStudent">
+                Confirm
+            </a>
+            <a href="">
+                &nbsp;&nbsp; TODO: Deny
+            </a>
+        </p>
+
+    </div>
 </template>
 
 <template name="manage_class">
@@ -53,9 +64,23 @@
                 {{#each studentList}}
                     {{> students}}
                 {{/each}}
+                <br>
+                {{#if waitList}}
+                    <h6>Waitlist</h6>
+                {{/if}}
                 {{#each waitList}}
                     {{> waitlist_students}}
                 {{/each}}
+            </div>
+
+            <div class="input-group clear">
+                <h6>
+                    TODO: List of Sections
+                </h6>
+                <div class="break-sm"></div>
+                <h6>
+                    TODO: Delete/modify sections
+                </h6>
             </div>
 
             <div class="row">
