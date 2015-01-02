@@ -3,7 +3,7 @@
 </template>
 
 <template name="teacher_task">
-<!-- rendered from taskData -->
+{{#if sectionNames}}
     <div class="row headerDark">
         <p class="col-sm-9 center">
             {{duration}} Minutes - Due {{formatDate}} - {{points}} Points
@@ -24,4 +24,6 @@
             {{> section_name}}
         {{/each}}
     </div>
+
+{{/if}}
 </template>

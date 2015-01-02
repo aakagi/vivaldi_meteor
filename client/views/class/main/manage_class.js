@@ -121,3 +121,10 @@ Template.class_students.events({
         });
     }
 });
+
+Template.class_sections.events({
+    'click #deleteSection': function(){
+        var sectionID = Template.currentData()._id;
+        Sections.remove({_id: sectionID});
+    }
+})
