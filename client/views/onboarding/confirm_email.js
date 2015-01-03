@@ -1,8 +1,8 @@
 Template.confirm_email.helpers({
-    newId: function(){
-        var newUser = Template.currentData().newId;
-        return newUser;
-    }
+    // newId: function(){
+    //     var newUser = Session.get('newId');
+    //     return newUser;
+    // }
 });
 Template.confirm_email.events({
     'click #resendEmail': function() {
@@ -12,8 +12,8 @@ Template.confirm_email.events({
         //the weird syntax makes it possibly more extensible in the future, maybe
         var buttonFunc = function(){
             // user ID saved in the session, will be erased on login
-            // var userid = Session.get('newUserId');
-            Accounts.sendEnrollmentEmail(newId);
+            var userId = Session.get('newId');
+            Accounts.sendEnrollmentEmail(userId);
         };
         buttonFunc();
     }

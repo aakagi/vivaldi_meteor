@@ -1,5 +1,5 @@
-confirmRedirect = function(newId) {
-    Router.go('confirm_email?id=' + newId);
+confirmRedirect = function() {
+    Router.go('confirm_email');
 }
 
 Template.sign_up.events({
@@ -22,9 +22,10 @@ Template.sign_up.events({
                     }
                 } else {
                     // Session.set('buttonName', 'Resend Email');
-                    // Session.set('newUserId', newId);
+                    // Session.set('email', email);
+                    // Session.set('newId', newId);
                     // setAlert('info', 'Awesome! You\'ll receieve an email shortly to finish making your account.');
-                    confirmRedirect(newId);
+                    setTimeout(confirmRedirect(), 1000);
                 }
             });
         }

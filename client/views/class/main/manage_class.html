@@ -63,14 +63,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <button class="btn btn-md btn-blue width100">
-                        <!-- toggles delete buttons and allows you to change section names -->
-                        Edit TODO
+                        <!-- allows you to change section names -->
+                        Edit Names TODO
                     </button>
                 </div>
                 <div class="col-sm-6">
                     <button class="btn btn-md btn-green width100">
                         <!-- creates input box for section creation -->
-                        + Add TODO
+                        + Add Sections TODO
                     </button>
                 </div>
             </div>
@@ -103,22 +103,28 @@
 
 <!-- Other Templates -->
 
+<!-- Sections -->
 <template name="class_sections">
     <div class="row">
-        <h6 class="col-sm-8">
-            <a href="/section?id={{_id}}">
-                {{name}}
-            </a>
+        <h6 class="col-sm-6">
+            <div class="center">
+                <a href="/section?id={{_id}}">
+                    {{name}}
+                </a>
+            </div>
         </h6>
-        <h6>
-            <a class="red" id="deleteSection">
-                Delete
-            </a>
+        <h6 class="col-sm-6">
+            <div class="center">
+                <a class="red" id="deleteSection">
+                    Delete (TODO - confirm delete)
+                </a>
+            </div>
         </h6>
     </div>
     <div class="break-sm"></div>
 </template>
 
+<!-- Students -->
 <template name="class_students">
     <div class="row">
         <p class="col-sm-8">
@@ -132,6 +138,7 @@
     </div>
 </template>
 
+<!-- Waitlist -->
 <template name="waitlist_students">
     <div class="row">
         <p class="col-sm-8">
@@ -151,6 +158,7 @@
     </div>
 </template>
 
+<!-- If no students in class -->
 <template name="welcome_no_students">
     <h6 class="center">
         You currently have no students!
