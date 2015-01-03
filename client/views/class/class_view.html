@@ -5,6 +5,7 @@
                 {{#unless notInThisClass}}
                     {{#if isTeacher}}
                         <div class="block">
+                            <!-- <h4>TODO: Build notInThisClass</h4> -->
                             <p>School</p>
                             <h5>{{school}}</h5>
                             <div class="break-sm"></div>
@@ -49,7 +50,7 @@
                 {{#if isTeacher}}
 
                     {{#unless viewTasks}}
-                        {{> assign_task}}
+                        {{> assign_task_main}}
                         {{> class_task_list_main}}
                     {{/unless}}
                     {{#if manageClass}}

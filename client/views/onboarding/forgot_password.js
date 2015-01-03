@@ -16,8 +16,8 @@ Template.forgot_password.events({
                         Session.set('alertType', 'error');
                     }
                 } else {
-                    Session.set('alert', 'Email Sent. Please check your mailbox to reset your password.');
-                    Session.set('alertType', 'info');
+                    // From sign_up.js - I know it's poorly organized, but get over it. That's what the comment is for.
+                    confirmRedirect();
                 }
             });
         }

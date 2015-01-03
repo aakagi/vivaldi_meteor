@@ -1,10 +1,9 @@
+// When the enrollemnt link is clicked, the token is saved to the session
 Accounts.onEnrollmentLink(function(token, success) {
     var tokenVar = token;
     Session.set('tokenVar', token);
     return tokenVar;
 });
-
-
 
 Template.onboard_form.helpers({
     instrumentList: function () {
@@ -13,8 +12,6 @@ Template.onboard_form.helpers({
     teacherSignUp: function () {
         return Session.get("teacherSignUp");
     }
-
-
 });
 
 Template.onboard_form.events({
@@ -36,25 +33,14 @@ Template.onboard_form.events({
                     honorific = onboardForm.find('#honorific').val(),
                     lastName = onboardForm.find('#lastName').val();
 
-                console.log(school);
-                console.log(honorific);
-                console.log(lastName);
                 data = {school: school, firstName: honorific, lastName: lastName, teacher: true};
         } else {
             var instrument = onboardForm.find('#selectInstrument').val(),
                 firstName = onboardForm.find('#firstName').val(),
                 lastName = onboardForm.find('#lastName').val();
 
-                console.log(instrument);
-                console.log(firstName);
-                console.log(lastName);
                 data = {instrument: instrument, firstName: firstName, lastName: lastName, teacher: false};
         }
-
-        console.log(tokenVar);
-        console.log(password);
-        console.log(passwordConfirm);
-        console.log(data);
 
         if ( 
             (teacherSignUp || isNotEmpty(selectInstrument) ) 
@@ -95,7 +81,7 @@ Template.onboard_form.events({
             }); 
         }
     },
-    'change .teacher-sign-up input': function (event) {
-        Session.set("teacherSignUp", event.target.checked);
+    'change .teacher-sign-up input': function (evt) {
+        Session.set("teacherSignUp", evt.target.checked);
     }
 });

@@ -458,6 +458,11 @@
 
 }
 
+// Unorganized new stuff - Alex
+.lots-of-text {
+    padding: 1em 2em;
+    line-height: 1.5;
+}
 
 /*
 ------------------------
@@ -550,4 +555,13 @@
 
 
 
-
+.clickable {
+    cursor: pointer;
+    /*Makes it so that clickable things don't get highlighted*/
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

@@ -1,3 +1,7 @@
+confirmRedirect = function() {
+    Router.go('confirm_email');
+}
+
 Template.sign_up.events({
     'submit #signUpForm': function(e, t) {
         e.preventDefault();
@@ -17,9 +21,11 @@ Template.sign_up.events({
                         setAlert('error', 'Sorry, something went wrong. Please email vivaldimailer@gmail.com to report your problem.');
                     }
                 } else {
-                    Session.set('buttonName', 'Resend Email');
-                    Session.set('newUserId', newId);
-                    setAlert('info', 'Awesome! You\'ll receieve an email shortly to finish making your account.');
+                    // Session.set('buttonName', 'Resend Email');
+                    // Session.set('email', email);
+                    // Session.set('newId', newId);
+                    // setAlert('info', 'Awesome! You\'ll receieve an email shortly to finish making your account.');
+                    setTimeout(confirmRedirect(), 1000);
                 }
             });
         }

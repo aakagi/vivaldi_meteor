@@ -3,7 +3,7 @@ var video_id;
 var formType;
 var task_duration_seconds;
 
-Template.assign_task.rendered = function() {
+Template.assign_task_main.rendered = function() {
 
     $('.form').css('display', 'none');
     $('.field').css('display', 'none');
@@ -35,7 +35,7 @@ Template.assign_task.rendered = function() {
             // Change input labels for name and description to subject and body
             $('#taskNameLabel').html('Task Name');
             $('#taskName').attr('placeholder', 'Practice Four Seasons');
-            $('#taskDescriptionLabel').html('Task Description');
+            $('#taskDescriptionLabel').html('Task Description (Optional)');
             $('#taskDescription').attr('placeholder', 'Practice measures 32-64');
 
             // Updates points on duration change
@@ -63,7 +63,7 @@ Template.assign_task.rendered = function() {
             // Change input labels for name and description to subject and body
             $('#taskNameLabel').html('Task Name');
             $('#taskName').attr('placeholder', 'Four Seasons recording');
-            $('#taskDescriptionLabel').html('Task Description');
+            $('#taskDescriptionLabel').html('Task Description (Optional)');
             $('#taskDescription').attr('placeholder', 'Listen to the recording by Friday');
 
             // Get id for video on link change
@@ -133,7 +133,7 @@ Template.assign_task.rendered = function() {
 
 }
 
-Template.assign_task.helpers({
+Template.assign_task_main.helpers({
     sectionList: function() {
         var classData = Template.currentData(); //template initalized with class data
         var classId = classData._id;
@@ -153,7 +153,7 @@ Template.assign_task.helpers({
     }
 });
 
-Template.assign_task.events({
+Template.assign_task_main.events({
         'click #assignTask': function() {
             //get all values from fields
             var classId = Template.currentData()._id;
