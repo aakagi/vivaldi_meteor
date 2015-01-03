@@ -26,6 +26,13 @@ Template.manage_class.events({
                 setAlert('info', 'Class updated successfully!');
             }
         });
+    },
+    'click #deleteClass': function() {
+        if (confirm("Are you absolutely certain about deleting this class? You will not be able to undo changes.") == true) {
+            // Delete Class
+        } else {
+            console.log("Action Cancelled")
+        }   
     }
 });
 
@@ -106,6 +113,7 @@ Template.class_students.events({
             var studentList = classData.students;
             var indx = studentList.indexOf(studentID);
             studentList.splice(indx, 1);
+            // TODO: Delete student from sections as well!
             Classes.update({
                 _id: classData._id
             }, {
@@ -128,11 +136,11 @@ Template.class_students.events({
 
 Template.class_sections.events({
     'click #deleteSection': function(){
-        var sectionID = Template.currentData()._id;
-        var classData = Template.parentData(1);
-        var sectionList = classData.sections;
-        var indx = sectionList.indexOf(sectionID);
         if (confirm("Are you sure you want to delete this section?") == true) {
+            var sectionID = Template.currentData()._id;
+            var classData = Template.parentData(1);
+            var sectionList = classData.sections;
+            var indx = sectionList.indexOf(sectionID);
             // Remove from class array
             Classes.update({
                 _id: classData._id
