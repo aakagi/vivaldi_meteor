@@ -2,6 +2,7 @@
 
         <div class="row">
             <div class="col-md-4 col-lg-4">
+                {{> welcome_name_side}}
                 {{#if isTeacher}}
 
                     {{#if showClasses}}
@@ -38,6 +39,7 @@
                         <div style="display: transparent">a</div>
                     {{/if}}
                 {{/if}}
+                {{> notifications}}
             </div>
             <div class="col-md-8 col-lg-8">
                 {{#if isTeacher}}

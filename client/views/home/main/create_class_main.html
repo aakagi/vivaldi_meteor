@@ -1,11 +1,22 @@
+<template name="pre_made_ensembles">
+<option value="{{ensembleName}}">{{ensembleName}}</option>
+</template>
+
 <template name="create_class_main">
+<!-- TEACHERS ONLY -->
     <div class="block">
         <div class="preview">
-            <h6><i class="fa fa-chevron-down"></i> Create a new Class</h6>
+            <div class="break-sm"></div>
+            <h6>
+                <i class="fa fa-plus"></i>
+                    Create a New Class
+                <i class="fa right fa-chevron-down"></i>
+            </h6>
+            <div class="break-sm"></div>
         </div>
         <div class="form shadedInputs">
             <h6>
-                Create a Class (Teachers)
+                Create a Class
             </h6>
             <div class="break-sm"></div>
             <div class="input-group clear">
@@ -15,24 +26,47 @@
                     </label>
                 </div>
                 <div class="group-input">
-                    <input id="className" type="text" name="className" placeholder="Symphony Orchestra" class="input input-sm">
+                    <input id="className" type="text" name="className" placeholder="Symphony Orchestra" class="input input-md">
                 </div>
             </div>
+
+            <div class="break-sm"></div>
 
             <div class="input-group clear">
                 <div class="group-label clear">
                     <label for="sectionNames">
-                        Sections
+                        Ensemble Type
                     </label>
                 </div>
                 <div class="group-input">
-                    <input id="sectionNames" type="text" name="sectionNames" placeholder="Violin 1, Violin 2, Viola, Cello, Bass" class="input input-sm">
+                    <select class="input border input-md" id="selectPreMade">
+                        <option value="null">Select One...</option>
+                        {{#each preMadeEnsembles}}
+                            {{> pre_made_ensembles}}
+                        {{/each}}
+                    </select>
                 </div>
             </div>
+
+            <div class="break-sm"></div>
+
+            <div class="input-group clear">
+                <div class="group-label clear">
+                    <label for="sectionNames">
+                        Sections Separated by a Comma and a Space
+                    </label>
+                </div>
+                <div class="group-input">
+                    <input id="sectionNames" type="text" name="sectionNames" value="{{preMadeSections}}" placeholder="Violin 1, Violin 2, Viola, Cello, Bass" class="input input-md">
+                </div>
+            </div>
+
+            <div class="break-sm"></div>
 
             <div class="row">
                 <div class="col-sm-8">
                     <div class="input-group">
+                        <!-- TODO: Have button become enabled when certain requirements are met -->
                         <button id="createClass" class="btn btn1 btn-green btn-sm">
                             Create Class
                         </button>
@@ -46,6 +80,15 @@
                     </div>
                 </div>
             </div>
+
+            <div class="break-sm"></div>
+
+            <p>
+                Tip: Sections are treated like chat groups with a section leader. There will also be a 'Section Leaders' chat that you will be a part of, where you will be able to tell section leaders what to communicate to the rest of their respective sections. You will be able to create more sections later.
+            </p>
+
+            <div class="break-sm"></div>
+
         </div>
     </div>
 </template>
