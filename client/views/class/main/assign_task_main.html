@@ -2,11 +2,17 @@
 	<option value="{{_id}}">{{name}}</option>
 </template>
 
-<template name="assign_task">
+<template name="assign_task_main">
     <div class="block">
+        <!-- Preview -->
         <div class="preview">
-            <h6><i class="fa fa-chevron-down"></i> Share something with your class</h6>
+            <h6>
+                <i class="fa fa-plus"></i>
+                 Share something with your class
+                <i class="fa fa-chevron-down right"></i>
+            </h6>
         </div>
+        <!-- Select Task Type -->
 		<div class="form shadedInputs">
 			<h6>
                 What are you sharing?
@@ -41,7 +47,7 @@
                 <div class="description field">
                     <div class="break-sm"></div>
                     <div class="group-label clear">
-                        <label id="taskDescriptionLabel" for="taskDescription">Task Description</label>
+                        <label id="taskDescriptionLabel" for="taskDescription">Task Description (Optional)</label>
                     </div>
                     <div class="group-input">
                         <input id="taskDescription" type="text" name="taskDescription" placeholder="Practice measures 32-64" class="input input-sm">
