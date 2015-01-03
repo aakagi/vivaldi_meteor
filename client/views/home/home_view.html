@@ -11,9 +11,9 @@
                         </button>
                         <div class="break-sm"></div>
                     {{/if}}
-                    {{#unless allOtherClasses}}
-                        <button id="allOtherClass" class="btn btn1 btn-red btn-md width100">
-                            Challenge Classes
+                    {{#unless seeLeaderboards}}
+                        <button id="allOtherClass" class="btn btn1 btn-yellow btn-md width100">
+                            Leaderboards
                         </button>
                         <div class="break-sm"></div>
                     {{/unless}}
@@ -39,7 +39,8 @@
                         <div style="display: transparent">a</div>
                     {{/if}}
                 {{/if}}
-                {{> notifications}}
+                <!-- {{> notifications}} -->
+                {{> awesome_side}}
             </div>
             <div class="col-md-8 col-lg-8">
                 {{#if isTeacher}}
@@ -47,8 +48,9 @@
                         {{> create_class_main}}
                         {{> home_class_list_main}}
                     {{/unless}}
-                    {{#if allOtherClasses}}
-                        {{> other_classes_main}}
+                    {{#if seeLeaderboards}}
+                        <!-- {{> other_classes_main}} -->
+                        <div class="block"><h1>TODO: > leaderboards</h1></div>
                     {{/if}}
                 {{else}}
                     <!-- Makes sure the user is in a class -->
@@ -64,6 +66,7 @@
                             <!-- {{> practice_interface}} -->
                         {{/if}}
                     {{else}}
+                        <!-- In Settings folder -->
                         {{> join_class}}
                         {{#each userClasses}}
                             {{> join_section}}

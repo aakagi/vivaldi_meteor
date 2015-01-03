@@ -5,8 +5,8 @@ Template.home_view.helpers({
     showClasses: function(){
     	return Session.get('showClasses');
     }, 
-    allOtherClasses: function(){
-    	return Session.get('allOtherClasses');
+    seeLeaderboards: function(){
+    	return Session.get('seeLeaderboards');
     },
     showTasks: function(){
     	return Session.get('showTasks');
@@ -22,11 +22,11 @@ Template.home_view.helpers({
 Template.home_view.events({
 	'click #showClasses': function(){
 		Session.set('showClasses', false);
-		Session.set('allOtherClasses', false);
+		Session.set('seeLeaderboards', false);
 	},
 	'click #allOtherClass': function(){
 		Session.set('showClasses', true);
-		Session.set('allOtherClasses', true);
+		Session.set('seeLeaderboards', true);
 	},
 	'click #showTasks': function(){
 		Session.set('showTasks', false);

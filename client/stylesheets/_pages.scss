@@ -475,3 +475,13 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+.section-management, .student-management {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-top: 1px dotted black;
+    border-bottom: 1px dotted black;
+    max-height: 250px;
+    overflow-y: scroll;
+}
+

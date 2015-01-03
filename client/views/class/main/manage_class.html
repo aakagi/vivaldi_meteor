@@ -34,6 +34,7 @@
     
             <div class="col-sm-4">
                 <button class="btn btn-md btn-red width100">
+                    <!-- Make sure that deleting removes all associated sections, tasks, and taskdata -->
                     Delete TODO
                 </button>
             </div>
@@ -54,11 +55,13 @@
                 Section Management
             </h4>
             <div class="break-sm"></div>
-            {{#if sectionList}}
-                {{#each sectionList}}
-                    {{> class_sections}}
-                {{/each}}
-            {{/if}}
+            <div class="section-management">
+                {{#if sectionList}}
+                    {{#each sectionList}}
+                        {{> class_sections}}
+                    {{/each}}
+                {{/if}}
+            </div>
             <div class="break-sm"></div>
             <div class="row">
                 <div class="col-sm-6">
@@ -83,20 +86,25 @@
                 Student Management
             </h4>
             <div class="break-sm"></div>
-            {{#if studentList}}
-                {{#each studentList}}
-                    {{> class_students}}
-                {{/each}}
-            {{else}}
-                {{> welcome_no_students}}
-            {{/if}}
+            <div class="student-management">
+                {{#if studentList}}
+                    {{#each studentList}}
+                        {{> class_students}}
+                    {{/each}}
+                {{else}}
+                    {{> welcome_no_students}}
+                {{/if}}
+            </div>
             <br>
+            
             {{#if waitList}}
                 <h6>Waitlist</h6>
+                <div class="student-management">
+                    {{#each waitList}}
+                        {{> waitlist_students}}
+                    {{/each}}
+                </div>
             {{/if}}
-            {{#each waitList}}
-                {{> waitlist_students}}
-            {{/each}}
         </div>
     </div>
 </template>
@@ -116,7 +124,8 @@
         <h6 class="col-sm-6">
             <div class="center">
                 <a class="red" id="deleteSection">
-                    Delete (TODO - confirm delete)
+                    <!-- Remove section id from class array -->
+                    Delete
                 </a>
             </div>
         </h6>
@@ -133,6 +142,7 @@
             </a>
         </p>
         <a id="deleteStudent" style="padding-left: 6em;">
+            <!-- TODO - Delete taskdata with this student id ? -->
             Delete
         </a>
     </div>
@@ -150,7 +160,7 @@
             <a id="confirmStudent">
                 Confirm
             </a>
-            <a href="">
+            <a id="denyStudent">
                 &nbsp;&nbsp; TODO: Deny
             </a>
         </p>
