@@ -1,5 +1,66 @@
+<template name="section_name">
+{{name}}
+</template>
+
+<template name="teacher_task">
+{{#if sectionNames}}
+    <div class="row headerDark">
+        <p class="col-sm-9 center">
+            {{duration}} Minutes - Due {{formatDate}} - {{points}} Points
+        </p>
+        <div class="col-sm-3 practicetag">
+            <p>
+                {{type}}
+            </p>
+        </div>
+    </div>
+    <div class="block">
+        <p>
+            <h6>
+                {{name}}
+            </h6>
+            <br>{{description}}
+            <br>Sections: 
+            {{#each sectionNames}}
+                {{> section_name}}
+            {{/each}}
+        </p>
+        <button class="btn btn-sm btn-red" id="delete">
+            Delete
+        </button>
+    </div>
+{{/if}}
+</template>
+
+<template name="welcome_to_tasks">
+    <div class="block">
+        <h2 class="center">
+            How To: Task Creation
+        </h2>
+        <p class="lots-of-text">
+            &nbsp;&nbsp;&nbsp;&nbsp;Vivaldi allows you to assign various types of tasks to your students. Using the Task Creation block above, you may select your task type. These include Practice, Audio, and Post.
+            <br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Practice Tasks will allow you to inform your students which sections you would like them to practice, and then upon completion, the student will receive bonus points based on the practice duration, and you will be able to see which students have completed the task and which ones haven't.
+            <br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Audio Tasks allow you to send your students youtube videos. Just find the video you want your students to see and paste the URL into the URL field, and the video will magically appear for your students to see! Once again, your students will earn points based on the duration of the video, and you will be able to see who has seen the whole thing.
+            <br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Post Tasks are fairly simple. Students will only earn points for these tasks once per day, but you will be able to post as many of these as you'd like. These tasks consist of a Title and Description, which is ideal for communicating what you'll be doing in class the next day, so that your students can be prepared for class.
+            <br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Once again, these posts will be availible at vivaldibeta.com/demo, if you want to refer to them. If you have further questions, please feel free to chat us in the sidebar or email us at vivaldimailer.com.
+            <br><br>
+            Best,
+            <br><br>
+            -Vivaldi Team
+        </p>
+    </div>
+</template>
+
 <template name="class_task_list_main">
+    {{#if getTasks}}
         {{#each getTasks}}
         	{{> teacher_task}}
         {{/each}}
+    {{else}}
+        {{> welcome_to_tasks}}
+    {{/if}}
 </template>
