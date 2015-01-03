@@ -53,6 +53,22 @@
                 background: none;
                 color: nth($colors, $i);
             }
+
+            &-inverse {
+                background: none;
+                color: nth($colors, $i);
+                border: 1px solid nth($colors, $i);
+
+                &:hover {
+                    background-color: nth($colors, $i);
+                    @if $colorname == white {
+                        color: $gray;
+                    } @else {
+                        color: $white;
+                    }
+                }
+            }
+
             &.disabled {
                 opacity: 0.30;
                 cursor: default !important;
