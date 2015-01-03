@@ -1,3 +1,124 @@
+<template name="manage_class">
+
+    <div class="block">
+        <div class="form shadedInputs">
+            <div class="input-group clear">
+                <h4>
+                    Class Management
+                </h4>
+                <div class="break-sm"></div>
+                <div class="group-label clear">
+                    <label for="className">
+                        Change Class Name
+                    </label>
+                </div>
+                <div class="group-input">
+                    <input id="newName" type="text" name="newName" placeholder="{{name}}" class="input input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="input-group clear">
+            <label class="is-locked">
+                
+                <div class="break-md"></div>
+            </label>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-4">
+                <input id="lockedBox" type="checkbox" checked="{{isLocked}}" />
+                <label for="lockedBox" class="clickable">
+                    <a>Click here to lock your class from new students.</a>
+                </label>
+            </div>
+    
+            <div class="col-sm-4">
+                <button class="btn btn-md btn-red width100">
+                    Delete TODO
+                </button>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <button id="saveClass" class="btn btn-gray btn-md width100">
+                        Save Class Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="block">
+        <div class="input-group clear">
+            <h4>
+                Section Management
+            </h4>
+            <div class="break-sm"></div>
+            {{#if sectionList}}
+                {{#each sectionList}}
+                    {{> class_sections}}
+                {{/each}}
+            {{/if}}
+            <div class="break-sm"></div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <button class="btn btn-md btn-blue width100">
+                        <!-- toggles delete buttons and allows you to change section names -->
+                        Edit TODO
+                    </button>
+                </div>
+                <div class="col-sm-6">
+                    <button class="btn btn-md btn-green width100">
+                        <!-- creates input box for section creation -->
+                        + Add TODO
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="input-group clear">
+            <h4>
+                Student Management
+            </h4>
+            <div class="break-sm"></div>
+            {{#if studentList}}
+                {{#each studentList}}
+                    {{> class_students}}
+                {{/each}}
+            {{else}}
+                {{> welcome_no_students}}
+            {{/if}}
+            <br>
+            {{#if waitList}}
+                <h6>Waitlist</h6>
+            {{/if}}
+            {{#each waitList}}
+                {{> waitlist_students}}
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+<!-- Other Templates -->
+
+<template name="class_sections">
+    <div class="row">
+        <h6 class="col-sm-8">
+            <a href="/section?id={{_id}}">
+                {{name}}
+            </a>
+        </h6>
+        <h6>
+            <a class="red" id="deleteSection">
+                Delete
+            </a>
+        </h6>
+    </div>
+    <div class="break-sm"></div>
+</template>
+
 <template name="class_students">
     <div class="row">
         <p class="col-sm-8">
@@ -29,83 +150,14 @@
 
     </div>
 </template>
-<template name="class_sections">
-    <div class="row">
-        <p class="col-sm-8">
-            <a href="/section?id={{_id}}">
-                {{name}}
-            </a>
-        </p>
-        <p>
-            <a id="deleteSection">
-                Delete
-            </a>
-        </p>
-    </div>
+
+<template name="welcome_no_students">
+    <h6 class="center">
+        You currently have no students!
+    </h6>
+    <p class="lots-of-text">
+        Once your students create an account at vivaldibeta.com, they will be able to add this class. When a student adds a class, you, the teacher, will first have to accept them as a student, by clicking on the 'confirm' button that will appear next to their name. You will also be able to deny students who are not in your class, and once everyone is fully signed up, you'll be able to 'lock' your class with the checkbox above, to keep other from being able to request to join your class.
+    </p>
 </template>
 
-<template name="manage_class">
-    <div class="block">
-        <div class="form shadedInputs">
-            <div class="input-group clear">
-                <h6>
-                    Manage {{name}} (Teachers)
-                </h6>
-                <div class="break-sm"></div>
-                <div class="group-label clear">
-                    <label for="className">
-                        Change Class Name
-                    </label>
-                </div>
-                <div class="group-input">
-                    <input id="newName" type="text" name="newName" placeholder="{{name}}" class="input input-sm">
-                </div>
-            </div>
 
-            <div class="input-group clear">
-                <label class="is-locked">
-                    <input id="lockedBox" type="checkbox" checked="{{isLocked}}" />
-                        Click here to lock your class from letting new students join.
-                    <div class="break-md"></div>
-                </label>
-            </div>
-
-            <div class="input-group clear">
-                <h6>
-                    List of Students
-                </h6>
-                <div class="break-sm"></div>
-                {{#each studentList}}
-                    {{> class_students}}
-                {{/each}}
-                <br>
-                {{#if waitList}}
-                    <h6>Waitlist</h6>
-                {{/if}}
-                {{#each waitList}}
-                    {{> waitlist_students}}
-                {{/each}}
-            </div>
-
-            <div class="input-group clear">
-                <h6>
-                    TODO: List of Sections
-                </h6>
-                <div class="break-sm"></div>
-                {{#each sectionList}}
-                    {{> class_sections}}
-                {{/each}}
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="input-group">
-                        <button id="saveClass" class="btn btn1 btn-gray btn-sm">
-                            Save Class Changes
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
