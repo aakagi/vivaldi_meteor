@@ -179,7 +179,7 @@ Template.assign_task_main.events({
                 name: taskName,
                 description: taskDescription,
                 sections: sectionIds,
-                duration: taskDuration,
+                duration: taskDuration/60,
                 youtubeURL: youTube,
                 dueDate: dueDate,
                 creationDate: new Date(),

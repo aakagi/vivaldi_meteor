@@ -15,16 +15,23 @@
         </div>
     </div>
     <div class="block">
-        <p>
-            <h6>
+        <h4>
+            <a href="/task?id={{_id}}">
                 {{name}}
-            </h6>
-            <br>{{description}}
-            <br>Sections: 
+            </a>
+        </h4>
+        <div class="break-sm"></div>
+        <p>
+            Description: {{description}}
+        </p>
+        <p>
+            Sections
+        </p>
+        <h6>
             {{#each sectionNames}}
                 {{> section_name}}
             {{/each}}
-        </p>
+        </h6>
         <button class="btn btn-sm btn-red" id="delete">
             Delete
         </button>
