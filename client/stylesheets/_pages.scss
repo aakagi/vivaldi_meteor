@@ -226,7 +226,7 @@
     }
     .body {
         width: 100%;
-        height: 540px;
+        max-height: 540px;
         padding: 2em;
         box-sizing: border-box;
         overflow: scroll;
