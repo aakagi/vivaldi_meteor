@@ -204,11 +204,36 @@
 ------------------------
 */
 
-.block {
-    .preview:hover {
-        h6, i {
-            color: $blue;
-            cursor: pointer;
+.block.class-task {
+    padding: 0 !important;
+    overflow: hidden;
+
+    .header {
+
+        box-sizing: border-box;
+        padding: 0.5em 1em;
+        // border-bottom: 1px solid $gray;
+        box-shadow: 0 0 1em $gray;
+
+        .form {
+            margin: 1em;
+        }
+    }
+    .body {
+        width: 100%;
+        height: 540px;
+        padding: 2em;
+        box-sizing: border-box;
+        overflow: scroll;
+        // background-color: $light-gray;
+
+        .task {
+            border: 1px solid $light-gray;
+            border-radius: 4px;
+
+            .task-title {
+                
+            }
         }
     }
 }
