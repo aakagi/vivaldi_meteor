@@ -100,10 +100,19 @@ Template.create_class_main.events({
             //add teacher section
             teacherSectionDoc = {
                 name: "Teachers",
-                users: [userId]
+                users: [userId],
+                order: sectionIDs.length
             }
             teacherSectionID = Sections.insert(teacherSectionDoc);
             sectionIDs.push(teacherSectionID);
+            sectionLeadersDoc =  {
+                name: "Section Leaders",
+                users: [],
+                order: sectionIDs.length,
+                leader: userId
+            }
+            sectionLeadersID = Sections.insert(sectionLeadersDoc);
+            sectionIDs.push(sectionLeadersID);
 
             classDoc = {
                 name: className,

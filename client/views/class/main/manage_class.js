@@ -156,6 +156,14 @@ Template.manage_class.events({
 
                 if (newLeader != 'noleader' && newLeader != sectionData.leader) {
                     console.log("saving new leader");
+
+                    //remove old leader from leaders section
+                    var selector = {name: "Section Leaders", _id: {$in: classData.sections}}
+                    if (sectionData.leader){
+                        Sections.update(selector, {$pull: {users: sectionData.leader}});
+                    }
+
+
                     //save new leader
                     Sections.update({
                         _id: sectionID
@@ -164,6 +172,7 @@ Template.manage_class.events({
                             leader: newLeader
                         }
                     });
+                    Sections.update(selector, {$push: {users: newLeader}});
                 }
                 if (newOrder) {
                     //save new order
@@ -192,16 +201,22 @@ Template.manage_class.events({
         console.log("confirming");
         var sectionName = document.getElementById('newAddedSection').value
         console.log(sectionName);
-        if (sectionName){
+        if (sectionName) {
             //get the class data
             var classData = Template.currentData();
             var newSectionDoc = {
-                    name: sectionName,
-                    users: [],
-                    order: classData.sections.length
-                };
+                name: sectionName,
+                users: [],
+                order: classData.sections.length
+            };
             var sectionID = Sections.insert(newSectionDoc);
-            Classes.update({_id: classID}, {$push:{sections: sectionID}});
+            Classes.update({
+                _id: classID
+            }, {
+                $push: {
+                    sections: sectionID
+                }
+            });
         }
         Session.set('confirmAddedSection', true);
         Session.set('addNewSection', false);
@@ -210,8 +225,8 @@ Template.manage_class.events({
         Session.set('confirmAddedSection', false);
         Session.set('addNewSection', true);
 
-       
-        
+
+
     },
 });
 
