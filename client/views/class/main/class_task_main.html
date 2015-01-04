@@ -6,11 +6,14 @@
             <div class="preview">
                 <div class="break-sm"></div>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <button id="openCreateTask" class="btn btn1 btn-green btn-sm left"><i class="fa fa-plus"></i> New</button>
                     </div>
-                    <div class="col-sm-6">
-                        <button class="btn btn1 btn-gray btn-sm right">Show Complete</button>
+                    <div class="col-sm-4">
+                        <h5 class="task-view-title">Current</h5>
+                    </div>
+                    <div class="col-sm-4">
+                        <button class="btn btn1 btn-gray btn-sm right">Show Past</button>
                     </div>
                 </div>
                 <div class="break-sm"></div>
@@ -25,14 +28,17 @@
                 <div class="break-sm"></div>
 
                 <div class="row formTypes">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="type" id="practice">Practice Task</div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="type" id="audio">Audio Task</div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="type" id="post">Post</div>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="cancelClass btn btn1 btn-red-inverse btn-sm width100">Cancel</button>
                     </div>
                 </div>
 
@@ -123,17 +129,10 @@
 
                     <div class="formButtons field row">
                         <div class="break-sm"></div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-12">
                             <div class="input-group">
                                 <button id="assignTask" class="btn btn1 btn-green btn-sm">
                                     Assign Task
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <button id="cancelClass" class="btn btn1 btn-gray btn-sm">
-                                    Cancel
                                 </button>
                             </div>
                         </div>
@@ -146,11 +145,84 @@
         </div>
 
         <div class="body">
-            <div class="task">
-                <div class="task-title">
-                    <h5>{{name}}</h5>
+            {{#each allTasks}}
+                <div class="task">
+                    {{#if type_practice}}
+                        <div class="task-title row">
+                            <div class="col-sm-2">
+                                <h5><i class="fa fa-music"></i></h5>
+                            </div>
+                            <div class="col-sm-10">
+                                <h5 class="task-name">{{name}} <a onclick="openTask(this)" class="blue">See more</a></h5>
+                                <p class="task-description">{{description}}</p>
+                            </div>
+                        </div>
+                        <div class="task-body row" style="display: none;">
+                            <!-- <div class="col-sm-2"><br></div> -->
+                            <div class="col-sm-8">
+                                <div class="group">
+                                    <p class="task-date">Due Date: <em>{{dueDate}}</em></p>
+                                    <p class="task-duration">Duration: <em>{{duration}} minutes</em></p>
+                                    <p class="task-points">Points: <em class="t-red">{{points}}</em></p>
+                                </div>
+                                <div class="group">
+                                    <p>Assigned to:</p>
+                                    <p class="task-sections">
+                                        {{#each sections}}
+                                            <em>{{name}}</em>
+                                        {{/each}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="action-buttons">
+                                    <button class="btn btn1 btn-blue btn-sm width100">Something</button>
+                                    <button class="btn btn1 btn-green btn-sm width100">Something</button>
+                                    <button class="btn btn1 btn-yellow btn-sm width100">Something</button>
+                                    <button class="btn btn1 btn-red btn-sm width100">Something</button>
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
+                    {{#if type_audio}}
+                        <div class="task-title row">
+                            <div class="col-sm-2">
+                                <h5><i class="fa fa-headphones"></i></h5>
+                            </div>
+                            <div class="col-sm-10">
+                                <h5 class="task-name">{{name}} <a onclick="openTask(this)" class="blue">See more</a></h5>
+                                <p class="task-description">{{description}}</p>
+                            </div>
+                        </div>
+                        <div class="task-body row" style="display: none;">
+                            <!-- <div class="col-sm-2"><br></div> -->
+                            <div class="col-sm-8">
+                                <div class="group">
+                                    <p class="task-date">Due Date: <em>{{dueDate}}</em></p>
+                                    <p class="task-duration">Duration: <em>{{duration}} minutes</em></p>
+                                    <p class="task-points">Points: <em class="t-red">{{points}}</em></p>
+                                </div>
+                                <div class="group">
+                                    <p>Assigned to:</p>
+                                    <p class="task-sections">
+                                        {{#each sections}}
+                                            <em>{{name}}</em>
+                                        {{/each}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="action-buttons">
+                                    <button class="btn btn1 btn-blue btn-sm width100">Something</button>
+                                    <button class="btn btn1 btn-green btn-sm width100">Something</button>
+                                    <button class="btn btn1 btn-yellow btn-sm width100">Something</button>
+                                    <button class="btn btn1 btn-red btn-sm width100">Something</button>
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
                 </div>
-            </div>
+            {{/each}}
         </div>
 
 	</div> <!-- Close block -->

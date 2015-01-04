@@ -127,13 +127,6 @@ Template.manage_class.events({
             }
         });
     },
-    'click #deleteClass': function() {
-        if (confirm("Are you absolutely certain about deleting this class? You will not be able to undo changes.") == true) {
-            // Delete Class
-        } else {
-            console.log("Action Cancelled")
-        }
-    },
     'click #saveSections': function() {
         //save all changes
 

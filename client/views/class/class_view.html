@@ -10,7 +10,11 @@
                             <div class="break-sm"></div>
                             <p>Teacher</p>
                             {{#each teachersArray}}
-                                <h5>{{firstName}} {{lastName}}</h5>
+                                <h5>
+                                    <a href="/user?id={{_id}}">
+                                        {{profile.firstName}} {{profile.lastName}}
+                                    </a>
+                                </h5>
                             {{/each}}
                         </div>
 
@@ -50,25 +54,7 @@
                 {{#if isTeacher}}
 
                     {{#if viewTasks}}
-                        <div class="block">
-                            <div class="row">
-                                <h1 class="col-sm-8">
-                                    Class Tasks
-                                </h1>
-                                <div class="col-sm-4 t-right">
-                                    <div class="break-md"></div>
-                                    <div class="break-sm"></div>
-                                    <h6>
-                                        <input id="expiredTasks" type="checkbox" checked="{{seeExpired}}" />
-                                        <label for="expiredTasks" class="clickable">
-                                            <a>See Expired Tasks</a>
-                                        </label>
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                        {{> assign_task_main}}
-                        {{> class_task_list_main}}
+                        {{> class_task_main}}
                     {{/if}}
                     {{#if manageClass}}
                         <!-- TODO: Move manage_class in settings to manage_class_main -->
@@ -78,6 +64,7 @@
                 {{else}}
                     <!-- if student -->
                     {{#if classTasks}}
+                        {{> class_tasks_header}}
                         {{> class_task_list_main}}
                     {{/if}}
                     {{# if classStats}}
@@ -87,4 +74,24 @@
             </div>
         </div>
 
+</template>
+
+<template name="class_tasks_header">
+    <div class="block">
+        <div class="row">
+            <h1 class="col-sm-8">
+                Class Tasks
+            </h1>
+            <div class="col-sm-4 t-right">
+                <div class="break-md"></div>
+                <div class="break-sm"></div>
+                <h6>
+                    <input id="expiredTasks" type="checkbox" checked="{{seeExpired}}" />
+                    <label for="expiredTasks" class="clickable">
+                        <a>See Expired Tasks</a>
+                    </label>
+                </h6>
+            </div>
+        </div>
+    </div>
 </template>
