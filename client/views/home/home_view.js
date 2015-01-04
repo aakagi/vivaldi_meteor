@@ -2,30 +2,40 @@ Template.home_view.helpers({
     userClasses: userClasses,
     studentSections: studentSections,
     isTeacher: isTeacher,
-    showClasses: function(){
+    showClasses: function() {
     	return Session.get('showClasses');
     }, 
-    seeLeaderboards: function(){
+    seeLeaderboards: function() {
     	return Session.get('seeLeaderboards');
     },
-    showTasks: function(){
+    showTasks: function() {
     	return Session.get('showTasks');
     }, 
-    completedTasks: function(){
+    completedTasks: function() {
     	return Session.get('completedTasks');
     },
-    practice: function(){
+    practice: function() {
     	return Session.get('practice');
     }
 });
 
+Template.home_view.rendered = function () {
+    // Teacher
+    Session.set('showClasses', true);
+    Session.set('seeLeaderboards', false);
+    // Student
+    Session.set('showTasks', true);
+    Session.set('completedTasks', false);
+    Session.set('completedTasks', false);  
+};
+
 Template.home_view.events({
 	'click #showClasses': function(){
-		Session.set('showClasses', false);
+		Session.set('showClasses', true);
 		Session.set('seeLeaderboards', false);
 	},
-	'click #allOtherClass': function(){
-		Session.set('showClasses', true);
+	'click #seeLeaderboards': function(){
+		Session.set('showClasses', false);
 		Session.set('seeLeaderboards', true);
 	},
 	'click #showTasks': function(){

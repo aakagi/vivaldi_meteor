@@ -16,7 +16,7 @@
 	<div class="row">
 
 		<div class="col-md-4 col-lg-4">
-
+		
 			<div class="block">
 				<p>Name</p>
 				<h5>{{name}}</h5>
@@ -32,10 +32,53 @@
 				{{ /each }}
 			</div>
 
-		</div>
+			{{#unless sectionMessage}}
+	            <button id="sectionMessage" class="btn btn1 btn-blue btn-md width100">
+                    Message
+                </button>
+                <div class="break-sm"></div>
+			{{/unless}}
 
+			{{#unless sectionStats}}
+                <button id="sectionStats" class="btn btn1 btn-yellow btn-md width100">
+                    Section Stats
+                </button>
+                <div class="break-sm"></div>
+
+			{{/unless}}
+
+		</div>
+	
 		<div class="col-md-8 col-lg-8">
-			
+		
+		{{#if sectionMessage}}
+			<div class="block chat">		
+				<div class="title">
+					<h6>Chat</h6>
+				</div>
+				<div class="body">
+					<div class="messages">
+						{{#each getMessages}}
+							{{> message}}
+						{{/each}}
+					</div>
+				</div>
+
+				<div class="chat-input">
+					<div class="camera">
+						<i class="fa fa-camera fa-2x"></i>
+					</div>
+					<div class="chat-input">
+						<input id="new-message" type="text"/>
+					</div>
+					<div class="send">
+						<input id="new-message-submit" type="submit" value="Send"/>
+					</div>
+				</div>
+			</div>
+		{{/if}}
+		
+		{{#if sectionStats}}
 			<div class="block overview">
 				
 				<div class="title">
@@ -56,43 +99,8 @@
 				</div>
 
 			</div>
-
-			<div class="block chat">
-				
-				<div class="title">
-					<h6>Chat</h6>
-				</div>
-
-				<div class="body">
-
-					<div class="messages">
-
-						{{#each getMessages}}
-							{{> message}}
-						{{/each}}
-
-					</div>
-
-				</div>
-
-				<div class="chat-input">
-
-					<div class="camera">
-						<i class="fa fa-camera fa-2x"></i>
-					</div>
-
-					<div class="chat-input">
-						<input id="new-message" type="text"/>
-					</div>
-
-					<div class="send">
-						<input id="new-message-submit" type="submit" value="Send"/>
-					</div>
-
-				</div>
-
-			</div>
-
+		{{/if}}
+			
 		</div>
 
 	</div>

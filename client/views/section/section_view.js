@@ -1,8 +1,12 @@
 Template.section_view.rendered = function() {
     $('.messages').scrollTop(100000);
+    Session.set('sectionMessage', true);
+    Session.set('sectionStats', false);
 }
 
+
 Template.section_view.helpers({
+    isTeacher: isTeacher,
     class: function() {
         var id = Template.currentData()._id;
         var classData = getClassBySectionId(id);
@@ -17,6 +21,12 @@ Template.section_view.helpers({
         var selector = {sectionID: Template.currentData()._id}
         var pointer = Messages.find(selector);
         return pointer.fetch();
+    },
+    sectionMessage: function() {
+        return Session.get('sectionMessage');
+    },
+    sectionStats: function() {
+        return Session.get('sectionStats');
     }
 });
 
@@ -34,6 +44,14 @@ Template.section_view.events({
             document.getElementById("new-message").value = "";
             
         }
+    },
+    'click #sectionMessage': function(){
+        Session.set('sectionMessage', true);
+        Session.set('sectionStats', false);
+    },
+    'click #sectionStats': function(){
+        Session.set('sectionMessage', false);
+        Session.set('sectionStats', true);
     }
 })
 

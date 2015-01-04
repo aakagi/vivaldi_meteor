@@ -10,18 +10,19 @@
                     {{#if isTeacher}}
                         <!-- Teachers can message and view stats -->
                         <!-- {{> current_challenge_side}} -->
-                        {{#if userMessage}}
+                        {{#unless userMessage}}
                             <button id="userMessage" class="btn btn1 btn-blue btn-md width100">
                                 Message
                             </button>
                             <div class="break-sm"></div>
-                        {{/if}}
+                        {{/unless}}
                         {{#unless userStats}}
                             <button id="userStats" class="btn btn1 btn-yellow btn-md width100">
                                 Student Stats
                             </button>
                             <div class="break-sm"></div>
                         {{/unless}}
+
                     {{/if}}
 
                     <!-- {{#if userIsMe}} -->
@@ -65,15 +66,15 @@
 
                 <!-- {{#unless notInSameClass}} -->
 
-                    <!-- {{#if isTeacher}} -->
-                        <!-- Teachers see messages or view stats -->
-                        <!-- {{#unless userStats}} -->
+                    <!-- Teachers see messages or view stats -->
+                    {{#if isTeacher}}
+                        {{#if userMessage}}
                             {{> messenger}}
-                        <!-- {{/unless}} -->
-                        <!-- {{#if userStats}} -->
+                        {{/if}}
+                        {{#if userStats}}
                             {{> user_stats_main}}
-                        <!-- {{/if}} -->
-                    <!-- {{/if}} -->
+                        {{/if}}
+                    {{/if}}
 
                     <!-- {{#if userIsMe}} -->
                         <!-- See personal stats or practice -->

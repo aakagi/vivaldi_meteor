@@ -15,34 +15,29 @@ Template.user_view.helpers({
     },
     unrelatedStudent: function() {
         return !isTeacher  && !studentsInSameClass(myID, thisID);
+    },
+    userMessage: function() {
+        return Session.get('userMessage');
+    },
+    userStats: function() {
+        return Session.get('userStats');
     }
-
-    // showClasses: function(){
-    //     return Session.get('showClasses');
-    // }, 
-    // allOtherClasses: function(){
-    //     return Session.get('allOtherClasses');
-    // },
-    // showTasks: function(){
-    //     return Session.get('showTasks');
-    // }, 
-    // completedTasks: function(){
-    //     return Session.get('completedTasks');
-    // },
-    // practice: function(){
-    //     return Session.get('practice');
-    // }
 });
 
+Template.user_view.rendered = function () {
+    Session.set('userMessage', true);
+    Session.set('userStats', false);
+};
+
 Template.user_view.events({
-    // 'click #showClasses': function(){
-    //     Session.set('showClasses', false);
-    //     Session.set('allOtherClasses', false);
-    // },
-    // 'click #allOtherClass': function(){
-    //     Session.set('showClasses', true);
-    //     Session.set('allOtherClasses', true);
-    // },
+    'click #userMessage': function(){
+        Session.set('userMessage', true);
+        Session.set('userStats', false);
+    },
+    'click #userStats': function(){
+        Session.set('userMessage', false);
+        Session.set('userStats', true);
+    }
     // 'click #showTasks': function(){
     //     Session.set('showTasks', true);
     //     Session.set('completedTasks', false);

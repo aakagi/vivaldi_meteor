@@ -22,14 +22,20 @@ Template.class_view.helpers({
     }
 });
 
+Template.class_view.rendered = function () {
+    Session.set('viewTasks', true);
+    Session.set('manageClass', false);
+    Session.set('viewTasks', true);
+    Session.set('showClassTasks', false);
+};
 
 Template.class_view.events({
     'click #viewTasks': function(){
-        Session.set('viewTasks', false);
+        Session.set('viewTasks', true);
         Session.set('manageClass', false);
     },
     'click #manageClass': function(){
-        Session.set('viewTasks', true);
+        Session.set('viewTasks', false);
         Session.set('manageClass', true);
     },
     'click #showClassTasks': function(){

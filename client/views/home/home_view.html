@@ -5,14 +5,14 @@
                 {{> welcome_name_side}}
                 {{#if isTeacher}}
 
-                    {{#if showClasses}}
+                    {{#unless showClasses}}
                         <button id="showClasses" class="btn btn1 btn-blue btn-md width100">
                             Classes
                         </button>
                         <div class="break-sm"></div>
-                    {{/if}}
+                    {{/unless}}
                     {{#unless seeLeaderboards}}
-                        <button id="allOtherClass" class="btn btn1 btn-yellow btn-md width100">
+                        <button id="seeLeaderboards" class="btn btn1 btn-yellow btn-md width100">
                             Leaderboards
                         </button>
                         <div class="break-sm"></div>
@@ -22,12 +22,12 @@
                     <!-- if student -->
                     <!-- Hide buttons if student isn't in a section yet -->
                     {{#if studentSections}}
-                        {{#if showTasks}}
+                        {{#unless showTasks}}
                             <button id="showTasks" class="btn btn1 btn-blue btn-md width100">
                                 Show Tasks
                             </button>
                             <div class="break-sm"></div>
-                        {{/if}}
+                        {{/unless}}
                         {{#unless practice}}
                             <button id="practice" class="btn btn1 btn-green btn-md width100">
                                 Practice
@@ -44,10 +44,10 @@
             </div>
             <div class="col-md-8 col-lg-8">
                 {{#if isTeacher}}
-                    {{#unless showClasses}}
+                    {{#if showClasses}}
                         {{> create_class_main}}
                         {{> home_class_list_main}}
-                    {{/unless}}
+                    {{/if}}
                     {{#if seeLeaderboards}}
                         <!-- {{> other_classes_main}} -->
                         <div class="block"><h1>TODO: > leaderboards</h1></div>
@@ -56,9 +56,9 @@
                     <!-- Makes sure the user is in a class -->
                     {{#if studentSections}}
                         <!-- if student -->
-                        {{#unless showTasks}}
+                        {{#if showTasks}}
                             {{> home_incomplete_tasks_main}}
-                        {{/unless}}
+                        {{/if}}
                         <!-- {{#if completedTasks}}
                             {{> home_completed_tasks_main}}
                         {{/if}} -->
