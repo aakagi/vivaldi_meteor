@@ -100,7 +100,7 @@
                     {{#unless addNewSection}}
                         <button class="btn btn-md btn-green width100" id="addNewSection">
                             <!-- creates input box for section creation -->
-                            + Add Sections TODO
+                            + Add Sections
                         </button>
                     {{/unless}}
                     {{#unless confirmAddedSection}}
@@ -167,6 +167,10 @@
     <div class="break-sm"></div>
 </template>
 
+<template name="student">
+<option value="{{_id}}">{{profile.firstName}} {{profile.lastName}}</option>
+</template>
+
 <!-- Edit Sections -->
 <template name="edit_sections">
     <div class="row">
@@ -174,13 +178,14 @@
             <div class="form shadedInputs">
                 <div class="input-group clear">
                     <div class="group-input">
-                        <input type="text" class="input input-sm" value="{{name}}">
-                        <select>
-                            <option>Current Leader</option>
-                            <option>Roy Fu</option>
-                            <option>TODO</option>
+                        <input type="text" id="{{_id}}name" class="input input-sm" value="{{name}}">
+                        <select id="{{_id}}leader">
+                            <option value="{{currentLeader._id}}">{{currentLeader.profile.firstName}} {{currentLeader.profile.lastName}}</option>
+                            {{#each sectionStudentsNotLeader}}
+                                {{> student}}
+                            {{/each}}
                         </select>
-                        <input type="text" class="" placeholder="order">
+                        <input type="text" class="" id="{{_id}}order" placeholder="{{order}}">
                     </div>
                 </div>
             </div>
@@ -188,7 +193,6 @@
         <h6 class="col-sm-6">
             <div class="center">
                 <a class="red" id="deleteSection">
-                    <!-- Remove section id from class array -->
                     Delete
                 </a>
             </div>
