@@ -5,6 +5,17 @@ var task_duration_seconds;
 
 Template.class_task_main.rendered = function() {
 
+    openTask = function(el) {
+        var task = $(el).parents('.task');
+        task.children('.task-body').css('display', 'block');
+        $(el).html('See less').attr('onclick', 'closeTask(this)');
+    }
+    closeTask = function(el) {
+        var task = $(el).parents('.task');
+        task.children('.task-body').css('display', 'none');
+        $(el).html('See more').attr('onclick', 'openTask(this)');
+    }
+
     $('.form').css('display', 'none');
     $('.field').css('display', 'none');
 
@@ -13,7 +24,7 @@ Template.class_task_main.rendered = function() {
         $('.form').slideDown(250);
     });
 
-    $('#cancelClass').click(function(event) {
+    $('.cancelClass').click(function(event) {
         $('.form').slideUp(250);
         $('.preview').slideDown(250);
     });
@@ -150,6 +161,10 @@ Template.class_task_main.helpers({
         };
         pointer = Sections.find(selector);
         return pointer.fetch();
+    },
+    allTasks: function() {
+        var allTasks = getTasksByClassId(Template.currentData()._id);
+        return allTasks;
     }
 });
 
