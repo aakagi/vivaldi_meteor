@@ -603,3 +603,12 @@
 .task-info {
     padding-left: 30%;
 }
+
+.block {
+    .preview:hover {
+        h6, i {
+            color: $blue;
+            cursor: pointer;
+        }
+    }
+}

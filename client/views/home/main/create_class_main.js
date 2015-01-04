@@ -10,6 +10,13 @@ Template.create_class_main.rendered = function() {
         $('.form').slideUp(250);
         $('.preview').slideDown(250);
     });
+    
+    $('#createClass').click(function(event) {
+        $('.form').slideUp(250);
+        $('.preview').slideDown(250);
+    });
+
+    
 }
 
 Template.create_class_main.helpers({

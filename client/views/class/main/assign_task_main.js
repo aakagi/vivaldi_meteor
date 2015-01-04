@@ -158,7 +158,7 @@ Template.task_main.helpers({
     }
 });
 
-Template.assign_task_main.events({
+Template.task_main.events({
     'click #assignTask': function() {
         //get all values from fields
         var classId = Template.currentData()._id;
