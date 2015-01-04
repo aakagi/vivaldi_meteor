@@ -91,7 +91,8 @@ Template.create_class_main.events({
             for (section in sectionNames) {
                 sectionDoc = {
                     name: sectionNames[section],
-                    users: []
+                    users: [],
+                    order: section
                 };
                 sectionID = Sections.insert(sectionDoc);
                 sectionIDs.push(sectionID);
