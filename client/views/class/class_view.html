@@ -50,6 +50,23 @@
                 {{#if isTeacher}}
 
                     {{#if viewTasks}}
+                        <div class="block">
+                            <div class="row">
+                                <h1 class="col-sm-8">
+                                    Class Tasks
+                                </h1>
+                                <div class="col-sm-4 t-right">
+                                    <div class="break-md"></div>
+                                    <div class="break-sm"></div>
+                                    <h6>
+                                        <input id="expiredTasks" type="checkbox" checked="{{seeExpired}}" />
+                                        <label for="expiredTasks" class="clickable">
+                                            <a>See Expired Tasks</a>
+                                        </label>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
                         {{> assign_task_main}}
                         {{> class_task_list_main}}
                     {{/if}}

@@ -31,10 +31,10 @@
                     <a>Click here to lock your class from new students.</a>
                 </label>
             </div>
-    
+        
             <div class="col-sm-4">
                 <button class="btn btn-md btn-red width100" id="deleteClass">
-                    <!-- Make sure that deleting removes all associated sections, tasks, and taskdata -->
+                    <!-- Make sure that deleting removes all associated sections, and taskdata -->
                     Delete TODO
                 </button>
             </div>
@@ -56,25 +56,59 @@
             </h4>
             <div class="break-sm"></div>
             <div class="section-management">
-                {{#if sectionList}}
+                {{#if saveSections}}
                     {{#each sectionList}}
                         {{> class_sections}}
                     {{/each}}
                 {{/if}}
+                {{#if editSections}}
+                    {{#each sectionList}}
+                        {{> edit_sections}}
+                    {{/each}}
+                {{/if}}
             </div>
+            <div class="break-sm"></div>
+            {{#if addNewSection}}
+                <div class="form shadedInputs">
+                    <div class="input-group clear">
+                        <div class="group-input col-sm-6" style="visibility: hidden;">
+                            a
+                        </div>
+                        <div class="group-input col-sm-6">
+                            <input id="newAddedSection" type="text" name="newSection" placeholder="New Section Name" class="input input-sm">
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
             <div class="break-sm"></div>
             <div class="row">
                 <div class="col-sm-6">
-                    <button class="btn btn-md btn-blue width100">
-                        <!-- allows you to change section names -->
-                        Edit Names TODO
-                    </button>
+                    {{#unless editSections}}
+                        <button class="btn btn-md btn-blue width100" id="editSections">
+                            <!-- allows you to change section names -->
+                            Edit Sections
+                        </button>
+                    {{/unless}}
+                    {{#unless saveSections}}
+                        <button class="btn btn-md btn-gray width100" id="saveSections">
+                            <!-- allows you to change section names -->
+                            Save Changes
+                        </button>
+                    {{/unless}}
                 </div>
                 <div class="col-sm-6">
-                    <button class="btn btn-md btn-green width100">
-                        <!-- creates input box for section creation -->
-                        + Add Sections TODO
-                    </button>
+                    {{#unless addNewSection}}
+                        <button class="btn btn-md btn-green width100" id="addNewSection">
+                            <!-- creates input box for section creation -->
+                            + Add Sections TODO
+                        </button>
+                    {{/unless}}
+                    {{#unless confirmAddedSection}}
+                        <button class="btn btn-md btn-gray width100" id="confirmAddedSection">
+                            <!-- allows you to change section names -->
+                            Confirm Added Section
+                        </button>
+                    {{/unless}}
                 </div>
             </div>
         </div>
@@ -111,7 +145,7 @@
 
 <!-- Other Templates -->
 
-<!-- Sections -->
+<!-- View Sections -->
 <template name="class_sections">
     <div class="row">
         <h6 class="col-sm-6">
@@ -119,6 +153,36 @@
                 <a href="/section?id={{_id}}">
                     {{name}}
                 </a>
+            </div>
+        </h6>
+        <h6 class="col-sm-6">
+            <div class="center">
+                <a class="red" id="deleteSection">
+                    <!-- Remove section id from class array -->
+                    Delete
+                </a>
+            </div>
+        </h6>
+    </div>
+    <div class="break-sm"></div>
+</template>
+
+<!-- Edit Sections -->
+<template name="edit_sections">
+    <div class="row">
+        <h6 class="col-sm-6">
+            <div class="form shadedInputs">
+                <div class="input-group clear">
+                    <div class="group-input">
+                        <input type="text" class="input input-sm" value="{{name}}">
+                        <select>
+                            <option>Current Leader</option>
+                            <option>Roy Fu</option>
+                            <option>TODO</option>
+                        </select>
+                        <input type="text" class="" placeholder="order">
+                    </div>
+                </div>
             </div>
         </h6>
         <h6 class="col-sm-6">
