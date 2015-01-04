@@ -5,5 +5,11 @@ Template.home_class_list_main.helpers({
 Template.home_class_list.helpers({
     numStudents: function () {
         return Template.currentData().students.length
+    },
+    pendingStudents: function(){
+    	return Template.currentData().waitlist.length
+    },
+    sections: function(){
+    	return Template.currentData().sections.length
     }
 });
