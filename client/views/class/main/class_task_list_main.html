@@ -1,12 +1,27 @@
+<template name="class_task_list_main">
+    {{#if getTasks}}
+        {{#each getTasks}}
+        	{{> teacher_task}}
+        {{/each}}
+    {{else}}
+        {{> welcome_to_tasks}}
+    {{/if}}
+</template>
+
 <template name="section_name">
-{{name}}
+<!-- TODO: Create Order -->
+{{name}}&nbsp;&nbsp;
 </template>
 
 <template name="teacher_task">
 {{#if sectionNames}}
     <div class="row headerDark">
         <p class="col-sm-9 center">
-            {{duration}} Minutes - Due {{formatDate}} - {{points}} Points
+            <!-- TODO: if allSections, just say 'All Sections' -->
+            {{#each sectionNames}}
+                {{> section_name}}
+            {{/each}}
+            <!-- {{duration}} Minutes - Due {{formatDate}} - {{points}} Points -->
         </p>
         <div class="col-sm-3 practicetag">
             <p>
@@ -14,28 +29,72 @@
             </p>
         </div>
     </div>
+
     <div class="block">
-        <h4>
-            <a href="/task?id={{_id}}">
-                {{name}}
-            </a>
-        </h4>
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>
+                    <a href="/task?id={{_id}}">
+                        {{name}}
+                    </a>
+                </h4>
+                <div class="break-sm"></div>
+                <p>
+                    Description: {{description}}
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <div class="task-info">
+                    <p>Assigned - TODO</p>
+                    <p>Due - {{formatDate}}</p>
+                    <p>Duration - {{duration}}</p>
+                    <p>Points - {{points}}</p>
+                </div>
+            </div>
+        </div>
         <div class="break-sm"></div>
-        <p>
-            Description: {{description}}
-        </p>
-        <p>
-            Sections
-        </p>
-        <h6>
-            {{#each sectionNames}}
-                {{> section_name}}
-            {{/each}}
-        </h6>
-        <button class="btn btn-sm btn-red" id="delete">
-            Delete
-        </button>
+        {{#if isTeacher}}
+        <a id="taskMoreInfo">
+            TODO: More/Less Info
+        </a>
+        <div class="break-sm"></div>
+            <div class="row">
+                <div class="col-sm-6 center">
+                    <p>
+                        Completed
+                    </p>
+                    <h6>
+                        Each
+                    </h6>
+                    <h6>
+                        Each
+                    </h6>
+                    <h6>
+                        Each
+                    </h6>
+                </div>
+                <div class="col-sm-6 center">
+                    <p>
+                        Incomplete
+                    </p>
+                    <h6>
+                        Each
+                    </h6>
+                    <h6>
+                        Each
+                    </h6>
+                    <h6>
+                        Each
+                    </h6>
+                </div>
+            </div>
+            <div class="break-md"></div>
+            <button class="btn btn-md btn-red" id="delete">
+                Delete Task
+            </button>
+        {{/if}}
     </div>
+
 {{/if}}
 </template>
 
@@ -60,14 +119,4 @@
             -Vivaldi Team
         </p>
     </div>
-</template>
-
-<template name="class_task_list_main">
-    {{#if getTasks}}
-        {{#each getTasks}}
-        	{{> teacher_task}}
-        {{/each}}
-    {{else}}
-        {{> welcome_to_tasks}}
-    {{/if}}
 </template>

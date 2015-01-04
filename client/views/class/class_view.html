@@ -3,18 +3,18 @@
         <div class="row">
             <div class="col-md-4 col-lg-4">
                 {{#unless notInThisClass}}
-                    {{#if isTeacher}}
                         <div class="block">
                             <!-- <h4>TODO: Build notInThisClass</h4> -->
                             <p>School</p>
                             <h5>{{school}}</h5>
                             <div class="break-sm"></div>
-                            <p>Teachers</p>
+                            <p>Teacher</p>
                             {{#each teachersArray}}
                                 <h5>{{firstName}} {{lastName}}</h5>
                             {{/each}}
                         </div>
 
+                    {{#if isTeacher}}
                         {{#unless viewTasks}}
                             <button id="viewTasks" class="btn btn1 btn-blue btn-md width100">
                                 View Tasks
@@ -30,8 +30,8 @@
 
                     {{else}}
                         <!-- if student -->
-                        {{#unless showClassTasks}}
-                            <button id="showClassTasks" class="btn btn1 btn-blue btn-md width100">
+                        {{#unless classTasks}}
+                            <button id="classTasks" class="btn btn1 btn-blue btn-md width100">
                                 Show Tasks
                             </button>
                             <div class="break-sm"></div>
@@ -60,11 +60,11 @@
 
                 {{else}}
                     <!-- if student -->
-                    {{#if showClassTasks}}
+                    {{#if classTasks}}
                         {{> class_task_list_main}}
                     {{/if}}
                     {{# if classStats}}
-                        {{> class_stats_main}}
+                        <!-- {{> class_stats_main}} -->
                     {{/if}}
                 {{/if}}
             </div>

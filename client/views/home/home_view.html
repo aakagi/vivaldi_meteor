@@ -53,26 +53,26 @@
                         <div class="block"><h1>TODO: > leaderboards</h1></div>
                     {{/if}}
                 {{else}}
+                    <!-- if student -->
+                    {{#if showTasks}}
+                        {{> home_incomplete_tasks_main}}
+                    {{/if}}
+                    <!-- {{#if completedTasks}}
+                        {{> home_completed_tasks_main}}
+                    {{/if}} -->
+                    {{#if practice}}
+                        {{> practice_interface}}
+                    {{/if}}
                     <!-- Makes sure the user is in a class -->
-                    {{#if studentSections}}
-                        <!-- if student -->
-                        {{#if showTasks}}
-                            {{> home_incomplete_tasks_main}}
-                        {{/if}}
-                        <!-- {{#if completedTasks}}
-                            {{> home_completed_tasks_main}}
-                        {{/if}} -->
-                        {{#if practice}}
-                            {{> practice_interface}}
-                        {{/if}}
-                    {{else}}
-                        {{> welcome_student}}
-                        <!-- In Settings folder -->
+                    {{#unless userClasses}}
                         {{> join_class}}
+                    {{/unless}}
+                    {{#unless studentSections}}
                         {{#each userClasses}}
                             {{> join_section}}
                         {{/each}}
-                    {{/if}}
+                        {{> welcome_student}}
+                    {{/unless}}
                 {{/if}}
             </div>
         </div>

@@ -1,4 +1,5 @@
 Template.teacher_task.helpers({
+    isTeacher: isTeacher,
     isPracticeTask: function(){
         return Template.currentData().type == 'Practice';
     },
@@ -21,11 +22,14 @@ Template.teacher_task.helpers({
 });
 
 Template.teacher_task.events({
+    'click #taskMoreInfo': function(){
+        
+    },
     'click #delete': function(){
-        //must delete the task and all instances of taskData
+        //TODO: must delete the task and all instances of taskData
         var taskID = Template.currentData()._id;
         Meteor.call('removeTask', taskID);
-    }
+    },
 });
 
 

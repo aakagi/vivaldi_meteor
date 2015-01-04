@@ -14,8 +14,8 @@ Template.class_view.helpers({
     manageClass: function(){
         return Session.get('manageClass');
     },
-    showClassTasks: function(){
-        return Session.get('showClassTasks');
+    classTasks: function(){
+        return Session.get('classTasks');
     }, 
     classStats: function(){
         return Session.get('classStats');
@@ -23,13 +23,16 @@ Template.class_view.helpers({
 });
 
 Template.class_view.rendered = function () {
+    // For Teachers
     Session.set('viewTasks', true);
     Session.set('manageClass', false);
-    Session.set('viewTasks', true);
-    Session.set('showClassTasks', false);
+    // For Students
+    Session.set('classTasks', true);
+    Session.set('classStats', false);
 };
 
 Template.class_view.events({
+    // For Teachers
     'click #viewTasks': function(){
         Session.set('viewTasks', true);
         Session.set('manageClass', false);
@@ -38,12 +41,13 @@ Template.class_view.events({
         Session.set('viewTasks', false);
         Session.set('manageClass', true);
     },
-    'click #showClassTasks': function(){
-        Session.set('showClassTasks', true);
+    // For Students
+    'click #classTasks': function(){
+        Session.set('classTasks', true);
         Session.set('classStats', false);
     },
     'click #classStats': function(){
-        Session.set('showClassTasks', false);
+        Session.set('classTasks', false);
         Session.set('classStats', true);
     }
 })
