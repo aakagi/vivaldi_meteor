@@ -1,6 +1,7 @@
 Template.user_view.helpers({
     userClasses: userClasses,
     isTeacher: isTeacher,
+    // Wrong
     studentProfile: function() {
         return !isTeacher();
     },

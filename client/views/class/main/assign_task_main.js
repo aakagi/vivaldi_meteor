@@ -18,6 +18,14 @@ Template.assign_task_main.rendered = function() {
         $('.preview').slideDown(250);
     });
 
+    // Closes block when task is assigned
+    $('#assignTask').click(function(event) {
+        $('.form').slideUp(250);
+        $('.preview').slideDown(250);
+    });
+
+
+
     $('.type').click(function(event) {
         $('.type').removeClass('selected');
         $(this).addClass('selected');

@@ -141,7 +141,7 @@ Template.class_sections.events({
             var classData = Template.parentData(1);
             var sectionList = classData.sections;
             var indx = sectionList.indexOf(sectionID);
-            // Remove from class array
+            // Removes from class array
             Classes.update({
                 _id: classData._id
             }, {
@@ -153,7 +153,7 @@ Template.class_sections.events({
                     console.log(err);
                     setAlert('error', 'Error changing database');
                 } else {
-                    // Then remove section document
+                    // Then removes section document
                     Sections.remove({_id: sectionID});
                     setAlert('info', 'Section deleted')
                 }

@@ -1,13 +1,15 @@
 <template name="user_view">
     <div class="row">
-        {{#if studentProfile}}
+        <!-- {{#if studentProfile}} -->
             <div class="col-md-4 col-lg-4">
                 {{> user_stats_side}}
-                {{#unless notInSameClass}}
+                
+                <!-- {{#unless notInSameClass}} -->
 
+                    <!-- TODO: change to isTeacherOfStudent -->
                     {{#if isTeacher}}
                         <!-- Teachers can message and view stats -->
-                        {{> current_challenge_side}}
+                        <!-- {{> current_challenge_side}} -->
                         {{#if userMessage}}
                             <button id="userMessage" class="btn btn1 btn-blue btn-md width100">
                                 Message
@@ -22,9 +24,9 @@
                         {{/unless}}
                     {{/if}}
 
-                    {{#if userIsMe}}
+                    <!-- {{#if userIsMe}} -->
                         <!-- See personal stats or practice -->
-                        {{#if personalStats}}
+                        <!-- {{#if personalStats}}
                             <button id="personalStats" class="btn btn1 btn-green btn-md width100">
                                 Practice
                             </button>
@@ -35,13 +37,14 @@
                                 My Stats
                             </button>
                             <div class="break-sm"></div>
-                        {{/unless}}
-                    {{/if}}
+                        {{/unless}} -->
+                    <!-- {{/if}} -->
 
-                    {{#unless isTeacher}}
-                        {{#unless userIsMe}}
+                    <!-- TODO: Again, change to isTeacherOfStudent -->
+                    <!-- {{#unless isTeacher}} -->
+                        <!-- {{#unless userIsMe}} -->
                             <!-- If another student in your class -->
-                            {{#if userMessage}}
+                            <!-- {{#if userMessage}}
                                 <button id="userMessage" class="btn btn1 btn-blue btn-md width100">
                                     Message
                                 </button>
@@ -51,61 +54,61 @@
                                 <button id="challengeUser" class="btn btn1 btn-red btn-md width100">
                                     Challenge
                                 </button>
-                                <div class="break-sm"></div>
-                            {{/unless}}
-                        {{/unless}}
-                    {{/unless}}
+                                <div class="break-sm"></div> -->
+                            <!-- {{/unless}} -->
+                        <!-- {{/unless}} -->
+                    <!-- {{/unless}} -->
 
-                {{/unless}}
+                <!-- {{/unless}} -->
             </div>
             <div class="col-md-8 col-lg-8">
 
-                {{#unless notInSameClass}}
+                <!-- {{#unless notInSameClass}} -->
 
-                    {{#if isTeacher}}
+                    <!-- {{#if isTeacher}} -->
                         <!-- Teachers see messages or view stats -->
-                        {{#unless userStats}}
+                        <!-- {{#unless userStats}} -->
                             {{> messenger}}
-                        {{/unless}}
-                        {{#if userStats}}
+                        <!-- {{/unless}} -->
+                        <!-- {{#if userStats}} -->
                             {{> user_stats_main}}
-                        {{/if}}
-                    {{/if}}
+                        <!-- {{/if}} -->
+                    <!-- {{/if}} -->
 
-                    {{#if userIsMe}}
+                    <!-- {{#if userIsMe}} -->
                         <!-- See personal stats or practice -->
-                        {{#unless personalStats}}
+                        <!-- {{#unless personalStats}}
                             {{> user_stats_main}}
                         {{/unless}}
                         {{#if userPractice}}
                             {{> practice}}
                         {{/if}}
-                    {{/if}}
+                    {{/if}} -->
 
-                    {{#unless isTeacher}}
-                        {{#unless userIsMe}}
+                    <!-- {{#unless isTeacher}} -->
+                        <!-- {{#unless userIsMe}} -->
                             <!-- If another student in your class -->
-                            {{#unless userMessage}}
+                            <!-- {{#unless userMessage}}
                                 {{> messenger}}
                             {{/unless}}
                             {{#if challengeUser}}
                                 {{> challenge_user}}
                             {{/if}}
                         {{/unless}}
-                    {{/unless}}
+                    {{/unless}} -->
 
-                {{/unless}}
+                <!-- {{/unless}} -->
             </div>
-        {{else}}
+        <!-- {{else}} -->
             <!-- If you're viewing a teacher profile -->
-            <div class="col-md-4 col-lg-4">
+            <!-- <div class="col-md-4 col-lg-4">
                 {{> teacher_info_side}}
             </div>
             <div class="col-md-8 col-lg-8">
                 {{#unless unrelatedStudent}}
                     {{> messenger}}
                 {{/unless}}
-            </div>
-        {{/if}}
+            </div> -->
+        <!-- {{/if}} -->
     </div>
 </template>

@@ -66,6 +66,7 @@
                             {{> practice_interface}}
                         {{/if}}
                     {{else}}
+                        {{> welcome_student}}
                         <!-- In Settings folder -->
                         {{> join_class}}
                         {{#each userClasses}}
@@ -75,5 +76,29 @@
                 {{/if}}
             </div>
         </div>
+
+</template>
+
+<template name="welcome_student">
+    
+    <div class="block">
+        <h2 class="center">
+            Welcome to Vivaldi!
+        </h2>
+        <p class="lots-of-text">
+            <br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Hey everyone! Welcome to Vivaldi. With Vivaldi, you'll be able to earn points for practicing, completing tasks assigned to you by your teacher, and winning in competitions against fellow classmates!
+            <br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;It's been tons of fun building the software, but it's still far from complete. If you feel like anything is a bit strange, or something kind of sucks, please let us know! This software was built by three college students, who all played instruments in high school just a couple years ago, so we completely understand how much it sucks to be told to do menial tasks for no reason, which is why our goal is to make this experience as fun as possible for you, and to also help you improve your practice habits. We want you to become a better musician.
+            <br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Use the dropdown menu below to get started, and hopefully the rest of the website is fairly self-explanatory, but if you ever have any questions, feel free to send us a message via chat using the side menu (open it by clicking on the icon in the top left corner). 
+            <br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Looking forward to an awesome semester!
+            <br><br>
+            Best,
+            <br><br>
+            -Vivaldi Team
+        </p>
+    </div>
 
 </template>

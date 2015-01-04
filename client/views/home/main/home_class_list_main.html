@@ -9,35 +9,41 @@
             </h5>
             <div class="break-md"></div>
             <div class="row">
-                <div class="col-sm-8">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <p>
-                                Level
-                            </p>
-                            <h5>
-                                <!-- {{classLevel}} -->
-                                TODO
-                            </h5>
-                        </div>
-                        <div class="col-sm-4">
-                            <p>
-                                Sections
-                            </p>
-                            <h5>
-                                TODO
-                            </h5>
-                        </div>
-                        <div class="col-sm-4">
-                            <p>
-                                students
-                            </p>
-                            <h5>
-                                {{numStudents}}
-                            </h5>
-                        </div>
-                    </div>
+                <div class="col-sm-3">
+                    <p>
+                        Students
+                    </p>
+                    <h5>
+                        {{numStudents}}
+                    </h5>
                 </div>
+                <div class="col-sm-3">
+                    <p>
+                        Sections
+                    </p>
+                    <h5>
+                        TODO
+                    </h5>
+                </div>
+                <div class="col-sm-3">
+                    <p>
+                        Level
+                    </p>
+                    <h5>
+                        <!-- {{classLevel}} -->
+                        TODO
+                    </h5>
+                </div>
+                <!-- {{#if pendingStudents}} -->
+                <div class="col-sm-3">
+                    <p>
+                        Pending Students
+                    </p>
+                    <h5>
+                        TODO
+                    </h5>
+                </div>
+                <!-- {{/if}} -->
             </div>
         </div>
     </a>
