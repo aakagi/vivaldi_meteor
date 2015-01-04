@@ -3,12 +3,12 @@ var video_id;
 var formType;
 var task_duration_seconds;
 
-Template.task_main.rendered = function() {
+Template.class_task_main.rendered = function() {
 
     $('.form').css('display', 'none');
     $('.field').css('display', 'none');
 
-    $('.preview').click(function(event) {
+    $('#openCreateTask').click(function(event) {
         $('.preview').slideUp(250);
         $('.form').slideDown(250);
     });
@@ -133,7 +133,7 @@ Template.task_main.rendered = function() {
 
 }
 
-Template.task_main.helpers({
+Template.class_task_main.helpers({
     sectionList: function() {
         var classData = Template.currentData(); //template initalized with class data
         var classId = classData._id;
@@ -153,7 +153,7 @@ Template.task_main.helpers({
     }
 });
 
-Template.task_main.events({
+Template.class_task_main.events({
         'click #assignTask': function() {
             //get all values from fields
             var classId = Template.currentData()._id;
