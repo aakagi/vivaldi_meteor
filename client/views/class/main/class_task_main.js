@@ -3,12 +3,12 @@ var video_id;
 var formType;
 var task_duration_seconds;
 
-Template.task_main.rendered = function() {
+Template.class_task_main.rendered = function() {
 
     $('.form').css('display', 'none');
     $('.field').css('display', 'none');
 
-    $('.preview').click(function(event) {
+    $('#openCreateTask').click(function(event) {
         $('.preview').slideUp(250);
         $('.form').slideDown(250);
     });
@@ -18,24 +18,16 @@ Template.task_main.rendered = function() {
         $('.preview').slideDown(250);
     });
 
-    // Closes block when task is assigned
-    $('#assignTask').click(function(event) {
-        $('.form').slideUp(250);
-        $('.preview').slideDown(250);
-    });
-
-
-
     $('.type').click(function(event) {
         $('.type').removeClass('selected');
         $(this).addClass('selected');
         $('.field').css('display', 'none');
 
         // When practice is selected
-        if ($('#practice').hasClass('selected')) {
+        if($('#practice').hasClass('selected')) {
             formType = 'Practice';
             var fields = ['.name', '.description', '.duration', '.due', '.sections', '.points', '.formButtons'];
-
+            
             // Update points amount
             points = 0;
             $('#pointValue').html(points);
@@ -60,7 +52,7 @@ Template.task_main.rendered = function() {
         }
 
         // When audio is selected
-        else if ($('#audio').hasClass('selected')) {
+        else if($('#audio').hasClass('selected')) {
             formType = 'Audio';
             var fields = ['.name', '.description', '.link', '.due', '.sections', '.points', '.formButtons'];
 
@@ -77,7 +69,7 @@ Template.task_main.rendered = function() {
             // Get id for video on link change
             $('#youTube').change(function(event) {
                 video_id = document.getElementById('youTube').value.match(/v=(.{11})/)[1];
-
+                
                 // Preview video on change
                 var newSrc = '//www.youtube.com/embed/' + video_id;
                 $('.video').attr('src', newSrc);
@@ -100,10 +92,12 @@ Template.task_main.rendered = function() {
             for (el in fields) {
                 $(fields[el]).css('display', 'block');
             }
-        } else if ($('#post').hasClass('selected')) {
+        }
+
+        else if ($('#post').hasClass('selected')) {
             formType = 'Post';
             var fields = ['.name', '.description', '.sections', '.points', '.formButtons'];
-
+            
             // Update points
             points = 10;
             $('#pointValue').html(points);
@@ -122,13 +116,14 @@ Template.task_main.rendered = function() {
     });
 
     $('.clickable').click(function(event) {
-        if ($(this).hasClass('selected')) {
+        if($(this).hasClass('selected')) {
             $(this).removeClass('selected');
             $('.selectAll').removeClass('selected');
             if ($(this).hasClass('selectAll')) {
                 $('.clickable').removeClass('selected');
             }
-        } else {
+        }
+        else {
             $(this).addClass('selected');
             if ($(this).hasClass('selectAll')) {
                 $('.clickable').addClass('selected');
@@ -138,7 +133,7 @@ Template.task_main.rendered = function() {
 
 }
 
-Template.task_main.helpers({
+Template.class_task_main.helpers({
     sectionList: function() {
         var classData = Template.currentData(); //template initalized with class data
         var classId = classData._id;
@@ -158,64 +153,56 @@ Template.task_main.helpers({
     }
 });
 
-Template.assign_task_main.events({
-    'click #assignTask': function() {
-        //get all values from fields
-        var classId = Template.currentData()._id;
+Template.class_task_main.events({
+        'click #assignTask': function() {
+            //get all values from fields
+            var classId = Template.currentData()._id;
+            
+            var sectionIds = [];
+            // Loop through each selected tag and add id to sectionIds
+            $('.section-tags').children('.selected').each(function(index, el) {
+                if (!$(this).hasClass('selectAll')) {
+                    sectionIds.push($(this).attr('id'));
+                }
+            });
 
-        var sectionIds = [];
-        // Loop through each selected tag and add id to sectionIds
-        $('.section-tags').children('.selected').each(function(index, el) {
-            if (!$(this).hasClass('selectAll')) {
-                sectionIds.push($(this).attr('id'));
+            var taskType = formType; // Defined in rendered javascript when task type is selected
+            var taskName = document.getElementById("taskName").value;
+            var taskDescription = document.getElementById("taskDescription").value;
+            var taskDuration = task_duration_seconds; // Defined when user changes Practice Length or video
+            var youTube = video_id; // Defined when user changes link
+            var dueDate = new Date(document.getElementById("dueDate").value);
+
+            var newTask = {
+                classId: classId,
+                type: taskType,
+                name: taskName,
+                description: taskDescription,
+                sections: sectionIds,
+                duration: taskDuration,
+                youtubeURL: youTube,
+                dueDate: dueDate,
+                creationDate: new Date(),
+                points: points
             }
-        });
-
-        var taskType = formType; // Defined in rendered javascript when task type is selected
-        var taskName = document.getElementById("taskName").value;
-        var taskDescription = document.getElementById("taskDescription").value;
-        var taskDuration = task_duration_seconds; // Defined when user changes Practice Length or video
-        var youTube = video_id; // Defined when user changes link
-        var dueDate = new Date(document.getElementById("dueDate").value);
-
-        var newTask = {
-            classId: classId,
-            type: taskType,
-            name: taskName,
-            description: taskDescription,
-            sections: sectionIds,
-            duration: taskDuration,
-            youtubeURL: youTube,
-            dueDate: dueDate,
-            creationDate: new Date(),
-            points: points
-        }
 
         // save task
         var taskID = Tasks.insert(newTask);
 
         for (i in sectionIds) {
             //get all students in the section so a taskData object can be created for each of them.
-            var section = Sections.findOne({
-                _id: sectionIds[i]
-            });
-            var studentIds = section.users
+            var section = Sections.findOne({_id: sectionIds[i]});
+            var studentIds = section.students
 
             for (indx in studentIds) {
-                var oldTaskData = TasksData.find({
+                var newTaskData = {
                     taskId: taskID,
-                    userId: studentIds[indx]
-                }).fetch();
-                if (oldTaskData.length == 0) { //nothing matches this 
-                    var newTaskData = {
-                        taskId: taskID,
-                        userId: studentIds[indx],
-                        progress: 0, //seconds
-                        notes: "",
-                        complete: false
-                    }
-                    TasksData.insert(newTaskData);
-                }
+                    userId: studentIds[indx],
+                    progress: 0, //seconds
+                    notes: "",
+                    complete: false
+                };
+                TasksData.insert(newTaskData);
             }
         }
     }
