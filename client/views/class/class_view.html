@@ -10,7 +10,11 @@
                             <div class="break-sm"></div>
                             <p>Teacher</p>
                             {{#each teachersArray}}
-                                <h5>{{firstName}} {{lastName}}</h5>
+                                <h5>
+                                    <a href="/user?id={{_id}}">
+                                        {{profile.firstName}} {{profile.lastName}}
+                                    </a>
+                                </h5>
                             {{/each}}
                         </div>
 
@@ -50,11 +54,6 @@
                 {{#if isTeacher}}
 
                     {{#if viewTasks}}
-<!-- <<<<<<< HEAD
-                        {{> class_tasks_header}}
-                        {{> task_main}}
-                        {{> class_task_list_main}}
-======= -->
                         {{> class_task_main}}
                     {{/if}}
                     {{#if manageClass}}
