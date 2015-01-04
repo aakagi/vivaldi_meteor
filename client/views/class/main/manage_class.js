@@ -29,7 +29,10 @@ Template.manage_class.events({
     },
     'click #deleteClass': function() {
         if (confirm("Are you absolutely certain about deleting this class? You will not be able to undo changes.") == true) {
-            // Delete Class
+            var classData = Template.currentData();
+            var classID = classData._id;
+            Meteor.call('deleteClass', classID);
+            Router.go('home')
         } else {
             console.log("Action Cancelled")
         }   
@@ -142,23 +145,7 @@ Template.class_sections.events({
             var sectionList = classData.sections;
             var indx = sectionList.indexOf(sectionID);
             // Removes from class array
-            Classes.update({
-                _id: classData._id
-            }, {
-                $set: {
-                    sections: sectionList
-                }
-            }, function(err) {
-                if (err) {
-                    console.log(err);
-                    setAlert('error', 'Error changing database');
-                } else {
-                    // Then removes section document
-                    Sections.remove({_id: sectionID});
-                    setAlert('info', 'Section deleted')
-                }
-
-            });
+            Meteor.call("deleteSection", sectionID, classData._id);
         } else {
             console.log("Action Cancelled")
         }
