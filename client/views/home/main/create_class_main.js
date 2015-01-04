@@ -31,10 +31,10 @@ Template.create_class_main.helpers({
                 sections = ['Violin 1', 'Violin 2', 'Viola', 'Cello', 'Bass', 'Other'];
                 break;
             case "Concert Band":
-                sections = ['Flute', 'Clarinet', 'Oboe', 'Bassoon', 'Trumpet', 'Trombone'];
+                sections = ['Flute', 'Clarinet', 'Oboe', 'Bassoon', 'Saxophone', 'Trumpet', 'French Horn', 'Trombone', 'Euphonium', 'Tuba'];
                 break;
             case "Full Orchestra":
-                sections = ['Violin 1', 'Violin 2', 'Viola', 'Cello', 'Bass', 'Other', 'Flute', 'Clarinet', 'Oboe', 'Bassoon', 'Trumpet', 'Trombone'];
+                sections = ['Violin 1', 'Violin 2', 'Viola', 'Cello', 'Bass', 'Other', 'Flute', 'Clarinet', 'Oboe', 'Bassoon', 'French Horn', 'Trumpet', 'Trombone'];
                 break;
             case "asdf":
                 sections = ['a', 'b', 'c'];
@@ -78,7 +78,7 @@ Template.create_class_main.events({
         userId = Meteor.userId();
         sectionIDs = []
 
-        if (isNotEmpty(className) && isNotEmpty(sectionNames)) {
+        if (isNotEmpty(className)) {
             //defines a document, inserts it, then inserts the section ID into an array
             //array will be saved to the class document
             for (section in sectionNames) {
@@ -109,10 +109,10 @@ Template.create_class_main.events({
             Classes.insert(classDoc, function(err, id){
             	if (err){
             		console.log(err);
-            		setAlert('error', 'error writing to database');
+            		setAlert('error', 'Error writing to database');
             	}
             	else{
-            		setAlert('info', 'class created successfully!');
+            		setAlert('info', 'Class created successfully!');
             	}
 
             });

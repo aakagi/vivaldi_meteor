@@ -1,31 +1,47 @@
 <template name="user_stats_side">
     <div class="block">
-        <p>
-            Name
-        </p>
-        <h5>
+        <h4>
             {{profile.firstName}} {{profile.lastName}}
-        </h5>
+        </h4>
         <div class="break-sm"></div>
         <p>
-            Instrument
+            <!-- Makes plural -->
+            Instrument{{#if multiInst}}s{{/if}}
         </p>
-        <h5>
-            TODO: Each Instruments
-        </h5>
+        <div>
+            {{#each userInstrument}}
+                {{>user_instruments}}
+            {{/each}}
+        </div>
         <div class="break-sm"></div>
         <p>
-            Sections
+            Section{{#if multiSec}}s{{/if}}
         </p>
-        <h5>
-            TODO: Each Sections
-        </h5>
+        <div>
+            {{#each userSection}}
+                {{> user_sections}}
+            {{/each}}
+        </div>
         <div class="break-sm"></div>
         <p>
-            Classes
+            Class{{#if multiClass}}es{{/if}}
         </p>
-        <h5>
-            TODO: Each Classes
-        </h5>
+        <div>
+            {{#each userClass}}
+                {{> userClasses}}
+            {{/each}}
+        </div>
     </div>
+</template>
+
+<template name="user_instruments">
+<h5>{{name}}</h5>
+</template>
+
+<template name="user_sections">
+<h5>{{name}} Section</h5>
+</template>
+
+<template name="userClasses">
+<h5>{{school}} {{name}}</h5>
 </template>

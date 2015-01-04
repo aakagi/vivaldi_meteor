@@ -2,7 +2,7 @@ Template.manage_class.events({
     'click #saveClass': function() {
         var classData = Template.currentData();
         var classID = classData._id;
-        console.log(classData);
+        // console.log(classData);
         var name;
         var newName = document.getElementById('newName').value;
         if (newName) {
@@ -21,11 +21,18 @@ Template.manage_class.events({
         }, function(err) {
             if (err) {
                 console.log(err);
-                setAlert('error', 'error writing to database');
+                setAlert('error', 'Error writing to database');
             } else {
-                setAlert('info', 'class updated successfully!');
+                setAlert('info', 'Class updated successfully!');
             }
         });
+    },
+    'click #deleteClass': function() {
+        if (confirm("Are you absolutely certain about deleting this class? You will not be able to undo changes.") == true) {
+            // Delete Class
+        } else {
+            console.log("Action Cancelled")
+        }   
     }
 });
 
@@ -55,7 +62,7 @@ Template.manage_class.helpers({
     },
     'sectionList': function() {
         var sectionIds = Template.currentData().sections;
-        console.log(sectionIds);
+        // console.log(sectionIds);
         var returnSections = Sections.find({
             _id: {
                 $in: sectionIds
@@ -90,9 +97,9 @@ Template.waitlist_students.events({
         }, function(err) {
             if (err) {
                 console.log(err);
-                setAlert('error', 'error writing to database');
+                setAlert('error', 'Error writing to database');
             } else {
-                setAlert('info', 'student confirmed!');
+                setAlert('info', 'Student confirmed!');
             }
         });
     }
@@ -100,31 +107,60 @@ Template.waitlist_students.events({
 
 Template.class_students.events({
     'click #deleteStudent': function() {
-        var studentID = Template.currentData()._id;
-        var classData = Template.parentData(1);
-        var studentList = classData.students;
-        var indx = studentList.indexOf(studentID);
-        studentList.splice(indx, 1);
-        Classes.update({
-            _id: classData._id
-        }, {
-            $set: {
-                students: studentList
-            }
-        }, function(err) {
-            if (err) {
-                console.log(err);
-                setAlert('error', 'error writing to database');
-            } else {
-                setAlert('info', 'student deleted');
-            }
-        });
+        if (confirm("Are you sure you want to delete this student?") == true) {
+            var studentID = Template.currentData()._id;
+            var classData = Template.parentData(1);
+            var studentList = classData.students;
+            var indx = studentList.indexOf(studentID);
+            studentList.splice(indx, 1);
+            // TODO: Delete student from sections as well!
+            Classes.update({
+                _id: classData._id
+            }, {
+                $set: {
+                    students: studentList
+                }
+            }, function(err) {
+                if (err) {
+                    console.log(err);
+                    setAlert('error', 'Error writing to database');
+                } else {
+                    setAlert('info', 'Student deleted');
+                }
+            });
+        } else {
+            console.log("Action Cancelled")
+        }
     }
 });
 
 Template.class_sections.events({
     'click #deleteSection': function(){
-        var sectionID = Template.currentData()._id;
-        Sections.remove({_id: sectionID});
+        if (confirm("Are you sure you want to delete this section?") == true) {
+            var sectionID = Template.currentData()._id;
+            var classData = Template.parentData(1);
+            var sectionList = classData.sections;
+            var indx = sectionList.indexOf(sectionID);
+            // Removes from class array
+            Classes.update({
+                _id: classData._id
+            }, {
+                $set: {
+                    sections: sectionList
+                }
+            }, function(err) {
+                if (err) {
+                    console.log(err);
+                    setAlert('error', 'Error changing database');
+                } else {
+                    // Then removes section document
+                    Sections.remove({_id: sectionID});
+                    setAlert('info', 'Section deleted')
+                }
+
+            });
+        } else {
+            console.log("Action Cancelled")
+        }
     }
-})
+});

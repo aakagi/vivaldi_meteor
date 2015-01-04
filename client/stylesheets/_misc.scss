@@ -154,8 +154,10 @@
 
 
 .customAlert {
+    position: absolute;
     width: 100%;
-    height: 3em;
+    height: 4em;
+    z-index: 106;
     &#error {
         background-color: $red;
     }
@@ -166,7 +168,8 @@
         font-size: 1.25em;
         font-style: italic;
         color: $white;
-        padding-top: 0.5em;
+        padding-top: 1em;
+        padding-left: 3em;
         i {
             margin-right: 0.5em;
             color: $white;

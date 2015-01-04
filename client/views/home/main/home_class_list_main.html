@@ -9,23 +9,41 @@
             </h5>
             <div class="break-md"></div>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <p>
-                        students
+                        Students
                     </p>
                     <h5>
                         {{numStudents}}
                     </h5>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-3">
+                    <p>
+                        Sections
+                    </p>
+                    <h5>
+                        {{sections}}
+                    </h5>
+                </div>
+                <div class="col-sm-3">
                     <p>
                         Level
                     </p>
                     <h5>
                         <!-- {{classLevel}} -->
-                        7
+                        TODO
                     </h5>
                 </div>
+                {{#if pendingStudents}}
+                <div class="col-sm-3">
+                    <p>
+                        Pending Students
+                    </p>
+                    <h5>
+                        {{pendingStudents}}
+                    </h5>
+                </div>
+                {{/if}}
             </div>
         </div>
     </a>
