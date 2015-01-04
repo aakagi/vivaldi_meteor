@@ -11,9 +11,9 @@ Template.home_view.helpers({
     showTasks: function() {
     	return Session.get('showTasks');
     }, 
-    completedTasks: function() {
-    	return Session.get('completedTasks');
-    },
+    // completedTasks: function() {
+    // 	return Session.get('completedTasks');
+    // },
     practice: function() {
     	return Session.get('practice');
     }
@@ -25,8 +25,8 @@ Template.home_view.rendered = function () {
     Session.set('seeLeaderboards', false);
     // Student
     Session.set('showTasks', true);
-    Session.set('completedTasks', false);
-    Session.set('completedTasks', false);  
+    // Session.set('completedTasks', false);
+    Session.set('practice', false);  
 };
 
 Template.home_view.events({
@@ -39,7 +39,7 @@ Template.home_view.events({
 		Session.set('seeLeaderboards', true);
 	},
 	'click #showTasks': function(){
-		Session.set('showTasks', false);
+		Session.set('showTasks', true);
 		// Session.set('completedTasks', false);
 		Session.set('practice', false);
 	},
@@ -49,7 +49,7 @@ Template.home_view.events({
 	// 	Session.set('practice', false);
 	// },
 	'click #practice': function(){
-		Session.set('showTasks', true);
+		Session.set('showTasks', false);
 		// Session.set('completedTasks', false);
 		Session.set('practice', true);
 	},
