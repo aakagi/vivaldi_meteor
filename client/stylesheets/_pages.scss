@@ -215,6 +215,11 @@
         // border-bottom: 1px solid $gray;
         box-shadow: 0 0 1em $gray;
 
+        .task-view-title {
+            padding-top: 0.25em;
+            text-align: center;
+        }
+
         .form {
             margin: 1em;
         }
