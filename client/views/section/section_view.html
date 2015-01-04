@@ -1,3 +1,16 @@
+<template name="message">
+	<div class="message">
+		<div class="message-head">
+			<img src="images/demo/adminsidebar.png">
+		</div>
+		<div class="message-body">
+			<p class="message-info">{{senderName}} • {{formattedDate}}</p>
+			<p class="message-content">{{body}}</p>
+		</div>
+	</div>
+</template>
+
+
 <template name="section_view">
 
 	<div class="row">
@@ -54,85 +67,9 @@
 
 					<div class="messages">
 
-						<div class="message">
-							<div class="message-head">
-								<img src="images/demo/adminclass.png">
-							</div>
-							<div class="message-body">
-								<p class="message-info">Bean Alderfer • Today 12:15 pm</p>
-								<p class="message-content">The same room as yesterday?</p>
-							</div>
-						</div>
-
-						<div class="message">
-							<div class="message-head">
-								<img src="images/demo/adminsidebar.png">
-							</div>
-							<div class="message-body">
-								<p class="message-info">Benji Jr. Alderfer • Today 12:15 pm</p>
-								<p class="message-content">Maybe, I'm just sitting at the bottom of the stairs for now</p>
-							</div>
-						</div>
-
-						<div class="message">
-							<div class="message-head">
-								<img src="images/demo/adminclass.png">
-							</div>
-							<div class="message-body">
-								<p class="message-info">Bean Alderfer • Today 12:15 pm</p>
-								<p class="message-content">What door should I use?</p>
-							</div>
-						</div>
-
-						<div class="message">
-							<div class="message-head">
-								<img src="images/demo/adminsidebar.png">
-							</div>
-							<div class="message-body">
-								<p class="message-info">Benji Jr. Alderfer • Today 12:15 pm</p>
-								<p class="message-content">The same one as yesterday. Be sure to park in the non-reserved parking lot next to the library</p>
-							</div>
-						</div>
-
-						<div class="message">
-							<div class="message-head">
-								<img src="images/demo/adminclass.png">
-							</div>
-							<div class="message-body">
-								<p class="message-info">Bean Alderfer • Today 12:15 pm</p>
-								<p class="message-content">The same room as yesterday?</p>
-							</div>
-						</div>
-
-						<div class="message">
-							<div class="message-head">
-								<img src="images/demo/adminsidebar.png">
-							</div>
-							<div class="message-body">
-								<p class="message-info">Benji Jr. Alderfer • Today 12:15 pm</p>
-								<p class="message-content">Maybe, I'm just sitting at the bottom of the stairs for now</p>
-							</div>
-						</div>
-
-						<div class="message">
-							<div class="message-head">
-								<img src="images/demo/adminclass.png">
-							</div>
-							<div class="message-body">
-								<p class="message-info">Bean Alderfer • Today 12:15 pm</p>
-								<p class="message-content">What door should I use?</p>
-							</div>
-						</div>
-
-						<div class="message">
-							<div class="message-head">
-								<img src="images/demo/adminsidebar.png">
-							</div>
-							<div class="message-body">
-								<p class="message-info">Benji Jr. Alderfer • Today 12:15 pm</p>
-								<p class="message-content">The same one as yesterday. Be sure to park in the non-reserved parking lot next to the library</p>
-							</div>
-						</div>
+						{{#each getMessages}}
+							{{> message}}
+						{{/each}}
 
 					</div>
 
