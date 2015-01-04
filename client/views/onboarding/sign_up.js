@@ -25,6 +25,7 @@ Template.sign_up.events({
                     // Session.set('email', email);
                     // Session.set('newId', newId);
                     // setAlert('info', 'Awesome! You\'ll receieve an email shortly to finish making your account.');
+                    setAlert('info', 'Success!');
                     setTimeout(confirmRedirect(), 1000);
                 }
             });

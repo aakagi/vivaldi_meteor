@@ -1,0 +1,91 @@
+<template name="practice_interface">
+
+	<div class="block practice-view">
+		<div class="title">
+			<h6 id="practiceTitle">Practice</h6>
+		</div>
+
+		<div class="body">
+
+			{{#if practiceTask}}
+				{{> practice_task_interface}}
+			{{else}}
+				{{#if practiceOther}}
+					
+				{{else}}
+					<div class="setup">
+						<h5>What are you practicing?</h5>
+						<div class="break-sm"></div>
+						<div class="row">
+							<div class="col-sm-6">
+								<button id="practiceTask" class="btn btn1 btn-white-inverse btn-md width100">A Task</button>
+							</div>
+							<div class="col-sm-6">
+								<button id="practiceOther" class="btn btn1 btn-white-inverse btn-md width100">Something else</button>
+							</div>
+						</div>
+					</div>
+				{{/if}}
+			{{/if}}
+
+		</div>
+	</div>
+</template>
+
+<template name="practice_task_interface">
+
+		<div class="timer" style="display: none;">
+			<div class="row">
+				<div class="time col-sm-6">
+					<p>Time Elapsed</p>
+					<h2 id="timeElapsed">00:00:00</h2>
+				</div>
+				<div class="time col-sm-6">
+					<p>Time Remaining</p>
+					<h2 id="timeRemaining">00:00:00</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<button id="startTimer" class="btn btn1 btn-green-inverse btn-md width100">Start</button>
+				</div>
+				<div class="col-sm-6">
+					<button id="stopTimer" class="btn btn1 btn-red-inverse btn-md width100">Stop</button>
+				</div>
+			</div>
+
+			<div class="break-md"></div>
+			<div class="status">
+				<p id="yourStatus">Your Status:</p>
+				<div class="bar">
+					<div class="percentage"></div>
+				</div>
+			</div>
+
+			<div class="break-md"></div>
+			<div class="row">
+				<div class="col-sm-4">
+					<button class="btn btn1 btn-blue btn-md width100">Save Progess</button>
+				</div>
+				<div class="col-sm-4">
+					<button class="btn btn1 btn-green btn-md width100 disabled">Finish Task</button>
+				</div>
+				<div class="col-sm-4">
+					<button class="btn btn1 btn-red btn-md width100">Quit Practicing</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="setup">
+			<h5>Please select a task to practice.</h5>
+			<div class="break-sm"></div>
+			<select name="" id="selectPracticeTask" class="input input-md">
+				<option selected disabled>Select a task...</option>
+				{{#each studentPracticeTasks}}
+					<option value="{{_id}}">{{name}}</option>
+				{{/each}}
+			</select>
+		</div>
+
+</template>
