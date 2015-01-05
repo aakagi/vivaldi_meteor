@@ -139,7 +139,8 @@ Template.practice_task_interface.events({
         var taskObject = Session.get('practiceTaskObject');
         var secondsPracticed = Session.get('secondsPracticed');
         //updates the task data with this duration
-        Meteor.call('saveProgress', Meteor.userId(), taskObject._id, secondsPracticed);
+        var instrument = Meteor.user().profile.instrument;
+        Meteor.call('saveProgress', Meteor.userId(), taskObject._id, instrument, secondsPracticed);
     }
 });
 
