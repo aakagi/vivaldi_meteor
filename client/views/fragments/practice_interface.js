@@ -76,6 +76,13 @@ Template.practice_interface.events({
 
 		Session.set("taskPicked", true);
 	},
+	'click #showTasks': function() {
+		Session.set('backToTasks', true);
+        Session.set('practiceView', false);
+        // Resets practice page to non-task view
+        Session.set('practiceTask', false);
+        Session.set('taskPicked', false);
+	}
 });
 
 
