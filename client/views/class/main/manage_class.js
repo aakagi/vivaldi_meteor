@@ -253,10 +253,37 @@ Template.waitlist_students.events({
                 console.log(err);
                 setAlert('error', 'Error writing to database');
             } else {
-                setAlert('info', 'Student confirmed!');
+                // setAlert('info', 'Student confirmed!');
             }
         });
+    },
+    'click #denyStudent': function() {
+        if (confirm("Are you sure you want to deny this student?") == true) {
+            var studentID = Template.currentData()._id;
+            var classData = Template.parentData(1);
+            var studentList = classData.waitlist;
+            var indx = studentList.indexOf(studentID);
+            studentList.splice(indx, 1);
+            // TODO: Delete student from sections as well!
+            Classes.update({
+                _id: classData._id
+            }, {
+                $set: {
+                    waitlist: studentList
+                }
+            }, function(err) {
+                if (err) {
+                    console.log(err);
+                    setAlert('error', 'Error writing to database');
+                } else {
+                    // setAlert('info', 'Student denied');
+                }
+            });
+        } else {
+            console.log("Action Cancelled")
+        }
     }
+
 });
 
 Template.class_students.events({

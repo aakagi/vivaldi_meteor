@@ -28,7 +28,11 @@
 			<div class="block">
 				<p>Students</p>
 				{{ #each studentData }}
-					<h6>{{ firstName }} {{ lastName }}</h6>
+					<h6>
+						<a href="/user?id={{_id}}">
+							{{ profile.firstName }} {{ profile.lastName }}
+						</a>
+					</h6>
 				{{ /each }}
 			</div>
 

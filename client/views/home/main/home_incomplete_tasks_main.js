@@ -12,7 +12,7 @@ Template.home_incomplete_tasks_main.events({
 		Session.set('PracticeTaskObject', task);
 		Session.set('duration', task.duration);
 		Session.set('secondsPracticed', this.progress);
-        // Sets variables for practice view
+        // Sets variables for practice view to show timer
         Session.set('practiceTask', true);
         Session.set('taskPicked', true);
         // Takes user to practice view
