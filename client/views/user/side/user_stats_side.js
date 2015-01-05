@@ -1,14 +1,20 @@
 Template.user_stats_side.helpers({
-    userInstruments: function () {
-        // ...
+    multiInst: function () {
+        return studentInstrumentsById(Template.currentData()._id).length > 1;
     },
     userInstruments: function () {
-        // ...
+        return studentInstrumentsById(Template.currentData()._id);
     },
-    userInstruments: function () {
-        // ...
+    multiSec: function () {
+        return studentSectionsById(Template.currentData()._id).length > 1;
     },
-    userInstruments: function () {
-        // ...
+    userSection: function () {
+        return studentSectionsById(Template.currentData()._id);
+    },
+    multiClass: function(){
+        return studentClassesById(Template.currentData()._id).length > 1;
+    },
+    userClasses: function(){
+        return studentClassesById(Template.currentData()._id);
     }
 });

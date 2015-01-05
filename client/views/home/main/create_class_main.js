@@ -1,18 +1,18 @@
 Template.create_class_main.rendered = function() {
-    $('.form').css('display', 'none');
+    $('#classCreateForm').css('display', 'none');
 
     $('.preview').click(function(event) {
         $('.preview').slideUp(250);
-        $('.form').slideDown(250);
+        $('#classCreateForm').slideDown(250);
     });
 
     $('#cancelClass').click(function(event) {
-        $('.form').slideUp(250);
+        $('#classCreateForm').slideUp(250);
         $('.preview').slideDown(250);
     });
     
     $('#createClass').click(function(event) {
-        $('.form').slideUp(250);
+        $('#classCreateForm').slideUp(250);
         $('.preview').slideDown(250);
     });
 
