@@ -49,6 +49,8 @@ Template.class_task_main.rendered = function() {
             for (el in fields) {
                 $(fields[el]).css('display', 'block');
             }
+            var date = oneWeekFromNow();
+            document.getElementById('dueDate').valueAsDate = date;
         }
 
         // When audio is selected
@@ -92,6 +94,8 @@ Template.class_task_main.rendered = function() {
             for (el in fields) {
                 $(fields[el]).css('display', 'block');
             }
+            var date = oneWeekFromNow();
+            document.getElementById('dueDate').valueAsDate = date;
         }
 
         else if ($('#post').hasClass('selected')) {
@@ -112,6 +116,8 @@ Template.class_task_main.rendered = function() {
             for (el in fields) {
                 $(fields[el]).css('display', 'block');
             }
+            var date = oneWeekFromNow();
+            document.getElementById('dueDate').valueAsDate = date;
         }
     });
 
@@ -154,8 +160,10 @@ Template.class_task_main.helpers({
     allTasks: function() {
         var allTasks = getTasksByClassId(Template.currentData()._id);
         return allTasks;
-    }
+    },
 });
+
+
 
 Template.class_task_main.events({
     'click #assignTask': function() {
