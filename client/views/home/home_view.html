@@ -20,24 +20,18 @@
 
                 {{else}}
                     <!-- if student -->
-                    <!-- Hide buttons if student isn't in a section yet -->
-                    {{#if studentSections}}
-                        {{#unless showTasks}}
-                            <button id="showTasks" class="btn btn1 btn-blue btn-md width100">
-                                Show Tasks
-                            </button>
-                            <div class="break-sm"></div>
-                        {{/unless}}
-                        {{#unless practice}}
-                            <button id="practice" class="btn btn1 btn-green btn-md width100">
-                                Practice
-                            </button>
-                            <div class="break-sm"></div>
-                        {{/unless}}
-                    {{else}}
-                        <!-- #Hack -->
-                        <div style="display: transparent">a</div>
-                    {{/if}}
+                    {{#unless showTasks}}
+                        <button id="showTasks" class="btn btn1 btn-blue btn-md width100">
+                            Show Tasks
+                        </button>
+                        <div class="break-sm"></div>
+                    {{/unless}}
+                    {{#unless viewStats}}
+                        <button id="viewStats" class="btn btn1 btn-yellow btn-md width100">
+                            View Stats
+                        </button>
+                        <div class="break-sm"></div>
+                    {{/unless}}
                 {{/if}}
                 <!-- {{> notifications}} -->
                 {{> awesome_side}}
@@ -71,16 +65,15 @@
                     {{/if}}
                 {{else}}
                     <!-- if student -->
+                    <!-- Makes sure the user is in a class -->
                     {{#if showTasks}}
                         {{> home_incomplete_tasks_main}}
                     {{/if}}
-                    <!-- {{#if completedTasks}}
-                        {{> home_completed_tasks_main}}
-                    {{/if}} -->
-                    {{#if practice}}
-                        {{> practice_interface}}
+                    {{#if viewStats}}
+                        <div class="block">
+                            <h1>TODO: My Stats</h1>
+                        </div>
                     {{/if}}
-                    <!-- Makes sure the user is in a class -->
                     {{#unless userClasses}}
                         {{> join_class}}
                     {{/unless}}
@@ -90,6 +83,7 @@
                         {{/each}}
                         {{> welcome_student}}
                     {{/unless}}
+                    
                 {{/if}}
             </div>
         </div>

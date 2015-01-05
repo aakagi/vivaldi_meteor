@@ -12,9 +12,20 @@ Template.section_view.helpers({
         var classData = getClassBySectionId(id);
         return classData;
     },
+    // getUsersByIds() is now obsolete because it only returns profile and not _id
+    // studentData: function() {
+    //     var ids = Template.currentData().users;
+    //     return getUsersByIds(ids);
+    // },
     studentData: function() {
         var ids = Template.currentData().users;
-        return getUsersByIds(ids);
+        // return getUsersByIds(ids);
+        var results = Meteor.users.find({
+            _id: {
+                $in: ids
+            }
+        }).fetch();
+        return results;
     },
     getMessages: function() {
         //gets all messages for this section for now, most likely add something more specific later 

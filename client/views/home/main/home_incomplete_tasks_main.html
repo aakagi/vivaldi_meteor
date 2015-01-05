@@ -1,10 +1,15 @@
 <template name="home_incomplete_tasks_main">
+{{#if backToTasks}}
     <div class="block class-task">
         <div class="header">
             <div class="preview">
                 <div class="break-sm"></div>
                 <div class="row">
-                    <div class="col-sm-4"><br></div>
+                    <div class="col-sm-4">
+                        <button class="btn btn1 btn-green btn-sm left" id="practiceView">
+                            <i class="fa fa-plus"></i> Practice
+                        </button>
+                    </div>
                     <div class="col-sm-4">
                         <h5 class="task-view-title">Current Tasks</h5>
                     </div>
@@ -56,4 +61,8 @@
         	{{/each}}
         </div>
     </div>
+{{/if}}
+{{#if practiceView}}
+    {{> practice_interface}}
+{{/if}}
 </template>
