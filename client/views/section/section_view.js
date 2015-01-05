@@ -2,6 +2,9 @@ Template.section_view.rendered = function() {
     $('.messages').scrollTop(100000);
     Session.set('sectionMessage', true);
     Session.set('sectionStats', false);
+
+    Session.set('leaderManage', false);
+    Session.set('endLeaderManage', true);
 }
 
 
@@ -41,7 +44,22 @@ Template.section_view.helpers({
     },
     userIsLeader: function(){
         return Template.currentData().leader == Meteor.userId();
-    }
+    },
+    endLeaderManage: function() {
+        return Session.get('endLeaderManage');
+    },
+    leaderManage: function() {
+        return Session.get('leaderManage');
+    },
+});
+
+Template.section_leader_side.helpers({
+    sectionLeader: function() {
+        var leaderId = Template.currentData().leader;
+        var leaderDocument = Meteor.users.findOne({_id: leaderId});
+        console.log(leaderDocument);
+        return leaderDocument;
+    },
 });
 
 Template.section_view.events({
@@ -66,6 +84,14 @@ Template.section_view.events({
     'click #sectionStats': function(){
         Session.set('sectionMessage', false);
         Session.set('sectionStats', true);
+    },
+    'click #leaderManage': function() {
+        Session.set('leaderManage', true);
+        Session.set('endLeaderManage', false);
+    },
+    'click #endLeaderManage': function() {
+        Session.set('leaderManage', false);
+        Session.set('endLeaderManage', true);
     }
 })
 
