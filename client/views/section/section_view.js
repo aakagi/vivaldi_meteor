@@ -41,6 +41,15 @@ Template.section_view.helpers({
     }
 });
 
+Template.section_leader_side.helpers({
+    sectionLeader: function() {
+        var leaderId = Template.currentData().leader;
+        var leaderDocument = Meteor.users.findOne({_id: leaderId});
+        console.log(leaderDocument);
+        return leaderDocument;
+    },
+});
+
 Template.section_view.events({
     'click #new-message-submit': function() {
         var messagebody = document.getElementById("new-message").value;
