@@ -51,12 +51,12 @@
         }
     }
     .i-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 4em;
-            height: 4em;
-            background-color: $gray;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4em;
+        height: 4em;
+        background-color: $gray;
     }
     h6 {
         position: relative;

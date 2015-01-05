@@ -1,0 +1,51 @@
+<template name="youtube_player">
+	<p>whaty</p>
+	<div class="row">
+		<div class="col-sm-8">
+			<script>
+				function onYouTubeIframeAPIReady() {
+					var startTime;
+					var endTime;
+					var totalS = 0;
+
+					var player;
+					player = new YT.Player('player', {
+						width: 1280,
+						height: 720,
+						videoId: '{{videoId}}',
+						playerVars: { 'controls': 0 },
+						events: {
+							'onStateChange': onPlayerStateChange
+						}
+					});
+			
+					function onPlayerStateChange() {
+						var state = player.getPlayerState();
+
+						if (state == 1) {
+							startTime = new Date();
+						} else if (state == 0 || state == 2) {
+							endTime = new Date();
+							verifyTime();
+						}
+					}
+					function verifyTime() {
+						totalS = totalS + ((endTime.getTime() - startTime.getTime()) / 1000);
+						var dur = player.getDuration();
+						console.log(totalS + ', ' + dur);
+						if ((totalS / dur) > 0.9) {
+							setAlert('info', 'w00t you did it!');
+						} else {
+							setAlert('error', 'CHEATER!');
+						}
+					}
+				}
+
+			</script>
+			<div id="player"></div>
+		</div>
+		<div class="col-sm-4">
+			<button class="btn btn1 btn-sm btn-blue width100">Go back</button>
+		</div>
+	</div>
+</template>
