@@ -70,7 +70,7 @@ Template.onboard_form.events({
 
                     if (isNotEmpty(selectInstrument)){
                         //create new instrument stats
-                        var newStats = {instrumentId: instrument, userId: userid, experience: 0};
+                        var newStats = {instrumentName: instrument, userId: userid, experience: 0};
                         InstrumentStats.insert(newStats);
                     }
 

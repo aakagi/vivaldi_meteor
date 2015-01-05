@@ -38,6 +38,9 @@ Template.section_view.helpers({
     },
     sectionStats: function() {
         return Session.get('sectionStats');
+    },
+    userIsLeader: function(){
+        return Template.currentData().leader == Meteor.userId();
     }
 });
 
