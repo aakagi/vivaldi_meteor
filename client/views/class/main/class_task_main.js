@@ -5,16 +5,16 @@ var task_duration_seconds;
 
 Template.class_task_main.rendered = function() {
 
-    $('.form').css('display', 'none');
+    $('#taskForm').css('display', 'none');
     $('.field').css('display', 'none');
 
     $('#openCreateTask').click(function(event) {
         $('.preview').slideUp(250);
-        $('.form').slideDown(250);
+        $('#taskForm').slideDown(250);
     });
 
     $('.cancelClass').click(function(event) {
-        $('.form').slideUp(250);
+        $('#taskForm').slideUp(250);
         $('.preview').slideDown(250);
     });
 

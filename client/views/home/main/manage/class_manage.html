@@ -1,0 +1,49 @@
+<template name="class_manage">
+    <div class="block">
+        <div class="form shadedInputs">
+            <div class="input-group clear">
+                <h4>
+                    Class Management
+                </h4>
+                <div class="break-sm"></div>
+                <div class="group-label clear">
+                    <label for="className">
+                        Change Class Name
+                    </label>
+                </div>
+                <div class="group-input">
+                    <input id="newName" type="text" name="newName" placeholder="{{name}}" class="input input-md">
+                </div>
+            </div>
+        </div>
+        <div class="input-group clear">
+            <label class="is-locked">
+                <div class="break-md"></div>
+            </label>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-4">
+                <input id="lockedBox" type="checkbox" checked="{{isLocked}}" />
+                <label for="lockedBox" class="clickable">
+                    <a>Click here to lock your class from new students.</a>
+                </label>
+            </div>
+        
+            <div class="col-sm-4">
+                <button class="btn btn-md btn-red width100" id="deleteClass">
+                    <!-- Make sure that deleting removes all associated sections, and taskdata -->
+                    Delete Class
+                </button>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <button id="saveClass" class="btn btn-gray btn-md width100">
+                        Save Class Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

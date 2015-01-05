@@ -1,0 +1,32 @@
+<!-- Waitlist -->
+<template name="waitlist_manage">
+    <div class="block">
+        <div class="input-group clear">
+            <h6>Pending Students</h6>
+            <div class="student-management">
+                {{#each waitList}}
+                    {{> student_in_waitlist}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="student_in_waitlist">
+    <div class="row">
+        <p class="col-sm-8">
+            <a href="/user?id={{_id}}">
+                {{profile.firstName}} {{profile.lastName}}
+            </a>
+        </p>
+        <p>
+            <a id="confirmStudent">
+                Confirm
+            </a>
+            <a id="denyStudent" class="right" style="padding-right: 1em;">
+                Deny
+            </a>
+        </p>
+
+    </div>
+</template>

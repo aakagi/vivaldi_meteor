@@ -1,0 +1,44 @@
+<template name="students_manage">
+    <div class="block">
+        <div class="input-group clear">
+            <h4>
+                Student Management
+            </h4>
+            <div class="break-sm"></div>
+            <div class="student-management">
+                {{#if studentList}}
+                    {{#each studentList}}
+                        {{> student_in_list}}
+                    {{/each}}
+                {{else}}
+                    {{> welcome_no_students}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- Students -->
+<template name="student_in_list">
+    <div class="row">
+        <p class="col-sm-8">
+            <a href="/user?id={{_id}}">
+                {{profile.firstName}} {{profile.lastName}}
+            </a>
+        </p>
+        <a id="deleteStudent" style="padding-left: 6em;">
+            <!-- TODO - Delete taskdata with this student id ? -->
+            Delete
+        </a>
+    </div>
+</template>
+
+<!-- If no students in class -->
+<template name="welcome_no_students">
+    <h6 class="center">
+        You currently have no students!
+    </h6>
+    <p class="lots-of-text">
+        Once your students create an account at vivaldibeta.com, they will be able to add this class. When a student adds a class, you, the teacher, will first have to accept them as a student, by clicking on the 'confirm' button that will appear next to their name. You will also be able to deny students who are not in your class, and once everyone is fully signed up, you'll be able to 'lock' your class with the checkbox above, to keep other from being able to request to join your class.
+    </p>
+</template>
