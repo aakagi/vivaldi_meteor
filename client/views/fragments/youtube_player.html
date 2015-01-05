@@ -1,5 +1,4 @@
 <template name="youtube_player">
-	<p>whaty</p>
 	<div class="row">
 		<div class="col-sm-8">
 			<script>
@@ -10,14 +9,17 @@
 
 					var player;
 					player = new YT.Player('player', {
-						width: 1280,
-						height: 720,
+						width: 600,
+						height: 300,
 						videoId: '{{videoId}}',
 						playerVars: { 'controls': 0 },
 						events: {
 							'onStateChange': onPlayerStateChange
 						}
 					});
+
+					$('#player').width($('#player').parent('.col-sm-8').width());
+					$('#player').height($('#player').width() * (9 / 16));
 			
 					function onPlayerStateChange() {
 						var state = player.getPlayerState();
@@ -45,7 +47,7 @@
 			<div id="player"></div>
 		</div>
 		<div class="col-sm-4">
-			<button class="btn btn1 btn-sm btn-blue width100">Go back</button>
+			<button class="goBackFromListen btn btn1 btn-sm btn-blue width100">Go back</button>
 		</div>
 	</div>
 </template>
