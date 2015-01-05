@@ -2,6 +2,9 @@ Template.section_view.rendered = function() {
     $('.messages').scrollTop(100000);
     Session.set('sectionMessage', true);
     Session.set('sectionStats', false);
+
+    Session.set('leaderManage', false);
+    Session.set('endLeaderManage', true);
 }
 
 
@@ -38,7 +41,13 @@ Template.section_view.helpers({
     },
     sectionStats: function() {
         return Session.get('sectionStats');
-    }
+    },
+    endLeaderManage: function() {
+        return Session.get('endLeaderManage');
+    },
+    leaderManage: function() {
+        return Session.get('leaderManage');
+    },
 });
 
 Template.section_leader_side.helpers({
@@ -72,6 +81,14 @@ Template.section_view.events({
     'click #sectionStats': function(){
         Session.set('sectionMessage', false);
         Session.set('sectionStats', true);
+    },
+    'click #leaderManage': function() {
+        Session.set('leaderManage', true);
+        Session.set('endLeaderManage', false);
+    },
+    'click #endLeaderManage': function() {
+        Session.set('leaderManage', false);
+        Session.set('endLeaderManage', true);
     }
 })
 

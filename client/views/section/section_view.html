@@ -61,14 +61,34 @@
 						<a href="/user?id={{_id}}">
 							{{ profile.firstName }} {{ profile.lastName }}
 						</a>
+						{{#if leaderManage}}
+							{{#unless studentIsLeader}}
+								<a class="red right">Remove</a>
+							{{/unless}}
+						{{/if}}
 					</h6>
 				{{ /each }}
-
+				{{#if leaderManage}}
+					<div class="break-lg"></div>
+					<input type="checkbox" id="lockSection">
+					<label for="lockSection">
+						<a>
+							Click here to lock section from new users
+						</a>
+					</label>
+				{{/if}}
 				<!-- {{#if userIsLeader}} -->
 					<div class="break-md"></div>
-					<button class="btn btn-md btn-red" id="leaderManage">
-						Manage
-					</button>
+					{{#if endLeaderManage}}
+						<button class="btn btn-md btn-red" id="leaderManage">
+							Manage
+						</button>
+					{{/if}}
+					{{#if leaderManage}}
+						<button class="btn btn-md btn-gray" id="endLeaderManage">
+							Done
+						</button>
+					{{/if}}
 				<!-- {{/if}} -->
 			</div>
 		</div>
@@ -76,30 +96,32 @@
 		<div class="col-md-8 col-lg-8">
 		
 		{{#if sectionMessage}}
-			<div class="block chat">		
-				<div class="title">
-					<h6>Chat</h6>
-				</div>
-				<div class="body">
-					<div class="messages">
-						{{#each getMessages}}
-							{{> message}}
-						{{/each}}
+			<!-- {{#if userIsInSection}} -->
+				<div class="block chat">		
+					<div class="title">
+						<h6>Chat</h6>
 					</div>
-				</div>
+					<div class="body">
+						<div class="messages">
+							{{#each getMessages}}
+								{{> message}}
+							{{/each}}
+						</div>
+					</div>
 
-				<div class="chat-input">
-					<div class="camera">
-						<i class="fa fa-camera fa-2x"></i>
-					</div>
 					<div class="chat-input">
-						<input id="new-message" type="text"/>
-					</div>
-					<div class="send">
-						<input id="new-message-submit" type="submit" value="Send"/>
+						<div class="camera">
+							<i class="fa fa-camera fa-2x"></i>
+						</div>
+						<div class="chat-input">
+							<input id="new-message" type="text"/>
+						</div>
+						<div class="send">
+							<input id="new-message-submit" type="submit" value="Send"/>
+						</div>
 					</div>
 				</div>
-			</div>
+			<!-- {{/if}} -->
 		{{/if}}
 		
 		{{#if sectionStats}}
