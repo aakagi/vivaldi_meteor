@@ -1,0 +1,122 @@
+<template name="sections_manage">
+    <div class="block">
+        <div class="input-group clear">
+            <h4>
+                Section Management
+            </h4>
+            <div class="break-sm"></div>
+            <div class="section-management">
+                {{#if saveSections}}
+                    {{#each sectionList}}
+                        {{> section_in_list}}
+                    {{/each}}
+                {{/if}}
+                {{#if editSections}}
+                    {{#each sectionList}}
+                        {{> section_edit_item}}
+                    {{/each}}
+                {{/if}}
+            </div>
+            <div class="break-sm"></div>
+            {{#if addNewSection}}
+                <div class="form shadedInputs">
+                    <div class="input-group clear">
+                        <div class="group-input col-sm-6" style="visibility: hidden;">
+                            a
+                        </div>
+                        <div class="group-input col-sm-6">
+                            <input id="newAddedSection" type="text" name="newSection" placeholder="New Section Name" class="input input-sm">
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+            <div class="break-sm"></div>
+            <div class="row">
+                <div class="col-sm-6">
+                    {{#unless editSections}}
+                        <button class="btn btn-md btn-blue width100" id="editSections">
+                            <!-- allows you to change section names -->
+                            Edit Sections
+                        </button>
+                    {{/unless}}
+                    {{#unless saveSections}}
+                        <button class="btn btn-md btn-gray width100" id="saveSections">
+                            <!-- allows you to change section names -->
+                            Save Changes
+                        </button>
+                    {{/unless}}
+                </div>
+                <div class="col-sm-6">
+                    {{#unless addNewSection}}
+                        <button class="btn btn-md btn-green width100" id="addNewSection">
+                            <!-- creates input box for section creation -->
+                            + Add Sections
+                        </button>
+                    {{/unless}}
+                    {{#unless confirmAddedSection}}
+                        <button class="btn btn-md btn-gray width100" id="confirmAddedSection">
+                            <!-- allows you to change section names -->
+                            Confirm Added Section
+                        </button>
+                    {{/unless}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+
+<!-- View Sections -->
+<template name="section_in_list">
+    <div class="row">
+        <h6 class="col-sm-6">
+            <div class="center">
+                <a href="/section?id={{_id}}">
+                    {{name}}
+                </a>
+            </div>
+        </h6>
+        <h6 class="col-sm-6">
+            <div class="center">
+                <a class="red" id="deleteSection">
+                    <!-- Remove section id from class array -->
+                    Delete
+                </a>
+            </div>
+        </h6>
+    </div>
+    <div class="break-sm"></div>
+</template>
+
+
+
+<!-- Edit Sections -->
+<template name="section_edit_item">
+    <div class="row">
+        <h6 class="col-sm-6">
+            <div class="form shadedInputs">
+                <div class="input-group clear">
+                    <div class="group-input">
+                        <input type="text" id="{{_id}}name" class="input input-sm" value="{{name}}">
+                        <select id="{{_id}}leader">
+                            <option value="{{currentLeader._id}}">{{currentLeader.profile.firstName}} {{currentLeader.profile.lastName}}</option>
+                            {{#each sectionStudentsNotLeader}}
+                                <option value="{{_id}}">{{profile.firstName}} {{profile.lastName}}</option>
+                            {{/each}}
+                        </select>
+                        <input type="text" class="" id="{{_id}}order" placeholder="{{order}}">
+                    </div>
+                </div>
+            </div>
+        </h6>
+        <h6 class="col-sm-6">
+            <div class="center">
+                <a class="red" id="deleteSection">
+                    Delete
+                </a>
+            </div>
+        </h6>
+    </div>
+    <div class="break-sm"></div>
+</template>
