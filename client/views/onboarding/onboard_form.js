@@ -39,6 +39,7 @@ Template.onboard_form.events({
                 firstName = onboardForm.find('#firstName').val(),
                 lastName = onboardForm.find('#lastName').val();
 
+
                 data = {instrument: instrument, firstName: firstName, lastName: lastName, teacher: false};
         }
 
@@ -66,6 +67,13 @@ Template.onboard_form.events({
                     console.log(instrument);
                     //create document in the userData database
                     userid = Meteor.userId();
+
+                    if (isNotEmpty(selectInstrument)){
+                        //create new instrument stats
+                        var newStats = {instrumentId: instrument, userId: userid, experience: 0};
+                        InstrumentStats.insert(newStats);
+                    }
+
                     Meteor.users.update({"_id": userid}, {$set: {profile: data}}, function(err, numDocs){
                         if (err){
                             setAlert('error', 'Error writing to database.');

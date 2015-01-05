@@ -81,7 +81,7 @@ Template.manage_class.helpers({
             name: {
                 $ne: 'Teachers'
             }
-        }).fetch();
+        }).sort({order: 1}).fetch();
         return returnSections;
     },
     'saveSections': function() {
