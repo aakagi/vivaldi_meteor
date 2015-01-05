@@ -1,13 +1,59 @@
 <template name="home_incomplete_tasks_main">
-    {{#if incompleteTasks}}
-    	{{#each incompleteTasks}}
-    		{{> task}}
-    	{{/each}}
-    {{else}}
-        <div class="block">
-            <h2>
-                No More Tasks!!!
-            </h2>
+    <div class="block class-task">
+        <div class="header">
+            <div class="preview">
+                <div class="break-sm"></div>
+                <div class="row">
+                    <div class="col-sm-4"><br></div>
+                    <div class="col-sm-4">
+                        <h5 class="task-view-title">Current Tasks</h5>
+                    </div>
+                    <div class="col-sm-4">
+                        <button id="toggleTasks" class="btn1 btn btn-gray btn-sm right">Show Past Tasks</button>
+                    </div>
+                </div>
+                <div class="break-sm"></div>
+            </div>
         </div>
-    {{/if}}
+        <div class="body">
+        	{{#each tasks}}
+        		    <div class="task">
+                        <div class="task-title row">
+                            <div class="col-sm-2">
+                                <h5><i class="fa fa-music"></i></h5>
+                            </div>
+                            <div class="col-sm-10">
+                                <h5 class="task-name">{{name}} <a class="blue" onclick="openTask(this)">See more</a></h5>
+                                <p class="task-description">{{description}}</p>
+                            </div>
+                        </div>
+                        <div class="task-body row" style="display: none;">
+                            <div class="col-sm-8">
+                                <div class="group">
+                                    <p class="task-date">Due Date: <em>{{dueDate}}</em></p>
+                                    <p class="task-duration">Duration: <em>{{duration}}</em></p>
+                                    <p class="task-points">Points: <em class="t-red">{{points}}</em></p>
+                                </div>
+                                <div class="group">
+                                    <p>Assigned to:</p>
+                                    <p class="task-sections">
+                                        {{#each sections}}
+                                            <em>{{name}}</em>
+                                        {{/each}}
+                                    </p>
+                                </div>
+                            </div>
+                             <div class="col-sm-4">
+                                <div class="action-buttons">
+                                    <button id="{{taskId}}" class="practiceTask btn btn1 btn-blue btn-sm width100">Practice</button>
+                                    <button class="btn btn1 btn-green btn-sm width100">Something</button>
+                                    <button class="btn btn1 btn-yellow btn-sm width100">Something</button>
+                                    <button class="btn btn1 btn-red btn-sm width100">Something</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        	{{/each}}
+        </div>
+    </div>
 </template>

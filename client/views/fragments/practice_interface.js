@@ -1,16 +1,16 @@
 
 Template.practice_interface.rendered = function() {
 	// Initialize session variables
-	Session.set('practiceTask', false);
-	Session.set('practiceOther', false);
-	Session.set('practiceTaskObject', null);
-	Session.set('duration', 0);
+	// Session.set('practiceTask', false);
+	// Session.set('practiceOther', false);
+	// Session.set('practiceTaskObject', null);
+	// Session.set('duration', 0);
 
 	var timer;
 	var timeElapsed = $('#timeElapsed');
 	var timeRemaining = $('#timeRemaining');
 	var secondsPracticed = 0;
-	var duration = 3600;
+	var duration = Session.get('duration');
 
 	// Initialize times
 	timeElapsed.html(formatTime(secondsPracticed));
@@ -74,8 +74,7 @@ Template.practice_interface.events({
 		Session.set('duration', task.duration);
 		Session.set('secondsPracticed', 0);
 
-		$('.setup').css('display', 'none');
-		$('.timer').css('display', 'block');
+		Session.set("taskPicked", true);
 	},
 });
 
@@ -88,7 +87,7 @@ Template.practice_task_interface.helpers({
 		return getStudentTasksByType('Practice');
 	},
 	taskPicked: function() {
-		return Session.get('practiceTaskObject');
+		return Session.get('taskPicked');
 	}
 });
 

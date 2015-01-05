@@ -5,17 +5,6 @@ var task_duration_seconds;
 
 Template.class_task_main.rendered = function() {
 
-    openTask = function(el) {
-        var task = $(el).parents('.task');
-        task.children('.task-body').css('display', 'block');
-        $(el).html('See less').attr('onclick', 'closeTask(this)');
-    }
-    closeTask = function(el) {
-        var task = $(el).parents('.task');
-        task.children('.task-body').css('display', 'none');
-        $(el).html('See more').attr('onclick', 'openTask(this)');
-    }
-
     $('.form').css('display', 'none');
     $('.field').css('display', 'none');
 
@@ -169,37 +158,37 @@ Template.class_task_main.helpers({
 });
 
 Template.class_task_main.events({
-        'click #assignTask': function() {
-            //get all values from fields
-            var classId = Template.currentData()._id;
-            
-            var sectionIds = [];
-            // Loop through each selected tag and add id to sectionIds
-            $('.section-tags').children('.selected').each(function(index, el) {
-                if (!$(this).hasClass('selectAll')) {
-                    sectionIds.push($(this).attr('id'));
-                }
-            });
-
-            var taskType = formType; // Defined in rendered javascript when task type is selected
-            var taskName = document.getElementById("taskName").value;
-            var taskDescription = document.getElementById("taskDescription").value;
-            var taskDuration = task_duration_seconds; // Defined when user changes Practice Length or video
-            var youTube = video_id; // Defined when user changes link
-            var dueDate = new Date(document.getElementById("dueDate").value);
-
-            var newTask = {
-                classId: classId,
-                type: taskType,
-                name: taskName,
-                description: taskDescription,
-                sections: sectionIds,
-                duration: taskDuration,
-                youtubeURL: youTube,
-                dueDate: dueDate,
-                creationDate: new Date(),
-                points: points
+    'click #assignTask': function() {
+        //get all values from fields
+        var classId = Template.currentData()._id;
+        
+        var sectionIds = [];
+        // Loop through each selected tag and add id to sectionIds
+        $('.section-tags').children('.selected').each(function(index, el) {
+            if (!$(this).hasClass('selectAll')) {
+                sectionIds.push($(this).attr('id'));
             }
+        });
+
+        var taskType = formType; // Defined in rendered javascript when task type is selected
+        var taskName = document.getElementById("taskName").value;
+        var taskDescription = document.getElementById("taskDescription").value;
+        var taskDuration = task_duration_seconds; // Defined when user changes Practice Length or video
+        var youTube = video_id; // Defined when user changes link
+        var dueDate = new Date(document.getElementById("dueDate").value);
+
+        var newTask = {
+            classId: classId,
+            type: taskType,
+            name: taskName,
+            description: taskDescription,
+            sections: sectionIds,
+            duration: taskDuration,
+            youtubeURL: youTube,
+            dueDate: dueDate,
+            creationDate: new Date(),
+            points: points
+        }
 
         // save task
         var taskID = Tasks.insert(newTask);
@@ -207,7 +196,7 @@ Template.class_task_main.events({
         for (i in sectionIds) {
             //get all students in the section so a taskData object can be created for each of them.
             var section = Sections.findOne({_id: sectionIds[i]});
-            var studentIds = section.students
+            var studentIds = section.users;
 
             for (indx in studentIds) {
                 var newTaskData = {
@@ -220,5 +209,7 @@ Template.class_task_main.events({
                 TasksData.insert(newTaskData);
             }
         }
+        $('.form').slideUp(250);
+        $('.preview').slideDown(250);
     }
 });
