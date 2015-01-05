@@ -154,7 +154,8 @@ Template.class_task_main.helpers({
                 }
             }]
         };
-        pointer = Sections.find(selector);
+        pointer = Sections.find(selector, {sort: {order: 1}});
+        console.log(pointer.fetch());
         return pointer.fetch();
     },
     allTasks: function() {
