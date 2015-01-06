@@ -12,9 +12,7 @@ Template.user_messenger_main.helpers({
     },
 });
 
-Template.user_messenger_main.events({
-    'click #new-message-submit': function() {
-        console.log("submit")
+sendMessage = function() {
         var messagebody = document.getElementById("new-message").value;
         if (messagebody) {
             var newMessage = {
@@ -28,7 +26,16 @@ Template.user_messenger_main.events({
             document.getElementById("new-message").value = "";
             
         }
-    },
+    }
+
+Template.user_messenger_main.events({
+    'click #new-message-submit': sendMessage,
+    'keydown input': function(e) {
+        if (e.keyCode == 13) {
+            //send message
+            sendMessage();
+        }
+    }
 })
 
 Template.message_user.helpers({

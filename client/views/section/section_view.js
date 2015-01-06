@@ -90,21 +90,21 @@ Template.section_leader_side.helpers({
     },
 });
 
+sendMessage = function() {
+    var messagebody = document.getElementById("new-message").value;
+    if (messagebody) {
+        var newMessage = {
+            sectionID: Template.currentData()._id,
+            senderID: Meteor.userId(),
+            body: messagebody,
+            date: new Date()
+        };
+        Messages.insert(newMessage);
+        document.getElementById("new-message").value = "";
+    }
+}
 Template.section_view.events({
-    'click #new-message-submit': function() {
-        var messagebody = document.getElementById("new-message").value;
-        if (messagebody) {
-            var newMessage = {
-                sectionID: Template.currentData()._id,
-                senderID: Meteor.userId(),
-                body: messagebody,
-                date: new Date()
-            };
-            Messages.insert(newMessage);
-            document.getElementById("new-message").value = "";
-
-        }
-    },
+    'click #new-message-submit': sendMessage,
     'click #sectionMessage': function() {
         Session.set('sectionMessage', true);
         Session.set('sectionStats', false);
@@ -130,6 +130,12 @@ Template.section_view.events({
                 locked: evt.target.checked
             }
         });
+    },
+    'keydown input': function(e) {
+        if (e.keyCode == 13) {
+            //send message
+            sendMessage()
+        }
     }
 });
 
@@ -150,7 +156,7 @@ Template.message.helpers({
     formattedDate: function() {
         var date = Template.currentData().date;
         $('.messages').scrollTop(100000);
-        return date.toTimeString();
+        return date.toLocaleTimeString();
     }
 });
 
