@@ -7,18 +7,15 @@ Template.other_teachers_side.helpers({
 Template.other_teachers_side.rendered = function() {
     $('#otherTeachersList').css('display', 'none');
 
+    var otherTeachersOpen = false;
+
     $('#previewOtherTeachers').click(function(event) {
-        $('#previewOtherTeachers').slideUp(250);
-        $('#otherTeachersList').slideDown(250);
+        if (otherTeachersOpen) {
+            $('#otherTeachersList').slideUp(250);
+        } else {
+            $('#otherTeachersList').slideDown(250);
+        }
+        otherTeachersOpen = !otherTeachersOpen;
     });
 
-    $('#cancel').click(function(event) {
-        $('#classCreateForm').slideUp(250);
-        $('#otherTeachersList').slideDown(250);
-    });
-    
-    // $('#createClass').click(function(event) {
-    //     $('#classCreateForm').slideUp(250);
-    //     $('#previewCreateClass').slideDown(250);
-    // }); 
 }
