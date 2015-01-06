@@ -155,15 +155,23 @@
 
 .customAlert {
     position: absolute;
+    top: -4em;
     width: 100%;
     height: 4em;
     z-index: 106;
+    @include transition(top 0.25s);
     &#error {
         background-color: $red;
     }
     &#info {
         background-color: $blue;
     }
+    &#success {
+        background-color: $green;
+    }
+    // &.hideAlert {
+    //     top: -4em;
+    // }
     .container-full .message {
         font-size: 1.25em;
         font-style: italic;

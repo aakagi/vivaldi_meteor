@@ -1,0 +1,53 @@
+<template name="youtube_player">
+	<div class="row">
+		<div class="col-sm-8">
+			<script>
+				function onYouTubeIframeAPIReady() {
+					var startTime;
+					var endTime;
+					var totalS = 0;
+
+					var player;
+					player = new YT.Player('player', {
+						width: 600,
+						height: 300,
+						videoId: '{{videoId}}',
+						playerVars: { 'controls': 0 },
+						events: {
+							'onStateChange': onPlayerStateChange
+						}
+					});
+
+					$('#player').width($('#player').parent('.col-sm-8').width());
+					$('#player').height($('#player').width() * (9 / 16));
+			
+					function onPlayerStateChange() {
+						var state = player.getPlayerState();
+
+						if (state == 1) {
+							startTime = new Date();
+						} else if (state == 0 || state == 2) {
+							endTime = new Date();
+							verifyTime();
+						}
+					}
+					function verifyTime() {
+						totalS = totalS + ((endTime.getTime() - startTime.getTime()) / 1000);
+						var dur = player.getDuration();
+						console.log(totalS + ', ' + dur);
+						if ((totalS / dur) > 0.9) {
+							setAlert('info', 'w00t you did it!');
+						} else {
+							setAlert('error', 'CHEATER!');
+						}
+					}
+				}
+
+			</script>
+			<div id="player"></div>
+		</div>
+		<div class="col-sm-4">
+			<button class="goBackFromListen btn btn1 btn-sm btn-blue width100">Go back</button>
+		</div>
+	</div>
+</template>
