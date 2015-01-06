@@ -1,8 +1,9 @@
 <template name="home_view">
-
         <div class="row">
             <div class="col-md-4 col-lg-4">
+
                 {{> welcome_name_side}}
+
                 {{#if isTeacher}}
 
                     {{#unless showClasses}}
@@ -11,6 +12,7 @@
                         </button>
                         <div class="break-sm"></div>
                     {{/unless}}
+
                     {{#unless seeLeaderboards}}
                         <button id="seeLeaderboards" class="btn btn1 btn-yellow btn-md width100">
                             Leaderboards
@@ -18,23 +20,36 @@
                         <div class="break-sm"></div>
                     {{/unless}}
 
+                    {{> other_teachers_side}}
+
                 {{else}}
                     <!-- if student -->
                     {{#unless showTasks}}
+
                         <button id="showTasks" class="btn btn1 btn-blue btn-md width100">
                             Show Tasks
                         </button>
+
                         <div class="break-sm"></div>
+
                     {{/unless}}
+
                     {{#unless viewStats}}
+
                         <button id="viewStats" class="btn btn1 btn-yellow btn-md width100">
                             View Stats
                         </button>
+
                         <div class="break-sm"></div>
+
                     {{/unless}}
+
                 {{/if}}
-                <!-- {{> notifications}} -->
+
+                {{> my_stats_side}}
+                
                 {{> awesome_side}}
+
             </div>
             <div class="col-md-8 col-lg-8">
                 {{#if isTeacher}}
@@ -51,7 +66,7 @@
                     {{/if}}
                     {{#if seeLeaderboards}}
                         <!-- {{> other_classes_main}} -->
-                        <div class="block"><h1>TODO: > leaderboards</h1></div>
+                        <div class="block" style="height: 600px;"><h5>Leaderboards - Coming Soon</h5></div>
 
                     {{/if}}
                 {{else}}
