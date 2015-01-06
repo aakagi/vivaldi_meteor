@@ -92,16 +92,15 @@
 
                     {{#unless studentSections}}
                         
-
                         {{#each userClasses}}
                             {{> join_section}}
                         {{/each}}
 
+                    {{/unless}}
+
                     {{#if showTasks}}
                         {{> home_incomplete_tasks_main}}
                     {{/if}}
-
-                    {{/unless}}
                     
                 {{/if}}
             </div>
