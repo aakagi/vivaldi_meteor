@@ -22,7 +22,7 @@ Template.join_section.helpers({
                 }
             }, {
                 locked: false
-            }];
+            }]
         };
         pointer = Sections.find(selector);
         return pointer.fetch();

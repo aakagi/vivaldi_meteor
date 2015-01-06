@@ -10,6 +10,17 @@
 	</div>
 </template>
 
+<template name="sectionstudent">
+	<h6>
+		<a href="/user?id={{_id}}">
+			{{ profile.firstName }} {{ profile.lastName }}
+		</a>
+		{{#if leaderManage}}
+			<a id="removeUser" class="red right">Remove</a>
+		{{/if}}
+	</h6>
+</template>
+
 <template name="section_leader_side">
 	<div class="block">
 		<p>
@@ -56,17 +67,9 @@
 
 			<div class="block">
 				<p>Students</p>
-				{{ #each studentData }}
-					<h6>
-						<a href="/user?id={{_id}}">
-							{{ profile.firstName }} {{ profile.lastName }}
-						</a>
-						{{#if leaderManage}}
-							{{#unless studentIsLeader}}
-								<a class="red right">Remove</a>
-							{{/unless}}
-						{{/if}}
-					</h6>
+				Section Leader: {{getLeader.profile.firstName}} {{getLeader.profile.lastName}}
+				{{ #each studentDataNotLeader }}
+					{{> sectionstudent}}
 				{{ /each }}
 				{{#if leaderManage}}
 					<div class="break-lg"></div>
