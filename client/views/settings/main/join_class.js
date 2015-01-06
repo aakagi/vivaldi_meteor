@@ -48,9 +48,9 @@ Template.join_class.events({
         }, function(err) {
             if (err) {
                 console.log(err);
-                setAlert('error', 'error writing to database');
+                setAlert('error', 'Error writing to database');
             } else {
-                setAlert('info', 'added to class!');
+                setAlert('info', 'Added to class!');
             }
         });
     }
@@ -64,9 +64,9 @@ Template.pending_classes.events({
         Classes.update({_id: classID}, modifier, function(err){
              if (err) {
                 console.log(err);
-                setAlert('error', 'error writing to database');
+                setAlert('error', 'Error writing to database');
             } else {
-                setAlert('info', 'request cancelled.');
+                setAlert('info', 'Request cancelled.');
             }
         });  
     }

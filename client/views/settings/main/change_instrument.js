@@ -17,9 +17,9 @@ Template.change_instrument.events({
 		Meteor.users.update({_id: Meteor.userId()}, {$set: { 'profile.instrument' : instrumentName}}, function(err) {
             if (err) {
                 console.log(err);
-                setAlert('error', 'error writing to database');
+                setAlert('error', 'Error writing to database');
             } else {
-                setAlert('info', 'you changed your instrument!');
+                setAlert('info', 'You changed your instrument!');
             }
         });
 	}

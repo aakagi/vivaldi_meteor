@@ -27,8 +27,6 @@ Template.change_name.helpers({
 //#lastName
 Template.change_name.events({
     'click #saveName': function() {
-    	//setAlert('error', 'button clicked!');
-    	//console.log("clicked");
         userid = Meteor.userId();
         newFirst = document.getElementById('firstName').value
         newLast = document.getElementById('lastName').value
@@ -50,7 +48,7 @@ Template.change_name.events({
                 console.log(err);
             } else {
                 console.log("works!");
-                setAlert('info', 'name change successful!');
+                setAlert('info', 'Name change successful!');
             }
         });
     }

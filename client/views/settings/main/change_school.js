@@ -31,7 +31,7 @@ Template.change_school.events({
                 console.log(err);
             } else {
                 console.log("works!");
-                setAlert('info', 'school change successful!');
+                setAlert('info', 'School change successful!');
             }
         });
     }

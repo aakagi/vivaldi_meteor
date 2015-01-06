@@ -44,7 +44,7 @@ Template.section_view.helpers({
             }]
         }
         var results = Meteor.users.find(selector);
-        return results.fetch;
+        return results.fetch();
     },
     getLeader: function() {
         return Meteor.users.findOne({
@@ -121,7 +121,7 @@ Template.section_view.events({
         Session.set('leaderManage', false);
         Session.set('endLeaderManage', true);
     },
-    'change .lockSection input': function(evt) {
+    'change #lockSection': function(evt) {
         //lock the section
         Sections.update({
             _id: Template.currentData()._id

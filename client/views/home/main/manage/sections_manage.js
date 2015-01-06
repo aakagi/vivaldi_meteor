@@ -117,7 +117,8 @@ Template.sections_manage.events({
             var newSectionDoc = {
                 name: sectionName,
                 users: [],
-                order: classData.sections.length + 1
+                order: classData.sections.length + 1,
+                locked: false
             };
             var sectionID = Sections.insert(newSectionDoc);
             Classes.update({

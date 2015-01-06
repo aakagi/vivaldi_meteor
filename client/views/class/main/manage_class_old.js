@@ -1,4 +1,4 @@
-Template.manage_class.events({
+Template.manage_class_old.events({
     'click #saveClass': function() {
         var classData = Template.currentData();
         var classID = classData._id;
@@ -39,7 +39,7 @@ Template.manage_class.events({
     }
 });
 
-Template.manage_class.rendered = function() {
+Template.manage_class_old.rendered = function() {
     Session.set('saveSections', true);
     Session.set('editSections', false);
 
@@ -47,7 +47,7 @@ Template.manage_class.rendered = function() {
     Session.set('addNewSection', false);
 };
 
-Template.manage_class.helpers({
+Template.manage_class_old.helpers({
     'studentList': function() {
         var studentIDs = Template.currentData().students;
         // console.log(studentIDs);
@@ -98,7 +98,7 @@ Template.manage_class.helpers({
     },
 });
 
-Template.manage_class.events({
+Template.manage_class_old.events({
     'click #saveClass': function() {
         var classData = Template.currentData();
         var classID = classData._id;
