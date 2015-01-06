@@ -1,7 +1,39 @@
+<template name="message_user">
+    <div class="message">
+        <div class="message-head">
+            <img src="images/demo/adminsidebar.png">
+        </div>
+        <div class="message-body">
+            <p class="message-info">{{senderName}} • {{formattedDate}}</p>
+            <p class="message-content">{{body}}</p>
+        </div>
+    </div>
+</template>
+
+
 <template name="user_messenger_main">
-    <div class="block">
-        <h1>
-            TODO
-        </h1>
+    <div class="block chat">        
+        <div class="title">
+            <h6>Chat</h6>
+        </div>
+        <div class="body">
+            <div class="messages">
+                {{#each getMessages}}
+                    {{> message_user}}
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <div class="camera">
+                <i class="fa fa-camera fa-2x"></i>
+            </div>
+            <div class="chat-input">
+                <input id="new-message" type="text"/>
+            </div>
+            <div class="send">
+                <input id="new-message-submit" type="submit" value="Send"/>
+            </div>
+        </div>
     </div>
 </template>
