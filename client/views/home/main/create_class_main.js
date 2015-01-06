@@ -89,10 +89,12 @@ Template.create_class_main.events({
             //defines a document, inserts it, then inserts the section ID into an array
             //array will be saved to the class document
             for (section in sectionNames) {
+                // Apparently var section isn't a freaking int
+                var plusOne = Number(section) + 1;
                 sectionDoc = {
                     name: sectionNames[section],
                     users: [],
-                    order: section,
+                    order: plusOne, //In order to sort sections
                     locked: false
                 };
                 sectionID = Sections.insert(sectionDoc);

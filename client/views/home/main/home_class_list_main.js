@@ -27,6 +27,14 @@ Template.home_class_list_main.helpers({
     managePending: function() {
         return Session.get('managePending');
     },
+    editingClass: function() {
+        var classManageId = Session.get('classManageId');
+        if (classManageId == Template.currentData()._id) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 });
 
 Template.home_class_list.events({
@@ -55,8 +63,8 @@ Template.home_class_list.events({
         Session.set('manageStudents', false);
         Session.set('managePending', true);
     },
-    // 'click .manage': function() {
-    //     classManageId = 
-    //     Session.set('classManageId',
-    // }
+    'click .manage': function() {
+        classManageId = Template.currentData()._id
+        Session.set('classManageId', classManageId);
+    }
 });
