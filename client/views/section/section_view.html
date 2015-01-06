@@ -23,14 +23,20 @@
 
 <template name="section_leader_side">
 	<div class="block">
-		<p>
-			Section Leader
-		</p>
-		<h6>
-			<a href="/user?id={{leader}}">
-				{{sectionLeader.profile.firstName}} {{sectionLeader.profile.lastName}}
-			</a>
-		</h6>
+		{{#if sectionLeader.profile.firstName}}
+			<p>
+				Section Leader
+			</p>
+			<h6>
+				<a href="/user?id={{leader}}">
+					{{sectionLeader.profile.firstName}} {{sectionLeader.profile.lastName}}
+				</a>		
+			</h6>
+		{{else}}
+			<p>
+				Your teacher has yet to assign a section leader.
+			</p>
+		{{/if}}
 	</div>
 </template>
 
@@ -48,7 +54,6 @@
 				<a href="/class?id={{class._id}}"><h5>{{ class.name }}</h5></a>
 			</div>
 			
-			{{> section_leader_side}}
 
 
 			{{#unless sectionMessage}}
@@ -65,9 +70,17 @@
                 <div class="break-sm"></div>
 			{{/unless}}
 
+			{{> section_leader_side}}
+
 			<div class="block">
 				<p>Students</p>
-				Section Leader: {{getLeader.profile.firstName}} {{getLeader.profile.lastName}}
+				<!--
+				Section Leader: 
+				{{#if getLeader.profile.firstName}}
+					{{getLeader.profile.firstName}} {{getLeader.profile.lastName}}
+				{{else}}
+					None
+				{{/if}} -->
 				{{ #each studentDataNotLeader }}
 					{{> sectionstudent}}
 				{{ /each }}
@@ -94,6 +107,14 @@
 					{{/if}}
 				{{/if}}
 			</div>
+			{{#if userIsLeader}}
+				<div class="block">
+					<h6>
+						Challenge Other Sections
+					</h6>
+
+				</div>
+			{{/if}}
 		</div>
 	
 		<div class="col-md-8 col-lg-8">
