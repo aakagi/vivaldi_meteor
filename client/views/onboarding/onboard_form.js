@@ -63,12 +63,11 @@ Template.onboard_form.events({
                         console.log(err)
                     }
                 } else {
-                    console.log("success!");
-                    console.log(instrument);
+                    setAlert('success', 'Sign Up was Successful!');
                     //create document in the userData database
                     userid = Meteor.userId();
 
-                    if (isNotEmpty(selectInstrument)){
+                    if (instrument){
                         //create new instrument stats
                         var newStats = {instrumentName: instrument, userId: userid, experience: 0};
                         InstrumentStats.insert(newStats);
@@ -89,7 +88,14 @@ Template.onboard_form.events({
             }); 
         }
     },
-    'change .teacher-sign-up input': function (evt) {
-        Session.set("teacherSignUp", evt.target.checked);
+    'click #teacherCreate': function () {
+        var teacherCode = prompt("Please enter the teacher code. If you are a teacher and would like to join Vivaldi, please email Alex at Vivaldimailer@gmail.com.", "Code");
+    
+        if (teacherCode === 'Spring') {
+            Session.set("teacherSignUp", true);
+        } else {
+            setAlert('error', 'Incorrect code');
+        }
+        
     }
 });
