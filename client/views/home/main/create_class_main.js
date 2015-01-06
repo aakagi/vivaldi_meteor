@@ -1,22 +1,20 @@
 Template.create_class_main.rendered = function() {
     $('#classCreateForm').css('display', 'none');
 
-    $('.preview').click(function(event) {
-        $('.preview').slideUp(250);
+    $('#previewCreateClass').click(function(event) {
+        $('#previewCreateClass').slideUp(250);
         $('#classCreateForm').slideDown(250);
     });
 
     $('#cancelClass').click(function(event) {
         $('#classCreateForm').slideUp(250);
-        $('.preview').slideDown(250);
+        $('#previewCreateClass').slideDown(250);
     });
     
     $('#createClass').click(function(event) {
         $('#classCreateForm').slideUp(250);
-        $('.preview').slideDown(250);
-    });
-
-    
+        $('#previewCreateClass').slideDown(250);
+    }); 
 }
 
 Template.create_class_main.helpers({
