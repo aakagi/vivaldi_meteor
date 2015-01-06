@@ -135,10 +135,11 @@ Template.sections_manage.events({
     'click #addNewSection': function() {
         Session.set('confirmAddedSection', false);
         Session.set('addNewSection', true);
-
-
-
     },
+    'click #closeManage': function() {
+        Session.set('manageSections', false);
+    },
+
 });
 
 
@@ -220,5 +221,7 @@ Template.section_edit_item.helpers({
                 }
             }]
         }).fetch();
-    }
+    },
+
+
 });

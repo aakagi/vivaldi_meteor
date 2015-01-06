@@ -556,8 +556,15 @@
     padding: .7em 2em;
     line-height: 1.5;
 }
-
-
+.blue-hover {
+    cursor: pointer;
+    &:hover {
+        color: $blue;
+        &:after {
+            opacity: 1;
+        }
+    }
+}
 /*
 ------------------------
 |                      |

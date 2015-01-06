@@ -1,9 +1,14 @@
 <template name="students_manage">
     <div class="block">
         <div class="input-group clear">
-            <h4>
-                Student Management
-            </h4>
+            <div class="row">
+                <h4 class="col-sm-8">
+                    Student Management
+                </h4>
+                <p class="col-sm-4 blue-hover">
+                    <span class="right" id="closeManage">minimize</span>
+                </p>
+            </div>
             <div class="break-sm"></div>
             <div class="student-management">
                 {{#if studentList}}

@@ -11,6 +11,12 @@ Template.students_manage.helpers({
     }
 });
 
+Template.students_manage.events({
+    'click #closeManage': function() {
+        Session.set('manageStudents', false);
+    },
+});
+
 Template.student_in_list.events({
     'click #deleteStudent': function() {
         if (confirm("Are you sure you want to delete this student?") == true) {
@@ -37,5 +43,7 @@ Template.student_in_list.events({
         } else {
             console.log("Action Cancelled")
         }
-    }
+    },
 });
+
+

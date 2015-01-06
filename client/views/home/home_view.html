@@ -44,9 +44,13 @@
 
                     {{/unless}}
 
+                    <!-- {{> my_stats_side}} -->
+                    <div class="block">
+                        <h6>Level 5 Viola in Viola Section and Alex's Akademi</h6>
+                    </div>
+                
                 {{/if}}
 
-                {{> my_stats_side}}
                 
                 {{> awesome_side}}
 
@@ -69,25 +73,34 @@
                         <div class="block" style="height: 600px;"><h5>Leaderboards - Coming Soon</h5></div>
 
                     {{/if}}
+
                 {{else}}
                     <!-- if student -->
-                    <!-- Makes sure the user is in a class -->
-                    {{#if showTasks}}
-                        {{> home_incomplete_tasks_main}}
-                    {{/if}}
+
                     {{#if viewStats}}
                         <div class="block">
                             <h1>TODO: My Stats</h1>
                         </div>
                     {{/if}}
+
                     {{#unless userClasses}}
+
+                        {{> welcome_student}}
                         {{> join_class}}
+
                     {{/unless}}
+
                     {{#unless studentSections}}
+                        
+
                         {{#each userClasses}}
                             {{> join_section}}
                         {{/each}}
-                        {{> welcome_student}}
+
+                    {{#if showTasks}}
+                        {{> home_incomplete_tasks_main}}
+                    {{/if}}
+
                     {{/unless}}
                     
                 {{/if}}
@@ -104,10 +117,10 @@
         </h2>
         <div class="break-md"></div>
         <p class="lots-of-text">
-            &nbsp;&nbsp;&nbsp;&nbsp;Hey everyone! Welcome to Vivaldi. With Vivaldi, you'll be able to earn points for practicing, completing tasks assigned to you by your teacher, and winning in competitions against fellow classmates!
+            &nbsp;&nbsp;&nbsp;&nbsp;Hey everyone! Welcome to Vivaldi. With Vivaldi, you'll be able to earn points for becoming a better musician by practicing, completing tasks assigned to you by your teacher, and winning in competitions against fellow classmates!
         </p>
         <p class="lots-of-text">
-            &nbsp;&nbsp;&nbsp;&nbsp;It's been tons of fun building the software, but it's still far from complete. If you feel like anything is a bit strange, or something kind of sucks, please let us know! This software was built by three college students, who all played instruments in high school just a couple years ago, so we completely understand how much it sucks to be told to do menial tasks for no reason, which is why our goal is to make this experience as fun as possible for you, and to also help you improve your practice habits. We want you to become a better musician.
+            &nbsp;&nbsp;&nbsp;&nbsp;It's been tons of fun building the software, but it's still far from complete. If you feel like anything is a bit strange, or something kind of sucks, please let us know! You can contact us with the menu in the top left corner of the page.
         </p>
         <p class="lots-of-text">
             &nbsp;&nbsp;&nbsp;&nbsp;Use the dropdown menu below to get started, and hopefully the rest of the website is fairly self-explanatory, but if you ever have any questions, feel free to send us a message via chat using the side menu (open it by clicking on the icon in the top left corner). 

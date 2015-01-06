@@ -9,6 +9,15 @@ Template.waitlist_manage.helpers({
         }).fetch();
         return results;
     },
+    pendingStudents: function(){
+        return Template.currentData().waitlist.length
+    },
+});
+
+Template.waitlist_manage.events({
+    'click #closeManage': function() {
+        Session.set('managePending', false);
+    },
 });
 
 Template.student_in_waitlist.events({
@@ -63,6 +72,6 @@ Template.student_in_waitlist.events({
         } else {
             console.log("Action Cancelled")
         }
-    }
+    },
 
 });
