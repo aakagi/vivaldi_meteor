@@ -117,7 +117,8 @@ Template.sections_manage.events({
             var newSectionDoc = {
                 name: sectionName,
                 users: [],
-                order: classData.sections.length + 1
+                order: classData.sections.length + 1,
+                locked: false
             };
             var sectionID = Sections.insert(newSectionDoc);
             Classes.update({
@@ -134,10 +135,11 @@ Template.sections_manage.events({
     'click #addNewSection': function() {
         Session.set('confirmAddedSection', false);
         Session.set('addNewSection', true);
-
-
-
     },
+    'click #closeManage': function() {
+        Session.set('manageSections', false);
+    },
+
 });
 
 
@@ -219,5 +221,7 @@ Template.section_edit_item.helpers({
                 }
             }]
         }).fetch();
-    }
+    },
+
+
 });

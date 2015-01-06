@@ -25,7 +25,7 @@ Template.user_view.helpers({
 });
 
 Template.user_view.rendered = function () {
-    Session.set('userMessage', true);
+    Session.set('userMessage', false);
     Session.set('userStats', false);
 };
 

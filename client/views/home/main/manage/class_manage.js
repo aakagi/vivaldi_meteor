@@ -36,6 +36,9 @@ Template.class_manage.events({
         } else {
             console.log("Action Cancelled")
         }
+    },
+    'click #closeManage': function() {
+        Session.set('manageClass', false);
     }
 });
 

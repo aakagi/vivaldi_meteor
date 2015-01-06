@@ -9,7 +9,7 @@
         </a>
     </h6>
     <p>
-        <a href="" class="red" id="cancelJoinClass">
+        <a class="red" id="cancelJoinClass">
             Cancel
         </a>  
     </p>
@@ -18,7 +18,7 @@
 <template name="join_class">
 
     
-        {{#if classList}}
+    {{#unless pendingClassesList}}
         <div class="block">
             <div class="form shadedInputs">
                 <h6>
@@ -56,20 +56,20 @@
                 </div>
             </div>
         </div>
-        {{/if}}
-        {{#if pendingClassesList}}
-            <div class="block">
-                <div>
-                    <h6>
-                        Pending Classes
-                    </h6>
-                    {{#each pendingClassesList}}
-                        {{> pending_classes}}
-                    {{/each}}
-                </div>
-                <p class="lots-of-text">
-                    Please wait for your teacher to confirm you as a student. Once you're accpeted, you'll be able to join a section. You will still be able to document your practice while waiting to be confirmed.
-                </p>
+    {{else}}
+        <div class="block">
+            <div>
+                <h4>
+                    Pending Classes
+                </h4>
+                <div class="break-md"></div>
+                {{#each pendingClassesList}}
+                    {{> pending_classes}}
+                {{/each}}
             </div>
-        {{/if}}
+            <p class="lots-of-text">
+                Please wait for your teacher to confirm you as a student. Once you're accpeted, you'll be able to join a section. You will still be able to document your practice while waiting to be confirmed.
+            </p>
+        </div>
+    {{/unless}}
 </template>

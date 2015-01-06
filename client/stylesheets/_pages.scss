@@ -551,10 +551,62 @@
 }
 
 // Unorganized new stuff - Alex
+
 .lots-of-text {
-    padding: 1em 2em;
+    padding: .7em 2em;
     line-height: 1.5;
 }
+
+div {
+    .blue-hover {  
+        .preview {
+            cursor: pointer;
+        }
+        &:hover{ 
+            // p {
+            //     .fa {
+            //         color: $blue;
+            //         &:after {
+            //             opacity: 1;
+            //         }
+            //     }
+            // }
+            // h6 {
+            //     color: $blue;
+            //     &:after {
+            //         opacity: 1;
+            //     }
+            // }
+            .preview {
+                h6 {
+                    color: $blue;
+                    &:after {
+                        opacity: 1;
+                    }
+                    .fa {
+                        color: $blue;
+                        &:after {
+                            opacity: 1;
+                        }
+                    } 
+                }
+                p {
+                    color: $blue;
+                    &:after {
+                        opacity: 1;
+                    }
+                    .fa {
+                        color: $blue;
+                        &:after {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 /*
 ------------------------

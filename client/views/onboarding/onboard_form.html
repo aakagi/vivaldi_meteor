@@ -5,12 +5,14 @@
         </a>
         <div class="break-lg-scaling">
         </div>
-
+        {{#unless teacherSignUp}}
         <label class="teacher-sign-up right">
-            <input type="checkbox" checked="{{teacherSignUp}}" />
-            Sign up as a teacher.
+            <button class="btn btn-md btn-blue" id="teacherCreate">
+                Sign up as a teacher
+            </button>
             <div class="break-md"></div>
         </label>
+        {{/unless}}
         
         <div class="form">
             <form action="/onboard_form" class="sign-up-form" id="onboardForm" method="post">
@@ -20,11 +22,11 @@
                     <div class="input-group">
                         <div class="group-label">
                             <label for="school">
-                                Enter School Name
+                                Please enter the name of your school.
                             </label>
                         </div>
                         <div class="group-input">
-                            <input class="input border input-md" id="school" name="school" placeholder="North Central High School" type="text">
+                            <input class="input border input-md" id="school" name="school" placeholder="North Central" type="text">
                         </div>
                     </div>
 
@@ -33,11 +35,11 @@
                     <div class="input-group">
                         <div class="group-label">
                             <label for="honorific">
-                                Please enter your title/honorific, or your first name if you prefer.
+                                Please enter your title, honorific, or first name.
                             </label>
                         </div>
                         <div class="group-input">
-                            <input class="input border input-md" id="honorific" name="honorific" placeholder="Mr. / Ms. / Mrs. / Dr. / Prof." type="text">
+                            <input class="input border input-md" id="honorific" name="honorific" placeholder="Mr. / Ms. / Prof. / Antonio" type="text">
                         </div>
                     </div>
 
@@ -106,7 +108,7 @@
                 <div class="input-group">
                     <div class="group-label">
                         <label for="createPassword">
-                            Password
+                            Create a password.
                         </label>
                     </div>
                     <div class="group-input">
@@ -119,7 +121,7 @@
                 <div class="input-group">
                     <div class="group-label">
                         <label for="confirmPassword">
-                            Confirm Password
+                            Confirm your password and sign in!
                         </label>
                     </div>
                     <div class="group-input">

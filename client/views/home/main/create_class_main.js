@@ -1,22 +1,20 @@
 Template.create_class_main.rendered = function() {
     $('#classCreateForm').css('display', 'none');
 
-    $('.preview').click(function(event) {
-        $('.preview').slideUp(250);
+    $('#previewCreateClass').click(function(event) {
+        $('#previewCreateClass').slideUp(250);
         $('#classCreateForm').slideDown(250);
     });
 
     $('#cancelClass').click(function(event) {
         $('#classCreateForm').slideUp(250);
-        $('.preview').slideDown(250);
+        $('#previewCreateClass').slideDown(250);
     });
     
     $('#createClass').click(function(event) {
         $('#classCreateForm').slideUp(250);
-        $('.preview').slideDown(250);
-    });
-
-    
+        $('#previewCreateClass').slideDown(250);
+    }); 
 }
 
 Template.create_class_main.helpers({
@@ -89,10 +87,13 @@ Template.create_class_main.events({
             //defines a document, inserts it, then inserts the section ID into an array
             //array will be saved to the class document
             for (section in sectionNames) {
+                // Apparently var section isn't a freaking int
+                var plusOne = Number(section) + 1;
                 sectionDoc = {
                     name: sectionNames[section],
                     users: [],
-                    order: section
+                    order: plusOne, //In order to sort sections
+                    locked: false
                 };
                 sectionID = Sections.insert(sectionDoc);
                 sectionIDs.push(sectionID);
@@ -101,7 +102,8 @@ Template.create_class_main.events({
             teacherSectionDoc = {
                 name: "Teachers",
                 users: [userId],
-                order: sectionIDs.length
+                order: sectionIDs.length,
+                locked: false
             }
             teacherSectionID = Sections.insert(teacherSectionDoc);
             sectionIDs.push(teacherSectionID);
@@ -109,7 +111,8 @@ Template.create_class_main.events({
                 name: "Section Leaders",
                 users: [],
                 order: sectionIDs.length,
-                leader: userId
+                leader: userId,
+                locked: false
             }
             sectionLeadersID = Sections.insert(sectionLeadersDoc);
             sectionIDs.push(sectionLeadersID);

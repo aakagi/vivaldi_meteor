@@ -1,8 +1,16 @@
 <!-- Waitlist -->
 <template name="waitlist_manage">
+{{#if pendingStudents}}
     <div class="block">
         <div class="input-group clear">
-            <h6>Pending Students</h6>
+            <div class="row">
+                <h4 class="col-sm-8">
+                    Pending Students
+                </h4>
+                <p class="col-sm-4 blue-hover">
+                    <span class="right" id="closeManage">minimize</span>
+                </p>
+            </div>
             <div class="student-management">
                 {{#each waitList}}
                     {{> student_in_waitlist}}
@@ -10,6 +18,7 @@
             </div>
         </div>
     </div>
+{{/if}}
 </template>
 
 <template name="student_in_waitlist">

@@ -12,7 +12,7 @@
         </a>
             <div class="row">
                 <div class="col-sm-3">
-                    <a id="manageClass">
+                    <a class="manage" id="manageClass">
                         <div class="break-sm"></div>
                         <p>
                             Class
@@ -23,7 +23,7 @@
                     </a>
                 </div>
                 <div class="col-sm-3">
-                    <a id="manageSections">
+                    <a class="manage" id="manageSections">
                         <div class="break-sm"></div>
                         <p>
                             Sections
@@ -34,19 +34,19 @@
                     </a>
                 </div>
                 <div class="col-sm-3">
-                    <a id="manageStudents">
+                    <a class="manage" id="manageStudents">
                         <div class="break-sm"></div>
                         <p>
                             Students
                         </p>
                         <h5>
-                            {{numStudents}}0
+                            {{numStudents}}
                         </h5>
                     </a>
                 </div>
                 {{#if pendingStudents}}
                 <div class="col-sm-3">
-                    <a id="managePending">
+                    <a class="manage" id="managePending">
                         <div class="break-sm"></div>
                         <p>
                             Pending Students
@@ -72,7 +72,7 @@
             <br><br>
             &nbsp;&nbsp;&nbsp;&nbsp;Hopefully you find this website useful in managing your ensembles, but we also recognize that it's still far from perfection. Please do not hesitate to give us suggestions and feedback at VivaldiMailer@gmail.com or message us from the side menu (by clicking the icon in the top left corner).
             <br><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;To get started, just click on the '+ Create a New Class' button above, and then wait for your students to join the ensemble once they make an account!
+            &nbsp;&nbsp;&nbsp;&nbsp;To get started, just click on the '+ Create a New Class' button below, and then wait for your students to join the ensemble once they make an account!
             <br><br>
             &nbsp;&nbsp;&nbsp;&nbsp;Looking forward to an awesome semester!
             <br><br>
@@ -87,17 +87,20 @@
     {{#if teacherClassesList}}
         {{#each teacherClassesList}}
             {{> home_class_list}}
-            {{#if manageClass}}
-                {{> class_manage}}
-            {{/if}}
-            {{#if manageSections}}
-                {{> sections_manage}}
-            {{/if}}
-            {{#if manageStudents}}
-                {{> students_manage}}
-            {{/if}}
-            {{#if managePending}}
-                {{> waitlist_manage}}
+            <!-- Makes it so that all the managements don't open at once -->
+            {{#if editingClass}}
+                {{#if manageClass}}
+                    {{> class_manage}}
+                {{/if}}
+                {{#if manageSections}}
+                    {{> sections_manage}}
+                {{/if}}
+                {{#if manageStudents}}
+                    {{> students_manage}}
+                {{/if}}
+                {{#if managePending}}
+                    {{> waitlist_manage}}
+                {{/if}}
             {{/if}}
         {{/each}}
     {{else}}

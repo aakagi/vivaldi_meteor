@@ -10,16 +10,33 @@
 	</div>
 </template>
 
+<template name="sectionstudent">
+	<h6>
+		<a href="/user?id={{_id}}">
+			{{ profile.firstName }} {{ profile.lastName }}
+		</a>
+		{{#if leaderManage}}
+			<a id="removeUser" class="red right">Remove</a>
+		{{/if}}
+	</h6>
+</template>
+
 <template name="section_leader_side">
 	<div class="block">
-		<p>
-			Section Leader
-		</p>
-		<h6>
-			<a href="/user?id={{leader}}">
-				{{sectionLeader.profile.firstName}} {{sectionLeader.profile.lastName}}
-			</a>
-		</h6>
+		{{#if sectionLeader.profile.firstName}}
+			<p>
+				Section Leader
+			</p>
+			<h6>
+				<a href="/user?id={{leader}}">
+					{{sectionLeader.profile.firstName}} {{sectionLeader.profile.lastName}}
+				</a>		
+			</h6>
+		{{else}}
+			<p>
+				Your teacher has yet to assign a section leader.
+			</p>
+		{{/if}}
 	</div>
 </template>
 
@@ -37,7 +54,6 @@
 				<a href="/class?id={{class._id}}"><h5>{{ class.name }}</h5></a>
 			</div>
 			
-			{{> section_leader_side}}
 
 
 			{{#unless sectionMessage}}
@@ -54,30 +70,30 @@
                 <div class="break-sm"></div>
 			{{/unless}}
 
+			{{> section_leader_side}}
+
 			<div class="block">
 				<p>Students</p>
-				{{ #each studentData }}
-					<h6>
-						<a href="/user?id={{_id}}">
-							{{ profile.firstName }} {{ profile.lastName }}
-						</a>
-						{{#if leaderManage}}
-							{{#unless studentIsLeader}}
-								<a class="red right">Remove</a>
-							{{/unless}}
-						{{/if}}
-					</h6>
+				<!--
+				Section Leader: 
+				{{#if getLeader.profile.firstName}}
+					{{getLeader.profile.firstName}} {{getLeader.profile.lastName}}
+				{{else}}
+					None
+				{{/if}} -->
+				{{ #each studentDataNotLeader }}
+					{{> sectionstudent}}
 				{{ /each }}
 				{{#if leaderManage}}
 					<div class="break-lg"></div>
-					<input type="checkbox" id="lockSection">
+					<input type="checkbox" id="lockSection" checked="{{lockSection}}">
 					<label for="lockSection">
 						<a>
 							Click here to lock section from new users
 						</a>
 					</label>
 				{{/if}}
-				<!-- {{#if userIsLeader}} -->
+				{{#if userIsLeader}}
 					<div class="break-md"></div>
 					{{#if endLeaderManage}}
 						<button class="btn btn-md btn-red" id="leaderManage">
@@ -89,8 +105,17 @@
 							Done
 						</button>
 					{{/if}}
-				<!-- {{/if}} -->
+				{{/if}}
 			</div>
+			{{#if userIsLeader}}
+				<div class="block">
+				
+					<h6>
+						Challenge Other Sections
+					</h6>
+					
+				</div>
+			{{/if}}
 		</div>
 	
 		<div class="col-md-8 col-lg-8">

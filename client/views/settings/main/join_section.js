@@ -20,10 +20,13 @@ Template.join_section.helpers({
                 name: {
                     $not: 'Teachers'
                 }
+            }, {
+                locked: {$not: true}
             }]
         };
-        pointer = Sections.find(selector);
-        return pointer.fetch();
+        sectionDocuments = Sections.find(selector, {sort: {order: 1}}).fetch();
+        console.log(sectionDocuments);
+        return sectionDocuments;
     }
 });
 
@@ -43,7 +46,7 @@ Template.join_section.events({
         }, function(err) {
             if (err) {
                 console.log(err);
-                setAlert('error', 'error writing to database');
+                setAlert('error', 'Error writing to database');
             } else {
                 //add all tasks associated with that section to the student
                 //i.e. create taskData for every task whose due date is later than the present
@@ -61,7 +64,7 @@ Template.join_section.events({
                     };
                     TasksData.insert(newTaskData);
                 }
-                setAlert('info', 'joined section!');
+                setAlert('info', 'Joined section!');
             }
         });
     }

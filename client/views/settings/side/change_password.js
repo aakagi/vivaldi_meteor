@@ -9,13 +9,13 @@ Template.change_password.events({
                     setAlert('error', err);
                 }
                 else{
-                    setAlert('info', 'password changed successfully');
+                    setAlert('info', 'Password changed successfully');
                 }
             });
         }
         else{
             //passwords do not match
-            setAlert('error', 'passwords do not match');
+            setAlert('error', 'Passwords do not match');
         }
     	
     }
