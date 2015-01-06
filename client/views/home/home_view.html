@@ -106,7 +106,7 @@
                                         var currentWeek = 25;
                                         var month = currentDate.getMonth();
                                         var oldMonth = month;
-                                        while (currentWeek > -1) {
+                                        var interval = setInterval(function() {
                                             var dayOfWeek = currentDate.getDay();
                                             if (Math.random() > 0.9) { streakCtx.fillStyle = "#F8C731"; }
                                             else if (Math.random() > 0.5) { streakCtx.fillStyle = "#FCDF85"; }
@@ -166,10 +166,13 @@
                                                     oldMonth = month;
                                                 }
                                                 currentWeek--;
+                                                if (0 > currentWeek) {
+                                                    clearInterval(interval);
+                                                }
                                             }
                                             currentDate.setDate(currentDate.getDate() - 1);
                                             i++;
-                                        }
+                                        }, 5);
                                     }
 
                                     // Draw 26 boxes wide, 7 tall
