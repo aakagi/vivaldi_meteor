@@ -1,6 +1,8 @@
 Template.other_teachers_side.helpers({
     otherTeachersList: function () {
         // return otherTeacherDocuments;
+        var selector = {$and: [{"profile.teacher": true}, {_id: {$ne: Meteor.userId()}}]};
+        return Meteor.users.find(selector).fetch();
     }
 }); 
 
