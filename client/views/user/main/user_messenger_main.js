@@ -25,7 +25,6 @@ Template.user_messenger_main.helpers({
 });
 
 sendMessageUser = function() {
-    console.log("button");
     var messagebody = document.getElementById("new-message").value;
     if (messagebody) {
         var newMessage = {
@@ -44,7 +43,6 @@ sendMessageUser = function() {
 Template.user_messenger_main.events({
     'click #new-message-submit': sendMessageUser,
     'keydown input': function(e) {
-        console.log(e);
         if (e.keyCode == 13) {
             //send message
             sendMessageUser();

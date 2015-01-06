@@ -14,7 +14,7 @@ Template.user_stats_side.helpers({
     multiClass: function(){
         return studentClassesById(Template.currentData()._id).length > 1;
     },
-    userClasses: function(){
+    userClass: function(){
         return studentClassesById(Template.currentData()._id);
     }
 });
