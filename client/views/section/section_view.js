@@ -51,6 +51,9 @@ Template.section_view.helpers({
     leaderManage: function() {
         return Session.get('leaderManage');
     },
+    isLocked: function(){
+        return Template.currentData().locked;
+    }
 });
 
 Template.section_leader_side.helpers({
@@ -59,7 +62,7 @@ Template.section_leader_side.helpers({
         var leaderDocument = Meteor.users.findOne({_id: leaderId});
         console.log(leaderDocument);
         return leaderDocument;
-    },
+    }, 
 });
 
 Template.section_view.events({
@@ -92,8 +95,12 @@ Template.section_view.events({
     'click #endLeaderManage': function() {
         Session.set('leaderManage', false);
         Session.set('endLeaderManage', true);
+    },
+    'change .lockSection input': function (evt) {
+        //lock the section
+        Sections.update({_id: Template.currentData()._id}, {$set: {locked: evt.target.checked}});
     }
-})
+});
 
 Template.message.helpers({
     senderName: function() {

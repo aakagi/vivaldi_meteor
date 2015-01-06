@@ -70,14 +70,14 @@
 				{{ /each }}
 				{{#if leaderManage}}
 					<div class="break-lg"></div>
-					<input type="checkbox" id="lockSection">
+					<input type="checkbox" id="lockSection" checked="{{isLocked}}">
 					<label for="lockSection">
 						<a>
 							Click here to lock section from new users
 						</a>
 					</label>
 				{{/if}}
-				<!-- {{#if userIsLeader}} -->
+				{{#if userIsLeader}}
 					<div class="break-md"></div>
 					{{#if endLeaderManage}}
 						<button class="btn btn-md btn-red" id="leaderManage">
@@ -89,7 +89,7 @@
 							Done
 						</button>
 					{{/if}}
-				<!-- {{/if}} -->
+				{{/if}}
 			</div>
 		</div>
 	

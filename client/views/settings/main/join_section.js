@@ -20,7 +20,9 @@ Template.join_section.helpers({
                 name: {
                     $not: 'Teachers'
                 }
-            }]
+            }, {
+                locked: false
+            }];
         };
         pointer = Sections.find(selector);
         return pointer.fetch();

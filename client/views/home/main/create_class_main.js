@@ -92,7 +92,8 @@ Template.create_class_main.events({
                 sectionDoc = {
                     name: sectionNames[section],
                     users: [],
-                    order: section
+                    order: section,
+                    locked: false
                 };
                 sectionID = Sections.insert(sectionDoc);
                 sectionIDs.push(sectionID);
@@ -101,7 +102,8 @@ Template.create_class_main.events({
             teacherSectionDoc = {
                 name: "Teachers",
                 users: [userId],
-                order: sectionIDs.length
+                order: sectionIDs.length,
+                locked: false
             }
             teacherSectionID = Sections.insert(teacherSectionDoc);
             sectionIDs.push(teacherSectionID);
@@ -109,7 +111,8 @@ Template.create_class_main.events({
                 name: "Section Leaders",
                 users: [],
                 order: sectionIDs.length,
-                leader: userId
+                leader: userId,
+                locked: false
             }
             sectionLeadersID = Sections.insert(sectionLeadersDoc);
             sectionIDs.push(sectionLeadersID);
