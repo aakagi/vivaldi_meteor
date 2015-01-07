@@ -1,4 +1,4 @@
-Template.challenge_class_away_main.rendered = function () {
+Template.challenge_class_away_main.rendered = function() {
     $('#challengeOpen').css('display', 'none');
 
 
@@ -15,7 +15,27 @@ Template.challenge_class_away_main.rendered = function () {
 };
 
 Template.challenge_class_away_main.helpers({
-    foo: function () {
-        // ...
+    yourClasses: function() {
+        //returns all classes with no acceped challenges
+        var classes = userClasses();
+        var freeClasses = [];
+
+        for (i in classes) {
+            clas = classes[i]
+            if (activeChallengeWithClass(clas._id) == null) {
+                freeClasses.push(clas);
+            }
+        }
+        return freeClasses;
+    },
+    currentChallenge: function() {
+        return activeChallengeWithClass(Template.currentData()._id);
     }
 });
+
+Template.challenge_class_away_main.helpers({
+    'click #confirmChallenge': function(){
+        var challenged = Template.currentData()._id
+        //var newChallenge = {challenger: document.getElementById('selectClass').value, challenged: challenged}
+    }
+})

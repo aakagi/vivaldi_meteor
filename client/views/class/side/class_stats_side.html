@@ -15,12 +15,15 @@
     <p>
         Current Challenge
     </p>
-    <!-- {{#if currentChallenge}} -->
+    {{#if currentChallenge}}
     <h6 class="t-red">
-        Generic High School TODO
+        {{currentChallengeName}}
     </h6>
-    <!-- {{else}} -->
+    {{else}}
     <!-- Challenge someone! -> triggers challenge someone dropdown in main -->
-    <!-- {{/if}} -->
+    <h6 class="t-red">
+        No Challenge! 
+    </h6>
+    {{/if}}
 </div>
 </template>
