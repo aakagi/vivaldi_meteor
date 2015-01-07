@@ -33,9 +33,29 @@ Template.challenge_class_away_main.helpers({
     }
 });
 
-Template.challenge_class_away_main.helpers({
-    'click #confirmChallenge': function(){
+Template.challenge_class_away_main.events({
+    'click #confirmChallenge': function() {
+        console.log("challenge");
         var challenged = Template.currentData()._id
-        //var newChallenge = {challenger: document.getElementById('selectClass').value, challenged: challenged}
+        var challenger = document.getElementById('selectClass').value
+        var newChallenge = {
+            challenger: challenger,
+            challenged: challenged,
+            start: new Date(),
+            end: oneWeekFromNow(),
+            startXPchallenger: getExperienceTotalForClass(challenger),
+            startXPchallenged: getExperienceTotalForClass(challenged),
+            accepted: false
+        };
+        console.log(newChallenge);
+        Challenges.insert(newChallenge, function(err, ID){
+            if (err){
+                console.log(err);
+                setAlert('error', 'an error occurred');
+            }
+            else{
+                setAlert('info', 'challenged!' );
+            }
+        });
     }
 })
