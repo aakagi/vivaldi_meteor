@@ -1,0 +1,18 @@
+<template name="section_leader_side">
+    <div class="block">
+        {{#if sectionLeader.profile.firstName}}
+            <p>
+                Section Leader
+            </p>
+            <h6>
+                <a href="/user?id={{leader}}">
+                    {{sectionLeader.profile.firstName}} {{sectionLeader.profile.lastName}}
+                </a>        
+            </h6>
+        {{else}}
+            <p>
+                Your teacher has yet to assign a section leader.
+            </p>
+        {{/if}}
+    </div>
+</template>

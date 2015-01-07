@@ -560,6 +560,18 @@
 //     transition-duration: .5s;
 //     transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 // }
+
+a {
+    &:hover {
+        .t-red {
+            color: $blue !important;
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+}
+
 .lots-of-text {
     padding: .7em 2em;
     line-height: 1.5;

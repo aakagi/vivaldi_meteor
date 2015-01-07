@@ -21,41 +21,31 @@
 	</h6>
 </template>
 
-<template name="section_leader_side">
-	<div class="block">
-		{{#if sectionLeader.profile.firstName}}
-			<p>
-				Section Leader
-			</p>
-			<h6>
-				<a href="/user?id={{leader}}">
-					{{sectionLeader.profile.firstName}} {{sectionLeader.profile.lastName}}
-				</a>		
-			</h6>
-		{{else}}
-			<p>
-				Your teacher has yet to assign a section leader.
-			</p>
-		{{/if}}
-	</div>
-</template>
 
 <template name="section_view">
 
 	<div class="row">
 
 		<div class="col-md-4 col-lg-4">
-		
+
 			<div class="block">
 				<p>Name</p>
 				<h5>{{name}} Section</h5>
 				<div class="break-sm"></div>
+				
 				<p>Class</p>
 				<a href="/class?id={{class._id}}"><h5>{{ class.name }}</h5></a>
+				<div class="break-sm"></div>
+
+				<p>Current Challenge</p>
+				<a href="/class?id={{class._id}}">
+					<h6 class="t-red">
+						Todo 1 Section
+					</h6>
+					<p> - from Todo Orchestra</p>
+				</a>
 			</div>
 			
-
-
 			{{#unless sectionMessage}}
 	            <button id="sectionMessage" class="btn btn1 btn-blue btn-md width100">
                     Message
