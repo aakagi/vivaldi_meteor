@@ -4,8 +4,6 @@
             <div class="col-md-4 col-lg-4">
                 {{> class_stats_side}}
                 {{#unless notInThisClass}}
-
-                    {{#if isTeacher}}
                         {{#unless viewTasks}}
                             <button id="viewTasks" class="btn btn1 btn-blue btn-md width100">
                                 View Tasks
@@ -18,23 +16,6 @@
                             </button>
                             <div class="break-sm"></div>
                         {{/unless}}
-
-                    {{else}}
-                        <!-- if student -->
-                        {{#unless classTasks}}
-                            <button id="classTasks" class="btn btn1 btn-blue btn-md width100">
-                                Show Tasks
-                            </button>
-                            <div class="break-sm"></div>
-                        {{/unless}}
-                        {{#unless classStats}}
-                            <button id="classStats" class="btn btn1 btn-yellow btn-md width100">
-                                Class Stats
-                            </button>
-                            <div class="break-sm"></div>
-                        {{/unless}}
-
-                    {{/if}}
                 {{/unless}}
 
                 {{> class_section_leaders_side}}
