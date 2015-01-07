@@ -1,0 +1,25 @@
+<template name="teacher_view">
+    <div class="row">
+        <div class="col-md-4 col-lg-4">
+            {{> teacher_stats_side}}
+            {{> teacher_classlist_side}}
+            
+            {{> awesome_side}}
+            {{> back_home_btn}}
+            </div>
+            <div class="col-md-8 col-lg-8">
+
+                <!-- {{#unless notInSameClass}} -->
+
+                    <!-- Teachers see messages or view stats -->
+            {{#if isTeacher}}
+                {{#if userMessage}}
+                    {{> user_messenger_main}} 
+                {{/if}}
+                {{#if userStats}}
+                    {{> user_stats_main}}
+                {{/if}}
+            {{/if}}
+        </div>
+    </div>
+</template>

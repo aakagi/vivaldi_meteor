@@ -1,4 +1,4 @@
-Template.user_stats_side.helpers({
+Template.user_stats_home.helpers({
     multiInst: function () {
         return studentInstrumentsById(Meteor.userId()).length > 1;
     },

@@ -1,4 +1,4 @@
-Template.user_stats_side.helpers({
+Template.student_stats_side.helpers({
     multiInst: function () {
         return studentInstrumentsById(Template.currentData()._id).length > 1;
     },

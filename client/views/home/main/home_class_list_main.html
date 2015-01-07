@@ -11,50 +11,50 @@
             <div class="break-md" style="border-bottom: 1px solid LightGray"></div>
         </a>
             <div class="row">
-                <div class="col-sm-3">
-                    <a class="manage" id="manageClass">
+                <div class="blue-hover manage clickable" id="manageClass">
+                    <div class="col-sm-3">
                         <div class="break-sm"></div>
                         <p>
-                            Class
+                            Class &nbsp;&nbsp;<i class="fa fa-chevron-down"></i>
                         </p>
                         <h5>
                             Lv. 9
                         </h5>
-                    </a>
+                    </div>
                 </div>
-                <div class="col-sm-3">
-                    <a class="manage" id="manageSections">
+                <div class="blue-hover manage clickable" id="manageSections">
+                    <div class="col-sm-3">
                         <div class="break-sm"></div>
                         <p>
-                            Sections
+                            Sections &nbsp;&nbsp;<i class="fa fa-chevron-down"></i>
                         </p>
                         <h5>
                             {{sections}}
                         </h5>
-                    </a>
+                    </div>
                 </div>
-                <div class="col-sm-3">
-                    <a class="manage" id="manageStudents">
+                <div class="blue-hover manage clickable" id="manageStudents">
+                    <div class="col-sm-3">
                         <div class="break-sm"></div>
                         <p>
-                            Students
+                            Students &nbsp;&nbsp;<i class="fa fa-chevron-down"></i>
                         </p>
                         <h5>
                             {{numStudents}}
                         </h5>
-                    </a>
+                    </div>
                 </div>
                 {{#if pendingStudents}}
-                <div class="col-sm-3">
-                    <a class="manage" id="managePending">
+                <div class="blue-hover manage clickable" id="managePending">
+                    <div class="col-sm-3">
                         <div class="break-sm"></div>
                         <p>
-                            Pending Students
+                            Pending Students &nbsp;&nbsp;<i class="fa fa-chevron-down"></i>
                         </p>
                         <h5>
                             {{pendingStudents}}
                         </h5>
-                    </a>
+                    </div>
                 </div>
                 {{/if}}
             </div>

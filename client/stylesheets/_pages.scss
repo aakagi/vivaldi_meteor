@@ -552,31 +552,58 @@
 
 // Unorganized new stuff - Alex
 
+// .slide.animate {
+//     overflow-y: hidden;
+//     max-height: 500px; /* approximate max height */
+
+//     transition-property: all;
+//     transition-duration: .5s;
+//     transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+// }
 .lots-of-text {
     padding: .7em 2em;
     line-height: 1.5;
 }
 
+.blue-hover {
+    cursor: pointer;
+}
+.manage {
+    p {
+        .fa {
+            font-size: 8pt;
+            text-align: right;
+            // padding-right: 1em;
+        }
+    }
+}
+
+.blue-hover {
+    &:hover {
+        p {
+            .fa {
+                color: $blue;
+                &:after {
+                    opacity: 1;
+                }
+            }
+            color: $blue;
+            &:after {
+                opacity: 1;
+            }
+        }
+        h5 {
+            color: $blue;
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+}
+
 div {
     .blue-hover {  
-        .preview {
-            cursor: pointer;
-        }
         &:hover{ 
-            // p {
-            //     .fa {
-            //         color: $blue;
-            //         &:after {
-            //             opacity: 1;
-            //         }
-            //     }
-            // }
-            // h6 {
-            //     color: $blue;
-            //     &:after {
-            //         opacity: 1;
-            //     }
-            // }
             .preview {
                 h6 {
                     color: $blue;
@@ -713,8 +740,8 @@ div {
 .section-management, .student-management {
     padding-top: 1em;
     padding-bottom: 1em;
-    border-top: 1px dotted black;
-    border-bottom: 1px dotted black;
+    border-top: 1px solid LightGray;
+    border-bottom: 1px solid LightGray;
     max-height: 250px;
     overflow-y: scroll;
 }

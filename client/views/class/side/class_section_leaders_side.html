@@ -1,22 +1,22 @@
-<template name="other_teachers_side">
+<template name="class_section_leaders_side">
     <div class="block">
-        <div class="clickable blue-hover" id="previewOtherTeachers">
+        <div class="clickable blue-hover" id="previewSectionLeaders">
             <div class="preview">
                 <p>
-                    Other Teachers <i class="fa fa-chevron-down right"></i>
+                    Section Leaders <i class="fa fa-chevron-down right"></i>
                 </p>
             </div>
         </div>
-
-        <div id="otherTeachersList">
+        <div id="sectionLeadersDisplay">
             <div class="break-sm"></div>
-        {{ #each otherTeachersList }}
+        <!-- {{#each}} -->
             <h6>
                 <a href="/user?id={{_id}}">
                     {{profile.firstName}} {{profile.lastName}}
+                    Bob Dylan TODO
                 </a>
             </h6>
-        {{ /each }}
+        <!-- {{/each}} -->
             
         </div>
 

@@ -39,32 +39,59 @@ Template.home_class_list_main.helpers({
 
 Template.home_class_list.events({
     'click #manageClass': function () {
-        Session.set('manageClass', true);
-        Session.set('manageSections', false);
-        Session.set('manageStudents', false);
-        Session.set('managePending', false);
-        console.log('hello' + Session.get('manageClass'));
+        var manageCla = Session.get('manageClass');;
+
+        if (manageCla) {
+            Session.set('manageClass', false);
+        } else {
+            Session.set('manageClass', true);
+            Session.set('manageSections', false);
+            Session.set('manageStudents', false);
+            Session.set('managePending', false);
+        }
+        manageCla = !manageCla;
     },
     'click #manageSections': function () {
-        Session.set('manageClass', false);
-        Session.set('manageSections', true);
-        Session.set('manageStudents', false);
-        Session.set('managePending', false);
+        var manageSec = Session.get('manageSections');;
+
+        if (manageSec) {
+            Session.set('manageSections', false);
+        } else {
+            Session.set('manageClass', false);
+            Session.set('manageSections', true);
+            Session.set('manageStudents', false);
+            Session.set('managePending', false);
+        }
+        manageSec = !manageSec;
     },
     'click #manageStudents': function () {
-        Session.set('manageClass', false);
-        Session.set('manageSections', false);
-        Session.set('manageStudents', true);
-        Session.set('managePending', false);
+        var manageStu = Session.get('manageStudents');;
+
+        if (manageStu) {
+            Session.set('manageStudents', false);
+        } else {
+            Session.set('manageClass', false);
+            Session.set('manageSections', false);
+            Session.set('manageStudents', true);
+            Session.set('managePending', false);
+        }
+        manageStu = !manageStu;
     },
     'click #managePending': function () {
-        Session.set('manageClass', false);
-        Session.set('manageSections', false);
-        Session.set('manageStudents', false);
-        Session.set('managePending', true);
+        var managePen = Session.get('managePending');;
+
+        if (managePen) {
+            Session.set('managePending', false);
+        } else {
+            Session.set('manageClass', false);
+            Session.set('manageSections', false);
+            Session.set('manageStudents', false);
+            Session.set('managePending', true);
+        }
+        managePen = !managePen;
     },
     'click .manage': function() {
-        classManageId = Template.currentData()._id
+        var classManageId = Template.currentData()._id
         Session.set('classManageId', classManageId);
     }
 });

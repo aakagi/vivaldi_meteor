@@ -1,3 +1,5 @@
+
+
 Template.class_manage.events({
     'click #saveClass': function() {
         var classData = Template.currentData();

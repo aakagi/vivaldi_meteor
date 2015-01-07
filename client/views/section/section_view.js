@@ -173,3 +173,9 @@ Template.sectionstudent.events({
         });
     }
 });
+
+Template.sectionstudent.helpers({
+    leaderManage: function () {
+        return Session.get('leaderManage');
+    }
+});

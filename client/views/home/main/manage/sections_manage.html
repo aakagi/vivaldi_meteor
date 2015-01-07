@@ -1,5 +1,5 @@
 <template name="sections_manage">
-    <div class="block">
+    <div class="block" id="manageSectionFrag">
         <div class="input-group clear">
             <div class="row">
                 <h4 class="col-sm-8">
@@ -104,6 +104,7 @@
                 <div class="input-group clear">
                     <div class="group-input">
                         <input type="text" id="{{_id}}name" class="input input-sm" value="{{name}}">
+                        <!-- TODO class="input border input-md" -->
                         <select id="{{_id}}leader">
                             <option value="{{currentLeader._id}}">{{currentLeader.profile.firstName}} {{currentLeader.profile.lastName}}</option>
                             {{#each sectionStudentsNotLeader}}
