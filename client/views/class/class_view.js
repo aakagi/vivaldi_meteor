@@ -10,15 +10,27 @@ Template.class_view.helpers({
         }).fetch();
         return results;
     },
-    studentsArray: function() {
-        var ids = Template.currentData().students;
-        // return getUsersByIds(ids);
-        var results = Meteor.users.find({
-            _id: {
-                $in: ids
-            }
-        }).fetch();
-        return results;
+    // studentsArray: function() {
+    //     var ids = Template.currentData().students;
+    //     // return getUsersByIds(ids);
+    //     var results = Meteor.users.find({
+    //         _id: {
+    //             $in: ids
+    //         }
+    //     }).fetch();
+    //     return results;
+    // },
+    notInThisClass: function() {
+        var myId = Meteor.userId();
+        var classTeachers = Template.currentData().teachers;
+
+        // Eventually change this to .contains - I just couldn't figure it out for now
+        if (classTeachers == myId) {
+            // As in, I'm in this class
+            return false;
+        } else {
+            return true;
+        }
     },
     viewTasks: function(){
         return Session.get('viewTasks');
