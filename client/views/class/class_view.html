@@ -54,7 +54,9 @@
                     {{/if}}
                 {{else}}
                     {{#if isTeacher}}
+                        {{#unless currentChallenger}}
                         {{> challenge_class_away_main}}
+                        {{/unless}}
                     {{/if}}
                 {{/unless}}
             </div>

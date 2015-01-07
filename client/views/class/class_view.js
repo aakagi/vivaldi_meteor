@@ -27,6 +27,9 @@ Template.class_view.helpers({
     },
     classStats: function(){
         return Session.get('classStats');
+    },
+    currentChallenge: function() {
+        return activeChallengeWithClass(Template.currentData()._id);
     }
 });
 
