@@ -81,9 +81,13 @@
 				{{else}}
 					None
 				{{/if}} -->
-				{{ #each studentDataNotLeader }}
-					{{> sectionstudent}}
-				{{ /each }}
+				{{#if studentDataNotLeader}}
+					{{ #each studentDataNotLeader }}
+						{{> sectionstudent}}
+					{{ /each }}
+				{{else}}
+					<h6>No other students :(</h6>
+				{{/if}}
 				{{#if leaderManage}}
 					<div class="break-lg"></div>
 					<input type="checkbox" id="lockSection" checked="{{lockSection}}">
@@ -96,26 +100,17 @@
 				{{#if userIsLeader}}
 					<div class="break-md"></div>
 					{{#if endLeaderManage}}
-						<button class="btn btn-md btn-red" id="leaderManage">
+						<button class="btn btn-md btn-gray-inverse width100" id="leaderManage">
 							Manage
 						</button>
 					{{/if}}
 					{{#if leaderManage}}
-						<button class="btn btn-md btn-gray" id="endLeaderManage">
+						<button class="btn btn-md btn-gray width100" id="endLeaderManage">
 							Done
 						</button>
 					{{/if}}
 				{{/if}}
 			</div>
-			{{#if userIsLeader}}
-				<div class="block">
-				
-					<h6>
-						Challenge Other Sections
-					</h6>
-					
-				</div>
-			{{/if}}
 
 			{{> awesome_side}}
             {{> back_home_btn}}
@@ -150,6 +145,9 @@
 					</div>
 				</div>
 			<!-- {{/if}} -->
+			{{#if userIsLeader}}
+				{{> challenge_another_section}}
+			{{/if}}
 		{{/if}}
 		
 		{{#if sectionStats}}

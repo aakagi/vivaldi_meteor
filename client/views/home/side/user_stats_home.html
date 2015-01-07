@@ -1,16 +1,16 @@
 <template name="user_stats_home">
     <div class="block">
-        <h4>
+        <!-- <h4>
             {{Meteor.user.profile.firstName}} {{Meteor.user.profile.lastName}}
         </h4>
-        <div class="break-sm"></div>
+        <div class="break-sm"></div> -->
         <p>
             <!-- Makes plural -->
             Instrument{{#if multiInst}}s{{/if}}
         </p>
         <div>
             {{#each userInstrument}}
-                {{>user_instruments}}
+                {{> user_instruments}}
             {{/each}}
         </div>
         <div class="break-sm"></div>
@@ -36,12 +36,19 @@
 
 <template name="user_instruments">
 <h5>{{name}} XP: {{experience}}</h5>
+<div class="break-sm"></div>
 </template>
 
 <template name="user_sections">
-<h5>{{name}} Section</h5>
+<a href="/section?id={{_id}}">
+    <h5>{{name}} Section</h5>
+</a>
+<div class="break-sm"></div>
 </template>
 
 <template name="userClasses">
-<h5>{{school}} {{name}}</h5>
+<a href="/class?id={{_id}}">
+    <h5>{{name}}<br> - {{school}}</h5>
+</a>
+<div class="break-sm"></div>
 </template>

@@ -12,8 +12,8 @@
                             </button>
                             <div class="break-sm"></div>
                         {{/unless}}
-                        {{#unless manageClass}}
-                            <button id="manageClass" class="btn btn1 btn-yellow btn-md width100">
+                        {{#unless classStats}}
+                            <button id="classStats" class="btn btn1 btn-yellow btn-md width100">
                                 Class Stats
                             </button>
                             <div class="break-sm"></div>
@@ -51,11 +51,14 @@
                             <!-- {{> class_tasks_header}}
                             {{> task_main}}
                             {{> class_task_list_main}} -->
+
                         {{/if}}
                         {{#if manageClass}}
                             <!-- TODO: Move manage_class in settings to manage_class_main -->
                             <!-- {{> manage_class}} -->
                         {{/if}}
+
+                        {{> challenge_class}}
 
                     {{else}}
                         <!-- if student -->
