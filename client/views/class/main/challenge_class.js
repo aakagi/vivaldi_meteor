@@ -1,4 +1,4 @@
-Template.challenge_class.rendered = function () {
+Template.challenge_class.rendered = function() {
     $('#challengeOpenA').css('display', 'none');
 
 
@@ -15,7 +15,29 @@ Template.challenge_class.rendered = function () {
 };
 
 Template.challenge_class.helpers({
-    foo: function () {
-        // ...
+    allOtherFreeClasses: function() {
+        var pointer = Classes.find({
+            _id: {
+                $ne: Template.currentData()._id
+            }
+        });
+        var results = pointer.fetch();
+        var freeClasses = results.filter(function(classObject) {
+            if (activeChallengeWithClasss(classObject._id)) {
+                return false
+            } else {
+                return true;
+            }
+        });
+
+        return freeClasses;
     }
 });
+
+Template.challenge_class.events({
+    'click #confirmChallenge': function(){
+        var challenged = document.getElementById('selectClass').value;
+        var challenger = Template.currentData()._id;
+        newChallenge(challenged, challenger);
+    }
+})

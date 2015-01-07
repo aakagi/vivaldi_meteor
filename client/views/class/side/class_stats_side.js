@@ -14,14 +14,16 @@ Template.class_stats_side.helpers({
     },
     currentChallengeName: function() {
         var challenge = activeChallengeWithClass(Template.currentData()._id);
+        console.log(Template.currentData()._id);
         //display the other class involved
+        console.log(challenge);
         if (challenge.challenger == Template.currentData()._id) {
             return Classes.findOne({
-                _id: template.challenged
+                _id: challenge.challenged
             }).name
         } else if (challenge.challenged == Template.currentData()._id) {
             return Classes.findOne({
-                _id: template.challenger
+                _id: challenge.challenger
             }).name
         }
     }

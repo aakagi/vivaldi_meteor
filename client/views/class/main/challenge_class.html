@@ -1,3 +1,8 @@
+<template name="other_class_option">
+    <option value="{{_id}}">{{school}} {{name}}</option>
+</template>
+
+
 <template name="challenge_class">
     <div class="block">
     <!-- {{#if challengeAvailable}} -->
@@ -18,16 +23,15 @@
             <div class="form shadedInputs">
                 <div class="input-group clear">
                     <div class="group-input">
-                        <select id="" class="input border input-md">
-                            <option>Class</option>
-                            <option>Class</option>
-                            <option>Class</option>
-                            <option>Class</option>
+                        <select id="selectClass" class="input border input-md">
+                            {{#each allOtherFreeClasses}}
+                                {{> other_class_option}}
+                            {{/each}}
                         </select>
                     </div>
                 </div>
                 <div class="break-sm"></div>
-                <button class="btn btn-md btn-red width100">
+                <button id="confirmChallenge" class="btn btn-md btn-red width100">
                     Confirm Challenge
                 </button>
             </div>

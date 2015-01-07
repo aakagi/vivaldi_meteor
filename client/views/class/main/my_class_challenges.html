@@ -1,0 +1,27 @@
+<template name="challenge">
+    <div class="row">
+        <p class="col-sm-8">
+            <a href="/class?id={{challenger}}">
+                {{challengerName}}
+            </a>
+        </p>
+        <p>
+            <a id="acceptChallenge">
+                Accept!
+            </a>
+            <a id="denyChallenge">
+                &nbsp;&nbsp;Deny
+            </a>
+        </p>
+
+    </div>
+</template>
+
+<template name="my_class_challenges">
+    <div class="block">
+        <h6>Challenge Requests</h6>
+        {{#each challengeRequests}}
+            {{> challenge}}
+        {{/each}}
+    </div>
+</template>

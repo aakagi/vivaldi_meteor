@@ -35,7 +35,6 @@ Template.challenge_class_away_main.helpers({
 
 Template.challenge_class_away_main.events({
     'click #confirmChallenge': function() {
-        console.log("challenge");
         var challenged = Template.currentData()._id
         var challenger = document.getElementById('selectClass').value
         var newChallenge = {
@@ -47,7 +46,6 @@ Template.challenge_class_away_main.events({
             startXPchallenged: getExperienceTotalForClass(challenged),
             accepted: false
         };
-        console.log(newChallenge);
         Challenges.insert(newChallenge, function(err, ID){
             if (err){
                 console.log(err);

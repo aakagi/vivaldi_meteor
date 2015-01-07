@@ -40,7 +40,9 @@
                         {{/if}}
 
                         {{> challenge_class}}
-
+                        {{#unless currentChallenge}}
+                            {{> my_class_challenges}}
+                        {{/unless}}
                     {{else}}
                         <!-- if student -->
                         {{#if classTasks}}
