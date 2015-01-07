@@ -1,15 +1,5 @@
 Template.class_view.helpers({
     isTeacher: isTeacher,
-    teachersArray: function() {
-        var ids = Template.currentData().teachers;
-        // return getUsersByIds(ids);
-        var results = Meteor.users.find({
-            _id: {
-                $in: ids
-            }
-        }).fetch();
-        return results;
-    },
     // studentsArray: function() {
     //     var ids = Template.currentData().students;
     //     // return getUsersByIds(ids);
