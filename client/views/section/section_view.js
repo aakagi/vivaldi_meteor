@@ -76,6 +76,9 @@ Template.section_view.helpers({
     },
     isLocked: function() {
         return Template.currentData().locked;
+    },
+    sectionName: function() {
+        return Template.currentData().name;
     }
 });
 
