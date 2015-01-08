@@ -10,23 +10,22 @@ Template.class_view.helpers({
     //     }).fetch();
     //     return results;
     // },
-    notInThisClass: function() {
+    inThisClass: function() {
         var myId = Meteor.userId();
         var classTeachers = Template.currentData().teachers;
         var classStudents = Template.currentData().students;
 
-        // var selector = {
-        //     $and: {
-        //         $elemMatch
-        //     }
-        // }
+        console.log(myId + ' ' + classTeachers + ' ' + classStudents)
 
-        // Eventually change this to .contains - I just couldn't figure it out for now
-        if (classTeachers == myId) {
+        console.log(classTeachers.indexOf(myId) + ' ' + classStudents.indexOf(myId))
+
+        if (classTeachers.indexOf(myId) > -1 || classStudents.indexOf(myId) > -1) {
             // As in, I'm in this class
-            return false;
-        } else {
+            console.log('true');
             return true;
+        } else {
+            console.log('false');
+            return false;
         }
     },
 

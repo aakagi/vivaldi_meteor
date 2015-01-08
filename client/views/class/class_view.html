@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4 col-lg-4">
                 {{> class_stats_side}}
-                {{#unless notInThisClass}}
+                {{#if inThisClass}}
                         {{#unless viewTasks}}
                             <button id="viewTasks" class="btn btn1 btn-blue btn-md width100">
                                 View Tasks
@@ -16,7 +16,7 @@
                             </button>
                             <div class="break-sm"></div>
                         {{/unless}}
-                {{/unless}}
+                {{/if}}
 
                 {{> class_section_leaders_side}}
 
@@ -24,67 +24,37 @@
                 {{> back_home_btn}}
             </div>
             <div class="col-md-8 col-lg-8">
-                {{#unless notInThisClass}}
-                    {{#if isTeacher}}
+                {{#if inThisClass}}
 
-                        {{#if viewTasks}}
+                    {{#if viewTasks}}
+                        {{#if isTeacher}}
                             {{> class_task_main}}
-                            <!-- {{> class_tasks_header}}
+                            <!--
                             {{> task_main}}
                             {{> class_task_list_main}} -->
-
-                        {{/if}}
-                        {{#if manageClass}}
-                            <!-- TODO: Move manage_class in settings to manage_class_main -->
-                            <!-- {{> manage_class}} -->
-                        {{/if}}
-
-                        {{> challenge_class}}
-                        {{#unless currentChallenge}}
-                            {{> my_class_challenges}}
-                        {{/unless}}
-                    {{else}}
-                        <!-- if student -->
-                        {{#if viewTasks}}
-                            <!-- {{> class_tasks_header}} -->
-                            <!-- {{> class_task_list_main}} -->
-                            <!-- {{> class_task_main}} -->
-                        {{/if}}
-                        
-                        
-                        {{# if classStats}}
-                            <!-- {{> class_stats_main}} -->
+                            {{> challenge_class}}
+                            {{#unless currentChallenge}}
+                                {{> my_class_challenges}}
+                            {{/unless}}
+                        {{else}}
+                            {{> class_task_list_main}}
                         {{/if}}
                     {{/if}}
+
+                    {{#if classStats}}
+                        <h5>Class Stats ~ Coming Soon</h5>                            
+                    {{/if}}
+                    
+
+
                 {{else}}
                     {{#if isTeacher}}
                         {{#unless currentChallenger}}
-                        {{> challenge_class_away_main}}
+                            {{> challenge_class_away_main}}
                         {{/unless}}
                     {{/if}}
-                {{/unless}}
-                        <!-- {{> student_views_class_tasks}} -->
+                {{/if}}
             </div>
         </div>
 
-</template>
-
-<template name="class_tasks_header">
-    <div class="block">
-        <div class="row">
-            <h1 class="col-sm-8">
-                Class Tasks
-            </h1>
-            <div class="col-sm-4 t-right">
-                <div class="break-md"></div>
-                <div class="break-sm"></div>
-                <h6>
-                    <input id="expiredTasks" type="checkbox" checked="{{seeExpired}}" />
-                    <label for="expiredTasks" class="clickable">
-                        <a>See Expired Tasks</a>
-                    </label>
-                </h6>
-            </div>
-        </div>
-    </div>
 </template>

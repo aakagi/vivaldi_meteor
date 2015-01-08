@@ -17,7 +17,7 @@ Template.teacher_task.helpers({
     },
     sectionNames: function(){
         var taskData = Template.currentData();
-        return Sections.find({_id: {$in: taskData.sections}}).fetch();
+        return Sections.find({_id: {$in: taskData.sections}}, {sort: {order: 1}}).fetch();
     },
 });
 

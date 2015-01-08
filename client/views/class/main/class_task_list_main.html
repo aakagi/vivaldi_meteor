@@ -4,7 +4,7 @@
         	{{> teacher_task}}
         {{/each}}
     {{else}}
-        {{> welcome_to_tasks}}
+        <div class="block"><h5>There are currently no tasks in this class.</h5></div>
     {{/if}}
 </template>
 
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="break-sm"></div>
-        {{#if isTeacher}}
+        <!-- {{#if isTeacher}}
         <a id="taskMoreInfo">
             TODO: More/Less Info
         </a>
@@ -92,7 +92,7 @@
             <button class="btn btn-md btn-red" id="delete">
                 Delete Task
             </button>
-        {{/if}}
+        {{/if}} -->
     </div>
 
 {{/if}}
