@@ -45,11 +45,13 @@
                         {{/unless}}
                     {{else}}
                         <!-- if student -->
-                        {{#if classTasks}}
+                        {{#if viewTasks}}
                             <!-- {{> class_tasks_header}} -->
                             <!-- {{> class_task_list_main}} -->
                             <!-- {{> class_task_main}} -->
                         {{/if}}
+                        
+                        
                         {{# if classStats}}
                             <!-- {{> class_stats_main}} -->
                         {{/if}}
@@ -61,6 +63,7 @@
                         {{/unless}}
                     {{/if}}
                 {{/unless}}
+                        <!-- {{> student_views_class_tasks}} -->
             </div>
         </div>
 

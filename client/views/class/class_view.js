@@ -13,6 +13,13 @@ Template.class_view.helpers({
     notInThisClass: function() {
         var myId = Meteor.userId();
         var classTeachers = Template.currentData().teachers;
+        var classStudents = Template.currentData().students;
+
+        // var selector = {
+        //     $and: {
+        //         $elemMatch
+        //     }
+        // }
 
         // Eventually change this to .contains - I just couldn't figure it out for now
         if (classTeachers == myId) {
@@ -22,6 +29,10 @@ Template.class_view.helpers({
             return true;
         }
     },
+
+    // you want to do an $and and two $elemMatch queries with 
+    // teachers and students, if teachers are an array (which I think they are
+
     viewTasks: function(){
         return Session.get('viewTasks');
     },
