@@ -4,18 +4,18 @@
             <div class="col-md-4 col-lg-4">
                 {{> class_stats_side}}
                 {{#if inThisClass}}
-                        {{#unless viewTasks}}
-                            <button id="viewTasks" class="btn btn1 btn-blue btn-md width100">
-                                View Tasks
-                            </button>
-                            <div class="break-sm"></div>
-                        {{/unless}}
-                        {{#unless classStats}}
-                            <button id="classStats" class="btn btn1 btn-yellow btn-md width100">
-                                Class Stats
-                            </button>
-                            <div class="break-sm"></div>
-                        {{/unless}}
+                    {{#unless viewTasks}}
+                        <button id="viewTasks" class="btn btn1 btn-blue btn-md width100">
+                            View Tasks
+                        </button>
+                        <div class="break-sm"></div>
+                    {{/unless}}
+                    {{#unless classStats}}
+                        <button id="classStats" class="btn btn1 btn-yellow btn-md width100">
+                            Class Stats
+                        </button>
+                        <div class="break-sm"></div>
+                    {{/unless}}
                 {{/if}}
 
                 {{> class_section_leaders_side}}

@@ -654,6 +654,12 @@ a {
 
 .blue-hover {
     cursor: pointer;
+    &:hover {
+        color: $blue;
+        &:after {
+            opacity: 1;
+        }
+    }
 }
 .manage {
     p {

@@ -34,6 +34,15 @@ Template.class_section_leaders_side.helpers({
                 _id: Template.currentData().leader
             });
             return result;
-        }
+        } 
+        // else {
+        //     return {
+        //         profile: {
+        //             firstName: "",
+        //             lastName: "Leader"
+        //         },
+        //         _id: "noleader"
+        //     }
+        // }
     },
 });
