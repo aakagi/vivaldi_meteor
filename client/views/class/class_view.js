@@ -20,7 +20,6 @@ Template.class_view.helpers({
         console.log(classTeachers.indexOf(myId) + ' ' + classStudents.indexOf(myId))
 
         if (classTeachers.indexOf(myId) > -1 || classStudents.indexOf(myId) > -1) {
-            // As in, I'm in this class
             console.log('true');
             return true;
         } else {

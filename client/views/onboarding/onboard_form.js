@@ -7,7 +7,7 @@ Accounts.onEnrollmentLink(function(token, success) {
 
 Template.onboard_form.helpers({
     instrumentList: function () {
-        return Instrument.find();
+        return Instrument.find({}, {sort: {order: 1}});
     },
     teacherSignUp: function () {
         return Session.get("teacherSignUp");
