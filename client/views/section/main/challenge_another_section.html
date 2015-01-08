@@ -1,3 +1,8 @@
+<template name="other_section">
+    <option value="{{id}}">{{sectionName}}</option>
+</template>
+
+
 <template name="challenge_another_section">
     <div class="block">
     <!-- {{#if challengeAvailable}} -->
@@ -18,16 +23,15 @@
             <div class="form shadedInputs">
                 <div class="input-group clear">
                     <div class="group-input">
-                        <select id="" class="input border input-md">
-                            <option>Section</option>
-                            <option>Section</option>
-                            <option>Section</option>
-                            <option>Section</option>
+                        <select id="selectSection" class="input border input-md">
+                            {{#each allOtherFreeSections}}
+                                {{> other_section}}
+                            {{/each}}
                         </select>
                     </div>
                 </div>
                 <div class="break-sm"></div>
-                <button class="btn btn-md btn-red width100">
+                <button id="confirmChallenge" class="btn btn-md btn-red width100">
                     Confirm Challenge
                 </button>
             </div>
