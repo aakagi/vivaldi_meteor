@@ -142,25 +142,282 @@
 		
 		{{#if sectionStats}}
 			<div class="block overview">
-				
-				<div class="title">
-					<h6>Weekly Overview</h6>
-					<a href="#"><i class="fa fa-ellipsis-h fa-3x"></i></a>
-				</div>
+                <div class="title">
+                    <h6>Class Progress</h6>
+                    <a id="toggleCharts"><i class="fa fa-ellipsis-h fa-3x"></i></a>
+                </div>
+                <div class="body">
+                    <script src="javascripts/Chart.js" width="200" height="200"></script>
 
-				<div class="body">
-					
-					<div class="graph graph-1 bar-graph">
-						<h6>Daily Minutes</h6>
-					</div>
+                    <div class="graph-wrapper-1">
+                        <div class="graph-label">
+                            <h6>Weekly Overview</h6>
+                        </div>
+                        <div class="graph graph-1">
+                            <div class="chart chart-1">
+                                <canvas id="weeklyOverview"></canvas>
+                                <script>
+                                    var weeklyOverviewCtx = document.getElementById("weeklyOverview").getContext("2d");
+                                    var weeklyOverviewData = {
+                                        labels: ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu"],
+                                        datasets: [
+                                            {
+                                                label: "My First dataset",
+                                                fillColor: "rgba(220,220,220,0.2)",
+                                                strokeColor: "rgba(220,220,220,1)",
+                                                pointColor: "rgba(220,220,220,1)",
+                                                pointStrokeColor: "#fff",
+                                                pointHighlightFill: "#fff",
+                                                pointHighlightStroke: "rgba(220,220,220,1)",
+                                                data: [65, 59, 80, 81, 56, 55, 40]
+                                            },
+                                            {
+                                                label: "My Second dataset",
+                                                fillColor: "rgba(151,187,205,0.2)",
+                                                strokeColor: "rgba(151,187,205,1)",
+                                                pointColor: "rgba(151,187,205,1)",
+                                                pointStrokeColor: "#fff",
+                                                pointHighlightFill: "#fff",
+                                                pointHighlightStroke: "rgba(151,187,205,1)",
+                                                data: [28, 48, 40, 19, 86, 27, 90]
+                                            }
+                                        ]
+                                    };
+                                    weeklyOverview = document.getElementById("weeklyOverview");
+                                    weeklyOverview.width = $('#weeklyOverview').parent('.chart').width();
+                                    weeklyOverview.height = 250;
+                                    var weeklyOverviewChart = new Chart(weeklyOverviewCtx).Line(weeklyOverviewData, {
+                                        responsive: false
+                                    });
+                                    $('#weeklyOverview').parents('.graph').children('.legend').html(weeklyOverviewChart.generateLegend());
+                                </script>
+                            </div>
+                            <div class="legend"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="graph-wrapper-2">
+                        <div class="graph-label">
+                            <h6>Section Round-up</h6>
+                        </div>
+                        <div class="graph graph-2">
+                            <div class="chart">
+                                <canvas id="studentComparison" width="160" height="160"></canvas>
+                                <script>
+                                    var studentComparison = document.getElementById("studentComparison");
+                                    var studentComparisonCtx = document.getElementById("studentComparison").getContext("2d");
+                                    var studentComparisonData = [
+                                        {
+                                            value: 300,
+                                            color:"#F7464A",
+                                            highlight: "#FF5A5E",
+                                            label: "Red"
+                                        },
+                                        {
+                                            value: 50,
+                                            color: "#46BFBD",
+                                            highlight: "#5AD3D1",
+                                            label: "Green"
+                                        },
+                                        {
+                                            value: 100,
+                                            color: "#FDB45C",
+                                            highlight: "#FFC870",
+                                            label: "Yellow"
+                                        },
+                                        {
+                                            value: 40,
+                                            color: "#949FB1",
+                                            highlight: "#A8B3C5",
+                                            label: "Grey"
+                                        },
+                                        {
+                                            value: 120,
+                                            color: "#4D5360",
+                                            highlight: "#616774",
+                                            label: "Dark Grey"
+                                        }
+                                    ];
+                                    var studentComparisonChart = new Chart(studentComparisonCtx).PolarArea(studentComparisonData, {});
+                                    $('#studentComparison').width($('#studentComparison').parents('.graph').width());
+                                    $('#studentComparison').height($('#studentComparison').width());
+                                    $('#studentComparison').parents('.graph').children('.legend').html(studentComparisonChart.generateLegend());
+                                </script>
+                            </div>
+                            <div class="legend"></div>
+                        </div>
+                    </div>
 
-					<div class="graph graph-2 pie-graph">
-						<h6>Class Comparison</h6>
-					</div>	
+                    <div class="graph-wrapper-3">
+                        <div class="graph-label">
+                            <h6>Streak</h6>
+                        </div>
+                        <div class="graph graph-3">
+                            <div class="chart">
+                                <canvas id="streak"></canvas>
+                                <script>
+                                    var streakCanvas = document.getElementById("streak");
+                                    var streakCtx = streakCanvas.getContext("2d");
 
-				</div>
+                                    streakCtx.font = "12px vollkorn";
 
-			</div>
+                                    // Compute sizes
+                                    streakCanvas.width = 600;
+                                    boxSize = (streakCanvas.width - (4 * 25)) / 26;
+                                    streakCanvas.height = (7 * boxSize) + (6 * 4) + 20;
+
+                                    $('#streak').width($('#streak').parent('.chart').width());
+                                    $(window).resize(function(event) {
+                                        $('#streak').width($('#streak').parent('.chart').width());
+                                    });
+
+                                    function drawLabels() {
+                                        streakCtx.clearRect(0, 0, streakCanvas.width, streakCanvas.height);
+                                        var currentDate = new Date();
+                                        var i = 0;
+                                        var currentWeek = 25;
+                                        var month = currentDate.getMonth();
+                                        var oldMonth = month;
+                                        var interval = setInterval(function() {
+                                            var dayOfWeek = currentDate.getDay();
+                                            if (Math.random() > 0.9) { streakCtx.fillStyle = "#F8C731"; }
+                                            else if (Math.random() > 0.5) { streakCtx.fillStyle = "#FCDF85"; }
+                                            else { streakCtx.fillStyle = "#ECF0F1"; }
+
+                                            streakCtx.fillRect((currentWeek * (4 + boxSize)), (dayOfWeek * (4 + boxSize) + 20), boxSize, boxSize);
+                                            streakCtx.fillStyle = "#FFFFFF";
+                                            streakCtx.font = "10px vollkorn";
+                                            streakCtx.textAlign = "center";
+                                            streakCtx.fillText(currentDate.getDate(), (currentWeek * (4 + boxSize) + (boxSize / 2)), (dayOfWeek * (4 + boxSize) + 32));
+                                            if (currentDate.getDay() == 0) {
+                                                month = currentDate.getMonth();
+                                                if (month != oldMonth) {
+                                                    streakCtx.font = "12px vollkorn";
+                                                    streakCtx.textAlign = "left";
+                                                    streakCtx.fillStyle = "#333333";
+                                                    switch(oldMonth){
+                                                        case 0:
+                                                            streakCtx.fillText('Jan.', (currentWeek * (4 + boxSize)), 15);
+                                                            break;
+                                                        case 1:
+                                                            streakCtx.fillText('Feb.', (currentWeek * (4 + boxSize)), 15);
+                                                            break;
+                                                        case 2:
+                                                            streakCtx.fillText('Mar.', (currentWeek * (4 + boxSize)), 15);
+                                                            break;
+                                                        case 3:
+                                                            streakCtx.fillText('Apr.', (currentWeek * (4 + boxSize)), 15);
+                                                            break;
+                                                        case 4:
+                                                            streakCtx.fillText('May', (currentWeek * (4 + boxSize)), 15);
+                                                            break;
+                                                        case 5:
+                                                            streakCtx.fillText('Jun.', (currentWeek * (4 + boxSize)), 15);
+                                                            break;
+                                                        case 6:
+                                                            streakCtx.fillText('Jul.', (currentWeek * (4 + boxSize)), 15);
+                                                            break;
+                                                        case 7:
+                                                            streakCtx.fillText('Aug.', (currentWeek * (4 + boxSize)), 15);
+                                                            break;
+                                                        case 8:
+                                                            streakCtx.fillText('Sep.', (currentWeek * (4 + boxSize)), 15);
+                                                            break;
+                                                        case 9:
+                                                            streakCtx.fillText('Oct.', (currentWeek * (4 + boxSize)), 15);
+                                                            break;
+                                                        case 10:
+                                                            streakCtx.fillText('Nov.', (currentWeek * (4 + boxSize)), 15);
+                                                            break;
+                                                        case 11:
+                                                            streakCtx.fillText('Dec.', (currentWeek * (4 + boxSize)), 15);
+                                                            break;
+                                                        default:
+                                                            break;
+                                                    }
+                                                    oldMonth = month;
+                                                }
+                                                currentWeek--;
+                                                if (0 > currentWeek) {
+                                                    clearInterval(interval);
+                                                }
+                                            }
+                                            currentDate.setDate(currentDate.getDate() - 1);
+                                            i++;
+                                        }, 5);
+                                    }
+
+                                    // Draw 26 boxes wide, 7 tall
+                                    function drawBoxes() {
+                                        // streakCtx.clearRect(0, 0, streakCanvas.width, streakCanvas.height);
+                                        var num = 0;
+                                        for (var i = 0; 26 > i; i++) {
+                                            var x = i * (boxSize + 4);
+                                            for (var j = 0; 7 > j; j++) {
+                                                if (Math.random() > 0) {
+                                                    streakCtx.fillStyle = "#ECF0F1";
+                                                } else {
+                                                    streakCtx.fillStyle = "#333333";
+                                                }
+                                                var y = j * (boxSize + 4) + 20;
+                                                streakCtx.fillRect(x, y, boxSize, boxSize);
+                                                streakCtx.fillStyle = "#333333";
+                                                streakCtx.fillText(num, x, y + (boxSize / 2));
+                                                num++;
+                                            }
+                                        }
+                                    }
+                                    // drawBoxes();
+                                    drawLabels();
+
+                                    // Mouse tracking
+                                    function getMousePos(canvas, e) {
+                                        var rect = canvas.getBoundingClientRect();
+                                        return {
+                                            x: e.clientX - rect.left,
+                                            y: e.clientY - rect.top
+                                        };
+                                    }
+                                    function getBox(x, y) {
+                                        var left = 0;
+                                        var top = 0;
+                                        while (x > boxSize + 2) {
+                                            x -= 4 + boxSize;
+                                            left++;
+                                        }
+                                        while (y - 20 > boxSize + 2) {
+                                            y -= 4 + boxSize;
+                                            top++;
+                                        }
+                                        return {
+                                            x: left,
+                                            y: top,
+                                        }
+                                    }
+                                    function redrawBox(x, y) {
+                                        drawLabels();
+                                        var xPos = x * (4 + boxSize);
+                                        var yPos = y * (4 + boxSize) + 20;
+                                        streakCtx.fillStyle = "#38CBF8";
+                                        streakCtx.fillRect(xPos, yPos, boxSize, boxSize);
+                                    }
+
+                                    // streakCanvas.addEventListener('mousemove', function(e) {
+                                    //     var mousePos = getMousePos(streakCanvas, e);
+                                    //     if (mousePos.y > 20) {
+                                    //         var boxPos = getBox(mousePos.x, mousePos.y);
+                                    //         console.log('x: ' + boxPos.x + ' , y: ' + boxPos.y);
+                                    //         redrawBox(boxPos.x, boxPos.y);
+                                    //         // streakCtx.fillRect((mousePos.x - 5), (mousePos.y - 5), 10, 10);
+                                    //     }
+                                    // }, false);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
 		{{/if}}
 			
 		</div>

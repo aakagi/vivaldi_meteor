@@ -9,14 +9,16 @@
         </div>
         <div id="sectionLeadersDisplay">
             <div class="break-sm"></div>
-        <!-- {{#each}} -->
+        {{#each sectionList}}
             <h6>
-                <a href="/user?id={{_id}}">
-                    {{profile.firstName}} {{profile.lastName}}
-                    Bob TODO - SectionName
+                <a href="/user?id={{currentLeader._id}}">
+                    <!-- {{profile.firstName}} {{profile.lastName}}
+                    Bob TODO - SectionName -->
+                    {{currentLeader.profile.firstName}} {{currentLeader.profile.lastName}}
+                    <!-- asdf -->
                 </a>
             </h6>
-        <!-- {{/each}} -->
+        {{/each}}
             
         </div>
 

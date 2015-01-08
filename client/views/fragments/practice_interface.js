@@ -79,12 +79,25 @@ Template.practice_interface.events({
 
         Session.set("taskPicked", true);
     },
+    'click #submitPracticeTime': function() {
+        var time = document.getElementById('selectPracticeLength').value * 60;
+        $('#practiceTitle').html('Practicing for <em>' + (time / 60) + '</em> min');
+        $('#timeRemaining').html(formatTime(time));
+        $('#yourStatus').html('Your Status: <em>' + getPercent(0, time) + '</em>');
+        Session.set('duration', time);
+        Session.set('secondsPracticed', 0);
+        Session.set('tempDuration', formatTime(time));
+
+        Session.set("timePicked", true);
+    },
     'click #showTasks': function() {
         Session.set('backToTasks', true);
         Session.set('practiceView', false);
         // Resets practice page to non-task view
         Session.set('practiceTask', false);
         Session.set('taskPicked', false);
+        Session.set('practiceOther', false);
+        Session.set('timePicked', false);
     }
 });
 
@@ -145,5 +158,70 @@ Template.practice_task_interface.events({
 });
 
 Template.practice_task_interface.created = function() {
+    $('#timeRemaining').html(formatTime(Session.get('duration')));
+};
+
+
+
+
+// PRACTICE_OTHER_INTERFACE -------------------------
+
+
+Template.practice_other_interface.helpers({
+    studentPracticeTasks: function() {
+        return getStudentTasksByType('Practice');
+    },
+    timePicked: function() {
+        return Session.get('timePicked');
+    },
+    tempDuration: function() {
+        Session.get('tempDuration');
+    }
+});
+
+Template.practice_other_interface.events({
+    'click #startTimer': function() {
+        var timer;
+        var timeElapsed = $('#timeElapsed');
+        var timeRemaining = $('#timeRemaining');
+        var secondsPracticed = Session.get('secondsPracticed');
+        var duration = Session.get('duration');
+        $('#startTimer').addClass('disabled').attr('disabled', 'disabled');
+
+        // Timer instance, the loop that executed once every second
+        timer = window.setInterval(function() {
+            // Increase the secondsPracticed by one
+            secondsPracticed++;
+
+            // Rewrite the times
+            timeElapsed.html(formatTime(secondsPracticed));
+            timeRemaining.html(formatTime(duration - secondsPracticed));
+            $('#yourStatus').html('Your Status: <em>' + getPercent(secondsPracticed, duration) + '</em>');
+
+            // Resize percentage bar
+            var barWidth = $('.bar').width();
+            var newWidth = barWidth * (secondsPracticed / duration);
+            $('.percentage').width(newWidth);
+
+            // Stop the timer on stopTimer click
+            $("#stopTimer").click(function(event) {
+                Session.set('secondsPracticed', secondsPracticed);
+                clearInterval(timer);
+                $('#startTimer').removeClass('disabled').removeAttr('disabled', 'disabled');
+            });
+
+        }, 1000);
+    },
+    'click #stopTimer': function() {
+        //gets practice task info from Session
+        var taskObject = Session.get('practiceTaskObject');
+        var secondsPracticed = Session.get('secondsPracticed');
+        //updates the task data with this duration
+        var instrument = Meteor.user().profile.instrument;
+        Meteor.call('saveProgress', Meteor.userId(), taskObject._id, instrument, secondsPracticed);
+    }
+});
+
+Template.practice_other_interface.rendered = function() {
     $('#timeRemaining').html(formatTime(Session.get('duration')));
 };
