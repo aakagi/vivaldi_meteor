@@ -45,7 +45,6 @@ Template.class_view.helpers({
 Template.class_view.rendered = function () {
     Session.set('viewTasks', true);
     Session.set('classStats', false);
-
 };
 
 Template.class_view.events({
