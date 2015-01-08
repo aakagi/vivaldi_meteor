@@ -23,7 +23,7 @@ Template.challenge_class.helpers({
         });
         var results = pointer.fetch();
         var freeClasses = results.filter(function(classObject) {
-            if (activeChallengeWithClasss(classObject._id)) {
+            if (activeChallengeWithClass(classObject._id)) {
                 return false
             } else {
                 return true;
