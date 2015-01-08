@@ -12,6 +12,13 @@ Template.home_class_list.helpers({
     sections: function(){
     	return Template.currentData().sections.length
     },
+    classLevel: function(){
+        console.log("level");
+        var experience = getExperienceTotalForClass(Template.currentData()._id);
+        var level =  convertExpToLevel(experience);
+        var numStudents = Template.currentData().students.length;
+        return level/numStudents;
+    }
 });
 
 Template.home_class_list_main.helpers({
