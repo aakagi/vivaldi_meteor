@@ -1,3 +1,7 @@
+<template name="other_student">
+    <option value="{{id}}">{{profile.firstName}} {{profile.lastName}}</option>
+</template>
+
 <template name="challenge_student">
     <div class="block">
     <!-- {{#if challengeAvailable}} -->
@@ -18,16 +22,15 @@
             <div class="form shadedInputs">
                 <div class="input-group clear">
                     <div class="group-input">
-                        <select id="" class="input border input-md">
-                            <option>Student</option>
-                            <option>Student</option>
-                            <option>Student</option>
-                            <option>Student</option>
+                        <select id="selectStudent" class="input border input-md">
+                            {{#each allOtherFreeStudents}}
+                                {{> other_student}}
+                            {{/each}}
                         </select>
                     </div>
                 </div>
                 <div class="break-sm"></div>
-                <button class="btn btn-md btn-red width100">
+                <button id="confirmChallenge" class="btn btn-md btn-red width100">
                     Confirm Challenge
                 </button>
             </div>

@@ -17,13 +17,7 @@ Template.challenge.helpers({
 
 Template.challenge.events({
     'click #acceptChallenge': function() {
-        Challenges.update({
-            _id: Template.currentData()._id
-        }, {
-            $set: {
-                accepted: true
-            }
-        });
+        acceptChallenge(Template.currentData()._id);
     },
     'click #denyChallenge': function() {
         //deletes challenge
