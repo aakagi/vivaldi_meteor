@@ -7,23 +7,22 @@
 
             <div class="col-md-4 col-lg-4">
             <!-- Do these three for now -->
-                {{> change_name}}
-                {{> change_password}}
+                {{> awesome_side}}
+                {{> back_home_btn}}
             </div>
-            {{#if isTeacher}}
-                <div class="col-md-8 col-lg-8">
+            <div class="col-md-8 col-lg-8">
+                {{#if isTeacher}}
+                    {{> change_name}}
+                    {{> change_password}}
                     {{> change_school}}
-                </div>
-            {{else}}
-                <div class="col-md-8 col-lg-8">
+                {{else}}
                     {{> change_instrument}}
                     {{> join_class}}
                     {{#each userClasses}}
                         {{> join_section}}
                     {{/each}}
-                </div>
-            {{/if}}
-
+                {{/if}}
+            </div>
         </div>
     </div>
 

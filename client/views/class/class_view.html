@@ -2,41 +2,11 @@
 
         <div class="row">
             <div class="col-md-4 col-lg-4">
-                {{#unless notInThisClass}}
-                        <div class="block">
-                            <!-- <h4>TODO: Build notInThisClass</h4> -->
-                            <p>School</p>
-                            <h5>{{school}}</h5>
-                            <div class="break-sm"></div>
-                            <p>Teacher</p>
-                            {{#each teachersArray}}
-                                <h5>
-                                    <a href="/user?id={{_id}}">
-                                        {{profile.firstName}} {{profile.lastName}}
-                                    </a>
-                                </h5>
-                            {{/each}}
-                        </div>
-
-                    {{#if isTeacher}}
+                {{> class_stats_side}}
+                {{#if inThisClass}}
                         {{#unless viewTasks}}
                             <button id="viewTasks" class="btn btn1 btn-blue btn-md width100">
                                 View Tasks
-                            </button>
-                            <div class="break-sm"></div>
-                        {{/unless}}
-                        {{#unless manageClass}}
-                            <button id="manageClass" class="btn btn1 btn-yellow btn-md width100">
-                                Manage Class
-                            </button>
-                            <div class="break-sm"></div>
-                        {{/unless}}
-
-                    {{else}}
-                        <!-- if student -->
-                        {{#unless classTasks}}
-                            <button id="classTasks" class="btn btn1 btn-blue btn-md width100">
-                                Show Tasks
                             </button>
                             <div class="break-sm"></div>
                         {{/unless}}
@@ -46,32 +16,32 @@
                             </button>
                             <div class="break-sm"></div>
                         {{/unless}}
+                {{/if}}
 
-                    {{/if}}
-                {{/unless}}
+                {{> class_section_leaders_side}}
+
+                {{> awesome_side}}
+                {{> back_home_btn}}
             </div>
             <div class="col-md-8 col-lg-8">
-                {{#if isTeacher}}
+                {{#if inThisClass}}
 
                     {{#if viewTasks}}
-                        {{> class_task_main}}
-                        <!-- {{> class_tasks_header}}
-                        {{> task_main}}
-                        {{> class_task_list_main}} -->
-                    {{/if}}
-                    {{#if manageClass}}
-                        <!-- TODO: Move manage_class in settings to manage_class_main -->
-                        {{> manage_class}}
+                        {{#if isTeacher}}
+                            {{> class_task_main}}
+                            <!--
+                            {{> task_main}}
+                            {{> class_task_list_main}} -->
+                            {{> challenge_class}}
+                            {{#unless currentChallenge}}
+                                {{> my_class_challenges}}
+                            {{/unless}}
+                        {{else}}
+                            {{> class_task_list_main}}
+                        {{/if}}
                     {{/if}}
 
-                {{else}}
-                    <!-- if student -->
-                    {{#if classTasks}}
-                        <!-- {{> class_tasks_header}} -->
-                        <!-- {{> class_task_list_main}} -->
-                        <!-- {{> class_task_main}} -->
-                    {{/if}}
-                    {{# if classStats}}
+                    {{#if classStats}}
                         <div class="block overview">
                             <div class="title">
                                 <h6>Class Progress</h6>
@@ -348,31 +318,20 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div>           
+                    {{/if}}
+                    
 
+
+                {{else}}
+                    {{#if isTeacher}}
+                        {{#unless currentChallenger}}
+                            {{> challenge_class_away_main}}
+                        {{/unless}}
+>>>>>>> a8443e68a9ea62ecd7a0b0b1ee818ad78eb56f56
                     {{/if}}
                 {{/if}}
             </div>
         </div>
 
-</template>
-
-<template name="class_tasks_header">
-    <div class="block">
-        <div class="row">
-            <h1 class="col-sm-8">
-                Class Tasks
-            </h1>
-            <div class="col-sm-4 t-right">
-                <div class="break-md"></div>
-                <div class="break-sm"></div>
-                <h6>
-                    <input id="expiredTasks" type="checkbox" checked="{{seeExpired}}" />
-                    <label for="expiredTasks" class="clickable">
-                        <a>See Expired Tasks</a>
-                    </label>
-                </h6>
-            </div>
-        </div>
-    </div>
 </template>

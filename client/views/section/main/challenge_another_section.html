@@ -1,0 +1,43 @@
+<template name="other_section">
+    <option value="{{id}}">{{sectionName}}</option>
+</template>
+
+
+<template name="challenge_another_section">
+    <div class="block">
+    <!-- {{#if challengeAvailable}} -->
+        <div class="blue-hover clickable" id="previewSectionChallenge">
+            <div class="preview">
+                <div class="break-sm"></div>
+                <h6>
+                    Section Leader: Find a section to challenge.
+                    <i class="fa right fa-chevron-down"></i>
+                </h6>
+                <div class="break-sm"></div>
+            </div>
+        </div>
+        <div id="sectionChallenge">
+            <div class="break-md"></div>
+            <h6>Please select a section to challenge</h6>
+            <div class="break-sm"></div>
+            <div class="form shadedInputs">
+                <div class="input-group clear">
+                    <div class="group-input">
+                        <select id="selectSection" class="input border input-md">
+                            {{#each allOtherFreeSections}}
+                                {{> other_section}}
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="break-sm"></div>
+                <button id="confirmChallenge" class="btn btn-md btn-red width100">
+                    Confirm Challenge
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- {{else}} -->
+        <!-- <h6>Challenge is not available</h6> -->
+    <!-- {{/if}} -->
+</template>

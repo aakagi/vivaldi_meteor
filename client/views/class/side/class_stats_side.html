@@ -1,0 +1,29 @@
+<template name="class_stats_side">
+<div class="block">
+    <p>School</p>
+    <h5>{{school}}</h5>
+    <div class="break-sm"></div>
+    <p>Teacher</p>
+    {{#each teachersArray}}
+        <h5>
+            <a href="/user?id={{_id}}">
+                {{profile.firstName}} {{profile.lastName}}
+            </a>
+        </h5>
+    {{/each}}
+    <div class="break-sm"></div>
+    <p>
+        Current Challenge
+    </p>
+    {{#if currentChallenge}}
+    <h6 class="t-red">
+        {{currentChallengeName}}
+    </h6>
+    {{else}}
+    <!-- Challenge someone! -> triggers challenge someone dropdown in main -->
+    <h6 class="t-red">
+        No Challenge! 
+    </h6>
+    {{/if}}
+</div>
+</template>

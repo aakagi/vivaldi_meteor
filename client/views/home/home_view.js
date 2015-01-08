@@ -47,12 +47,6 @@ Template.home_view.rendered = function () {
     // Student home toggle between Tasks and Stats
     Session.set('showTasks', true);
     Session.set('viewStats', false);
-
-    var streakCanvas = document.getElementById("streak");
-    var streakCtx = streakCanvas.getContext("2d");
-
-    drawBoxes(streakCanvas, streakContext);
-
 };
 
 Template.home_view.events({

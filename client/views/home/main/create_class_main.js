@@ -1,19 +1,29 @@
 Template.create_class_main.rendered = function() {
     $('#classCreateForm').css('display', 'none');
 
+    var creatingClass = false;
+
     $('#previewCreateClass').click(function(event) {
-        $('#previewCreateClass').slideUp(250);
-        $('#classCreateForm').slideDown(250);
+        if (creatingClass) {
+            $('#classCreateForm').slideUp(250);
+        } else {
+            $('#classCreateForm').slideDown(250);
+        }
+        creatingClass = !creatingClass;
     });
 
     $('#cancelClass').click(function(event) {
         $('#classCreateForm').slideUp(250);
-        $('#previewCreateClass').slideDown(250);
     });
     
+    
+    
     $('#createClass').click(function(event) {
-        $('#classCreateForm').slideUp(250);
-        $('#previewCreateClass').slideDown(250);
+        // Doesn't let you close if improper fields
+        className = document.getElementById('className').value;
+        if (isNotEmpty(className)) {
+            $('#classCreateForm').slideUp(250);
+        }
     }); 
 }
 

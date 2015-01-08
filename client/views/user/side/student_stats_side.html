@@ -1,0 +1,47 @@
+<template name="student_stats_side">
+    <div class="block">
+        <h4>
+            {{profile.firstName}} {{profile.lastName}}
+        </h4>
+        <div class="break-sm"></div>
+        <p>
+            <!-- Makes plural -->
+            Instrument{{#if multiInst}}s{{/if}}
+        </p>
+        <div>
+            {{#each userInstrument}}
+                <h5>{{name}} XP: {{experience}}</h5>
+            {{/each}}
+        </div>
+        <div class="break-sm"></div>
+        <p>
+            Section{{#if multiSec}}s{{/if}}
+        </p>
+        <div>
+            {{#each userSection}}
+                <h5>{{name}} Section</h5>
+            {{/each}}
+        </div>
+        <div class="break-sm"></div>
+        <p>
+            Class{{#if multiClass}}es{{/if}}
+        </p>
+        <div>
+            {{#each userClass}}
+                <h5>{{school}} {{name}}</h5>
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+<!-- <template name="user_instruments">
+<h5>{{name}} XP: {{experience}}</h5>
+</template>
+
+<template name="user_sections">
+<h5>{{name}} Section</h5>
+</template>
+
+<template name="userClasses">
+<h5>{{school}} {{name}}</h5>
+</template> -->

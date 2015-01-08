@@ -1,17 +1,14 @@
-Template.user_view.helpers({
+Template.teacher_view.helpers({
     userClasses: userClasses,
     isTeacher: isTeacher,
-    // Wrong
-    studentProfile: function() {
-        return !isTeacher();
-    },
+    // teacherProfile: function() {
+    //     console.log(Template.currentData().profile.teacher);
+    //     return true;
+    // },
     notInSameClass: function(){
         var myID = Meteor.userId();
         var thisID = Template.currentData._id;
         return !studentsInSameClass(myID, thisID);
-    },
-    userIsMe: function() {
-        return Template.currentData()._id == Meteor.userId();
     },
     unrelatedStudent: function() {
         return !isTeacher  && !studentsInSameClass(myID, thisID);
@@ -24,12 +21,12 @@ Template.user_view.helpers({
     }
 });
 
-Template.user_view.rendered = function () {
-    Session.set('userMessage', false);
+Template.teacher_view.rendered = function () {
+    Session.set('userMessage', true);
     Session.set('userStats', false);
 };
 
-Template.user_view.events({
+Template.teacher_view.events({
     'click #userMessage': function(){
         Session.set('userMessage', true);
         Session.set('userStats', false);

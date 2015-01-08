@@ -1,14 +1,24 @@
+
+
 Template.class_manage.events({
     'click #saveClass': function() {
         var classData = Template.currentData();
         var classID = classData._id;
         // console.log(classData);
         var name;
+        var school;
         var newName = document.getElementById('newName').value;
+        var newSchool = document.getElementById('changeSchool').value;
         if (newName) {
             name = newName;
         } else {
             name = classData.name;
+        }
+        if (newSchool){
+            school = newSchool;
+        }
+        else{
+            school = classData.school;
         }
         var isLocked = document.getElementById('lockedBox').checked;
         Classes.update({
@@ -16,6 +26,7 @@ Template.class_manage.events({
         }, {
             $set: {
                 name: name,
+                school: school,
                 locked: isLocked
             }
         }, function(err) {

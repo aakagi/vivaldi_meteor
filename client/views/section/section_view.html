@@ -21,41 +21,31 @@
 	</h6>
 </template>
 
-<template name="section_leader_side">
-	<div class="block">
-		{{#if sectionLeader.profile.firstName}}
-			<p>
-				Section Leader
-			</p>
-			<h6>
-				<a href="/user?id={{leader}}">
-					{{sectionLeader.profile.firstName}} {{sectionLeader.profile.lastName}}
-				</a>		
-			</h6>
-		{{else}}
-			<p>
-				Your teacher has yet to assign a section leader.
-			</p>
-		{{/if}}
-	</div>
-</template>
 
 <template name="section_view">
 
 	<div class="row">
 
 		<div class="col-md-4 col-lg-4">
-		
+
 			<div class="block">
 				<p>Name</p>
-				<h5>{{name}}</h5>
+				<h5>{{name}} Section</h5>
 				<div class="break-sm"></div>
+				
 				<p>Class</p>
 				<a href="/class?id={{class._id}}"><h5>{{ class.name }}</h5></a>
+				<div class="break-sm"></div>
+
+				<p>Current Challenge</p>
+				<a href="/class?id={{class._id}}">
+					<h6 class="t-red">
+						Todo 1 Section
+					</h6>
+					<p> - from Todo Orchestra</p>
+				</a>
 			</div>
 			
-
-
 			{{#unless sectionMessage}}
 	            <button id="sectionMessage" class="btn btn1 btn-blue btn-md width100">
                     Message
@@ -81,9 +71,13 @@
 				{{else}}
 					None
 				{{/if}} -->
-				{{ #each studentDataNotLeader }}
-					{{> sectionstudent}}
-				{{ /each }}
+				{{#if studentDataNotLeader}}
+					{{ #each studentDataNotLeader }}
+						{{> sectionstudent}}
+					{{ /each }}
+				{{else}}
+					<h6>No other students :(</h6>
+				{{/if}}
 				{{#if leaderManage}}
 					<div class="break-lg"></div>
 					<input type="checkbox" id="lockSection" checked="{{lockSection}}">
@@ -96,26 +90,20 @@
 				{{#if userIsLeader}}
 					<div class="break-md"></div>
 					{{#if endLeaderManage}}
-						<button class="btn btn-md btn-red" id="leaderManage">
+						<button class="btn btn-md btn-gray-inverse width100" id="leaderManage">
 							Manage
 						</button>
 					{{/if}}
 					{{#if leaderManage}}
-						<button class="btn btn-md btn-gray" id="endLeaderManage">
+						<button class="btn btn-md btn-gray width100" id="endLeaderManage">
 							Done
 						</button>
 					{{/if}}
 				{{/if}}
 			</div>
-			{{#if userIsLeader}}
-				<div class="block">
-				
-					<h6>
-						Challenge Other Sections
-					</h6>
-					
-				</div>
-			{{/if}}
+
+			{{> awesome_side}}
+            {{> back_home_btn}}
 		</div>
 	
 		<div class="col-md-8 col-lg-8">
@@ -147,6 +135,9 @@
 					</div>
 				</div>
 			<!-- {{/if}} -->
+			{{#if userIsLeader}}
+				{{> challenge_another_section}}
+			{{/if}}
 		{{/if}}
 		
 		{{#if sectionStats}}
