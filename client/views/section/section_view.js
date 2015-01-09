@@ -67,6 +67,7 @@ Template.section_view.helpers({
             sectionID: Template.currentData()._id
         }
         var pointer = Messages.find(selector);
+        $('.messages').scrollTop(100000);
         return pointer.fetch();
     },
     sectionMessage: function() {
@@ -115,18 +116,18 @@ sendMessage = function() {
         Messages.insert(newMessage);
         document.getElementById("new-message").value = "";
 
-        // TODO
-        // if (firstMessage) { 
-        //     // Make New Notification Object
-        //     // for each user in section
-        //     var notification = {
-        //         assignedUserId: userIsInSection[index],
-        //         type: sectionChat,
-        //         anchorId: Template.currentData().id(),
-        //         mostRecent: new Date(),
-        //         active: true
-        //     }
-        // }
+
+        var users = Template.currentData().users;
+
+        for (i in users){
+            var userid = users[i];
+
+            if (userid != Meteor.userId()){
+                //determine if a notification object is present for this user and section
+                updateNotification(userid, Template.currentData()._id, 'sectionChat');
+            }
+            
+        }
     }
 }
 Template.section_view.events({
@@ -201,7 +202,7 @@ Template.sectionstudent.events({
 });
 
 Template.sectionstudent.helpers({
-    leaderManage: function () {
+    leaderManage: function() {
         return Session.get('leaderManage');
     }
 });
