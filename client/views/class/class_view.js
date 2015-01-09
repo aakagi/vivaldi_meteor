@@ -15,15 +15,15 @@ Template.class_view.helpers({
         var classTeachers = Template.currentData().teachers;
         var classStudents = Template.currentData().students;
 
-        console.log(myId + ' ' + classTeachers + ' ' + classStudents)
+        // console.log(myId + ' ' + classTeachers + ' ' + classStudents)
 
-        console.log(classTeachers.indexOf(myId) + ' ' + classStudents.indexOf(myId))
+        // console.log(classTeachers.indexOf(myId) + ' ' + classStudents.indexOf(myId))
 
         if (classTeachers.indexOf(myId) > -1 || classStudents.indexOf(myId) > -1) {
-            console.log('true');
+            // console.log('true');
             return true;
         } else {
-            console.log('false');
+            // console.log('false');
             return false;
         }
     },
@@ -37,9 +37,9 @@ Template.class_view.helpers({
     classStats: function(){
         return Session.get('classStats');
     },
-    currentChallenge: function() {
-        return activeChallengeWithClass(Template.currentData()._id);
-    }
+    // currentChallenge: function() {
+    //     return activeChallengeWithClass(Template.currentData()._id);
+    // }
 });
 
 Template.class_view.rendered = function () {

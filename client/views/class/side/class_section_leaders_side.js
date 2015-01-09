@@ -17,7 +17,7 @@ Template.class_section_leaders_side.rendered = function () {
 Template.class_section_leaders_side.helpers({
     'sectionList': function() {
         var sectionIds = Template.currentData().sections;
-        console.log(sectionIds);
+        // console.log(sectionIds);
         var returnSections = Sections.find({
             _id: {
                 $in: sectionIds

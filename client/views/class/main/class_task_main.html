@@ -1,7 +1,7 @@
 <template name="class_task_main">
     <div class="block class-task">
         <div class="header">
-            
+        <!-- {{#if isTeacher}} -->
             <!-- Preview -->
             <div id="previewTask">
                 <div class="break-sm"></div>
@@ -17,7 +17,11 @@
                     </div>
                 </div>
                 <div class="break-sm"></div>
+                {{#each temp}}
+                    {{taskId}}
+                {{/each}}
             </div>
+        <!-- {{/if}} -->
 
             <!-- Select Task Type -->
     		<div id="taskForm" class="form shadedInputs">
@@ -177,10 +181,18 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="action-buttons">
-                                    <button class="btn btn1 btn-blue btn-sm width100">Something</button>
-                                    <button class="btn btn1 btn-green btn-sm width100">Something</button>
-                                    <button class="btn btn1 btn-yellow btn-sm width100">Something</button>
-                                    <button class="btn btn1 btn-red btn-sm width100">Something</button>
+                                    <button class="btn btn1 btn-blue btn-sm width100">
+                                        Something
+                                    </button>
+                                    <button class="btn btn1 btn-green btn-sm width100">
+                                        Something
+                                    </button>
+                                    <button class="btn btn1 btn-yellow btn-sm width100">
+                                        Something
+                                    </button>
+                                    <button class="btn btn1 btn-red btn-sm width100" id="deleteTask">
+                                        Delete
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -197,36 +209,48 @@
                         </div>
                         <div class="task-body row" style="display: none;">
                             <!-- <div class="col-sm-2"><br></div> -->
-                            <div class="col-sm-8">
-                                <div class="group">
-                                    <p class="task-date">Due Date: <em>{{dueDate}}</em></p>
-                                    <p class="task-duration">Duration: <em>{{duration}} minutes</em></p>
-                                    <p class="task-points">Points: <em class="t-red">{{points}}</em></p>
+                            {{#if seeVideo}}
+                                {{> youtube_player}}
+                            {{else}}
+                                <div class="col-sm-8">
+                                    <div class="group">
+                                        <p class="task-date">Due Date: <em>{{dueDate}}</em></p>
+                                        <p class="task-duration">Duration: <em>{{duration}} minutes</em></p>
+                                        <p class="task-points">Points: <em class="t-red">{{points}}</em></p>
+                                    </div>
+                                    <div class="group">
+                                        <p>Assigned to:</p>
+                                        <p class="task-sections">
+                                            {{#each sections}}
+                                                <em>{{name}}</em>
+                                            {{/each}}
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="group">
-                                    <p>Assigned to:</p>
-                                    <p class="task-sections">
-                                        {{#each sections}}
-                                            <em>{{name}}</em>
-                                        {{/each}}
-                                    </p>
+                                <div class="col-sm-4">
+                                    <div class="action-buttons">
+                                        <button class="btn btn1 btn-blue btn-sm width100" id="listenTask">
+                                            Listen
+                                        </button>
+                                        <button class="btn btn1 btn-green btn-sm width100">
+                                            Something
+                                        </button>
+                                        <button class="btn btn1 btn-yellow btn-sm width100">
+                                            Something
+                                        </button>
+                                        <button class="btn btn1 btn-red btn-sm width100" id="deleteTask">
+                                            Delete
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="action-buttons">
-                                    <button class="btn btn1 btn-blue btn-sm width100">Something</button>
-                                    <button class="btn btn1 btn-green btn-sm width100">Something</button>
-                                    <button class="btn btn1 btn-yellow btn-sm width100">Something</button>
-                                    <button class="btn btn1 btn-red btn-sm width100">Something</button>
-                                </div>
-                            </div>
+                            {{/if}}
                         </div>
                     {{/if}}
                 </div>
             {{/each}}
         {{else}}
         <!-- If no tasks -->
-        <h5>This class has no active tasks. Click the '+ New' button above to make your first task!</h5>
+        <p>This class has no active tasks. Click the '+ New' button above to make your first task!</p>
         {{/if}}
         </div>
 

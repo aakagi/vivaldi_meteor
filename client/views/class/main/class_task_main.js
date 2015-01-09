@@ -140,6 +140,10 @@ Template.class_task_main.rendered = function() {
 }
 
 Template.class_task_main.helpers({
+    seeVideo: function() {
+        return Session.get('showVideo');
+    },
+    isTeacher: isTeacher,
     sectionList: function() {
         var classData = Template.currentData(); //template initalized with class data
         var classId = classData._id;
@@ -155,7 +159,7 @@ Template.class_task_main.helpers({
             }]
         };
         pointer = Sections.find(selector, {sort: {order: 1}});
-        console.log(pointer.fetch());
+        // console.log('hey' + pointer.fetch());
         return pointer.fetch();
     },
     allTasks: function() {
@@ -202,23 +206,57 @@ Template.class_task_main.events({
         // save task
         var taskID = Tasks.insert(newTask);
 
+
         for (i in sectionIds) {
             //get all students in the section so a taskData object can be created for each of them.
             var section = Sections.findOne({_id: sectionIds[i]});
             var studentIds = section.users;
 
+
+
+            taskAlreadyAssigned = function(taskId, studentId) {
+                // console.log('taskID and studentIds ' + taskID + ' ' + studentIds[indx]);
+                var selector = {
+                    $and: [{
+                        taskId: taskId
+                    }, {
+                        userId: studentId
+                    }]
+                }
+                if (TasksData.findOne(selector)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
             for (indx in studentIds) {
-                var newTaskData = {
-                    taskId: taskID,
-                    userId: studentIds[indx],
-                    progress: 0, //seconds
-                    notes: "",
-                    complete: false
-                };
-                TasksData.insert(newTaskData);
+                if (taskAlreadyAssigned(taskID, studentIds[indx])) {
+                    console.log('true');
+                } else {
+                    var newTaskData = {
+                        taskId: taskID,
+                        userId: studentIds[indx],
+                        progress: 0, //seconds
+                        notes: "",
+                        complete: false,
+                        creationDate: new Date()
+                    };
+                    
+                    TasksData.insert(newTaskData);
+                }
+
             }
         }
         $('.form').slideUp(250);
         $('#previewTask').slideDown(250);
-    }
+    },
+    'click #deleteTask': function() {
+        var taskID = Template.currentData()._id;
+        Meteor.call('removeTask', taskID);
+    },
+    'click #listenTask': function() {
+        Session.set('showVideo', true);
+        Session.set('listenTaskObject', this);
+    },
 });

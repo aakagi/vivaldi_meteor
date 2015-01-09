@@ -1,4 +1,4 @@
-Template.messenger.rendered = function() {
+Template.user_messenger_main.rendered = function() {
     $('.messages').scrollTop(100000);
 }
 Template.user_messenger_main.helpers({
