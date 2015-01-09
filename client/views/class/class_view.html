@@ -27,8 +27,8 @@
                 {{#if inThisClass}}
 
                     {{#if viewTasks}}
+                        {{> class_task_main}}
                         {{#if isTeacher}}
-                            {{> class_task_main}}
                             <!--
                             {{> task_main}}
                             {{> class_task_list_main}} -->
@@ -36,8 +36,6 @@
                             {{#unless currentChallenge}}
                                 {{> my_class_challenges}}
                             {{/unless}}
-                        {{else}}
-                            {{> class_task_list_main}}
                         {{/if}}
                     {{/if}}
 

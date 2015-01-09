@@ -90,33 +90,10 @@
                                     <div class="graph graph-1">
                                         <div class="chart chart-1">
                                             <canvas id="weeklyOverview"></canvas>
+                                            {{weeklyOverviewData}}
                                             <script>
                                                 var weeklyOverviewCtx = document.getElementById("weeklyOverview").getContext("2d");
-                                                var weeklyOverviewData = {
-                                                    labels: ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu"],
-                                                    datasets: [
-                                                        {
-                                                            label: "My First dataset",
-                                                            fillColor: "rgba(220,220,220,0.2)",
-                                                            strokeColor: "rgba(220,220,220,1)",
-                                                            pointColor: "rgba(220,220,220,1)",
-                                                            pointStrokeColor: "#fff",
-                                                            pointHighlightFill: "#fff",
-                                                            pointHighlightStroke: "rgba(220,220,220,1)",
-                                                            data: [65, 59, 80, 81, 56, 55, 40]
-                                                        },
-                                                        {
-                                                            label: "My Second dataset",
-                                                            fillColor: "rgba(151,187,205,0.2)",
-                                                            strokeColor: "rgba(151,187,205,1)",
-                                                            pointColor: "rgba(151,187,205,1)",
-                                                            pointStrokeColor: "#fff",
-                                                            pointHighlightFill: "#fff",
-                                                            pointHighlightStroke: "rgba(151,187,205,1)",
-                                                            data: [28, 48, 40, 19, 86, 27, 90]
-                                                        }
-                                                    ]
-                                                };
+                                                var weeklyOverviewData = {{weeklyOverviewData}};
                                                 weeklyOverview = document.getElementById("weeklyOverview");
                                                 weeklyOverview.width = $('#weeklyOverview').parent('.chart').width();
                                                 weeklyOverview.height = 250;
