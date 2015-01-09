@@ -47,6 +47,7 @@ Template.home_incomplete_tasks_main.events({
 Template.home_incomplete_tasks_main.helpers({
 	tasks: function(){
 		if (Session.get('showIncomplete')) {
+			console.log(getFullStudentTasks(true, false, true, true));
 			return getFullStudentTasks(true, false, true, true);
 		} else {
 			return getFullStudentTasks(false, true, true, true);
