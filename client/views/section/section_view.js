@@ -10,6 +10,16 @@ Template.section_view.rendered = function() {
 
 Template.section_view.helpers({
     isTeacher: isTeacher,
+    userIsInSection: function() {
+        var myId = Meteor.userId();
+        var peopleInSection = Template.currentData().users;
+        console.log('hey ' + peopleInSection + ' a ' + myId);
+        if (peopleInSection.indexOf(myId) > -1) {
+            return true;
+        } else {
+            return false;
+        }
+    },
     class: function() {
         var id = Template.currentData()._id;
         var classData = getClassBySectionId(id);

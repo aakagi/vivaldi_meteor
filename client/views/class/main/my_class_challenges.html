@@ -18,10 +18,12 @@
 </template>
 
 <template name="my_class_challenges">
-    <div class="block">
-        <h6>Challenge Requests</h6>
-        {{#each challengeRequests}}
-            {{> challenge}}
-        {{/each}}
-    </div>
+    {{#if challengeRequests}}
+        <div class="block">
+            <h6>Challenge Requests</h6>
+            {{#each challengeRequests}}
+                {{> challenge}}
+            {{/each}}
+        </div>
+    {{/if}}
 </template>

@@ -109,7 +109,7 @@
 		<div class="col-md-8 col-lg-8">
 		
 		{{#if sectionMessage}}
-			<!-- {{#if userIsInSection}} -->
+			{{#if userIsInSection}}
 				<div class="block chat">		
 					<div class="title">
 						<h6>Chat</h6>
@@ -134,7 +134,7 @@
 						</div>
 					</div>
 				</div>
-			<!-- {{/if}} -->
+			{{/if}}
 			{{#if userIsLeader}}
 				{{> challenge_another_section}}
 			{{/if}}

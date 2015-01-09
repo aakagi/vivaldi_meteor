@@ -3,7 +3,7 @@
         <div class="header">
             
             <!-- Preview -->
-            <div class="preview">
+            <div id="previewTask">
                 <div class="break-sm"></div>
                 <div class="row">
                     <div class="col-sm-4">
@@ -145,6 +145,7 @@
         </div>
 
         <div class="body">
+        {{#if allTasks}}
             {{#each allTasks}}
                 <div class="task">
                     {{#if type_practice}}
@@ -223,6 +224,10 @@
                     {{/if}}
                 </div>
             {{/each}}
+        {{else}}
+        <!-- If no tasks -->
+        <h5>This class has no active tasks. Click the '+ New' button above to make your first task!</h5>
+        {{/if}}
         </div>
 
 	</div> <!-- Close block -->

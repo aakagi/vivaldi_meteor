@@ -12,13 +12,17 @@
                 <!-- {{#unless notInSameClass}} -->
 
             <!-- Teachers see messages or view stats -->
+
+            {{#if isTeacher}}
+                {{> user_messenger_main}}
+            {{/if}}
             {{#if usersInSameClass}}
                 <!-- {{#if userMessage}} -->
                     {{> user_messenger_main}} 
                 <!-- {{/if}} -->
-                {{#if userStats}}
+                <!-- {{#if userStats}}
                     {{> user_stats_main}}
-                {{/if}}
+                {{/if}} -->
             {{/if}}
         </div>
     </div>

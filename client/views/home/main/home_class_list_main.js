@@ -13,11 +13,23 @@ Template.home_class_list.helpers({
     	return Template.currentData().sections.length
     },
     classLevel: function(){
-        console.log("level");
         var experience = getExperienceTotalForClass(Template.currentData()._id);
         var level =  convertExpToLevel(experience);
         var numStudents = Template.currentData().students.length;
-        return level/numStudents;
+
+        // returns infinity without this
+        if (numStudents == 0) {
+            numStudents = 1;
+        }
+
+        var classLv = level/numStudents;
+
+        // Can't be level 0.5
+        if (level/numStudents < 1) {
+            return 1;
+        } else {
+            return classLv;
+        }
     }
 });
 

@@ -119,7 +119,7 @@ Template.create_class_main.events({
             sectionIDs.push(teacherSectionID);
             sectionLeadersDoc =  {
                 name: "Section Leaders",
-                users: [],
+                users: [userId],
                 order: sectionIDs.length,
                 leader: userId,
                 locked: false

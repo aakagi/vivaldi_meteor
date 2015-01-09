@@ -9,13 +9,13 @@ Template.class_task_main.rendered = function() {
     $('.field').css('display', 'none');
 
     $('#openCreateTask').click(function(event) {
-        $('.preview').slideUp(250);
+        $('#previewTask').slideUp(250);
         $('#taskForm').slideDown(250);
     });
 
     $('.cancelClass').click(function(event) {
         $('#taskForm').slideUp(250);
-        $('.preview').slideDown(250);
+        $('#previewTask').slideDown(250);
     });
 
     $('.type').click(function(event) {
@@ -219,6 +219,6 @@ Template.class_task_main.events({
             }
         }
         $('.form').slideUp(250);
-        $('.preview').slideDown(250);
+        $('#previewTask').slideDown(250);
     }
 });
