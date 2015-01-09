@@ -37,6 +37,7 @@
 						console.log(totalS + ', ' + dur);
 						if ((totalS / dur) > 0.9) {
 							setAlert('info', 'w00t you did it!');
+							enableCompletion();
 						} else {
 							setAlert('error', 'CHEATER!');
 						}
@@ -47,6 +48,7 @@
 			<div id="player"></div>
 		</div>
 		<div class="col-sm-4">
+			<button id="completeTask" class="btn btn1 btn-sm btn-blue width100">Complete!</button>
 			<button class="goBackFromListen btn btn1 btn-sm btn-blue width100">Go back</button>
 		</div>
 	</div>
