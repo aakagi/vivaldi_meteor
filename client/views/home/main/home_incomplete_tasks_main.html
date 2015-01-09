@@ -28,13 +28,20 @@
                             <div class="col-sm-2">
                                 {{#if type_practice}}
                                     <h5><i class="fa fa-music"></i></h5>
-                                {{else}}
+                                {{/if}}
+                                {{#if type_audio}}
                                     <h5><i class="fa fa-headphones"></i></h5>
+                                {{/if}}
+                                {{#if type_post}}
+                                    <h5><i class="fa fa-message"></i></h5>
                                 {{/if}}
                             </div>
                             <div class="col-sm-10">
-                                <h5 class="task-name">{{name}} <a class="blue" onclick="openTask(this)">See more</a></h5>
-                                <p class="task-description">{{description}}</p>
+                                <h5 class="task-name {{#if type_post}}post{{/if}}">{{name}} {{#unless type_post}}<a class="blue" onclick="openTask(this)">See more</a>{{/unless}}</h5>
+                                {{#if type_post}}
+                                <p class="author">{{author.profile.firstName}} {{author.profile.lastName}}</p>
+                                {{/if}}
+                                <p class="task-description {{#if type_post}}post{{/if}}">{{description}}</p>
                             </div>
                         </div>
                         <div class="task-body row" style="display: none;">
