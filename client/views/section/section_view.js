@@ -114,6 +114,19 @@ sendMessage = function() {
         };
         Messages.insert(newMessage);
         document.getElementById("new-message").value = "";
+
+        // TODO
+        // if (firstMessage) { 
+        //     // Make New Notification Object
+        //     // for each user in section
+        //     var notification = {
+        //         assignedUserId: userIsInSection[index],
+        //         type: sectionChat,
+        //         anchorId: Template.currentData().id(),
+        //         mostRecent: new Date(),
+        //         active: true
+        //     }
+        // }
     }
 }
 Template.section_view.events({

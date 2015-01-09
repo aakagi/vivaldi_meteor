@@ -1,17 +1,17 @@
 Template.nav_bar.rendered = function () {
-	$('#notifications').css('display', 'none');
+	// $('#notifications').css('display', 'none');
 
 
-    var showing = false;
+    // var showing = false;
 
-    $('#toggleNotifications').click(function(event) {
-        if (showing) {
-            $('#notifications').slideUp(150);
-        } else {
-            $('#notifications').slideDown(150);
-        }
-        showing = !showing;
-    });
+    // $('#toggleNotifications').click(function(event) {
+    //     if (showing) {
+    //         $('#notifications').slideUp(150);
+    //     } else {
+    //         $('#notifications').slideDown(150);
+    //     }
+    //     showing = !showing;
+    // });
 };
 
 Template.nav_bar.events({
@@ -23,9 +23,6 @@ Template.nav_bar.events({
 	'click .fa-times': function() {
 		$('.navadmin').animate({'left': '-17em'}, 250);
 	},
-	'click #hello': function() {
-		console.log('hey!');
-	}
 });
 
 Template.nav_bar.helpers({
