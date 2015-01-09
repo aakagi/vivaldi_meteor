@@ -100,10 +100,17 @@ Template.class_task_main.rendered = function() {
 
         else if ($('#post').hasClass('selected')) {
             formType = 'Post';
-            var fields = ['.name', '.description', '.sections', '.points', '.formButtons'];
+
             
             // Update points
-            points = 10;
+            if (isTeacher()) {
+                var fields = ['.name', '.description', '.sections', '.points', '.formButtons'];
+                points = 10;
+            }
+            else {
+                var fields = ['.name', '.description', '.formButtons'];
+                points = 0;
+            }
             $('#pointValue').html(points);
 
             // Change input labels for name and description to subject and body
@@ -159,13 +166,15 @@ Template.class_task_main.helpers({
             }]
         };
         pointer = Sections.find(selector, {sort: {order: 1}});
-        // console.log('hey' + pointer.fetch());
         return pointer.fetch();
     },
     allTasks: function() {
         var allTasks = getTasksByClassId(Template.currentData()._id);
         return allTasks;
     },
+    isTeacher: function() {
+        return isTeacher();
+    }
 });
 
 
@@ -177,11 +186,21 @@ Template.class_task_main.events({
         
         var sectionIds = [];
         // Loop through each selected tag and add id to sectionIds
-        $('.section-tags').children('.selected').each(function(index, el) {
-            if (!$(this).hasClass('selectAll')) {
-                sectionIds.push($(this).attr('id'));
+        if (isTeacher()) {
+            $('.section-tags').children('.selected').each(function(index, el) {
+                    if (!$(this).hasClass('selectAll')) {
+                        sectionIds.push($(this).attr('id'));
+                    }
+            });
+        }
+        else {
+            var sections = classSectionsById(classId);
+            for (i in sections) {
+                sectionIds.push(sections[i]._id);
             }
-        });
+        }
+
+
 
         var taskType = formType; // Defined in rendered javascript when task type is selected
         var taskName = document.getElementById("taskName").value;
@@ -200,7 +219,8 @@ Template.class_task_main.events({
             youtubeURL: youTube,
             dueDate: dueDate,
             creationDate: new Date(),
-            points: points
+            points: points,
+            authorId: Meteor.userId()
         }
 
         // save task
@@ -250,6 +270,19 @@ Template.class_task_main.events({
         }
         $('.form').slideUp(250);
         $('#previewTask').slideDown(250);
+    },
+    'click .view-more': function(event) {
+        var target = event.currentTarget.getAttribute('name');
+        var selector = $('#' + target);
+        selector.parent().children('.action-buttons').slideUp(100, function() {
+            selector.slideDown(250);
+        });
+    },
+    'click .close-view-more': function(event) {
+        var selector = $(event.currentTarget).parent().parent();
+        selector.children('.additional').slideUp(100, function() {
+            selector.children('.action-buttons').slideDown(250);
+        });
     },
     'click #deleteTask': function() {
         var taskID = Template.currentData()._id;

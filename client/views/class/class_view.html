@@ -28,8 +28,9 @@
                 {{#if inThisClass}}
 
                     {{#if viewTasks}}
+                        {{> class_task_main}}
                         {{#if isTeacher}}
-                            {{> class_task_main}}
+
                             <!-- {{> alex_rewrite_class_tasks}} -->
                             <!--
                             {{> task_main}}
@@ -38,13 +39,10 @@
                             <!-- {{> challenge_class}} -->
                         <!--    {{#unless currentChallenge}}
                                 {{> my_class_challenges}}
+
                             {{/unless}} -->
                         {{else}}
                             <!-- {{> class_task_list_main}} -->
-                            {{> class_task_main}}
-                            <div class="block">
-                                <h1>HELLOOOOO</h1>
-                            </div>
                         {{/if}}
                     {{/if}}
 

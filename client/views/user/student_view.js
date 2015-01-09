@@ -5,10 +5,42 @@ Template.student_view.helpers({
     //     console.log(Template.currentData().profile.teacher);
     //     return true;
     // },
-    notInSameClass: function(){
+    inSameClass: function(){
         var myID = Meteor.userId();
-        var thisID = Template.currentData._id;
-        return !studentsInSameClass(myID, thisID);
+        var studentId = Template.currentData()._id;
+
+        var classes = Classes.find({
+            $and: [{
+                $or: [{
+                    teachers: {
+                        $elemMatch: {
+                            $in: [myID]
+                        }
+                    }
+                }, {
+                    students: {
+                        $elemMatch: {
+                            $in: [myID]
+                        }
+                    }
+                }]
+            }, {
+                students: {
+                    $elemMatch: {
+                        $in: [studentId]
+                    }
+                }
+            }]
+        }).fetch();
+
+        Meteor.call('isVivaldi', myID, function(err, res) {Session.set('isVivaldi', res)});
+        var vivaldi = Session.get('isVivaldi');
+
+        if (vivaldi || classes.length > 0) {
+            return true;
+        } else {
+            return false;
+        }
     },
     unrelatedStudent: function() {
         return !isTeacher  && !studentsInSameClass(myID, thisID);

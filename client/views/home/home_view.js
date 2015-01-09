@@ -37,6 +37,25 @@ Template.home_view.helpers({
     }, 
     viewStats: function() {
     	return Session.get('viewStats');
+    },
+    weeklyOverviewData: function() {
+        var labels = [];
+        var data = [];
+
+        var date = new Date();
+        date = date.setDate(date.getDate - 6);
+        var i = 0;
+        while (i < 7) {
+
+            labels.push(date);
+            data.push(getStudentPracticeByDate(Meteor.userId(), date));
+            date = date.setDate(date.getDate() + 1);
+            i++;
+        }
+        console.log(labels);
+        console.log(data);
+        return data;
+        
     }
 });
 
@@ -47,6 +66,23 @@ Template.home_view.rendered = function () {
     // Student home toggle between Tasks and Stats
     Session.set('showTasks', true);
     Session.set('viewStats', false);
+
+    var complete = {
+        labels: labels,
+        datasets: [
+            {
+                label: Meteor.userId(),
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: data
+            }
+        ]
+    }
+    console.log('halp: ' + complete);
 };
 
 Template.home_view.events({
