@@ -61,5 +61,8 @@ Template.home_incomplete_tasks_main.helpers({
     },
     showVideo: function() {
     	return Session.get('showVideo');
+    },
+    showCurrent: function(){
+    	return Session.get('showCurrent');
     }
 });

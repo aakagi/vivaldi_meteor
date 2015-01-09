@@ -1,11 +1,11 @@
 Template.practice_interface.rendered = function() {
     // Initialize session variables
     // Session.set('practiceTask', false);
-    // Session.set('practiceOther', false);
+    Session.set('practiceOther', false);
     // Session.set('practiceTaskObject', null);
     // Session.set('duration', 0);
     Session.set('timePicked', false);
-    Session.set('taskPicked', false);
+    //Session.set('taskPicked', false);
 
     var timer;
     var timeElapsed = $('#timeElapsed');
@@ -114,6 +114,9 @@ Template.practice_task_interface.helpers({
     studentPracticeTasks: function() {
         return getStudentTasksByType('Practice');
     },
+    incompletePracticeTasks: function(){
+        return getIncompleteStudentTasksByType('Practice');
+    },
     taskPicked: function() {
         return Session.get('taskPicked');
     }
@@ -138,6 +141,19 @@ Template.practice_task_interface.events({
             timeRemaining.html(formatTime(duration - secondsPracticed));
             $('#yourStatus').html('Your Status: <em>' + getPercent(secondsPracticed, duration) + '</em>');
 
+             if (secondsPracticed == duration) {
+                //same as if stop timer was called
+                Session.set('secondsPracticed', secondsPracticed);
+                clearInterval(timer);
+                saveProgress();
+                //sends the task object ID, not the data object ID
+                var taskObject = Session.get('practiceTaskObject');
+                Meteor.call('completeTask', Meteor.userId(), taskObject._id);
+                $('#startTimer').addClass('disabled').attr('disabled', 'disabled');
+                $('#stopTimer').addClass('disabled').attr('disabled', 'disabled');
+                setAlert('info', 'task finished! a winner is you!')
+            }
+
             // Resize percentage bar
             var barWidth = $('.bar').width();
             var newWidth = barWidth * (secondsPracticed / duration);
@@ -153,12 +169,7 @@ Template.practice_task_interface.events({
         }, 1000);
     },
     'click #stopTimer': function() {
-        //gets practice task info from Session
-        var taskObject = Session.get('practiceTaskObject');
-        var secondsPracticed = Session.get('secondsPracticed');
-        //updates the task data with this duration
-        var instrument = Meteor.user().profile.instrument;
-        Meteor.call('saveProgress', Meteor.userId(), taskObject._id, instrument, secondsPracticed);
+        saveProgress()
     }
 });
 
@@ -166,6 +177,14 @@ Template.practice_task_interface.created = function() {
     $('#timeRemaining').html(formatTime(Session.get('duration')));
 };
 
+saveProgress = function() {
+//gets practice task info from Session
+    var taskObject = Session.get('practiceTaskObject');
+    var secondsPracticed = Session.get('secondsPracticed');
+    //updates the task data with this duration
+    var instrument = Meteor.user().profile.instrument;
+    Meteor.call('saveProgress', Meteor.userId(), taskObject._id, instrument, secondsPracticed);
+}
 
 
 
@@ -207,9 +226,10 @@ Template.practice_other_interface.events({
                 //same as if stop timer was called
                 Session.set('secondsPracticed', secondsPracticed);
                 clearInterval(timer);
-                $('#startTimer').removeClass('disabled').removeAttr('disabled', 'disabled');
-                saveProgressOther(timer, secondsPracticed);
-                Router.go('home');
+                saveProgressOther();
+                $('#startTimer').addClass('disabled').attr('disabled', 'disabled');
+                $('#stopTimer').addClass('disabled').attr('disabled', 'disabled');
+                setAlert('info', 'practicing finished!')
             }
 
             // Resize percentage bar
@@ -227,14 +247,12 @@ Template.practice_other_interface.events({
         }, 1000);
     },
     'click #stopTimer': function() {
-        console.log("updating instrument data");
+        //console.log("updating instrument data");
         saveProgressOther();
     }
 });
 
-saveProgress = function() {
 
-}
 
 saveProgressOther = function() {
     //gets practice task info from Session
@@ -246,18 +264,6 @@ saveProgressOther = function() {
     var instrument = Meteor.user().profile.instrument;
     Meteor.call('saveProgressOther', Meteor.userId(), instrument, oldSeconds, secondsPracticed);
     Session.set('oldSeconds', secondsPracticed);
-}
-
-finishTask = function() {
-    Session.set('secondsPracticed', secondsPracticed);
-    clearInterval(timer);
-    $('#startTimer').removeClass('disabled').removeAttr('disabled', 'disabled');
-    //gets practice task info from Session
-    var taskObject = Session.get('practiceTaskObject');
-    var secondsPracticed = Session.get('secondsPracticed');
-    //updates the task data with this duration
-    var instrument = Meteor.user().profile.instrument;
-    Meteor.call('saveProgress', Meteor.userId(), taskObject._id, instrument, secondsPracticed);
 }
 
 Template.practice_other_interface.rendered = function() {

@@ -1,3 +1,10 @@
+Template.home_view.rendered = function() {
+    //to avoid bugs with tasks
+    Session.set('practiceOther', false);
+    Session.set('timePicked', false);
+    Session.set('taskPicked', false);
+};
+
 Template.home_view.helpers({
     firstName: function() {
         userid = Meteor.userId();
@@ -26,17 +33,17 @@ Template.home_view.helpers({
     isTeacher: isTeacher,
     // Teacher home toggle between classes and leaderboards
     showClasses: function() {
-    	return Session.get('showClasses');
-    }, 
+        return Session.get('showClasses');
+    },
     seeLeaderboards: function() {
-    	return Session.get('seeLeaderboards');
+        return Session.get('seeLeaderboards');
     },
     // Student home toggle between Tasks and Stats
     showTasks: function() {
-    	return Session.get('showTasks');
-    }, 
+        return Session.get('showTasks');
+    },
     viewStats: function() {
-    	return Session.get('viewStats');
+        return Session.get('viewStats');
     },
     weeklyOverviewData: function() {
         var labels = [];
@@ -55,11 +62,11 @@ Template.home_view.helpers({
         console.log(labels);
         console.log(data);
         return data;
-        
+
     }
 });
 
-Template.home_view.rendered = function () {
+Template.home_view.rendered = function() {
     // Teacher home toggle between classes and leaderboards
     Session.set('showClasses', true);
     Session.set('seeLeaderboards', false);
@@ -69,37 +76,35 @@ Template.home_view.rendered = function () {
 
     var complete = {
         labels: labels,
-        datasets: [
-            {
-                label: Meteor.userId(),
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: data
-            }
-        ]
+        datasets: [{
+            label: Meteor.userId(),
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: data
+        }]
     }
     console.log('halp: ' + complete);
 };
 
 Template.home_view.events({
     // Teacher home toggle between classes and leaderboards
-	'click #showClasses': function(){
-		Session.set('showClasses', true);
-		Session.set('seeLeaderboards', false);
-	},
-	'click #seeLeaderboards': function(){
-		Session.set('showClasses', false);
-		Session.set('seeLeaderboards', true);
-	},
+    'click #showClasses': function() {
+        Session.set('showClasses', true);
+        Session.set('seeLeaderboards', false);
+    },
+    'click #seeLeaderboards': function() {
+        Session.set('showClasses', false);
+        Session.set('seeLeaderboards', true);
+    },
     // Student home toggle between Tasks and Stats
-	'click #showTasks': function(){
-		Session.set('showTasks', true);
-		Session.set('viewStats', false);
-	},
+    'click #showTasks': function() {
+        Session.set('showTasks', true);
+        Session.set('viewStats', false);
+    },
     'click #viewStats': function() {
         Session.set('showTasks', false);
         Session.set('viewStats', true);
