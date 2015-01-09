@@ -84,7 +84,6 @@ Template.sections_manage.events({
                     });
                     Sections.update(selector, {$push: {users: newLeader}});
 
-                    // TODO Adds new leader to section leaders section, removes old leader
                 }
                 if (newOrder) {
                     //save new order
