@@ -37,13 +37,13 @@
 				<a href="/class?id={{class._id}}"><h5>{{ class.name }}</h5></a>
 				<div class="break-sm"></div>
 
-				<p>Current Challenge</p>
+<!-- 				<p>Current Challenge</p>
 				<a href="/class?id={{class._id}}">
 					<h6 class="t-red">
 						Todo 1 Section
 					</h6>
 					<p> - from Todo Orchestra</p>
-				</a>
+				</a> -->
 			</div>
 			
 			{{#unless sectionMessage}}
@@ -109,7 +109,7 @@
 		<div class="col-md-8 col-lg-8">
 		
 		{{#if sectionMessage}}
-			<!-- {{#if userIsInSection}} -->
+			{{#if userIsInSection}}
 				<div class="block chat">		
 					<div class="title">
 						<h6>Chat</h6>
@@ -134,9 +134,9 @@
 						</div>
 					</div>
 				</div>
-			<!-- {{/if}} -->
+			{{/if}}
 			{{#if userIsLeader}}
-				{{> challenge_another_section}}
+				<!-- {{> challenge_another_section}} -->
 			{{/if}}
 		{{/if}}
 		
@@ -419,6 +419,14 @@
                 </div>
             </div>
 		{{/if}}
+        {{#unless userIsInSection}}
+            <div class="block">
+                <div class="break-lg"></div>
+                <h5>Nothing to see here yet, you are not in this section!<br><br>
+                 - We'll make it so that you can challenge other sections eventually though, so be excited for that!</h5>
+                <div class="break-lg"></div>
+            </div>
+        {{/unless}}
 			
 		</div>
 

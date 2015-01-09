@@ -10,6 +10,16 @@ Template.section_view.rendered = function() {
 
 Template.section_view.helpers({
     isTeacher: isTeacher,
+    userIsInSection: function() {
+        var myId = Meteor.userId();
+        var peopleInSection = Template.currentData().users;
+        console.log('hey ' + peopleInSection + ' a ' + myId);
+        if (peopleInSection.indexOf(myId) > -1) {
+            return true;
+        } else {
+            return false;
+        }
+    },
     class: function() {
         var id = Template.currentData()._id;
         var classData = getClassBySectionId(id);
@@ -57,6 +67,7 @@ Template.section_view.helpers({
             sectionID: Template.currentData()._id
         }
         var pointer = Messages.find(selector);
+        $('.messages').scrollTop(100000);
         return pointer.fetch();
     },
     sectionMessage: function() {
@@ -104,6 +115,19 @@ sendMessage = function() {
         };
         Messages.insert(newMessage);
         document.getElementById("new-message").value = "";
+
+
+        var users = Template.currentData().users;
+
+        for (i in users){
+            var userid = users[i];
+
+            if (userid != Meteor.userId()){
+                //determine if a notification object is present for this user and section
+                updateNotification(userid, Template.currentData()._id, 'sectionChat');
+            }
+            
+        }
     }
 }
 Template.section_view.events({
@@ -178,7 +202,7 @@ Template.sectionstudent.events({
 });
 
 Template.sectionstudent.helpers({
-    leaderManage: function () {
+    leaderManage: function() {
         return Session.get('leaderManage');
     }
 });

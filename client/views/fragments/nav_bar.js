@@ -1,3 +1,19 @@
+Template.nav_bar.rendered = function () {
+	// $('#notifications').css('display', 'none');
+
+
+    // var showing = false;
+
+    // $('#toggleNotifications').click(function(event) {
+    //     if (showing) {
+    //         $('#notifications').slideUp(150);
+    //     } else {
+    //         $('#notifications').slideDown(150);
+    //     }
+    //     showing = !showing;
+    // });
+};
+
 Template.nav_bar.events({
 	// Open side menu when bars are clicked
 	'click .fa-bars': function() {
@@ -38,4 +54,11 @@ Template.nav_bar.helpers({
 	userClasses: userClasses,
 	studentSections: studentSections,
 	isTeacher: isTeacher,
+
+	// numberNotifications: function() {
+	// 	TODO
+	// }
+	// notificationList: function() {
+	// 	TODO	
+	// }
 });

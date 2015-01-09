@@ -661,6 +661,7 @@
 //     transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 // }
 
+
 a {
     &:hover {
         .t-red {
@@ -679,6 +680,12 @@ a {
 
 .blue-hover {
     cursor: pointer;
+    &:hover {
+        color: $blue;
+        &:after {
+            opacity: 1;
+        }
+    }
 }
 .manage {
     p {

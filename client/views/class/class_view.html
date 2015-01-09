@@ -3,19 +3,20 @@
         <div class="row">
             <div class="col-md-4 col-lg-4">
                 {{> class_stats_side}}
+                
                 {{#if inThisClass}}
-                        {{#unless viewTasks}}
-                            <button id="viewTasks" class="btn btn1 btn-blue btn-md width100">
-                                View Tasks
-                            </button>
-                            <div class="break-sm"></div>
-                        {{/unless}}
-                        {{#unless classStats}}
-                            <button id="classStats" class="btn btn1 btn-yellow btn-md width100">
-                                Class Stats
-                            </button>
-                            <div class="break-sm"></div>
-                        {{/unless}}
+                    {{#unless viewTasks}}
+                        <button id="viewTasks" class="btn btn1 btn-blue btn-md width100">
+                            View Tasks
+                        </button>
+                        <div class="break-sm"></div>
+                    {{/unless}}
+                    {{#unless classStats}}
+                        <button id="classStats" class="btn btn1 btn-yellow btn-md width100">
+                            Class Stats
+                        </button>
+                        <div class="break-sm"></div>
+                    {{/unless}}
                 {{/if}}
 
                 {{> class_section_leaders_side}}
@@ -29,13 +30,21 @@
                     {{#if viewTasks}}
                         {{> class_task_main}}
                         {{#if isTeacher}}
+
+                            {{> class_task_main}}
+                            <!-- {{> alex_rewrite_class_tasks}} -->
                             <!--
                             {{> task_main}}
                             {{> class_task_list_main}} -->
-                            {{> challenge_class}}
-                            {{#unless currentChallenge}}
+                            
+                            <!-- {{> challenge_class}} -->
+                        <!--    {{#unless currentChallenge}}
                                 {{> my_class_challenges}}
-                            {{/unless}}
+
+                            {{/unless}} -->
+                        {{else}}
+                            <!-- {{> class_task_list_main}} -->
+                            {{> class_task_main}}
                         {{/if}}
                     {{/if}}
 
@@ -323,11 +332,16 @@
 
                 {{else}}
                     {{#if isTeacher}}
-                        {{#unless currentChallenger}}
+                        <!-- {{#unless currentChallenger}}
                             {{> challenge_class_away_main}}
-                        {{/unless}}
->>>>>>> a8443e68a9ea62ecd7a0b0b1ee818ad78eb56f56
+                        {{/unless}} -->
                     {{/if}}
+                    <div class="block">
+                        <div class="break-lg"></div>
+                        <h5>Nothing to see here yet, you are not in this class!<br><br>
+                         - We'll make it so that you can challenge other classes eventually though, so be excited for that!</h5>
+                        <div class="break-lg"></div>
+                    </div>
                 {{/if}}
             </div>
         </div>

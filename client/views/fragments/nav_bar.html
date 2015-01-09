@@ -3,12 +3,15 @@
     <!-- Top bar -->
     <div class="navopen">
         <i class="fa fa-bars fa-2x"></i>
-        <div class="i-background">
-        </div>
+        <div class="i-background"></div>
         <a href="/">
             <div class="logo"></div>
         </a>
         <h6>{{title}}</h6>
+
+        <!-- <div class="i-right-background">
+            <p class="blue-hover" id="toggleNotifications">Notifications: <span class="t-red">3</span></p>
+        </div> -->
     </div>
 
     <!-- Side bar (Hidden) -->
@@ -67,11 +70,42 @@
 
             <!-- Useful links -->
             <li>
-                <a href="/reportanerror">Report an Error</a>
+                <a href="/report">Report an Error</a>
                 <a href="/settings">Settings</a>
                 <a href="/logout">Log Out</a>
             </li>
 
         </ul>
     </div>
+
+    <!-- Notifications -->
+    <!-- <div id="notifications">
+        <div class="times-button clickable right close-notifications" id="hello">
+            <i class="fa fa-times"></i>
+        </div>
+        <a href="/home">
+            <div class="notification-el">
+                <h6 style="display: inline-block;">New Practice Task!</h6>
+                <p>Practice Mahler 1</p>
+                <div class="break-sm"></div>
+                <p>- Symphony Orchestra</p>
+            </div>
+        </a>
+        <a href="/user?id=">
+            <div class="notification-el">
+                New Message from firstName lastName
+            </div>
+        </a>
+        <a href="/section?id=">
+            <div class="notification-el">
+                New Section Message
+            </div>
+        </a>
+        <a href="/section?id=">
+            <div class="notification-el">
+                New Section Message
+            </div>
+        </a>
+    </div> -->
+
 </template>

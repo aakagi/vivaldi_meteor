@@ -3,20 +3,25 @@
         <div class="clickable blue-hover" id="previewSectionLeaders">
             <div class="preview">
                 <p>
-                    Section Leaders <i class="fa fa-chevron-down right"></i>
+                    Sections and Section Leaders <i class="fa fa-chevron-down right"></i>
                 </p>
             </div>
         </div>
         <div id="sectionLeadersDisplay">
             <div class="break-sm"></div>
-        <!-- {{#each}} -->
+        {{#each sectionList}}
             <h6>
-                <a href="/user?id={{_id}}">
-                    {{profile.firstName}} {{profile.lastName}}
-                    Bob TODO - SectionName
+                <a href="/section?id={{_id}}">
+                    {{name}}
                 </a>
+                {{#if currentLeader._id}}
+                    <a href="/user?id={{currentLeader._id}}">
+                         - {{currentLeader.profile.firstName}} {{currentLeader.profile.lastName}}
+                    </a>
+                {{/if}}
+
             </h6>
-        <!-- {{/each}} -->
+        {{/each}}
             
         </div>
 

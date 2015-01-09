@@ -58,6 +58,17 @@
         height: 4em;
         background-color: $gray;
     }
+    .i-right-background {
+        padding-top: 1.2em;
+        padding-right: 1em;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        // width: 4em;
+        height: 2em;
+        // background-color: $gray;
+    }
     h6 {
         position: relative;
         font-size: 1.5em !important;
@@ -65,6 +76,47 @@
         top: 0.25em;
         color: $gray;
     }
+}
+#notifications {
+    position: fixed;
+    top: 4em;
+    right: 0;
+    width: 14em;
+    max-width: 100%;
+    max-height: 60%;
+    background-color: $white;
+    z-index: 10;
+    box-shadow: 0 0 1em $gray;
+    // padding-top: .7em;
+    overflow-y: scroll;
+
+    .notification-el{
+        point-events: none;
+        padding-left: 1em;
+        padding-top: .3em;
+        height: 100px;
+        z-index: 0;
+        border-top: 1px solid LightGray;
+        border-bottom: 1px solid LightGray;
+        &:hover {
+            box-shadow: 0 0 .5em $gray;
+        }
+    }
+    // .unread {
+    //     background-color: $yellow;
+    // }
+    .close-notifications {
+        z-index: 218; 
+        // margin-bottom: -1em; 
+        margin-right: 3%;
+        .fa-times {
+            &:hover {
+                color: $blue;
+
+            }
+        }
+    }
+
 }
 .navadmin {
     position: fixed;

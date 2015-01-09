@@ -1,9 +1,9 @@
 <template name="class_task_main">
     <div class="block class-task">
         <div class="header">
-            
+        <!-- {{#if isTeacher}} -->
             <!-- Preview -->
-            <div class="preview">
+            <div id="previewTask">
                 <div class="break-sm"></div>
                 <div class="row">
                     <div class="col-sm-4">
@@ -17,7 +17,11 @@
                     </div>
                 </div>
                 <div class="break-sm"></div>
+                {{#each temp}}
+                    {{taskId}}
+                {{/each}}
             </div>
+        <!-- {{/if}} -->
 
             <!-- Select Task Type -->
     		<div id="taskForm" class="form shadedInputs">
@@ -151,6 +155,7 @@
         </div>
 
         <div class="body">
+        {{#if allTasks}}
             {{#each allTasks}}
                 <div class="task">
                     {{#if type_practice}}
@@ -186,7 +191,7 @@
                                         <button class="view-more btn btn1 btn-green btn-sm width100 {{#unless totalComplete}}disabled{{/unless}}" name="completed-{{_id}}" disabled="{{#unless totalComplete}}disabled{{/unless}}">Finished ({{totalComplete}})</button>
                                         <button class="view-more btn btn1 btn-blue btn-sm width100 {{#unless totalInProgress}}disabled{{/unless}}" name="inprogress-{{_id}}" disabled="{{#unless totalInProgress}}disabled{{/unless}}">In Progress ({{totalInProgress}})</button>
                                         <button class="view-more btn btn1 btn-yellow btn-sm width100 {{#unless totalNotStarted}}disabled{{/unless}}" name="notstarted-{{_id}}" disabled="{{#unless totalNotStarted}}disabled{{/unless}}">Not Started ({{totalNotStarted}})</button>
-                                        <button class="btn btn1 btn-red btn-sm width100">TODO: Delete</button>
+                                        <button class="btn btn1 btn-red btn-sm width100" id="deletTask">Delete</button>
                                     </div>
                                     <div id="completed-{{_id}}" class="additional" style="display: none;">
                                         {{#each sections}}
@@ -245,11 +250,23 @@
                         </div>
                         <div class="task-body row" style="display: none;">
                             <!-- <div class="col-sm-2"><br></div> -->
-                            <div class="col-sm-8">
-                                <div class="group">
-                                    <p class="task-date">Due Date: <em>{{dueDate}}</em></p>
-                                    <p class="task-duration">Duration: <em>{{duration}} minutes</em></p>
-                                    <p class="task-points">Points: <em class="t-red">{{points}}</em></p>
+                            {{#if seeVideo}}
+                                {{> youtube_player}}
+                            {{else}}
+                                <div class="col-sm-8">
+                                    <div class="group">
+                                        <p class="task-date">Due Date: <em>{{dueDate}}</em></p>
+                                        <p class="task-duration">Duration: <em>{{duration}} minutes</em></p>
+                                        <p class="task-points">Points: <em class="t-red">{{points}}</em></p>
+                                    </div>
+                                    <div class="group">
+                                        <p>Assigned to:</p>
+                                        <p class="task-sections">
+                                            {{#each sections}}
+                                                <em>{{name}}</em>
+                                            {{/each}}
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="group">
                                     <p>Assigned to:</p>
@@ -266,7 +283,7 @@
                                         <button class="view-more btn btn1 btn-green btn-sm width100 {{#unless totalComplete}}disabled{{/unless}}" name="completed-{{_id}}" disabled="{{#unless totalComplete}}disabled{{/unless}}">Finished ({{totalComplete}})</button>
                                         <button class="view-more btn btn1 btn-blue btn-sm width100 {{#unless totalInProgress}}disabled{{/unless}}" name="inprogress-{{_id}}" disabled="{{#unless totalInProgress}}disabled{{/unless}}">In Progress ({{totalInProgress}})</button>
                                         <button class="view-more btn btn1 btn-yellow btn-sm width100 {{#unless totalNotStarted}}disabled{{/unless}}" name="notstarted-{{_id}}" disabled="{{#unless totalNotStarted}}disabled{{/unless}}">Not Started ({{totalNotStarted}})</button>
-                                        <button class="btn btn1 btn-red btn-sm width100">TODO: Delete</button>
+                                        <button class="btn btn1 btn-red btn-sm width100" id="deleteTask">Delete</button>
                                     </div>
                                     <div id="completed-{{_id}}" class="additional" style="display: none;">
                                         {{#each sections}}
@@ -327,6 +344,10 @@
                     {{/if}}
                 </div>
             {{/each}}
+        {{else}}
+        <!-- If no tasks -->
+        <p>This class has no active tasks. Click the '+ New' button above to make your first task!</p>
+        {{/if}}
         </div>
 
     </div> <!-- Close block -->

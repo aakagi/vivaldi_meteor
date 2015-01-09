@@ -5,13 +5,32 @@ Template.teacher_view.helpers({
     //     console.log(Template.currentData().profile.teacher);
     //     return true;
     // },
-    notInSameClass: function(){
-        var myID = Meteor.userId();
-        var thisID = Template.currentData._id;
-        return !studentsInSameClass(myID, thisID);
+    usersInSameClass: function() {
+        //want to know if this teacher is the teacher of one of your classes
+
+        var teacherID = Template.currentData()._id;
+
+        //get all classes where a this teacher is a teacher and this student is a student
+
+        var classes = Classes.find({
+            $and: [{
+                teachers: {
+                    $elemMatch: {
+                        $in: [teacherID]
+                    }
+                }
+            }, {
+                students: {
+                    $elemMatch: {
+                        $in: [Meteor.userId()]
+                    }
+                }
+            }]
+        }).fetch();
+        return classes.length > 0;
     },
     unrelatedStudent: function() {
-        return !isTeacher  && !studentsInSameClass(myID, thisID);
+        return !isTeacher && !studentsInSameClass(myID, thisID);
     },
     userMessage: function() {
         return Session.get('userMessage');
@@ -20,34 +39,3 @@ Template.teacher_view.helpers({
         return Session.get('userStats');
     }
 });
-
-Template.teacher_view.rendered = function () {
-    Session.set('userMessage', true);
-    Session.set('userStats', false);
-};
-
-Template.teacher_view.events({
-    'click #userMessage': function(){
-        Session.set('userMessage', true);
-        Session.set('userStats', false);
-    },
-    'click #userStats': function(){
-        Session.set('userMessage', false);
-        Session.set('userStats', true);
-    }
-    // 'click #showTasks': function(){
-    //     Session.set('showTasks', true);
-    //     Session.set('completedTasks', false);
-    //     Session.set('practice', false);
-    // },
-    // 'click #completedTasks': function(){
-    //     Session.set('showTasks', false);
-    //     Session.set('completedTasks', true);
-    //     Session.set('practice', false);
-    // },
-    // 'click #practice': function(){
-    //     Session.set('showTasks', false);
-    //     Session.set('completedTasks', false);
-    //     Session.set('practice', true);
-    // },
-})
