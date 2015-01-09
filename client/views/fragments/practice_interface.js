@@ -4,6 +4,8 @@ Template.practice_interface.rendered = function() {
     // Session.set('practiceOther', false);
     // Session.set('practiceTaskObject', null);
     // Session.set('duration', 0);
+    Session.set('timePicked', false);
+    Session.set('taskPicked', false);
 
     var timer;
     var timeElapsed = $('#timeElapsed');
@@ -23,6 +25,7 @@ Template.practice_interface.rendered = function() {
 
     function startTimer() {
         duration = Session.get('practiceTaskObject');
+        console.log(duration);
         // Timer instance, the loop that executed once every second
         timer = window.setInterval(function() {
             // Increase the secondsPracticed by one
@@ -31,6 +34,8 @@ Template.practice_interface.rendered = function() {
             // Rewrite the times
             timeElapsed.html(formatTime(secondsPracticed));
             timeRemaining.html(formatTime(duration - secondsPracticed));
+
+
 
             // Stop the timer on stopTimer click
             $("#stopTimer").click(function(event) {
@@ -198,6 +203,15 @@ Template.practice_other_interface.events({
             timeRemaining.html(formatTime(duration - secondsPracticed));
             $('#yourStatus').html('Your Status: <em>' + getPercent(secondsPracticed, duration) + '</em>');
 
+            if (secondsPracticed == duration) {
+                //same as if stop timer was called
+                Session.set('secondsPracticed', secondsPracticed);
+                clearInterval(timer);
+                $('#startTimer').removeClass('disabled').removeAttr('disabled', 'disabled');
+                saveProgressOther(timer, secondsPracticed);
+                Router.go('home');
+            }
+
             // Resize percentage bar
             var barWidth = $('.bar').width();
             var newWidth = barWidth * (secondsPracticed / duration);
@@ -213,15 +227,41 @@ Template.practice_other_interface.events({
         }, 1000);
     },
     'click #stopTimer': function() {
-        //gets practice task info from Session
-        var taskObject = Session.get('practiceTaskObject');
-        var secondsPracticed = Session.get('secondsPracticed');
-        //updates the task data with this duration
-        var instrument = Meteor.user().profile.instrument;
-        Meteor.call('saveProgress', Meteor.userId(), taskObject._id, instrument, secondsPracticed);
+        console.log("updating instrument data");
+        saveProgressOther();
     }
 });
 
+saveProgress = function() {
+
+}
+
+saveProgressOther = function() {
+    //gets practice task info from Session
+    var secondsPracticed = Session.get('secondsPracticed');
+    console.log("seconds practiced: " + String(secondsPracticed));
+    var oldSeconds = Session.get('oldSeconds');
+    console.log("old seconds:" + String(oldSeconds));
+    //updates the task data with this duration
+    var instrument = Meteor.user().profile.instrument;
+    Meteor.call('saveProgressOther', Meteor.userId(), instrument, oldSeconds, secondsPracticed);
+    Session.set('oldSeconds', secondsPracticed);
+}
+
+finishTask = function() {
+    Session.set('secondsPracticed', secondsPracticed);
+    clearInterval(timer);
+    $('#startTimer').removeClass('disabled').removeAttr('disabled', 'disabled');
+    //gets practice task info from Session
+    var taskObject = Session.get('practiceTaskObject');
+    var secondsPracticed = Session.get('secondsPracticed');
+    //updates the task data with this duration
+    var instrument = Meteor.user().profile.instrument;
+    Meteor.call('saveProgress', Meteor.userId(), taskObject._id, instrument, secondsPracticed);
+}
+
 Template.practice_other_interface.rendered = function() {
+    Session.set('oldSeconds', 0);
+    Session.set('duration', 0);
     $('#timeRemaining').html(formatTime(Session.get('duration')));
 };
