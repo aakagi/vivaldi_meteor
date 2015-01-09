@@ -636,6 +636,16 @@
 //     transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 // }
 
+.close-notifications {
+    z-index: 18; 
+    margin-bottom: -1em; 
+    margin-right: 3%;
+    &:hover {
+        color: $blue;
+
+    }
+}
+
 a {
     &:hover {
         .t-red {

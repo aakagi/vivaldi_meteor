@@ -66,7 +66,7 @@
         top: 0;
         right: 0;
         // width: 4em;
-        height: 4em;
+        height: 2em;
         // background-color: $gray;
     }
     h6 {
@@ -91,9 +91,11 @@
     overflow-y: scroll;
 
     .notification-el{
+        point-events: none;
         padding-left: 1em;
         padding-top: .3em;
         height: 100px;
+        z-index: 0;
         border-top: 1px solid LightGray;
         border-bottom: 1px solid LightGray;
         &:hover {
@@ -103,6 +105,18 @@
     // .unread {
     //     background-color: $yellow;
     // }
+    .close-notifications {
+        z-index: 218; 
+        // margin-bottom: -1em; 
+        margin-right: 3%;
+        .fa-times {
+            &:hover {
+                color: $blue;
+
+            }
+        }
+    }
+
 }
 .navadmin {
     position: fixed;

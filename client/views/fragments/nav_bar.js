@@ -23,6 +23,9 @@ Template.nav_bar.events({
 	'click .fa-times': function() {
 		$('.navadmin').animate({'left': '-17em'}, 250);
 	},
+	'click #hello': function() {
+		console.log('hey!');
+	}
 });
 
 Template.nav_bar.helpers({
