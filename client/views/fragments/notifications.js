@@ -9,11 +9,11 @@ Template.notifications.helpers({
     },
     plural: function(){
         userid = Meteor.userId();
-        if (activeNotificationsForUser(userid).length > 1){
-            return 's'
+        if (activeNotificationsForUser(userid).length == 1){
+            return ''
         }
         else{
-            return ''
+            return 's'
         }
     }
 });
