@@ -26,17 +26,19 @@ Template.user_messenger_main.helpers({
 
 sendMessageUser = function() {
     var messagebody = document.getElementById("new-message").value;
+    thisUserID = Template.currentData()._id;
+    myUserID = Meteor.userId()
     if (messagebody) {
         var newMessage = {
-            recipientID: Template.currentData()._id,
-            senderID: Meteor.userId(),
+            recipientID: thisUserID,
+            senderID: myUserID,
             body: messagebody,
             date: new Date()
         };
         console.log(newMessage)
         userMessages.insert(newMessage);
         document.getElementById("new-message").value = "";
-
+        updateNotification(thisUserID, myUserID, 'userChat');
     }
 }
 
