@@ -18,9 +18,13 @@
 
         <div id="notificationList">
             <div class="break-sm"></div>
-        {{ #each notificationList }}
-            {{> notification}}
-        {{ /each }}
+            {{#if notificationList}}
+                {{ #each notificationList }}
+                    {{> notification}}
+                {{ /each }}
+            {{else}}
+                No Notifications!
+            {{/if}}
         </div>
 
     </div>

@@ -37,7 +37,16 @@
                                 {{/if}}
                             </div>
                             <div class="col-sm-10">
-                                <h5 class="task-name {{#if type_post}}post{{/if}}">{{name}} {{#unless type_post}}<a class="blue" onclick="openTask(this)">See more</a>{{/unless}}</h5>
+                                <h5 class="task-name {{#if type_post}}post{{/if}}">
+                                    {{name}}
+                                    {{#unless type_post}}
+                                        <a class="blue" onclick="openTask(this)">See more</a>
+                                    {{else}}
+                                        <a style="color: red; font-style: italic;" id="dismissTask">
+                                            Dismiss
+                                        </a>
+                                    {{/unless}}
+                                </h5>
                                 {{#if type_post}}
                                     <p class="author">{{author.profile.firstName}} {{author.profile.lastName}} • {{creationDate}}</p>
                                 {{/if}}
@@ -68,18 +77,18 @@
                                     </div>
                                 </div>
                                 {{#if showCurrent}}
-                                 <div class="col-sm-4">
-                                    <div class="action-buttons">
-                                        {{#if type_practice}}
-                                            <button id="{{taskId}}" class="practiceTask btn btn1 btn-blue btn-sm width100">Practice</button>
-                                        {{else}}
-                                            <button id="{{taskId}}" class="listenTask btn btn1 btn-blue btn-sm width100">Listen</button>
-                                        {{/if}}
-                                        <button class="btn btn1 btn-green btn-sm width100">Something</button>
-                                        <button class="btn btn1 btn-yellow btn-sm width100">Something</button>
-                                        <button class="btn btn1 btn-red btn-sm width100">Something</button>
+                                     <div class="col-sm-4">
+                                        <div class="action-buttons">
+                                            {{#if type_practice}}
+                                                <button id="{{taskId}}" class="practiceTask btn btn1 btn-blue btn-sm width100">Practice</button>
+                                            {{else}}
+                                                <button id="{{taskId}}" class="listenTask btn btn1 btn-blue btn-sm width100">Listen</button>
+                                            {{/if}}
+                                            <button class="btn btn1 btn-green btn-sm width100">Something</button>
+                                            <button class="btn btn1 btn-yellow btn-sm width100">Something</button>
+                                            <button class="btn btn1 btn-red btn-sm width100">Something</button>
+                                        </div>
                                     </div>
-                                </div>
                                 {{/if}}
                             {{/if}}
                         </div>

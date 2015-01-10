@@ -72,6 +72,8 @@ Template.class_task_main.rendered = function() {
             $('#youTube').change(function(event) {
                 video_id = document.getElementById('youTube').value.match(/v=(.{11})/)[1];
                 
+                console.log(video_id);
+
                 // Preview video on change
                 var newSrc = '//www.youtube.com/embed/' + video_id;
                 $('.video').attr('src', newSrc);
@@ -82,8 +84,14 @@ Template.class_task_main.rendered = function() {
                 $.getJSON(apiURL, function(json, textStatus) {
                     rx = /(\d[\d\.\*]*)/g;
                     var numbers = json.items[0].contentDetails.duration.match(rx);
+
+                    // When video is x min and 0 sec, it returns NaN
+                    if (!numbers[1]) {
+                        numbers[1] = 0;
+                    }
                     var video_duration = (numbers[0] * 60) + (numbers[1] * 1);
                     task_duration_seconds = video_duration;
+                    
                     // Update points
                     points = video_duration * 5;
                     $('#pointValue').html(points);
@@ -286,10 +294,23 @@ Template.class_task_main.events({
     },
     'click #deleteTask': function() {
         var taskID = Template.currentData()._id;
+        console.log(taskID);
         Meteor.call('removeTask', taskID);
     },
-    'click #listenTask': function() {
-        Session.set('showVideo', true);
-        Session.set('listenTaskObject', this);
+});
+
+Template.delete_temp.events({
+    'click #deleteTask': function() {
+        var taskID = Template.currentData()._id;
+        console.log(taskID);
+        Meteor.call('removeTask', taskID);
     },
 });
+Template.delete_t.events({
+    'click #delete-t': function() {
+        var taskID = Template.currentData()._id;
+        console.log(taskID);
+        Meteor.call('removeTask', taskID);
+    },
+});
+

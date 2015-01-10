@@ -4,6 +4,8 @@ Template.home_incomplete_tasks_main.rendered = function() {
     Session.set('backToTasks', true);
     Session.set('practiceView', false);
     Session.set('showVideo', false);
+
+    Session.set('showCurrent', true);
 }
 
 Template.home_incomplete_tasks_main.events({
