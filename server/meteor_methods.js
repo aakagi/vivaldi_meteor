@@ -165,7 +165,7 @@ Meteor.methods({
         //saves a student's task progress.
         TasksData.update(selector, {
             $set: {
-                completed: true,
+                complete: true,
                 completionDate: new Date()
             }
         });

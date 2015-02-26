@@ -3,7 +3,7 @@ Template.change_password.events({
     	confirm = document.getElementById('confirmPwd').value
         newpwd = document.getElementById('newPwd').value
         oldpwd = document.getElementById('currentPwd').value
-        if (confirm == newpwd){
+        if (confirm == newpwd && areValidPasswords(newpwd, confirm)){
             Accounts.changePassword(oldpwd, newpwd, function(err){
                 if (err){
                     setAlert('error', err);

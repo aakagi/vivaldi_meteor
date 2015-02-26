@@ -13,7 +13,7 @@ Template.sign_in.events({
             password = signInForm.find('.password').val();
 
 
-        if (isNotEmpty(email) && isEmail(email) && isNotEmpty(password) && isValidPassword(password)) {
+        if (isNotEmpty(email) && isEmail(email) && isNotEmpty(password)) {
 
             Meteor.loginWithPassword(email, password, function(err) {
                 if (err) {

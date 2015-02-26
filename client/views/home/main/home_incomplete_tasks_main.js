@@ -39,11 +39,18 @@ Template.home_incomplete_tasks_main.events({
 		}
 	},
 
-    // Toggles to practiceView. Back button is set in practiceView (for now)
-    'click #practiceView': function(){
-        Session.set('backToTasks', false);
-        Session.set('practiceView', true);
-    },
+  // Toggles to practiceView. Back button is set in practiceView (for now)
+  'click #practiceView': function(){
+      Session.set('backToTasks', false);
+      Session.set('practiceView', true);
+  },
+
+  'click #completeTask': function() {
+    console.log(this.taskId);
+    Meteor.call('completeTask', Meteor.userId(),this.taskId, function(err) {
+        if (err) {console.log(err)}
+    });
+  }
 });
 
 Template.home_incomplete_tasks_main.helpers({

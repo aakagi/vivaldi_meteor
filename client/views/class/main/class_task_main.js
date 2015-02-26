@@ -178,6 +178,9 @@ Template.class_task_main.helpers({
     },
     allTasks: function() {
         var allTasks = getTasksByClassId(Template.currentData()._id);
+        console.log('allTasks stuff:');
+        console.log(Template.currentData()._id);
+        console.log(getTasksByClassId(Template.currentData()._id));
         return allTasks;
     },
     isTeacher: function() {
@@ -191,6 +194,7 @@ Template.class_task_main.events({
     'click #assignTask': function() {
         //get all values from fields
         var classId = Template.currentData()._id;
+        console.log('classId: ' + classId);
         
         var sectionIds = [];
         // Loop through each selected tag and add id to sectionIds
@@ -240,6 +244,9 @@ Template.class_task_main.events({
             var section = Sections.findOne({_id: sectionIds[i]});
             var studentIds = section.users;
 
+            console.log("section:" + section);
+            console.log("student ids" + studentIds);
+
 
 
             taskAlreadyAssigned = function(taskId, studentId) {
@@ -259,6 +266,7 @@ Template.class_task_main.events({
             }
 
             for (indx in studentIds) {
+                console.log(studentIds[indx]);
                 if (taskAlreadyAssigned(taskID, studentIds[indx])) {
                     console.log('true');
                 } else {

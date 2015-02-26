@@ -11,9 +11,9 @@
                 {{> back_home_btn}}
             </div>
             <div class="col-md-8 col-lg-8">
+                {{> change_name}}
+                {{> change_password}}
                 {{#if isTeacher}}
-                    {{> change_name}}
-                    {{> change_password}}
                     {{> change_school}}
                 {{else}}
                     {{> change_instrument}}

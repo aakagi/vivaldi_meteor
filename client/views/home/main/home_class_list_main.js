@@ -28,7 +28,7 @@ Template.home_class_list.helpers({
         if (level/numStudents < 1) {
             return 1;
         } else {
-            return classLv;
+            return Math.round(classLv);
         }
     }
 });
