@@ -69,34 +69,35 @@ Template.class_task_main.rendered = function() {
             $('#taskDescription').attr('placeholder', 'Listen to the recording by Friday');
 
             // Get id for video on link change
-            $('#youTube').change(function(event) {
-                video_id = document.getElementById('youTube').value.match(/v=(.{11})/)[1];
+            // Moving to actual meteor instead of jQuery
+            // $('#youTube').change(function(event) {
+            //     video_id = document.getElementById('youTube').value.match(/v=(.{11})/)[1];
                 
-                console.log(video_id);
+            //     console.log(video_id);
 
-                // Preview video on change
-                var newSrc = '//www.youtube.com/embed/' + video_id;
-                $('.video').attr('src', newSrc);
-                $('.video-preview').slideDown(100);
+            //     // Preview video on change
+            //     var newSrc = '//www.youtube.com/embed/' + video_id;
+            //     $('.video').attr('src', newSrc);
+            //     $('.video-preview').slideDown(100);
 
-                // Get video data
-                var apiURL = 'https://www.googleapis.com/youtube/v3/videos?id=' + video_id + '&key=AIzaSyB6HXsHdp5IN5bgj2nDkqHQRWSfHYPunow&part=snippet,contentDetails,statistics,status';
-                $.getJSON(apiURL, function(json, textStatus) {
-                    rx = /(\d[\d\.\*]*)/g;
-                    var numbers = json.items[0].contentDetails.duration.match(rx);
+            //     // Get video data
+            //     var apiURL = 'https://www.googleapis.com/youtube/v3/videos?id=' + video_id + '&key=AIzaSyB6HXsHdp5IN5bgj2nDkqHQRWSfHYPunow&part=snippet,contentDetails,statistics,status';
+            //     $.getJSON(apiURL, function(json, textStatus) {
+            //         rx = /(\d[\d\.\*]*)/g;
+            //         var numbers = json.items[0].contentDetails.duration.match(rx);
 
-                    // When video is x min and 0 sec, it returns NaN
-                    if (!numbers[1]) {
-                        numbers[1] = 0;
-                    }
-                    var video_duration = (numbers[0] * 60) + (numbers[1] * 1);
-                    task_duration_seconds = video_duration;
+            //         // When video is x min and 0 sec, it returns NaN
+            //         if (!numbers[1]) {
+            //             numbers[1] = 0;
+            //         }
+            //         var video_duration = (numbers[0] * 60) + (numbers[1] * 1);
+            //         task_duration_seconds = video_duration;
                     
-                    // Update points
-                    points = video_duration * 5;
-                    $('#pointValue').html(points);
-                });
-            });
+            //         // Update points
+            //         points = video_duration * 5;
+            //         $('#pointValue').html(points);
+            //     });
+            // });
 
             // Reveal fields for practice
             for (el in fields) {
@@ -178,9 +179,9 @@ Template.class_task_main.helpers({
     },
     allTasks: function() {
         var allTasks = getTasksByClassId(Template.currentData()._id);
-        console.log('allTasks stuff:');
-        console.log(Template.currentData()._id);
-        console.log(getTasksByClassId(Template.currentData()._id));
+        // console.log('allTasks stuff:');
+        // console.log(Template.currentData()._id);
+        // console.log(getTasksByClassId(Template.currentData()._id));
         return allTasks;
     },
     isTeacher: function() {
@@ -194,7 +195,7 @@ Template.class_task_main.events({
     'click #assignTask': function() {
         //get all values from fields
         var classId = Template.currentData()._id;
-        console.log('classId: ' + classId);
+        // console.log('classId: ' + classId);
         
         var sectionIds = [];
         // Loop through each selected tag and add id to sectionIds
@@ -305,6 +306,34 @@ Template.class_task_main.events({
         console.log(taskID);
         Meteor.call('removeTask', taskID);
     },
+    'change #youTube': function() {
+        video_id = document.getElementById('youTube').value.match(/v=(.{11})/)[1];
+        
+        console.log(video_id);
+
+        // Preview video on change
+        var newSrc = '//www.youtube.com/embed/' + video_id;
+        $('.video').attr('src', newSrc);
+        $('.video-preview').slideDown(100);
+
+        // Get video data
+        var apiURL = 'https://www.googleapis.com/youtube/v3/videos?id=' + video_id + '&key=AIzaSyB6HXsHdp5IN5bgj2nDkqHQRWSfHYPunow&part=snippet,contentDetails,statistics,status';
+        $.getJSON(apiURL, function(json, textStatus) {
+            rx = /(\d[\d\.\*]*)/g;
+            var numbers = json.items[0].contentDetails.duration.match(rx);
+
+            // When video is x min and 0 sec, it returns NaN
+            if (!numbers[1]) {
+                numbers[1] = 0;
+            }
+            var video_duration = (numbers[0] * 60) + (numbers[1] * 1);
+            task_duration_seconds = video_duration;
+            
+            // Update points
+            points = video_duration * 5;
+            $('#pointValue').html(points);
+        });
+    }
 });
 
 Template.delete_temp.events({
