@@ -91,7 +91,8 @@ Template.onboard_form.events({
     'click #teacherCreate': function () {
         var teacherCode = prompt("Please enter the teacher code. If you are a teacher and would like to join Vivaldi, please email Alex at Vivaldimailer@gmail.com.", "Code");
     
-        if (teacherCode === 'Spring') {
+        // if (teacherCode === 'Spring') {
+        if (teacherCode === 'temp') {
             Session.set("teacherSignUp", true);
         } else {
             setAlert('error', 'Incorrect code');

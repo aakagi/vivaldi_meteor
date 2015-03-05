@@ -316,8 +316,11 @@ Template.class_task_main.events({
         $('.video').attr('src', newSrc);
         $('.video-preview').slideDown(100);
 
+        var bensKey = 'AIzaSyB6HXsHdp5IN5bgj2nDkqHQRWSfHYPunow';
+        var alexsKey = 'AIzaSyAslO_txIQti3Ba99Ub3WIy_TCO1-LilKs';
+
         // Get video data
-        var apiURL = 'https://www.googleapis.com/youtube/v3/videos?id=' + video_id + '&key=AIzaSyB6HXsHdp5IN5bgj2nDkqHQRWSfHYPunow&part=snippet,contentDetails,statistics,status';
+        var apiURL = 'https://www.googleapis.com/youtube/v3/videos?id=' + video_id + '&key='+alexsKey+'&part=snippet,contentDetails,statistics,status';
         $.getJSON(apiURL, function(json, textStatus) {
             rx = /(\d[\d\.\*]*)/g;
             var numbers = json.items[0].contentDetails.duration.match(rx);
